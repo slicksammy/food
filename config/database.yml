@@ -1,0 +1,16 @@
+general: &general
+  adapter: postgresql
+  min_messages: ERROR
+
+development:
+  <<: *general
+  host: localhost
+  database: food_dev
+
+test: &test
+  adapter: postgresql
+  encoding: utf8
+  database: food_test
+  load_seeds: true
+  verbosity: silent
+  migrate: false

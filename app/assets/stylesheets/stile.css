@@ -1,0 +1,201 @@
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/*First Section*/
+
+.main {
+  text-align: center;
+  /*background: white;*/
+  /*background: url(broccoli-1.jpg);*/
+  background-size: contain;
+  /*background-color: white;*/
+  /*height: 100px;*/
+  background: #00cc66;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/*.main .text-box {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}*/
+
+.main h1 {
+  font-size: 180px;
+  font-family: Courier;
+}
+
+.main p {
+  font-size: 35px;
+  font-family: Courier;
+  margin-top: 20px;
+}
+
+
+/*About*/
+
+.about {
+  font-family: Times;
+  padding: 60px;
+}
+
+.about p {
+  font-size: 30px;
+}
+
+.margin-10 {
+  margin-bottom: 10px;
+}
+
+.loud {
+  font-size: 30px;
+  font-style: strong;
+  text-align: center;
+}
+
+#broccoli-1 {
+  float: left;
+  padding: 40px;
+  /*margin-left: -400px auto;*/
+}
+
+.how {
+  
+}
+
+.how .title {
+  text-align: center;
+  font-family: Courier;
+}
+
+.how .title h1 {
+  font-size: 50px;
+}
+
+.how .box {
+  margin-top: 30px;
+  /*background: yellow;*/
+  font-size: 30px;
+  padding: 10px;
+}
+
+.how .box .text-box {
+  /*margin-left: -30px;*/
+  /*background: yellow;*/
+}
+
+.how .number {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+
+  background: #fff;
+  border: 2px solid #666;
+  color: #666;
+  text-align: center;
+
+  font: 32px Arial, sans-serif;
+}
+
+.how .bullet {
+  margin: 20px;
+}
+
+.how p {
+  font-size: 40px;
+}
+
+.landlord {
+  
+}
+
+.landlord .title {
+  text-align: center;
+  font-family: Courier;
+}
+
+.landlord .title h1 {
+  font-size: 50px;
+}
+
+.landlord .box {
+  margin-top: 30px;
+  /*background: yellow;*/
+  font-size: 30px;
+  padding: 10px;
+}
+
+.landlord .box .text-box {
+  /*margin-left: -30px;*/
+  /*background: yellow;*/
+}
+
+
+
+.landlord .bullet {
+  margin: 20px;
+}
+
+.landlord p {
+  font-size: 40px;
+}
+
+.tenant {
+  
+}
+
+.tenant .title {
+  text-align: center;
+  font-family: Courier;
+}
+
+.tenant .title h1 {
+  font-size: 50px;
+}
+
+.tenant .box {
+  margin-top: 30px;
+  /*background: yellow;*/
+  font-size: 30px;
+  padding: 10px;
+}
+
+.tenant .box .text-box {
+  /*margin-left: -30px;*/
+  /*background: yellow;*/
+}
+
+
+
+.tenant .bullet {
+  margin: 20px;
+}
+
+.tenant p {
+  font-size: 40px;
+}
+
+@media (max-width: 767px) {
+
+  .main h1 {
+    font-size: 68px;
+  }
+
+  .about h1 {
+    font-size: 68px;
+  }
+
+  .main p {
+    font-size: 30px;
+  }
+
+  .about img {
+    display: none;
+  }
+}
+
+
+
