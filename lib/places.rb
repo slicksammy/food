@@ -25,7 +25,7 @@ class Places
     @radius = params[:radius] || DEFAULT_RADIUS # in meters
     @keyword = params[:keyword]
     @type = params[:type]
-    @save_type = params[:type] || 'apartment'
+    @place_type_id = params[:place_type_id]
 
     @next_page_token = next_page_token
     @count = count
@@ -37,7 +37,7 @@ class Places
     results = get
     parsed_results = results.parsed_response["results"] # array of results
     parsed_results.each do |r|
-      self.class.save_result(r, @keyword)
+      self.class.save_result(r, @place_type_id)
     end
 
     # commenting out bc next_page_token returned
@@ -84,7 +84,7 @@ class Places
       longitude: result["geometry"]["location"]["lng"],
       google_place_id: result["place_id"],
       name: result["name"],
-      internal_type: type,
+      place_type_id: type,
       rating: result["rating"]
     }
 

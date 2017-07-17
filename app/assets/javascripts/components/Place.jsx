@@ -63,8 +63,6 @@ class Place extends React.Component {
 
     var defaultStatus = this.state.status ? this.state.status.id : '0'
 
-    console.log(defaultStatus)
-
     return(
       <div>
         {/*<Callback id={this.props.place.id} />*/}
@@ -86,14 +84,15 @@ class Place extends React.Component {
               {notes}
             </tbody>
           </table>
-          <textarea columns="40" rows="5" ref="text"></textarea>
+          <textarea col="40" rows="5" ref="text"></textarea>
           <button onClick={this.saveNote} type="submit">Save</button>
         </div>
         <div>
           <h2>VM Script</h2>
           <p>Hi (PERSONS NAME), this is Sam calling from Brokolly - a new grocery delivery startup serving downtown Chicago. We're an affordable
           and convenient way for tenants to order groceries online and have them delivered, cutting out the hassle of walking to the store, waiting in line,
-          and carrying heavy groceries home. I was hoping I could have 2-3 minutes of your time to discuss the opportunity. Please give me a call back at your convenience at 312-523-7986. Thank you.
+          and carrying heavy groceries home. We'll also have fresher produce and meat than the local grocery store. 
+          I was hoping I could have 2-3 minutes of your time to discuss the opportunity. Please give me a call back at your convenience at 312-523-7986. Thank you.
           </p>
         </div>
       </div>

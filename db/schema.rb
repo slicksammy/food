@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,50 +10,80 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622185252) do
+ActiveRecord::Schema.define(version: 20170716203415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "callbacks", force: :cascade do |t|
+  create_table "callbacks", id: :serial, force: :cascade do |t|
     t.integer "place_id"
-    t.date    "call_back_date"
+    t.date "call_back_date"
     t.boolean "called"
   end
 
-  create_table "notes", force: :cascade do |t|
-    t.integer  "place_id"
-    t.text     "note_text"
+  create_table "carts", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "place_statuses", force: :cascade do |t|
-    t.integer  "place_id"
-    t.integer  "status_id"
+  create_table "carts_products", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "product_id"
+    t.decimal "amount", precision: 4, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_carts_products_on_cart_id"
+    t.index ["product_id"], name: "index_carts_products_on_product_id"
+  end
+
+  create_table "notes", id: :serial, force: :cascade do |t|
+    t.integer "place_id"
+    t.text "note_text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "place_statuses", ["place_id"], name: "index_place_statuses_on_place_id", using: :btree
-  add_index "place_statuses", ["status_id"], name: "index_place_statuses_on_status_id", using: :btree
-
-  create_table "places", force: :cascade do |t|
-    t.decimal  "latitude",        precision: 15, scale: 10
-    t.decimal  "longitude",       precision: 15, scale: 10
-    t.string   "google_place_id"
-    t.string   "name"
-    t.string   "internal_type"
-    t.decimal  "rating",          precision: 2,  scale: 1
+  create_table "place_statuses", id: :serial, force: :cascade do |t|
+    t.integer "place_id"
+    t.integer "status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "phone_number"
-    t.string   "address"
+    t.index ["place_id"], name: "index_place_statuses_on_place_id"
+    t.index ["status_id"], name: "index_place_statuses_on_status_id"
   end
 
-  add_index "places", ["google_place_id"], name: "index_places_on_google_place_id", unique: true, using: :btree
+  create_table "place_types", id: :serial, force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
-  create_table "statuses", force: :cascade do |t|
+  create_table "places", id: :serial, force: :cascade do |t|
+    t.decimal "latitude", precision: 15, scale: 10
+    t.decimal "longitude", precision: 15, scale: 10
+    t.string "google_place_id"
+    t.string "name"
+    t.decimal "rating", precision: 2, scale: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "phone_number"
+    t.string "address"
+    t.integer "place_type_id"
+    t.index ["google_place_id"], name: "index_places_on_google_place_id", unique: true
+  end
+
+  create_table "products", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.decimal "price", precision: 5, scale: 2
+    t.string "image_url"
+    t.string "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "statuses", id: :serial, force: :cascade do |t|
     t.string "status"
   end
 

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get '/places' => 'application#places'
 
-  get '/places/:id' => 'application#place', constraints: { id: /\d.+/ }
+  get '/places/:id' => 'application#place', constraints: { id: /[0-9]+/ }
 
   post '/places/:id/notes' => 'application#notes'
 
@@ -15,7 +15,20 @@ Rails.application.routes.draw do
 
   get '/places/:id/callbacks' => 'application#get_callbacks'
 
-  match 'places/new' => 'application#new', via: [:get, :post]
+  match 'places/new', to: 'application#new', via: [:get, :post]
+
+  # get 'places/new' => 'application#new'
+
+  get '/search' => 'application#search'
+
+
+  # START STORE
+  get '/store' => 'store#index'
+
+  # START CART
+  get '/cart' => 'cart#view'
+  get '/cart/test' => 'cart#test'
+  post '/cart' => 'cart#update'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

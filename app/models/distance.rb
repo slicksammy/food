@@ -47,7 +47,7 @@ class Distance
   end
 
   def self.sort_stores(apartment)
-    grocery_stores = Place.grocery
+    grocery_stores = Place.grocery#.select { |d| d.address.present? }
 
     output = {}
 

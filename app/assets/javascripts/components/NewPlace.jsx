@@ -1,18 +1,13 @@
 class NewPlace extends React.Component {
-  construct() {
-    this.submit = this.submit.bind(this)
-  }
-
-  submit(e) {
-    console.log(e.target.value)
-    // $.ajax({
-    //   type: "POST",
-    //   url: 'places/new',
-    //   data: {}
-    // })
+  constructor() {
+    super();
   }
 
   render() {
+    var types = this.props.types.map( (type) => {
+      return(<option value={type.id}>{type.description}</option>)
+    })
+
     return(
       <div>
         <h2>Create New Place</h2>
@@ -20,7 +15,7 @@ class NewPlace extends React.Component {
           <input type="text" placeholder="name" name="name"/>
           <input type="text" placeholder="address" name="address"/>
           <input type="text" placeholder="phone" name="phone"/>
-          <input type="text" placeholder="internal type" name="internal_type"/>
+          <select required name="place_type">{types}</select>
           <textarea cols="40" rows="4" placeholder="note" name="note"/>
           <button type="submit">Submit</button>
         </form>

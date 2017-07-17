@@ -1,4 +1,6 @@
-<% @places.each do |place| %>
-  <li><a href='/places/<%=  place.id %>'><%=  place.name %></a><%= place.status.try(:status) %></li>
-<% end %>
+<div class="container">
+  <%= react_component('Search') %>
+  <%= react_component('Places', data: @data) %>
+</div>
+
 

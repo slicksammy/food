@@ -6,16 +6,23 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 
   def index
+    
   end
 
   def places
-    @places = Place.apartment
+    places = Place.all
+    types = PlaceType.all
+
+    @data = {types: types, places: places}
+
+    # render json: { data: data }
   end
 
   def place
     @place = Place.find params["id"]
     @status = @place.status
-    @data = Distance.sort_stores(@place).first(5)
+    @data = Place.grocery.first(5)
+    # @data = Distance.sort_stores(@place).first(5)
     @notes = @place.notes.ordered
     @statuses = Status.all
   end
@@ -40,10 +47,18 @@ class ApplicationController < ActionController::Base
 
   def new
     if request.post?
-      p = Place.create!(name: params["name"], phone_number: params["phone"], address: params["address"], internal_type: params["internal_type"])
-      if params["note"]
+      p = Place.create!(name: params["name"], phone_number: params["phone"], address: params["address"], place_type_id: params["place_type"])
+      if params["note"].present?
         p.notes.create!(note_text: params["note"])
       end
+    else 
+      @types = PlaceType.all
     end
+  end
+
+  def search
+    notes = Note.search(params["search"]).sort_by(&:place_id).map{ |n| { text: n.note_text, place_id: n.place_id, name: n.place.name } }
+
+    render nothing: true, json: { notes: notes }
   end
 end
