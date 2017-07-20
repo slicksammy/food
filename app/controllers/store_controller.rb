@@ -1,7 +1,8 @@
 class StoreController < ActionController::Base
+  include StoreHelper
 
   def index
-    @products = Product.all
+    @products = product_information(Product.all, session[:cart_id])
   end
 
 end

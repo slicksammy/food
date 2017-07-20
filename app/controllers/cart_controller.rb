@@ -1,16 +1,14 @@
 # this controller needs to locked down so only the app can access it
 # maybe give the cart a uuid
 class CartController < ActionController::Base
+  include CartHelper
 
   # before_action :cart_id_present?, except: [:view, :add]
 
   # UPDATE THESE TO USE UUIDS
 
   def view
-    cart = Cart.find(cart_id)
-    products = cart.products
-
-    render json: { products: products }
+    @products = product_info(session[:cart_id])
   end
 
   def update

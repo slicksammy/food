@@ -1,0 +1,29 @@
+#locationField {
+  border: solid;
+  background: #f0f0f5;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+#autocomplete {
+  display: block;
+  width: 400px;
+  margin: 50px;
+  font-size: 20px;
+}
+
+#address_2 {
+  display: block;
+  width: 100px;
+  margin: 50px;
+  font-size: 20px
+}
+
+button {
+  display: block;
+  margin: 50px;
+}
+
+.hidden-address {
+  display: none;
+}

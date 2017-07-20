@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716203415) do
+ActiveRecord::Schema.define(version: 20170719222538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "street_number"
+    t.string "street_name"
+    t.string "address_2"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "google_place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "callbacks", id: :serial, force: :cascade do |t|
     t.integer "place_id"
@@ -43,6 +56,23 @@ ActiveRecord::Schema.define(version: 20170716203415) do
     t.text "note_text"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "address_id"
+    t.integer "stripe_token_id"
+    t.integer "subtotal"
+    t.integer "shipping"
+    t.integer "tax"
+    t.integer "total"
+    t.date "expected_delivery_date"
+    t.datetime "delivered_at"
+    t.boolean "paid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status"
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
   end
 
   create_table "place_statuses", id: :serial, force: :cascade do |t|
@@ -85,6 +115,17 @@ ActiveRecord::Schema.define(version: 20170716203415) do
 
   create_table "statuses", id: :serial, force: :cascade do |t|
     t.string "status"
+  end
+
+  create_table "stripe_tokens", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "last_4"
+    t.string "token"
+    t.text "response"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_stripe_tokens_on_user_id"
   end
 
 end

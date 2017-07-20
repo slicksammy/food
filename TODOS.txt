@@ -1,0 +1,2 @@
+1. probably should create stripe_token_charges and it has an order through stripe_token
+2. might need to have stripe_refunds unless that is a negative stripe_charge

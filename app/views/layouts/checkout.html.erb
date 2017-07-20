@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FoodDelivery</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <scr rel="javascript" type="text/css" href="https://code.jquery.com/jquery-3.2.1.min.js">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/autocomplete.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaTHvfZtxVUnyQGVYTrajZ_gCsmGXKoJM&libraries=places&callback=initAutocomplete" async defer></script>
+    <link rel="stylesheet" type="text/css" href="assets/checkout.css">
+    <link rel="stylesheet" type="text/css" href="assets/payment.css" />
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

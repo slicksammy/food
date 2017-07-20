@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'checkout/view'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -29,6 +31,21 @@ Rails.application.routes.draw do
   get '/cart' => 'cart#view'
   get '/cart/test' => 'cart#test'
   post '/cart' => 'cart#update'
+
+  # START CHECKOUT
+  get '/checkout' => 'checkout#view'
+  post '/checkout/buy' => 'checkout#buy'
+  post '/order/update' => 'checkout#update_order'
+  post '/order/confirm' => 'checkout#confirm_order'
+
+  # START PAYMENTS
+  get '/payment' => 'payments#new'
+  post '/payment/update' => 'payments#update'
+
+  # START ADDRESSES
+  get '/address' => 'address#new'
+  post '/address' => 'address#save'
+  post '/address/availability' => 'address#check_availability'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

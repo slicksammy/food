@@ -1,5 +1,7 @@
 <link rel="stylesheet" type="text/css" href="assets/store.css">
-
+<script type="text/javascript" src="assets/autocomplete.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaTHvfZtxVUnyQGVYTrajZ_gCsmGXKoJM&libraries=places&callback=initAutocomplete" async defer></script>
 <div class="container">
+  <%= react_component('CheckAvailability') %> 
   <%= react_component('Products', products: @products) %> 
 </div>

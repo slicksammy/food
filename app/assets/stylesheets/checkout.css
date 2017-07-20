@@ -1,0 +1,50 @@
+/*Order.jsx*/
+#order {
+  border: solid;
+  background: #f0f0f5;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.item {
+  font-size: 20px;
+  list-style-type: none;
+  padding: 10px;
+}
+
+ul {
+  padding: 20px;
+}
+
+.items-header {
+  border: ;
+}
+
+.total {
+  margin: 20px;
+  font-size: 20px
+}
+
+.float-right {
+  float: right;
+}
+
+.checkout-order {
+  float: right;
+  padding-right: 200px;
+}
+
+.checkout-item {
+  border: solid;
+  display: inline-block;
+}
+
+.buy {
+  font-size: 30px;
+  background-color: green;
+}
+
+.clear-float-left {
+  float: left;
+  clear: both;
+}

@@ -1,0 +1,4 @@
+<div class="container">
+  <!--<%= react_component('Order', order: @order, items: @items) %> -->
+  <%= react_component('Checkout', order: @order, items: @items, payments: @payments, addresses: @addresses, delivery: @delivery_dates) %>
+</div>

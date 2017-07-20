@@ -1,3 +1,5 @@
+# a lot of this code is shared in delivery/distance - was too lazy to refactor
+
 class Distance
 
   EARTH_RADIUS = 3_959 # miles

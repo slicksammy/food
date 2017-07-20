@@ -6,22 +6,13 @@ class Products extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.state)
     this.props.products.forEach( function(x,a) {
-      this.setState({[x.id] : 0});
+      this.setState({[x.id] : [x.amount]});
     }.bind(this));
   }
 
-  componentDidMount() {
-    var elements = document.getElementsByTagName('input');
-
-    for (var i = 0; i < elements.length; i++) {
-      elements[i].value = "2";
-    }
-  }
-
   add(id, amount) {
-    var amount = Math.max(0, this.state[id] + amount)
+    var amount = Math.max(0, parseInt(this.state[id]) + amount)
 
     $.ajax({
       method: "POST",
@@ -33,7 +24,6 @@ class Products extends React.Component {
 
   render() {
     var products = this.props.products.map( (product) => {
-      var data_ref = product.id + "_amount"
       return(
         <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 item">
           <h3>{product.name}</h3>
@@ -42,6 +32,7 @@ class Products extends React.Component {
           <h4>{product.description}</h4>
           <button onClick={()=> this.add(product.id, 1) }>+</button>
           <button onClick={()=> this.add(product.id, -1) }>-</button>
+          <button onClick={()=> this.add(product.id, -1000000) }>remove</button>
         </div>
       )
     })
