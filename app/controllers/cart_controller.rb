@@ -7,24 +7,36 @@ class CartController < ActionController::Base
 
   # UPDATE THESE TO USE UUIDS
 
+  before_action :create_cart
+
+  def create_cart
+    unless session[:cart_uuid]
+      c = Cart.create!
+      session[:cart_uuid] = c.uuid
+    end
+  end
+
   def view
-    @products = product_info(session[:cart_id])
+    @products = product_info(session[:cart_uuid])
   end
 
   def update
-    product_id = params["product_id"]
+    product_uuid = params["product_id"]
+    
     amount = params["amount"]
 
-    pp = CartsProduct.find_or_create_by(cart_id: cart_id, product_id: product_id).update_attributes!(amount: amount)
+    pp = CartsProduct.find_or_create_by(cart_uuid: cart_uuid, product_uuid: product_uuid).update_attributes!(amount: amount)
 
-    render nothing: true, status: 202
+    render body: nil, status: 202
   end
 
   def test
     @products = Cart.last.products
   end
 
-  def cart_id
-    session[:cart_id]
+  private
+
+  def cart_uuid
+    session[:cart_uuid]
   end
 end

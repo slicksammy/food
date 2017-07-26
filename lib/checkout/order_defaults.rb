@@ -16,7 +16,7 @@ module Checkout
     # this always needs to be checked
     def self.earliest_available_delivery_date
       # may need to be configged for same day delivery
-      delivery_date = Time.now.hour < cutoff_time ? Date.tomorrow : Date.tomorrow + 1  
+      Time.now.hour < cutoff_time ? Date.tomorrow : Date.tomorrow + 1  
     end
 
     def set_delivery_date
@@ -26,8 +26,10 @@ module Checkout
       end
     end
 
+    # offering next 3 days delivery
+    # instead of +n need to use business days
     def available_delivery_dates
-      (0..2).to_a.map { |n| earliest_available_delivery_date + n }
+      (0..2).to_a.map { |n| self.class.earliest_available_delivery_date + n }
     end
 
     # idealy check address of last order

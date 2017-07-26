@@ -21,7 +21,7 @@ module Google
       }
 
       response = HTTParty.get(URL, query: params)
-
+      
       response.parsed_response["results"].first["geometry"]["location"]
     end
 

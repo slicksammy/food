@@ -1,5 +1,10 @@
+require 'uuid_helper'
+
 class Address < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
+  include UUIDHelper
+
+  belongs_to :user, foreign_key: :user_uuid, primary_key: :uuid
 
   def formatted
     formatted_address = "#{self.street_number} #{self.street_name}"

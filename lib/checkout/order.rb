@@ -3,8 +3,8 @@ module Checkout
 
     attr_reader :cart
 
-    def initialize(cart_id)
-      @cart = Cart.find cart_id
+    def initialize(cart_uuid)
+      @cart = Cart.find cart_uuid
     end
 
     def carts_products
@@ -15,9 +15,10 @@ module Checkout
       @products = cart.active_products
     end
 
+    # helper method can be moved to helper at some point but it requires a lot of the same objects
     def items
       @items = products.map { |p|
-        amount = carts_products.find { |cp| cp.product_id == p.id }.amount
+        amount = carts_products.find { |cp| cp.product_uuid == p.uuid }.amount
         {
           amount: amount,
           price: p.price,

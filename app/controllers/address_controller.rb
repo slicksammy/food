@@ -1,16 +1,22 @@
-class AddressController < ActionController::Base
+class AddressController < SessionsController
   require 'delivery/availability'
 
   before_action :permit_address_params, only: [:save]
+  before_action :redirect_to_login_if_neccessary # do not create / view any addresses unless user is logged in
 
   def new
     # customer creates a new shipping address
   end
 
   def save
-    Address.create!(params["address"])
+    if available? # only save address if we are available
+      current_user.addresses.create!(params["address"])
 
-    render nothing: true, status: 202
+      render body: nil, status: 202
+    else
+      # should throw an error with a description
+      render json: {error: 'Unfortunately we do not delivery to your area yet' }, status: 505
+    end
   end
   
 
@@ -18,9 +24,11 @@ class AddressController < ActionController::Base
     params.require(:address).permit!
   end
 
-  def check_availability
-    available = ::Delivery::Availability.new(coordinates: params["address"]).available?
+  def check_availability(&block)
+    render status: 200, json: { available: available? }
+  end
 
-    render status: 200, json: { available: available }
+  def available?
+    ::Delivery::Availability.new(coordinates: params["coordinates"]).available?
   end
 end

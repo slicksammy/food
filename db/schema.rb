@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719222538) do
+ActiveRecord::Schema.define(version: 20170723015109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "user_id"
+    t.string "user_uuid"
     t.string "street_number"
     t.string "street_name"
     t.string "address_2"
@@ -24,8 +24,11 @@ ActiveRecord::Schema.define(version: 20170719222538) do
     t.string "state"
     t.string "zip"
     t.string "google_place_id"
+    t.string "uuid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_uuid"], name: "index_addresses_on_user_uuid"
+    t.index ["uuid"], name: "index_addresses_on_uuid"
   end
 
   create_table "callbacks", id: :serial, force: :cascade do |t|
@@ -34,21 +37,24 @@ ActiveRecord::Schema.define(version: 20170719222538) do
     t.boolean "called"
   end
 
-  create_table "carts", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_uuid"
     t.string "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_uuid"], name: "index_carts_on_user_uuid"
+    t.index ["uuid"], name: "index_carts_on_uuid"
   end
 
   create_table "carts_products", force: :cascade do |t|
-    t.integer "cart_id"
-    t.integer "product_id"
-    t.decimal "amount", precision: 4, scale: 2
+    t.string "cart_uuid"
+    t.string "product_uuid"
+    t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cart_id"], name: "index_carts_products_on_cart_id"
-    t.index ["product_id"], name: "index_carts_products_on_product_id"
+    t.index ["cart_uuid"], name: "index_carts_products_on_cart_uuid"
+    t.index ["product_uuid"], name: "index_carts_products_on_product_uuid"
   end
 
   create_table "notes", id: :serial, force: :cascade do |t|
@@ -59,8 +65,8 @@ ActiveRecord::Schema.define(version: 20170719222538) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "cart_id"
-    t.integer "address_id"
+    t.integer "cart_uuid"
+    t.integer "address_uuid"
     t.integer "stripe_token_id"
     t.integer "subtotal"
     t.integer "shipping"
@@ -69,10 +75,12 @@ ActiveRecord::Schema.define(version: 20170719222538) do
     t.date "expected_delivery_date"
     t.datetime "delivered_at"
     t.boolean "paid"
+    t.string "status"
+    t.string "uuid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
-    t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["cart_uuid"], name: "index_orders_on_cart_uuid"
+    t.index ["uuid"], name: "index_orders_on_uuid"
   end
 
   create_table "place_statuses", id: :serial, force: :cascade do |t|
@@ -104,13 +112,15 @@ ActiveRecord::Schema.define(version: 20170719222538) do
     t.index ["google_place_id"], name: "index_places_on_google_place_id", unique: true
   end
 
-  create_table "products", id: :serial, force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "price", precision: 5, scale: 2
     t.string "image_url"
     t.string "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["uuid"], name: "index_products_on_uuid"
   end
 
   create_table "statuses", id: :serial, force: :cascade do |t|
@@ -118,14 +128,27 @@ ActiveRecord::Schema.define(version: 20170719222538) do
   end
 
   create_table "stripe_tokens", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "user_uuid"
     t.integer "last_4"
     t.string "token"
     t.text "response"
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_stripe_tokens_on_user_id"
+    t.index ["user_uuid"], name: "index_stripe_tokens_on_user_uuid"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "salt"
+    t.string "encrypted_password"
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["uuid"], name: "index_users_on_uuid"
   end
 
 end

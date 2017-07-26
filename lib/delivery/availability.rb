@@ -15,9 +15,10 @@ module Delivery
 
     def available?
       convert_to_coordinates unless coordinates
-
       within_distance?
     end
+
+    private
 
     def convert_to_coordinates
       @coordinates = ::Google::Coordinates.new(address).convert

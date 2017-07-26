@@ -47,6 +47,10 @@ Rails.application.routes.draw do
   post '/address' => 'address#save'
   post '/address/availability' => 'address#check_availability'
 
+  # START USERS
+  get '/signup' => 'users#signup'
+  post '/users/create' => 'users#create'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
