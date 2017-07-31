@@ -1,4 +1,7 @@
-class PaymentsController < ActionController::Base
+require 'stripe/create'
+
+class StripeController < SessionsController
+  include StripeHelper
   
   # create a new card through stripe
   def new
@@ -9,9 +12,16 @@ class PaymentsController < ActionController::Base
     # on the front end you make the api call with the data to stripe
   end
 
-  def save_stripe_response
-    # when customer creates account
-    # when customer makes a payment
+  def create
+    ::Stripe::Create.new(current_user, params["details"]).create!
+    
+    render body: nil, status: 202
+  end
+
+  def get_for_user
+    formatted = format_stripe_tokens(current_user.stripe_tokens)
+    
+    render json: { options: formatted }, status: 202
   end
 
   def choose_active_credit_card

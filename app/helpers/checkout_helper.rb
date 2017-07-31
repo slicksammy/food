@@ -1,6 +1,6 @@
 module CheckoutHelper
   def format_addresses(addresses)
-    addresses.map{ |a| { id: a.id, display: format_address(a) } }
+    addresses.map{ |a| { value: a.uuid, display: format_address(a) } }
   end
 
   def format_address(address)
@@ -8,7 +8,7 @@ module CheckoutHelper
   end
 
   def format_payments(payments)
-    payments.map{ |a| { id: a.id, display: format_payment(a) } }
+    payments.map{ |a| { value: a.id, display: format_payment(a) } }
   end
 
   def format_payment(payment)

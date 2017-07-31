@@ -1,7 +1,7 @@
 class UsersController < SessionsController
 
   before_action :permit_create_user_params, only: :create
-  before_action :redirect_from_login_if_necessary # don't create new user or view form if user already exists
+  # before_action :redirect_from_login_if_necessary # don't create new user or view form if user already exists
 
   def signup
     @redirect_url = session[:previous_url]
@@ -20,7 +20,12 @@ class UsersController < SessionsController
     if u.errors.any?
       render status: 500, nothing: true, json: { errors: u.errors.messages }
     else
-      session[:user_uuid] = u.uuid  
+      session[:user_uuid] = u.uuid
+      
+      if cart
+        cart.update_attributes(user: u)
+      end
+
       render status: 200, nothing: true, json: { redirectUrl: '/store' }
     end
   end

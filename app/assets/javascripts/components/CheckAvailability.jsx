@@ -2,7 +2,7 @@
 class CheckAvailability extends React.Component {
   constructor() {
     super();
-    this.state = {canSubmit: false };
+    this.state = {canSubmit: false, showForm: true};
     this.checkAvailability = this.checkAvailability.bind(this);
     this.toggleSubmit = this.toggleSubmit.bind(this)
   }
@@ -17,7 +17,7 @@ class CheckAvailability extends React.Component {
         url: '/address/availability',
         data: { coordinates: {lat: lat.value, lng: lng.value} },
         success: function(response) {
-          this.setState({available: response.available})
+          this.setState({available: response.available, showForm: false})
         }.bind(this)
       })
     }
@@ -38,14 +38,21 @@ class CheckAvailability extends React.Component {
   // currently google writes to the data fields but does not clear them first
   // ie someone could have a street number then update to a city the street number will still be there
   render() {
-    return(
+    var inputStyle = {
+      border: 'none',
+      outline: 'none',
+      borderBottom: 'solid 5px',
+      height: '50px',
+      width: '100%',
+      fontSize: '3em',
+      textAlign: 'center'
+    }
+
+    var form = (
       <div>
-        <h3>Are We Avaible in Your Area?</h3>
         <div id="locationField">
-          <input onBlur={()=> setTimeout(function() {this.checkAvailability()}.bind(this), 1000)} id="autocomplete" placeholder="Enter your address" type="text"></input>
+          <input style={inputStyle} onBlur={()=> setTimeout(function() {this.checkAvailability()}.bind(this), 1000)} id="autocomplete" placeholder="Check our Availability" type="text"></input>
         </div>
-        { this.state.available ? <div>Yay! We Sure Are!</div> : null }
-        { this.state.available === false ? <div>Unfortunately Not But Once We Are We Will Let You Know!</div> : null }
         <data id="street_number" ref="street_number"/>
         <data id="route" ref="route"/>
         <data id="locality" ref="locality"/>
@@ -54,6 +61,21 @@ class CheckAvailability extends React.Component {
         <data id="place-id" ref="place_id"/>
         <data onInput={this.log} id="lat" ref="lat"/>
         <data id="lng" ref="lng"/>
+      </div>
+    )
+
+    var baseStyle = {
+      fontSize: '40px',
+      textAlign: 'center'
+    }
+
+
+
+    return(
+      <div>
+        { this.state.showForm ? form : null }
+        { this.state.available ? <div style={baseStyle}>Yay! We Sure Are!</div> : null }
+        { this.state.available === false ? <div style={baseStyle}>Unfortunately Not But Once We Are We Will Let You Know!</div> : null }
       </div>
     )
   }

@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   include UUIDHelper
 
   has_many :addresses, foreign_key: :user_uuid, primary_key: :uuid
-
-  self.primary_key = :uuid
+  has_many :stripe_tokens, foreign_key: :user_uuid, primary_key: :uuid
 
   EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
 

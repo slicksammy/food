@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170723015109) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.integer "user_uuid"
+    t.string "user_uuid"
     t.string "status"
     t.string "uuid"
     t.datetime "created_at", null: false
@@ -65,11 +65,11 @@ ActiveRecord::Schema.define(version: 20170723015109) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "cart_uuid"
-    t.integer "address_uuid"
-    t.integer "stripe_token_id"
-    t.integer "subtotal"
-    t.integer "shipping"
+    t.string "cart_uuid"
+    t.string "address_uuid"
+    t.string "stripe_token_uuid"
+    t.decimal "subtotal", precision: 6, scale: 2
+    t.decimal "shipping", precision: 4, scale: 2
     t.integer "tax"
     t.integer "total"
     t.date "expected_delivery_date"
@@ -128,14 +128,16 @@ ActiveRecord::Schema.define(version: 20170723015109) do
   end
 
   create_table "stripe_tokens", force: :cascade do |t|
-    t.integer "user_uuid"
-    t.integer "last_4"
+    t.string "user_uuid"
+    t.string "last_4"
     t.string "token"
     t.text "response"
     t.boolean "active"
+    t.string "uuid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_uuid"], name: "index_stripe_tokens_on_user_uuid"
+    t.index ["uuid"], name: "index_stripe_tokens_on_uuid"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,4 +1,11 @@
+require 'uuid_helper'
+
 class StripeToken < ActiveRecord::Base
+  include UUIDHelper
+
+  scope :ordered, -> { order(created_at: :desc) }
+
+  has_many :orders, primary_key: :uuid, foreign_key: :stripe_token_uuid
 
   def make_active_and_others_inactive!
     all = StripeToken.where(user_id: self.user_id)
@@ -14,5 +21,9 @@ class StripeToken < ActiveRecord::Base
   def activate!
     self.active = true
     self.save!
+  end
+
+  def formatted_last_4
+    "card ending in #{self.last_4}"
   end
 end

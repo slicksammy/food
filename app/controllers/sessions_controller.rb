@@ -15,6 +15,10 @@ class SessionsController < ActionController::Base
 
   private
 
+  def cart_uuid
+    session[:cart_uuid]
+  end
+
   def current_user_uuid
     session[:user_uuid]
   end
@@ -24,7 +28,11 @@ class SessionsController < ActionController::Base
   end 
 
   def current_user
-    User.find current_user_uuid
+    User.find_by_uuid current_user_uuid
+  end
+
+  def cart
+    Cart.find_by_uuid cart_uuid
   end
 
   def default_redirect_url

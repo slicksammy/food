@@ -3,11 +3,12 @@
 class CreateStripeTokens < ActiveRecord::Migration[5.1]
   def change
     create_table :stripe_tokens do |t|
-      t.integer :user_uuid, index: true
-      t.integer :last_4
+      t.string :user_uuid, index: true
+      t.string :last_4
       t.string :token
       t.text :response
       t.boolean :active
+      t.string :uuid, index: true
 
       t.timestamps
     end

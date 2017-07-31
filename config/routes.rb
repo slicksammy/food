@@ -37,15 +37,18 @@ Rails.application.routes.draw do
   post '/checkout/buy' => 'checkout#buy'
   post '/order/update' => 'checkout#update_order'
   post '/order/confirm' => 'checkout#confirm_order'
+  get '/checkout/get_options' => 'checkout#get_options'
 
   # START PAYMENTS
-  get '/payment' => 'payments#new'
-  post '/payment/update' => 'payments#update'
+  get '/stripe/new' => 'stripe#new'
+  post '/stripe/create' => 'stripe#create'
+  get '/stripe' => 'stripe#get_for_user'
 
   # START ADDRESSES
   get '/address' => 'address#new'
   post '/address' => 'address#save'
   post '/address/availability' => 'address#check_availability'
+  get '/addresses' => 'address#get_for_user'
 
   # START USERS
   get '/signup' => 'users#signup'

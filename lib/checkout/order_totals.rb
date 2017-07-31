@@ -1,10 +1,16 @@
 module Checkout
-  class Order
+  class OrderTotals
 
-    attr_reader :cart
+    attr_reader :cart, :user, :order
 
-    def initialize(cart_uuid)
-      @cart = Cart.find cart_uuid
+    def initialize(cart)
+      @cart = cart
+    end
+
+    # main method
+    # return these values and then can save into order object
+    def get_totals
+      { subtotal: subtotal, tax: tax, total: total, shipping: shipping}
     end
 
     def carts_products
@@ -23,6 +29,8 @@ module Checkout
           amount: amount,
           price: p.price,
           name: p.name,
+          description: p.description,
+          image: p.image_url,
           total: amount*p.price
         }
       }

@@ -3,9 +3,10 @@ require 'uuid_helper'
 class Order < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   include UUIDHelper
-  belongs_to :cart
-  has_one :address, primary_key: :address_uuid, foreign_key: :uuid
-  # belongs_to :user, through: :cart
+
+  belongs_to :cart, foreign_key: :cart_uuid, primary_key: :uuid
+  belongs_to :address, foreign_key: :address_uuid, primary_key: :uuid
+  belongs_to :stripe_token, primary_key: :uuid, foreign_key: :stripe_token_uuid
 
   def confirm!
     self.status = 'confirmed'

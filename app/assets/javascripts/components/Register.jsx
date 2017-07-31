@@ -40,8 +40,8 @@ class Register extends React.Component {
       url: 'users/create',
       data: params,
       success: function(result) {
-        window.location = this.props.redirect_url
-      }.bind(this),
+        window.location = '/store'
+      },
       error: function(result) {
         this.setState({
           errors: result.responseJSON.errors

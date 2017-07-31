@@ -1,10 +1,11 @@
-require 'checkout/order'
-require 'checkout/order_defaults'
+require 'checkout/order_prepare'
+require 'checkout/order_options'
+require 'checkout/order_totals'
 
 class CheckoutController < SessionsController
   include CheckoutHelper
 
-  before_action :allow_update_order_params, only: [:update_order]
+  before_action :allow_update_order_params, only: [:update_order, :safe_update]
   before_action :redirect_to_login_if_neccessary
 
   # need to redirect in case there is nothing to view ie active order - probably should just be the store
@@ -23,21 +24,37 @@ class CheckoutController < SessionsController
     # end
 
     # look into money gem https://github.com/RubyMoney/money-rails
-    create_order
-    create_stripe_tokens
-    create_addresses
-    create_delivery_dates
+    create_order_and_items
+    create_options
   end
 
   # this route is for updating shipping address (address_id), payment method (stripe_token_id), or delivery date (expected_delivery_date)
-  def update_order
-    order = Cart.find cart_id
+  # def update_order
+  #   order = Cart.find cart_id
 
-    order.update_attributes!(params["order"])
+  #   order.update_attributes!(params["order"])
+  # end
+
+  def update_order
+    params[:order].each_pair do |k,v|
+      obj = k.camelize.constantize.find_by_uuid v
+      if obj.user == current_user 
+        order.update_attributes!(:"#{k}" => obj)
+      end
+    end
   end
 
   def buy
 
+  end
+
+  def get_options
+    klazz = option_type.camelize.constantize
+
+    options = klazz.for_user(current_user)
+    formatted_addr = format_addresses(addresses)
+
+    render json: { options: formatted_addr }
   end
 
   # this should return whether it was succesful 
@@ -61,58 +78,38 @@ class CheckoutController < SessionsController
 
   def order
     # dont want to cache order here bc it gets updated in some methods
-    ::Order.find_or_initialize_by(cart_uuid: cart_uuid)
+    cart.order
   end
 
-  def create_order
-    m_order = Checkout::Order.new(cart_uuid)
-    order = ::Order.find_or_initialize_by(cart_uuid: cart_uuid)
-    # will not hit DB if there are not changes
-    # need to add an address_id and a stripe_token_id to the order object so there are defaults when customer sees page
-    order.update_attributes({subtotal: m_order.subtotal, tax: m_order.tax, total: m_order.total, shipping: m_order.shipping})
-    @order = order
-    @items = m_order.items
+  def create_order_and_items
+    @order = ::Checkout::OrderPrepare.new(cart).prepare
+    @items = ::Checkout::OrderTotals.new(cart).items
   end
 
-  def create_stripe_tokens
-    # will need to find by user.id
-    # also need to send this as data not object bc too much info here
-    payments = StripeToken.all.sort{ |a| a.active ? 0:1 }
-    @payments = format_payments(payments)
+  def create_options
+    options = ::Checkout::OrderOptions.new(cart)
+
+    @address_options = format_addresses(options.addresses)
+    @payment_options = options.stripe_tokens
+    @delivery_options = options.delivery_dates.map { |n| { id: n, display: n} }
   end
 
   def create_addresses
-    addresses = Address.all
+    addresses = current_user.addresses
     @addresses = format_addresses(addresses)
   end
 
   def allow_update_order_params
-    params.require(:order).permit!
+    params.require(:order)
   end
 
-  # def create_delivery_dates
-  #   (0..2).to_a.map do |n|
-
-  #     date = Object.new
-
-  #     def id=(x)
-  #       self.id = x
-  #     end
-
-  #     def date=(y)
-  #       self.date = y
-  #     end
-
-  #     date.id = n
-  #     date.date = Date.today + n
-
-  #     date
-  #   end
-  # end
+  def cart
+    Cart.find_by_uuid cart_uuid
+  end
 
   # the id mapping is a hack bc the component uses id as the value. can update these to have an explicit value
   def create_delivery_dates
     delivery_dates = ::Checkout::OrderDefaults.new(order).available_delivery_dates
-    @delivery_dates = delivery_dates.map { |n| { id: n, display: n} }
+    @delivery_dates = delivery_dates.map { |n| { value: n, display: n} }
   end
 end

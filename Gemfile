@@ -34,6 +34,8 @@ gem 'geo-distance'
 
 # hashing
 gem 'bcrypt'
+# payments
+gem 'stripe'
 
 # gem 'strong_parameters'
 

@@ -1,5 +1,6 @@
 class AddressController < SessionsController
   require 'delivery/availability'
+  include CheckoutHelper
 
   before_action :permit_address_params, only: [:save]
   before_action :redirect_to_login_if_neccessary # do not create / view any addresses unless user is logged in
@@ -10,13 +11,19 @@ class AddressController < SessionsController
 
   def save
     if available? # only save address if we are available
-      current_user.addresses.create!(params["address"])
+      addr = current_user.addresses.create!(params["address"])
 
-      render body: nil, status: 202
+      render json: {uuid: addr.uuid}, status: 202
     else
       # should throw an error with a description
       render json: {error: 'Unfortunately we do not delivery to your area yet' }, status: 505
     end
+  end
+
+  def get_for_user
+    formatted_address = format_addresses(current_user.addresses)
+
+    render json: { options: formatted_address }, status: 202
   end
   
 

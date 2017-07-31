@@ -13,7 +13,7 @@ class Products extends React.Component {
 
   add(uuid, amount) {
     var amount = Math.max(0, parseInt(this.state[uuid]) + amount)
-    console.log(uuid)
+
     $.ajax({
       method: "POST",
       url: '/cart',
@@ -22,17 +22,72 @@ class Products extends React.Component {
     });
   }
 
+  toggleShowDescription(uuid, val) {
+    var key = "show_" + uuid
+    current = this.state[key]
+    this.setState({[key]: val})
+  }
+
+  showDescription(uuid) {
+    var key = "show_" + uuid
+    return(this.state[key])
+  }
+
+  hasProduct(uuid) {
+    return(this.state[uuid] > 0)
+  }
+
+
   render() {
     var products = this.props.products.map( (product) => {
+      var imageStyle = {
+        width: '100%',
+        height: '200px'
+      }
+
+      var containerStyle = {
+        textAlign: 'center',
+        paddingTop: '10px',
+        maxWidth: '100%'
+      }
+
+      var buttonStyle = {
+        margin: '10px'
+      }
+
+      var mainContainerStyle = {
+        margin: '20px 0px 20px 0px'
+      }
+
+      var descriptionStyle = {
+        position: 'absolute',
+        top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0',
+        background: 'rgba(29, 106, 154, 0.72)',
+        color: '#fff',
+        transition: 'opacity .2s, visibility .2s',
+      }
+
+      var hoverBoxStyle = {
+        width: '75%',
+        margin: '0 auto',
+        position: 'relative'
+      }
+
       return(
-        <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 item">
-          <h3>{product.name}</h3>
-          <img height='160' width='160' src={product.image_url} />
-          <h4>{this.state[product.uuid]}</h4>
-          <h4>{product.description}</h4>
-          <button onClick={()=> this.add(product.uuid, 1) }>+</button>
-          <button onClick={()=> this.add(product.uuid, -1) }>-</button>
-          <button onClick={()=> this.add(product.uuid, -1000000) }>remove</button>
+        <div style={mainContainerStyle} className="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+          <div className="base-title">{product.name}</div>
+          <div style={containerStyle} className="base-container">
+            <div onMouseEnter={()=> this.toggleShowDescription(product.uuid, true)} onMouseLeave={()=> this.toggleShowDescription(product.uuid, false)} style={hoverBoxStyle}>
+               <img style={imageStyle} src={product.image_url}/> 
+               { this.showDescription(product.uuid) ? <div style={descriptionStyle}>{product.description}</div> : null }
+            </div>
+            { this.hasProduct(product.uuid) ? <span className="glyphicon glyphicon-shopping-cart">{this.state[product.uuid]}</span> : null }
+            <button style={buttonStyle} className="btn btn-success" onClick={()=> this.add(product.uuid, 1) }>+</button>
+            <button style={buttonStyle} className="btn btn-danger" onClick={()=> this.add(product.uuid, -1) }>-</button>
+          </div>
         </div>
       )
     })

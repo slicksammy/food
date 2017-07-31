@@ -3,7 +3,7 @@ module StoreHelper
     amount = 0
 
     if cart = Cart.find_by_uuid(cart_uuid)
-      amount = cart.carts_products.find_by_product_uuid(product.uuid).try(:amount)
+      amount = cart.carts_products.find_by_product_uuid(product.uuid).try(:amount) || 0
     end
 
     {   
