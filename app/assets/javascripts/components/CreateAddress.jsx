@@ -9,6 +9,8 @@ class CreateAddress extends React.Component {
   }
 
   saveAddress() {
+    this.setState({canSubmit: false})
+
     var address = {
       street_number: this.refs.street_number.value,
       street_name: this.refs.route.value,

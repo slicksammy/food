@@ -1,3 +1,6 @@
 <link rel="stylesheet" type="text/css" href="assets/checkout.css">
 <link rel="stylesheet" type="text/css" href="assets/products.css">
-<%= react_component('Cart', products: @products) %>
+
+<div class="container">
+  <%= react_component('Cart', products: @products, subtotal: @subtotal) %>
+</div>

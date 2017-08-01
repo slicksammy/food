@@ -10,7 +10,7 @@ module StoreHelper
       uuid: product.uuid,
       name: product.name,
       description: product.description,
-      price: product.price,
+      price: product.price.to_s,
       image_url: product.image_url,
       amount: amount
     }

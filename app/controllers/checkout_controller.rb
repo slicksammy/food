@@ -1,6 +1,7 @@
 require 'checkout/order_prepare'
 require 'checkout/order_options'
 require 'checkout/order_totals'
+require 'stripe/make_charge'
 
 class CheckoutController < SessionsController
   include CheckoutHelper
@@ -8,24 +9,20 @@ class CheckoutController < SessionsController
   before_action :allow_update_order_params, only: [:update_order, :safe_update]
   before_action :redirect_to_login_if_neccessary
 
-  # need to redirect in case there is nothing to view ie active order - probably should just be the store
   def view
-    # move this into session controller
-    # logged_in = session[:user_id].present?
+    create_items
 
-    # unless logged_in
-    #   redirect_to '/login'
-    # end
+    # only show the main checkout page if there are items in the cart
+    if @items
+      create_order
+      create_options
 
-    # has_credit_card? = User.find(session_user_id).active_card.present?
+      render 'view', status: 202
+    else 
+      @message = 'nothing here'
 
-    # unless has_credit_card?
-    #   redirect_to '/payment'
-    # end
-
-    # look into money gem https://github.com/RubyMoney/money-rails
-    create_order_and_items
-    create_options
+      render :file => 'public/nothing_here.html.erb', :status => :not_found, :layout => 'bootstrap'
+    end
   end
 
   # this route is for updating shipping address (address_id), payment method (stripe_token_id), or delivery date (expected_delivery_date)
@@ -45,28 +42,11 @@ class CheckoutController < SessionsController
   end
 
   def buy
-
-  end
-
-  def get_options
-    klazz = option_type.camelize.constantize
-
-    options = klazz.for_user(current_user)
-    formatted_addr = format_addresses(addresses)
-
-    render json: { options: formatted_addr }
-  end
-
-  # this should return whether it was succesful 
-  def confirm_order
-    # need to double check a few things before confirming
-    # address is within delivery radius
-    # delivery dates are OK
-    if order.confirm!
-      render status: 202, json: { confirmed: true, order_number: order.order_number }
+    if ::Stripe::MakeCharge.new(order).charge!
+      order.purchase!
+      render body: nil, status: 202
     else
-      # need to make this error code better, stubbed for now
-      render status: 404, json: { confirmed: false, error: 'Something Unexpected Happened, please try again' }
+      render body: nil, status: 401
     end
   end
 
@@ -78,12 +58,15 @@ class CheckoutController < SessionsController
 
   def order
     # dont want to cache order here bc it gets updated in some methods
-    cart.order
+    cart.try(:order)
   end
 
-  def create_order_and_items
-    @order = ::Checkout::OrderPrepare.new(cart).prepare
-    @items = ::Checkout::OrderTotals.new(cart).items
+  def create_order
+    @order = format_order(::Checkout::OrderPrepare.new(cart).prepare)
+  end
+
+  def create_items
+    @items = to_string(::Checkout::OrderTotals.new(cart).items)
   end
 
   def create_options

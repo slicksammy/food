@@ -7,10 +7,19 @@ class Order < ActiveRecord::Base
   belongs_to :cart, foreign_key: :cart_uuid, primary_key: :uuid
   belongs_to :address, foreign_key: :address_uuid, primary_key: :uuid
   belongs_to :stripe_token, primary_key: :uuid, foreign_key: :stripe_token_uuid
+  has_many :stripe_charges, primary_key: :uuid, foreign_key: :order_uuid
+
+  monetize :subtotal_cents, :tax_cents, :shipping_cents, :total_cents
+
+  PURCHASED_STATUS = 'paid'
 
   def confirm!
     self.status = 'confirmed'
     self.save!
+  end
+
+  def paid?
+    stripe_charges.succeeded.any?
   end
 
   def valid_expected_delivery_date?
@@ -24,7 +33,8 @@ class Order < ActiveRecord::Base
   end
 
   def purchase!
-    # process stripe token
+    self.status = PURCHASED_STATUS
+    self.save!
   end
 
   def fulfill!

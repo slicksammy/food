@@ -15,5 +15,20 @@ module CheckoutHelper
     "card ending in #{payment.last_4}"
   end
 
+  def to_string(array_of_hashes)
+    array_of_hashes.map { |e| e.each {|k,v| e[k] = v.to_s } }
+  end
+
+  def format_order(order)
+    {
+      total: order.total.to_s,
+      subtotal: order.subtotal.to_s,
+      tax: order.tax.to_s,
+      shipping: order.shipping.to_s,
+      address_uuid: order.address_uuid,
+      stripe_token_uuid: order.stripe_token_uuid,
+      expected_delivery_date: order.expected_delivery_date
+    }
+  end
 
 end

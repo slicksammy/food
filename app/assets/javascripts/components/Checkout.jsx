@@ -11,7 +11,7 @@ class Checkout extends React.Component {
   confirmOrder() {
     $.ajax({
       method: 'POST',
-      url: '/order/confirm',
+      url: '/order/buy',
       success: function(response) {
         this.setState({success: true, orderNumber: response.order_number})
       }.bind(this)
@@ -111,8 +111,8 @@ class Checkout extends React.Component {
     var payment = (
       <div className="col-xs-12 col-sm-9 col-md-6 col-lg-6" style={container}>
         <div hidden={!this.shouldShowPayment()} id="create-payment">
-          <Payment onSuccess={this.updateAddress}/>
-          { this.state.payment ? <button className="btn btn-danger" style={buttonStyle} hidden={!this.state.stripe_token} onClick={()=>this.togglePayment(false)}>Cancel</button> : null }
+          <Payment onSuccess={this.updatePayment}/>
+          { this.state.stripe_token ? <button className="btn btn-danger" style={buttonStyle} onClick={()=>this.togglePayment(false)}>Cancel</button> : null }
         </div>
         <div hidden={this.shouldShowPayment()} id="update-payment">
           <UpdateOrder optionsUrl='/stripe' default={this.state.stripe_token} onUpdate={this.updatePayment} title="Choose Payment" ref="payment"/>
@@ -145,7 +145,7 @@ class Checkout extends React.Component {
         <div style={totalContainerStyle}>
           <h1>Total: ${this.props.order.total}</h1>
           {/*disable button on submit so customer doesn't try buying twice*/}
-          <button style={buyButtonStyle} disabled={()=>this.canBuy()}className="btn btn-success" onClick={this.confirmOrder}>Buy</button>
+          <button style={buyButtonStyle} disabled={!this.canBuy()}className="btn btn-success" onClick={this.confirmOrder}>Buy</button>
         </div> 
       </div>
     )

@@ -13,6 +13,21 @@ class SessionsController < ActionController::Base
     end
   end
 
+  def new
+    unless user = User.find_by_lower_email(params[:email])
+      return render status: 401, json: { error: 'email and password do not match' }
+    end
+
+    salt = user.salt
+
+    if BCrypt::Engine.hash_secret(params[:password], salt) == user.encrypted_password
+      session[:user_id] = user.id
+      render statu: 202, nothing: true, json: { redirectUrl: '/store' }
+    else
+      render status: 401, json: { error: 'email and password do not match' }
+    end
+  end
+
   private
 
   def cart_uuid

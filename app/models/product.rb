@@ -4,5 +4,7 @@ require 'uuid_helper'
 
 class Product < ActiveRecord::Base
   include UUIDHelper
+
+  monetize :price_cents
   # has_and_belongs_to_many :carts
 end

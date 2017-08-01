@@ -31,13 +31,13 @@ Rails.application.routes.draw do
   get '/cart' => 'cart#view'
   get '/cart/test' => 'cart#test'
   post '/cart' => 'cart#update'
+  get 'cart/subtotal' =>'cart#get_subtotal'
 
   # START CHECKOUT
   get '/checkout' => 'checkout#view'
-  post '/checkout/buy' => 'checkout#buy'
+  post '/order/buy' => 'checkout#buy'
   post '/order/update' => 'checkout#update_order'
   post '/order/confirm' => 'checkout#confirm_order'
-  get '/checkout/get_options' => 'checkout#get_options'
 
   # START PAYMENTS
   get '/stripe/new' => 'stripe#new'
@@ -53,6 +53,9 @@ Rails.application.routes.draw do
   # START USERS
   get '/signup' => 'users#signup'
   post '/users/create' => 'users#create'
+
+  # START SESSIONS
+  post '/sessions/new' => 'sessions#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -4,10 +4,10 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :cart_uuid, index: true # has products
       t.string :address_uuid # has delivery address
       t.string :stripe_token_uuid # payment 
-      t.decimal :subtotal, :precision => 6, :scale => 2
-      t.decimal :shipping, :precision => 4, :scale => 2
-      t.integer :tax, :precision => 5, :scale => 2
-      t.integer :total, :precision => 6, :scale => 2
+      t.integer :subtotal_cents
+      t.integer :shipping_cents
+      t.integer :tax_cents
+      t.integer :total_cents
       t.date :expected_delivery_date
       t.timestamp :delivered_at
       t.boolean :paid

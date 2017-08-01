@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
 
     User.create(attributes)
   end
+
+  def self.find_by_lower_email(_email)
+    where('lower(email) = ?', _email.downcase).first
+  end
 end

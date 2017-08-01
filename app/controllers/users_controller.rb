@@ -26,7 +26,7 @@ class UsersController < SessionsController
         cart.update_attributes(user: u)
       end
 
-      render status: 200, nothing: true, json: { redirectUrl: '/store' }
+      render status: 200, nothing: true, json: { redirectUrl: session[:previous_url] }
     end
   end
 

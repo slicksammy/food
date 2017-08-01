@@ -37,15 +37,15 @@ module Checkout
     end
 
     def subtotal
-      items.sum{ |p| p[:total] }.round(2)
+      items.sum{ |p| p[:total] }
     end
 
     def tax
-      (subtotal*0.1).round(2)
+      (subtotal*0.1)
     end
 
     def total
-      (tax + subtotal).round(2)
+      (tax + subtotal)
     end
 
     def shipping

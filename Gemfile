@@ -36,6 +36,8 @@ gem 'geo-distance'
 gem 'bcrypt'
 # payments
 gem 'stripe'
+#money
+gem 'money-rails'
 
 # gem 'strong_parameters'
 

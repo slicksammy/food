@@ -39,8 +39,8 @@ class Register extends React.Component {
       type: "POST",
       url: 'users/create',
       data: params,
-      success: function(result) {
-        window.location = '/store'
+      success: function(response) {
+        window.location = response.redirectUrl
       },
       error: function(result) {
         this.setState({
@@ -73,7 +73,7 @@ class Register extends React.Component {
   }
 
   validEmail() {
-    return(this.state.email.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9][a-z0-9](?:[a-z0-9-]*[a-z0-9])?/) ? true : false)
+    return(this.state.email.match(/[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9][a-z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?/) ? true : false)
   }
 
 
@@ -82,32 +82,27 @@ class Register extends React.Component {
   
   render() {
     var buttonStyle = {
-      float: 'left'
+      width: '65%',
     }
     
     var complete_style = {
-      borderRadius: '50%',
-      background: '#f0f0f5',
-      height: '30px',
-      width: '30px',
+      height: '10px',
+      width: '10px',
       color: 'green',
-      textAlign: 'center',
       padding: '5px',
-      margin: '5px'
+      marginRight: '10px'
     }
 
     var incomplete_style = {
-      color: 'black',
-      background: 'grey',
-      borderRadius: '50%',
+      color: 'grey',
       height: '10px',
       width: '10px',
-      textAlign: 'center',
+      marginRight: '10px',
     }
 
     var inputStyle = {
-      width: '85%',
-      display: 'inline-block'
+      width: '75%',
+      display: 'inline-block',
     }
 
     var firstNameStyle = this.validFirstName() ? complete_style : incomplete_style
@@ -115,28 +110,33 @@ class Register extends React.Component {
     var emailStyle = this.validEmail() ? complete_style : incomplete_style
     var passwordStyle = this.validPassword() ? complete_style : incomplete_style
 
+    var containerStyle = {
+      textAlign: 'center',
+      padding: '10px',
+      width: '100%',
+      margin: '0 auto'
+    }
+
     return(
-      <div id="registerbox">
-        <form id="register" className="col-xs-9">
-          <div className="form-group">
-            { this.state.errors.first_name ? <span className="create-user-error">{this.state.errors.first_name}</span> : null }
-            <input style={inputStyle} onChange={this.updateState} type="text" className="form-control" ref="firstName" placeholder="First Name" id="firstName" /><span style={firstNameStyle} className="glyphicon glyphicon-ok"></span>
-          </div>
-          <div className="form-group">
-            { this.state.errors.last_name ? <span className="create-user-error">{this.state.errors.last_name}</span> : null }
-            <input style={inputStyle} onChange={this.updateState} type="text" className="form-control" placeholder="Last Name" id="lastName"/><span style={lastNameStyle} className="glyphicon glyphicon-ok"></span>
-          </div>
-          <div className="form-group">
-            { this.state.errors.email ? <span className="create-user-error">{this.state.errors.email}</span> : null }
-            <input style={inputStyle} onChange={this.updateState} type="text" className="form-control" placeholder="Email" id="email"/><span style={emailStyle} className="glyphicon glyphicon-ok"></span>
-          </div>
-          <div className="form-group">
-            { this.state.errors.password ? <span className="create-user-error">{this.state.errors.password}</span> : null }
-            <input style={inputStyle} onChange={this.updateState} type="password" className="form-control" placeholder="Password" id="password"/><span style={passwordStyle} className="glyphicon glyphicon-ok"></span>
-          </div>
-          <button disabled={!this.state.canSubmit} onClick={this.completeRegistration} ref="button" className="btn btn-success btn-submit" type="submit">Sign Up</button>
-        </form>
-      </div>
+      <form id="register">
+        <div>
+          { this.state.errors.first_name ? <span className="create-user-error">{this.state.errors.first_name}</span> : null }
+          <input style={inputStyle} onChange={this.updateState} type="text" className="base-input" ref="firstName" placeholder="First Name" id="firstName" /><span style={firstNameStyle} className="glyphicon glyphicon-ok"></span>
+        </div>
+        <div>
+          { this.state.errors.last_name ? <span className="create-user-error">{this.state.errors.last_name}</span> : null }
+          <input style={inputStyle} onChange={this.updateState} type="text" className="base-input" placeholder="Last Name" id="lastName"/><span style={lastNameStyle} className="glyphicon glyphicon-ok"></span>
+        </div>
+        <div>
+          { this.state.errors.email ? <span className="create-user-error">{this.state.errors.email}</span> : null }
+          <input style={inputStyle} onChange={this.updateState} type="text" className="base-input" placeholder="Email" id="email"/><span style={emailStyle} className="glyphicon glyphicon-ok"></span>
+        </div>
+        <div>
+          { this.state.errors.password ? <span className="create-user-error">{this.state.errors.password}</span> : null }
+          <input style={inputStyle} onChange={this.updateState} type="password" className="base-input" placeholder="Password" id="password"/><span style={passwordStyle} className="glyphicon glyphicon-ok"></span>
+        </div>
+        <button style={buttonStyle} disabled={!this.state.canSubmit} onClick={this.completeRegistration} ref="button" className="btn btn-success btn-submit" type="submit">Sign Up</button>
+      </form>
     )
   }
 }

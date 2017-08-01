@@ -1,7 +1,7 @@
 class Payment extends React.Component {
   constructor() {
     super();
-    this.state = {number: '', month: '', year: '', cvc: ''};
+    this.state = {number: '', month: '', year: '', cvc: '', canSubmit: true};
     this.updateState = this.updateState.bind(this);
     this.canSubmit = this.canSubmit.bind(this);
     this.createPayment = this.createPayment.bind(this)
@@ -9,11 +9,13 @@ class Payment extends React.Component {
 
   updateState(e) {
     this.setState(
-      {[e.target.id]: e.target.value}
+      {[e.target.id]: e.target.value, canSubmit: true}
     )
   }
 
   createPayment() {
+    this.setState({canSubmit: false})
+
     $.ajax({
       method: 'POST',
       url: '/stripe/create',
@@ -21,8 +23,9 @@ class Payment extends React.Component {
       error: function() {
         this.setState({error: true, success: false})
       }.bind(this),
-      success: function() {
+      success: function(response) {
         this.setState({success: true, error: false})
+        this.props.onSuccess(response.uuid)
       }.bind(this)
     })
   }
@@ -40,7 +43,7 @@ class Payment extends React.Component {
   }
 
   canSubmit() {
-    return(this.validNumber() && this.validMonth() && this.validYear() && this.validCvc())
+    return(this.validNumber() && this.validMonth() && this.validYear() && this.validCvc() && this.state.canSubmit)
   }
 
   validNumber() {
@@ -65,24 +68,18 @@ class Payment extends React.Component {
     }
     
     var complete_style = {
-      borderRadius: '50%',
-      background: '#f0f0f5',
-      height: '30px',
-      width: '30px',
+      height: '10px',
+      width: '10px',
       color: 'green',
-      textAlign: 'center',
       padding: '5px',
       marginRight: '10px'
     }
 
     var incomplete_style = {
-      color: 'black',
-      background: 'grey',
-      borderRadius: '50%',
+      color: 'grey',
       height: '10px',
       width: '10px',
-      textAlign: 'center',
-      marginRight: '10px'
+      marginRight: '10px',
     }
 
     var inputStyle = {
@@ -103,7 +100,7 @@ class Payment extends React.Component {
     var yearStyle = this.validYear() ? complete_style : incomplete_style
     var cvcStyle = this.validCvc() ? complete_style : incomplete_style
 
-    return( 
+    return(
       <div>
         <div>
           <div className="base-title">New Credit Card</div>
@@ -121,7 +118,7 @@ class Payment extends React.Component {
               <Years onChange={this.updateState} id="year"/><span style={yearStyle} className="glyphicon glyphicon-ok"></span>
             </div>
             <div className="centered">
-              <button className="btn btn-success base-button" disabled={!this.state.canSubmit} onClick={this.createPayment} ref="button" type="submit">Save</button>
+              <button className="btn btn-success base-button" disabled={!this.canSubmit()} onClick={this.createPayment} ref="button" type="submit">Save</button>
             </div>
           </form>
         </div>

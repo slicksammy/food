@@ -1,16 +1,24 @@
 # this controller needs to locked down so only the app can access it
 # maybe give the cart a uuid
+require 'checkout/order_totals'
+
 class CartController < ActionController::Base
   include StoreHelper
 
-  # before_action :cart_id_present?, except: [:view, :add]
-
-  # UPDATE THESE TO USE UUIDS
-
-  before_action :create_cart
+  before_action :create_cart, only: [:update]
 
   def view
-    @products = product_information(products, session[:cart_uuid])
+    # check if there is anything in the cart before showing to customer
+    if cart_uuid && products.any?
+      @products = product_information(products, session[:cart_uuid])
+      @subtotal = subtotal.to_s
+
+      render 'view', status: 202
+    else
+      @message = "Your cart is empty"
+
+      render :file => 'public/nothing_here.html.erb', :status => :not_found, :layout => 'bootstrap'
+    end
   end
 
   def update
@@ -23,8 +31,12 @@ class CartController < ActionController::Base
     render body: nil, status: 202
   end
 
-  def test
-    @products = Cart.last.products
+  def get_subtotal
+    render json: { subtotal: subtotal }, status: 202
+  end
+
+  def subtotal
+    ::Checkout::OrderTotals.new(cart).get_totals[:subtotal].to_s
   end
 
   private

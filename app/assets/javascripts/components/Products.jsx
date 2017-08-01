@@ -18,7 +18,10 @@ class Products extends React.Component {
       method: "POST",
       url: '/cart',
       data: {amount: amount, product_id: uuid},
-      success: this.setState({[uuid]: amount})
+      success: function() {
+        this.setState({[uuid]: amount})
+        this.props.onChange()
+      }.bind(this)
     });
   }
 
@@ -84,9 +87,10 @@ class Products extends React.Component {
                <img style={imageStyle} src={product.image_url}/> 
                { this.showDescription(product.uuid) ? <div style={descriptionStyle}>{product.description}</div> : null }
             </div>
-            { this.hasProduct(product.uuid) ? <span className="glyphicon glyphicon-shopping-cart">{this.state[product.uuid]}</span> : null }
-            <button style={buttonStyle} className="btn btn-success" onClick={()=> this.add(product.uuid, 1) }>+</button>
+            <h2>${product.price} / each</h2>
+            { this.hasProduct(product.uuid) ? <div><span className="glyphicon glyphicon-shopping-cart">{this.state[product.uuid]}</span></div> : null }
             <button style={buttonStyle} className="btn btn-danger" onClick={()=> this.add(product.uuid, -1) }>-</button>
+            <button style={buttonStyle} className="btn btn-success" onClick={()=> this.add(product.uuid, 1) }>+</button>
           </div>
         </div>
       )

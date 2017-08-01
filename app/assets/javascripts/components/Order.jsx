@@ -13,9 +13,11 @@ class Order extends React.Component {
 
   render() {
 
-    var items = this.props.items.map( (product) => {
-      return(<li className="item">{product.name}: {product.amount}lbs x {product.price}/lb = {product.total}</li>)
-    });
+    var tdStyle = {
+      borderBottom: 'solid',
+      padding: '10px 5px 10px 5px',
+      width: '25%'
+    }
 
     var items_2 = this.props.items.map( (item) => {
       var imageStyle = {
@@ -23,19 +25,8 @@ class Order extends React.Component {
         height: '100px'
       }
 
-      var trStyle = {
-        
-      }
-
-      var tdStyle = {
-        borderBottom: 'solid',
-        padding: '10px 5px 10px 5px',
-        width: '25%'
-      }
-
-
       return(
-        <tr style={trStyle}>
+        <tr>
           <td style={tdStyle}>
             <div style={{clear: 'both'}}>{item.name}</div>
             <img style={imageStyle} src={item.image} />
@@ -61,6 +52,10 @@ class Order extends React.Component {
       fontSize: '3vw'
     }
 
+    var noBorder = {
+      borderBottom: 'none'
+    }
+
     return(
      <div>
         <div>
@@ -70,6 +65,12 @@ class Order extends React.Component {
           <div>
             <table style={tableStyle}>
               <tbody>
+                <tr>
+                  <th className="centered" style={{tdStyle,noBorder}}>Item</th>
+                  <th className="centered" style={{tdStyle,noBorder}}>Description</th>
+                  <th className="centered" style={{tdStyle,noBorder}}>Quantity</th>
+                  <th className="centered" style={{tdStyle,noBorder}}>Subtotal</th>
+                </tr>
                 {items_2}
               </tbody>
             </table>

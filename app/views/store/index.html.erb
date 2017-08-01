@@ -3,6 +3,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaTHvfZtxVUnyQGVYTrajZ_gCsmGXKoJM&libraries=places&callback=initAutocomplete" async defer></script>
 <link rel="stylesheet" type="text/css" href="assets/checkout.css">
 <link rel="stylesheet" type="text/css" href="assets/products.css">
+
+<%= react_component('NavBar') %> 
 <div class="container">
   <%= react_component('CheckAvailability') %> 
   <%= react_component('Products', products: @products) %> 

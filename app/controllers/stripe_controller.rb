@@ -13,9 +13,9 @@ class StripeController < SessionsController
   end
 
   def create
-    ::Stripe::Create.new(current_user, params["details"]).create!
+    st = ::Stripe::Create.new(current_user, params["details"]).create!
     
-    render body: nil, status: 202
+    render json: {uuid: st.uuid}, status: 202
   end
 
   def get_for_user

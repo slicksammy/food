@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723015109) do
+ActiveRecord::Schema.define(version: 20170801200847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 20170723015109) do
     t.string "cart_uuid"
     t.string "address_uuid"
     t.string "stripe_token_uuid"
-    t.decimal "subtotal", precision: 6, scale: 2
-    t.decimal "shipping", precision: 4, scale: 2
-    t.integer "tax"
-    t.integer "total"
+    t.integer "subtotal_cents"
+    t.integer "shipping_cents"
+    t.integer "tax_cents"
+    t.integer "total_cents"
     t.date "expected_delivery_date"
     t.datetime "delivered_at"
     t.boolean "paid"
@@ -114,17 +114,29 @@ ActiveRecord::Schema.define(version: 20170723015109) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.decimal "price", precision: 5, scale: 2
     t.string "image_url"
     t.string "description"
     t.string "uuid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents"
     t.index ["uuid"], name: "index_products_on_uuid"
   end
 
   create_table "statuses", id: :serial, force: :cascade do |t|
     t.string "status"
+  end
+
+  create_table "stripe_charges", force: :cascade do |t|
+    t.string "order_uuid"
+    t.integer "amount_cents"
+    t.string "stripe_token_uuid"
+    t.string "status"
+    t.text "response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_uuid"], name: "index_stripe_charges_on_order_uuid"
+    t.index ["stripe_token_uuid"], name: "index_stripe_charges_on_stripe_token_uuid"
   end
 
   create_table "stripe_tokens", force: :cascade do |t|

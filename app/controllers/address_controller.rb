@@ -5,6 +5,7 @@ class AddressController < SessionsController
   before_action :permit_address_params, only: [:save]
   before_action :redirect_to_login_if_neccessary # do not create / view any addresses unless user is logged in
 
+  # TODO delete when done testing
   def new
     # customer creates a new shipping address
   end
@@ -29,10 +30,6 @@ class AddressController < SessionsController
 
   def permit_address_params
     params.require(:address).permit!
-  end
-
-  def check_availability(&block)
-    render status: 200, json: { available: available? }
   end
 
   def available?
