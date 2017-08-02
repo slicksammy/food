@@ -16,7 +16,8 @@ class Order extends React.Component {
     var tdStyle = {
       borderBottom: 'solid',
       padding: '10px 5px 10px 5px',
-      width: '25%'
+      width: '25%',
+      fontSize: '4vw'
     }
 
     var items_2 = this.props.items.map( (item) => {
@@ -31,9 +32,9 @@ class Order extends React.Component {
             <div style={{clear: 'both'}}>{item.name}</div>
             <img style={imageStyle} src={item.image} />
           </td>
-          <td style={tdStyle}>
+          {/*<td style={tdStyle}>
             {item.description}
-          </td>
+          </td>*/}
           <td style={tdStyle}>
             {item.amount}
           </td>
@@ -49,7 +50,10 @@ class Order extends React.Component {
     }
 
     var totalStyle = {
-      fontSize: '3vw'
+      fontSize: '4vw',
+      display: 'block',
+      width: '70%',
+      margin: '0 auto'
     }
 
     var noBorder = {
@@ -59,7 +63,7 @@ class Order extends React.Component {
     return(
      <div>
         <div>
-          <div className="base-title">Order Summary</div>
+          <div className="base-title">Order Summary #{this.props.order.order_number}</div>
         </div>
         <div className="base-container centered">
           <div>
@@ -67,7 +71,7 @@ class Order extends React.Component {
               <tbody>
                 <tr>
                   <th className="centered" style={{tdStyle,noBorder}}>Item</th>
-                  <th className="centered" style={{tdStyle,noBorder}}>Description</th>
+                  {/*<th className="centered" style={{tdStyle,noBorder}}>Description</th>*/}
                   <th className="centered" style={{tdStyle,noBorder}}>Quantity</th>
                   <th className="centered" style={{tdStyle,noBorder}}>Subtotal</th>
                 </tr>
@@ -75,10 +79,10 @@ class Order extends React.Component {
               </tbody>
             </table>
           </div>
-          <div style={totalStyle}>Subtotal: ${this.props.order.subtotal}</div>
-          <div style={totalStyle}>Tax: ${this.props.order.tax}</div>
-          <div style={totalStyle}>Shipping: ${this.props.order.shipping}</div>
-          <div style={totalStyle}>Total: ${this.props.order.total}</div>
+          <div style={totalStyle} className="row"><span className="left-float">Subtotal</span><span className="right-float">${this.props.order.subtotal}</span></div>
+          <div style={totalStyle} className="row"><span className="left-float">Tax</span><span className="right-float">${this.props.order.tax}</span></div>
+          <div style={totalStyle} className="row"><span className="left-float">Shipping</span><span className="right-float">${this.props.order.shipping}</span></div>
+          <div style={totalStyle} className="row"><span className="left-float">Total</span><span className="right-float">${this.props.order.total}</span></div>
         </div>
         {/*<button onClick={this.order}>Buy</button>*/}
       </div>

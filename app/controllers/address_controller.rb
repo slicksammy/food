@@ -21,6 +21,10 @@ class AddressController < SessionsController
     end
   end
 
+  def check_availability    
+    render status: 200, json: { available: available? }   
+  end
+
   def get_for_user
     formatted_address = format_addresses(current_user.addresses)
 

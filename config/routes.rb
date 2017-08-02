@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get '/cart/test' => 'cart#test'
   post '/cart' => 'cart#update'
   get 'cart/subtotal' =>'cart#get_subtotal'
+  get 'cart/count' =>'cart#count'
 
   # START CHECKOUT
   get '/checkout' => 'checkout#view'
@@ -53,6 +54,7 @@ Rails.application.routes.draw do
   # START USERS
   get '/signup' => 'users#signup'
   post '/users/create' => 'users#create'
+  get '/home' => 'users#home'
 
   # START SESSIONS
   post '/sessions/new' => 'sessions#new'

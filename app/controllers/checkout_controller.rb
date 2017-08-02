@@ -10,15 +10,13 @@ class CheckoutController < SessionsController
   before_action :redirect_to_login_if_neccessary
 
   def view
-    create_items
-
-    # only show the main checkout page if there are items in the cart
-    if @items
+    begin
+      create_items # error will be raised here first
       create_order
       create_options
 
       render 'view', status: 202
-    else 
+    rescue Checkout::OrderTotals::MissingCartError => e
       @message = 'nothing here'
 
       render :file => 'public/nothing_here.html.erb', :status => :not_found, :layout => 'bootstrap'
@@ -44,6 +42,7 @@ class CheckoutController < SessionsController
   def buy
     if ::Stripe::MakeCharge.new(order).charge!
       order.purchase!
+      clear_cart
       render body: nil, status: 202
     else
       render body: nil, status: 401
@@ -51,6 +50,10 @@ class CheckoutController < SessionsController
   end
 
   private
+
+  def clear_cart
+    session[:cart_uuid] = nil
+  end
 
   def cart_uuid
     session[:cart_uuid]
@@ -66,7 +69,7 @@ class CheckoutController < SessionsController
   end
 
   def create_items
-    @items = to_string(::Checkout::OrderTotals.new(cart).items)
+    @items = to_string(::Checkout::OrderTotals.new(cart: cart).items)
   end
 
   def create_options

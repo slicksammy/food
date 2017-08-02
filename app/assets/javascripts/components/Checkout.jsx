@@ -12,8 +12,11 @@ class Checkout extends React.Component {
     $.ajax({
       method: 'POST',
       url: '/order/buy',
-      success: function(response) {
-        this.setState({success: true, orderNumber: response.order_number})
+      success: function() {
+        window.location = '/home'
+      },
+      error: function() {
+        this.setState({error: true })
       }.bind(this)
     });
   }
@@ -67,7 +70,7 @@ class Checkout extends React.Component {
   }
 
   canBuy() {
-    return(this.state.address && this.state.stripe_token)
+    return(this.state.address && this.state.stripe_token && !this.state.error)
   }
 
 
@@ -102,7 +105,7 @@ class Checkout extends React.Component {
           { this.state.address ? <button className="btn btn-danger" style={buttonStyle} onClick={()=>this.toggleCreateAddress(false)}>Cancel</button> : null }
         </div>
         <div hidden={this.shouldShowCreateAddress()} id="update-address">
-          <UpdateOrder optionsUrl='/addresses' default={this.state.address} onUpdate={this.updateAddress} title="Choose Shipping Address" ref="address"/>
+          <UpdateOrder optionsUrl='/addresses' default={this.state.address} onUpdate={this.updateAddress} title="Shipping Address" ref="address"/>
           <button className="btn" style={buttonStyle} hidden={!this.state.newAddress} onClick={()=>this.toggleCreateAddress(true)}>New Address</button>
         </div>
       </div>
@@ -115,7 +118,7 @@ class Checkout extends React.Component {
           { this.state.stripe_token ? <button className="btn btn-danger" style={buttonStyle} onClick={()=>this.togglePayment(false)}>Cancel</button> : null }
         </div>
         <div hidden={this.shouldShowPayment()} id="update-payment">
-          <UpdateOrder optionsUrl='/stripe' default={this.state.stripe_token} onUpdate={this.updatePayment} title="Choose Payment" ref="payment"/>
+          <UpdateOrder optionsUrl='/stripe' default={this.state.stripe_token} onUpdate={this.updatePayment} title="Payment" ref="payment"/>
           <button className="btn" style={buttonStyle} hidden={!this.state.newPayment} onClick={()=>this.togglePayment(true)}>New Card</button>
         </div>
       </div>
@@ -132,7 +135,11 @@ class Checkout extends React.Component {
     var totalContainerStyle = {
       textAlign: 'center',
       marginBottom: '50px',
-      clear: 'none'
+      clear: 'both'
+    }
+
+    var errorStyle = {
+      color: 'red'
     }
 
     var form = ( 
@@ -140,10 +147,15 @@ class Checkout extends React.Component {
         <div>
           <Order items={this.props.items} order={this.props.order} />
         </div>
-        {address}
-        {payment}
+        <div>
+          {address}
+        </div>
+        <div>
+          {payment}
+        </div>
         <div style={totalContainerStyle}>
           <h1>Total: ${this.props.order.total}</h1>
+          { this.state.error ? <h2 style={errorStyle}>There was an error. Please update your information and try again.</h2> : null}
           {/*disable button on submit so customer doesn't try buying twice*/}
           <button style={buyButtonStyle} disabled={!this.canBuy()}className="btn btn-success" onClick={this.confirmOrder}>Buy</button>
         </div> 

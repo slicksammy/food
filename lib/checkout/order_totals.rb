@@ -1,10 +1,15 @@
 module Checkout
   class OrderTotals
 
+    class MissingCartError < StandardError
+    end
+
     attr_reader :cart, :user, :order
 
-    def initialize(cart)
-      @cart = cart
+    def initialize(cart: nil, order: nil)
+      @cart = cart || order.try(:cart)
+
+      raise OrderTotals::MissingCartError unless @cart
     end
 
     # main method

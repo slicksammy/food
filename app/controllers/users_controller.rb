@@ -1,4 +1,5 @@
 class UsersController < SessionsController
+  include CheckoutHelper
 
   before_action :permit_create_user_params, only: :create
   # before_action :redirect_from_login_if_necessary # don't create new user or view form if user already exists
@@ -28,6 +29,11 @@ class UsersController < SessionsController
 
       render status: 200, nothing: true, json: { redirectUrl: session[:previous_url] }
     end
+  end
+
+  def home
+    orders = current_user.orders
+    @orders = orders.map { |o| {order: format_order(o), items: to_string(::Checkout::OrderTotals.new(order: o).items) } }
   end
 
   def permit_create_user_params

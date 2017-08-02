@@ -27,7 +27,8 @@ module CheckoutHelper
       shipping: order.shipping.to_s,
       address_uuid: order.address_uuid,
       stripe_token_uuid: order.stripe_token_uuid,
-      expected_delivery_date: order.expected_delivery_date
+      expected_delivery_date: order.expected_delivery_date,
+      order_number: order.order_number
     }
   end
 

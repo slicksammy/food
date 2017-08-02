@@ -1,12 +1,22 @@
 class NavBar extends React.Component {
   constructor() {
     super();
-    this.state = { cart: 2 };
-    this.cartEmpty = this.cartEmpty.bind(this)
+    this.state = {};
+    this.getCount = this.getCount.bind(this);
   }
 
-  cartEmpty() {
-    return(this.state.cart == 0)
+  componentDidMount() {
+    this.getCount()
+  }
+
+  getCount() {
+    $.ajax({
+      method: 'GET',
+      url: '/cart/count',
+      success: function(response) {
+        this.setState({cart: response.count})
+      }.bind(this)
+    })
   }
 
   render() {
@@ -43,7 +53,7 @@ class NavBar extends React.Component {
               <span className="icon-bar"></span>
             </button>
             <a className="navbar-brand">I<span className="glyphicon glyphicon-heart"></span>Meat</a>
-            { this.cartEmpty() ? null : <a className="navbar-brand" href="/cart"><span className="glyphicon glyphicon-shopping-cart">{this.state.cart}</span></a> }
+            <a className="navbar-brand" href="/cart"><span className="glyphicon glyphicon-shopping-cart">{this.state.cart}</span></a>
           </div>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">

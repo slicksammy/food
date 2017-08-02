@@ -4,7 +4,8 @@ class CheckAvailability extends React.Component {
     super();
     this.state = {canSubmit: false, showForm: true};
     this.checkAvailability = this.checkAvailability.bind(this);
-    this.toggleSubmit = this.toggleSubmit.bind(this)
+    this.toggleSubmit = this.toggleSubmit.bind(this);
+    this.complete = this.complete.bind(this)
   }
 
   checkAvailability() {
@@ -18,9 +19,14 @@ class CheckAvailability extends React.Component {
         data: { coordinates: {lat: lat.value, lng: lng.value} },
         success: function(response) {
           this.setState({available: response.available, showForm: false})
+          setTimeout(function() {this.complete()}.bind(this), 5000)
         }.bind(this)
       })
     }
+  }
+
+  complete() {
+    this.setState({completed: true})
   }
 
   toggleSubmit(val) {
@@ -69,13 +75,17 @@ class CheckAvailability extends React.Component {
       textAlign: 'center'
     }
 
-
-
-    return(
+    var component = (
       <div>
         { this.state.showForm ? form : null }
         { this.state.available ? <div style={baseStyle}>Yay! We Sure Are!</div> : null }
-        { this.state.available === false ? <div style={baseStyle}>Unfortunately Not But Once We Are We Will Let You Know!</div> : null }
+        { this.state.available === false ? <div style={baseStyle}>Unfortunately we are not available in your area at the moment</div> : null }
+      </div>
+    )
+
+    return(
+      <div>
+        { !this.state.completed ? component : null }
       </div>
     )
   }

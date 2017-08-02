@@ -2,7 +2,7 @@
 # maybe give the cart a uuid
 require 'checkout/order_totals'
 
-class CartController < ActionController::Base
+class CartController < SessionsController
   include StoreHelper
 
   before_action :create_cart, only: [:update]
@@ -36,24 +36,22 @@ class CartController < ActionController::Base
   end
 
   def subtotal
-    ::Checkout::OrderTotals.new(cart).get_totals[:subtotal].to_s
+    ::Checkout::OrderTotals.new(cart: cart).get_totals[:subtotal].to_s
+  end
+
+  def count
+    count = cart.active_carts_products.sum(&:amount)
+    
+    render json: { count: count }, status: 202
   end
 
   private
 
   def create_cart
     unless session[:cart_uuid]
-      c = Cart.create!
+      c = Cart.create!(user: current_user)
       session[:cart_uuid] = c.uuid
     end
-  end
-
-  def cart_uuid
-    session[:cart_uuid]
-  end
-
-  def cart
-    Cart.find_by_uuid(cart_uuid)
   end
 
   def products

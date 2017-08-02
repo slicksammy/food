@@ -26,7 +26,7 @@ module Checkout
     end
 
     def set_totals
-      totals = ::Checkout::OrderTotals.new(cart).get_totals
+      totals = ::Checkout::OrderTotals.new(cart: cart).get_totals
       order.update_attributes(totals)
     end
 
