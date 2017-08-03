@@ -15,4 +15,12 @@ class Cart < ActiveRecord::Base
   def active_products
     active_carts_products.map(&:product)
   end
+
+  def self.ongoing
+    select { |cart| cart.ongoing? }
+  end
+
+  def ongoing?
+    !order || order.ongoing?
+  end
 end

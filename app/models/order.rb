@@ -11,7 +11,10 @@ class Order < ActiveRecord::Base
 
   monetize :subtotal_cents, :tax_cents, :shipping_cents, :total_cents
 
+  scope :ongoing, -> { where(status: ONGOING_STATUS) }
+
   PURCHASED_STATUS = 'paid'
+  ONGOING_STATUS = nil
 
   def confirm!
     self.status = 'confirmed'
@@ -30,6 +33,10 @@ class Order < ActiveRecord::Base
   # there can be overlap here but by name and order_number we should be able to locate the order
   def order_number
     uuid.first(6)
+  end
+
+  def ongoing?
+    self.status == ONGOING_STATUS
   end
 
   def purchase!

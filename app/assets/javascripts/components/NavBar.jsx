@@ -21,13 +21,11 @@ class NavBar extends React.Component {
 
   render() {
     var navStyle = {
-      borderRadius: '0px'
+      borderRadius: '0px',
     }
 
     var aStyle = {
-      ':hover': {
-        cursor: 'pointer'
-      }
+      fontSize: '40px'
     }
 
     var floatRight = {
@@ -42,22 +40,36 @@ class NavBar extends React.Component {
       width: '20%'
     }
 
+    var bigFont = {
+      fontSize: '40px',
+      backgroundColor: '#999999',
+      color: 'white'
+    }
+
+    var noBorder = {
+      borderTop: 'none',
+    }
+
+    var padded = {
+      paddingBottom: '15px'
+    }
+
     return(
       <nav className="navbar navbar-default" style={navStyle}>
-        <div className="container-fluid">
-          <div className="navbar-header">
+        <div style={bigFont} className="container-fluid">
+          <div style={padded} className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand">I<span className="glyphicon glyphicon-heart"></span>Meat</a>
-            <a className="navbar-brand" href="/cart"><span className="glyphicon glyphicon-shopping-cart">{this.state.cart}</span></a>
+            <a style={bigFont} className="navbar-brand">I<span className="glyphicon glyphicon-heart"></span>Meat</a>
           </div>
-          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div style={noBorder} className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><a href="/about">About</a></li>
+              <li><a style={bigFont} href="/cart"><span className="glyphicon glyphicon-shopping-cart">{this.state.cart}</span></a></li>
+              <li><a style={bigFont} href="/about"><span className="glyphicon">About</span></a></li>
             </ul>
           </div>
         </div>

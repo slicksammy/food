@@ -26,4 +26,8 @@ class User < ActiveRecord::Base
   def self.find_by_lower_email(_email)
     where('lower(email) = ?', _email.downcase).first
   end
+
+  def has_ongoing_cart?
+    
+  end
 end

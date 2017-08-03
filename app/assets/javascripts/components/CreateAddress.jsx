@@ -1,11 +1,17 @@
 // create new address
+// TODO need to add green check marks 
 class CreateAddress extends React.Component {
   constructor() {
     super();
     this.state = {canSubmit: false};
     this.saveAddress = this.saveAddress.bind(this);
-    this.toggleSubmit = this.toggleSubmit.bind(this)
-    this.clearData = this.clearData.bind(this)
+    this.clearAddress1 = this.clearAddress1.bind(this);
+    this.clearAddress2 = this.clearAddress2.bind(this);
+    this.validAddress1 = this.validAddress1.bind(this);
+    this.validAddress2 = this.validAddress2.bind(this);
+    this.updateState = this.updateState.bind(this);
+    this.canSubmit = this.canSubmit.bind(this);
+    this.onSuccess = this.onSuccess.bind(this)
   }
 
   saveAddress() {
@@ -34,48 +40,93 @@ class CreateAddress extends React.Component {
         this.setState({error: response.responseJSON.error, canSubmit: false})
       }.bind(this),
       success: function(response) {
-        this.setState({success: true}); 
-        this.props.onSuccess(response.uuid)
+         this.onSuccess(response)
       }.bind(this)
     });
   }
 
-  toggleSubmit() {
-    if (street_number.value && route.value && postal_code.value && address_2.value) {
-      this.setState({canSubmit: true})
-    } else {
-      this.setState({canSubmit: false})
+  onSuccess(response) {
+    this.clearAddress1()
+    this.clearAddress2()
+    this.setState({success: true});
+
+    setTimeout(function() {
+      this.props.onSuccess(response.uuid)
+      this.setState({success: false})
+    }.bind(this), 2000)
+  }
+
+  componentDidUpdate() {
+    if(this.state.canSubmit != this.canSubmit()) {
+      this.setState({canSubmit: !this.state.canSubmit})
     }
   }
 
-  clearData() {
-    if(this.state.canSubmit) {
-      $('data').each( function(index, element) {
-        element.value = null
+  validAddress1() {
+    return(!!this.state.street_number && !!this.state.street_name && !!this.state.zip && !this.state.error)
+  }
+
+  validAddress2() {
+    return(!!this.state.address_2)
+  }
+
+  canSubmit() {
+    return(this.validAddress1() && this.validAddress2())
+  }
+
+  updateState(autocomplete) {
+    this.setState({
+      street_number: this.refs.street_number.value,
+      street_name: this.refs.route.value,
+      address_2: this.refs.address_2.value,
+      city: this.refs.locality.value,
+      state: this.refs.administrative_area_level_1.value,
+      zip: this.refs.postal_code.value,
+      google_place_id: this.refs.place_id.value,
+    });
+
+    if (autocomplete) {
+      this.setState({autocomplete: true})
+    }
+  }
+
+  clearAddress1() {
+    if (this.state.autocomplete) {
+
+      this.refs.autocomplete.value = ''
+
+      this.setState({
+        street_number: '',
+        city: null,
+        state: null,
+        zip: null,
+        google_place_id: null,
+        autocomplete: false,
+        error: null // clear any error if updating address
       });
 
-      this.toggleSubmit()
+      this.refs.street_number.value = null
+      this.refs.route.value = null
+      this.refs.locality.value = null
+      this.refs.administrative_area_level_1.value = null
+      this.refs.postal_code.value = null
+      this.refs.place_id.value = null
     }
+  }
+
+  clearAddress2() {
+    this.refs.address_2.value = null
+    this.setState({address_2: null})
   }
 
   render() {
     var address_style = {
-      width: '70%',
-      height: '50px',
-      display: 'inline-block',
-      fontSize: '24px',
-      border: 'grey solid',
-      outline: 'none',
-      margin: '5px',
+      display: 'inline-block'
     }
 
     var address_2_style = {
-      width: '10%',
-      height: '50px',
-      display: 'inline-block',
-      fontSize: '24px',
-      border: 'grey solid',
-      margin: '5px',
+      width: '20%',
+      display: 'inline-block'
     }
 
     var buttonStyle = {
@@ -94,18 +145,44 @@ class CreateAddress extends React.Component {
       borderRadius: '25px'
     }
 
+    var complete_style = {
+      height: '10px',
+      width: '10px',
+      color: 'green',
+      padding: '5px',
+      marginRight: '10px'
+    }
+
+    var incomplete_style = {
+      color: 'grey',
+      height: '10px',
+      width: '10px',
+      marginRight: '10px',
+    }
+
+    var address1Style = this.validAddress1() ? complete_style : incomplete_style
+    var address2Style = this.validAddress2() ? complete_style : incomplete_style
+
+    var errorStyle = {
+      margin: '0px 10px 0px 10px'
+    }
+
     return(
       <div>
         <div>
           <div className="base-title">New Address</div>
         </div>
         <div className="base-container centered">
-          {this.state.success ? <Success /> : 
+          {this.state.success ? <div>saved</div> : 
             <div>
-              {this.state.error ? <h3>{this.state.error}</h3> : null}
+              {this.state.error ? <h3 style={errorStyle}>{this.state.error}</h3> : null}
               <div id="locationField">
-                <input style={address_style} onChange={this.clearData} onBlur={()=> setTimeout(function() {this.toggleSubmit()}.bind(this), 1000)} id="autocomplete" ref="autocomplete" placeholder="Address (start typing...)" type="text"></input>
-                <input style={address_2_style} onChange={this.toggleSubmit} ref="address_2" id="address_2" type='text' placeholder="Unit #"></input>
+                <div>
+                  <input  style={address_style} className="base-input" onClick={this.clearAddress1} onBlur={()=> setTimeout(function() {this.updateState(true)}.bind(this), 1000)} id="autocomplete" ref="autocomplete" placeholder="Address (start typing...)" type="text"></input><span style={address1Style} className="glyphicon glyphicon-ok"></span>
+                </div>
+                <div>
+                  <input  style={address_2_style} className="base-input" onChange={this.updateState} ref="address_2" id="address_2" type='text' placeholder="Unit #"></input><span style={address2Style} className="glyphicon glyphicon-ok"></span>
+                </div>
               </div>
               <data id="street_number" ref="street_number"/>
               <data id="route" ref="route"/>

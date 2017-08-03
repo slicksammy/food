@@ -12,9 +12,13 @@ class AddressController < SessionsController
 
   def save
     if available? # only save address if we are available
-      addr = current_user.addresses.create!(params["address"])
+      if 
+        addr = current_user.addresses.create!(params["address"])
 
-      render json: {uuid: addr.uuid}, status: 202
+        render json: {uuid: addr.uuid}, status: 202
+      else
+        render json: { error: 'There was an error, please try again' }, status: 505
+      end
     else
       # should throw an error with a description
       render json: {error: 'Unfortunately we do not delivery to your area yet' }, status: 505

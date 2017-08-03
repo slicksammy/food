@@ -4,6 +4,10 @@ require 'stripe'
 
 module Stripe
   class MakeCharge
+
+    class DuplicateChargeError < StandardError
+    end
+
     def initialize(order, should_validate: true)
       @order = order
       @amount = order.total.fractional
@@ -12,7 +16,7 @@ module Stripe
     end
 
     def charge!
-      return if @should_validate && duplicate_charge?
+      raise MakeCharge::DuplicateChargeError if @should_validate && duplicate_charge?
 
       charge = Stripe::Charge.create(
         :amount => @amount,

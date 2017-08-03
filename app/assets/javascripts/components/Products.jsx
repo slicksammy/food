@@ -85,7 +85,7 @@ class Products extends React.Component {
       }
 
       return(
-        <div style={mainContainerStyle} className="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+        <div style={mainContainerStyle} className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
           <div className="base-title">{product.name}{ this.hasProduct(product.uuid) ? <span style={spanStyle} className="glyphicon glyphicon-shopping-cart">{this.state[product.uuid]}</span> : null }</div>
           <div style={containerStyle} className="base-container">
             <div onMouseEnter={()=> this.toggleShowDescription(product.uuid, true)} onMouseLeave={()=> this.toggleShowDescription(product.uuid, false)} style={hoverBoxStyle}>
