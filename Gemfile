@@ -27,15 +27,19 @@ gem 'pg'
 
 gem 'react-rails'
 
-
 gem 'geo-distance'
 
 # hashing
 gem 'bcrypt'
 # payments
 gem 'stripe'
-#money
+# money
 gem 'money-rails'
+
+group :production do
+  # error tracking
+  gem 'newrelic_rpm'
+end
 
 # gem 'strong_parameters'
 
