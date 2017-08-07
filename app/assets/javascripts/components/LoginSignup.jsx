@@ -35,7 +35,7 @@ class LoginSignup extends React.Component {
       <div>
         <div className="base-title">{title}</div>
         <div className="base-container" style={containerStyle}>
-          { this.state.show == 'login' ? <Login /> : <Register /> }
+          { this.state.show == 'login' ? <Login redirect_url={this.props.redirect_url} /> : <Register redirect_url={this.props.redirect_url}/> }
           <a style={a_style} onClick={this.toggle}>{link}</a>
         </div>
       </div>

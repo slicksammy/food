@@ -1,4 +1,4 @@
-class CreatePlaces < ActiveRecord::Migration
+class CreatePlaces < ActiveRecord::Migration[5.1]
   def change
     create_table :places do |t|
       t.decimal :latitude, :precision => 15, :scale => 10

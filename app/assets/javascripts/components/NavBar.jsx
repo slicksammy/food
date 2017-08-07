@@ -68,8 +68,9 @@ class NavBar extends React.Component {
           </div>
           <div style={noBorder} className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><a style={bigFont} href="/cart"><span className="glyphicon glyphicon-shopping-cart">{this.state.cart}</span></a></li>
+              <li><a style={bigFont} href="/cart"><span className="glyphicon glyphicon-shopping-cart">{this.state.cart > 0 ? this.state.cart : null }</span></a></li>
               <li><a style={bigFont} href="/about"><span className="glyphicon">About</span></a></li>
+              { this.props.signedIn? <li><a style={bigFont} href="/logout"><span className="glyphicon">Logout</span></a></li> : <li><a style={bigFont} href="/login"><span className="glyphicon">LogIn</span></a></li> }
             </ul>
           </div>
         </div>

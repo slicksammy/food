@@ -48,12 +48,12 @@ class CreateAddress extends React.Component {
   onSuccess(response) {
     this.clearAddress1()
     this.clearAddress2()
-    this.setState({success: true});
+    this.props.onSuccess(response.uuid)
 
-    setTimeout(function() {
-      this.props.onSuccess(response.uuid)
-      this.setState({success: false})
-    }.bind(this), 2000)
+    // setTimeout(function() {
+      
+    //   this.setState({success: false})
+    // }.bind(this), 2000)
   }
 
   componentDidUpdate() {

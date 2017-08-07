@@ -2,6 +2,9 @@ require 'stripe/create'
 
 class StripeController < SessionsController
   include StripeHelper
+
+  before_action :permit_params, only: [:create]
+  before_action :authorize!, only: [:create]
   
   # create a new card through stripe
   def new
@@ -31,5 +34,9 @@ class StripeController < SessionsController
   def update
     # pass in StripeToken identifier and updates it as active (to use for the purchase)
     StripeToken.find(params["id"]).make_active_and_others_inactive!
+  end
+
+  def permit_params
+    params.require(:details).permit!
   end
 end

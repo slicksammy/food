@@ -1,4 +1,4 @@
-class CreateCallBacks < ActiveRecord::Migration
+class CreateCallBacks < ActiveRecord::Migration[5.1]
   def change
     create_table :callbacks do |t|
       t.integer :place_id

@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170801200847) do
     t.index ["uuid"], name: "index_addresses_on_uuid"
   end
 
-  create_table "callbacks", id: :serial, force: :cascade do |t|
+  create_table "callbacks", force: :cascade do |t|
     t.integer "place_id"
     t.date "call_back_date"
     t.boolean "called"
@@ -57,11 +57,11 @@ ActiveRecord::Schema.define(version: 20170801200847) do
     t.index ["product_uuid"], name: "index_carts_products_on_product_uuid"
   end
 
-  create_table "notes", id: :serial, force: :cascade do |t|
+  create_table "notes", force: :cascade do |t|
     t.integer "place_id"
     t.text "note_text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -83,29 +83,29 @@ ActiveRecord::Schema.define(version: 20170801200847) do
     t.index ["uuid"], name: "index_orders_on_uuid"
   end
 
-  create_table "place_statuses", id: :serial, force: :cascade do |t|
+  create_table "place_statuses", force: :cascade do |t|
     t.integer "place_id"
     t.integer "status_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["place_id"], name: "index_place_statuses_on_place_id"
     t.index ["status_id"], name: "index_place_statuses_on_status_id"
   end
 
-  create_table "place_types", id: :serial, force: :cascade do |t|
+  create_table "place_types", force: :cascade do |t|
     t.string "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "places", id: :serial, force: :cascade do |t|
+  create_table "places", force: :cascade do |t|
     t.decimal "latitude", precision: 15, scale: 10
     t.decimal "longitude", precision: 15, scale: 10
     t.string "google_place_id"
     t.string "name"
     t.decimal "rating", precision: 2, scale: 1
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "phone_number"
     t.string "address"
     t.integer "place_type_id"
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 20170801200847) do
     t.index ["uuid"], name: "index_products_on_uuid"
   end
 
-  create_table "statuses", id: :serial, force: :cascade do |t|
+  create_table "statuses", force: :cascade do |t|
     t.string "status"
   end
 

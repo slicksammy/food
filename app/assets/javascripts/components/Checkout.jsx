@@ -142,12 +142,17 @@ class Checkout extends React.Component {
       color: 'red'
     }
 
+    var centered = {
+      margin: '0 auto',
+      width: '100%'
+    }
+
     var form = ( 
       <div>
         <div>
           <Order items={this.props.items} order={this.props.order} />
         </div>
-        <div>
+        <div style={centered}>
           {address}
         </div>
         <div>

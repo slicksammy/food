@@ -3,7 +3,7 @@ class AddressController < SessionsController
   include CheckoutHelper
 
   before_action :permit_address_params, only: [:save]
-  before_action :redirect_to_login_if_neccessary # do not create / view any addresses unless user is logged in
+  before_action :authorize!, except: [:check_availability] # do not create / view any addresses unless user is logged in
 
   # TODO delete when done testing
   def new

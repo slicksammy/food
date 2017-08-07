@@ -4,9 +4,13 @@ class Home extends React.Component {
   }
 
   render() {
+
+    var margin = {
+      margin: '20px 0px 20px 0px'
+    }
+
     var orders = this.props.orders.map( order => {
-      console.log(order)
-      return(<Order order={order.order} items={order.items} />)
+      return(<div style={margin} ><Order order={order.order} items={order.items} /></div>)
     })
 
     return(

@@ -28,15 +28,14 @@ module Checkout
 
     # helper method can be moved to helper at some point but it requires a lot of the same objects
     def items
-      @items = products.map { |p|
-        amount = carts_products.find { |cp| cp.product_uuid == p.uuid }.amount
+      @items = carts_products.map { |cp|
         {
-          amount: amount,
-          price: p.price,
-          name: p.name,
-          description: p.description,
-          image: p.image_url,
-          total: amount*p.price
+          amount: cp.amount,
+          price: cp.product.price,
+          name: cp.product.name,
+          description: cp.product.description,
+          image: cp.product.image_url,
+          total: cp.amount*cp.product.price
         }
       }
     end

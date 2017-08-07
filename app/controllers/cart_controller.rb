@@ -9,8 +9,8 @@ class CartController < SessionsController
 
   def view
     # check if there is anything in the cart before showing to customer
-    if cart_uuid && products.any?
-      @products = product_information(products, session[:cart_uuid])
+    if cart && products.any?
+      @products = product_information(products, cart_uuid)
       @subtotal = subtotal.to_s
 
       render 'view', status: 202
@@ -26,7 +26,7 @@ class CartController < SessionsController
     
     amount = params["amount"]
 
-    pp = CartsProduct.find_or_create_by(cart_uuid: cart_uuid, product_uuid: product_uuid).update_attributes!(amount: amount)
+    CartsProduct.find_or_create_by(cart_uuid: cart_uuid, product_uuid: product_uuid).update_attributes!(amount: amount)
 
     render body: nil, status: 202
   end
@@ -40,7 +40,7 @@ class CartController < SessionsController
   end
 
   def count
-    count = cart.active_carts_products.sum(&:amount)
+    count = cart ? cart.active_carts_products.sum(&:amount) : 0
     
     render json: { count: count }, status: 202
   end
@@ -48,7 +48,7 @@ class CartController < SessionsController
   private
 
   def create_cart
-    unless session[:cart_uuid]
+    unless cart_uuid
       c = Cart.create!(user: current_user)
       session[:cart_uuid] = c.uuid
     end

@@ -1,4 +1,4 @@
-class AddIndexToPlaces < ActiveRecord::Migration
+class AddIndexToPlaces < ActiveRecord::Migration[5.1]
   def change
     add_index :places, :google_place_id, unique: true
   end

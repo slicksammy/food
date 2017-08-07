@@ -8,7 +8,7 @@ module Delivery
 
     attr_reader :address, :coordinates, :distance
 
-    def initialize(address: address, coordinates: coordinates)
+    def initialize(address: nil, coordinates: nil)
       @address = address
       @coordinates = coordinates
     end

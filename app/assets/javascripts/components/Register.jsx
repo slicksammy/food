@@ -40,8 +40,8 @@ class Register extends React.Component {
       url: 'users/create',
       data: params,
       success: function(response) {
-        window.location = response.redirectUrl
-      },
+        window.location = this.props.redirect_url || response.redirectUrl
+      }.bind(this),
       error: function(result) {
         this.setState({
           errors: result.responseJSON.errors
@@ -69,7 +69,7 @@ class Register extends React.Component {
   }
 
   validPassword() {
-    return(this.state.password.match(/^(?=.*[a-zA-Z])(?=.*[0-9])/) ? true : false)
+    return(this.state.password.match(/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.{6,})/) ? true : false)
   }
 
   validEmail() {

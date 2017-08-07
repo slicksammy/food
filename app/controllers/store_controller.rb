@@ -6,5 +6,6 @@ class StoreController < CartController
 
   def index
     @products = product_information(Product.all, cart_uuid)
+    @signed_in = current_user_uuid.present? ? true : false
   end
 end

@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="assets/checkout.css">
 <link rel="stylesheet" type="text/css" href="assets/products.css">
 
-<%= react_component('NavBar') %> 
+<%= react_component('NavBar', signedIn: @signed_in) %> 
 <div class="container">
   <%= react_component('CheckAvailability') %> 
   <%= react_component('Products', products: @products) %> 

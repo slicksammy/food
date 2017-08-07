@@ -58,6 +58,8 @@ Rails.application.routes.draw do
 
   # START SESSIONS
   post '/sessions/new' => 'sessions#new'
+  get '/logout' => 'sessions#logout'
+  get '/login' => 'sessions#login'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

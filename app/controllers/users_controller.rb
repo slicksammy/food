@@ -2,6 +2,8 @@ class UsersController < SessionsController
   include CheckoutHelper
 
   before_action :permit_create_user_params, only: :create
+  before_action :redirect_from_login_if_necessary, only: :signup
+  before_action :redirect_to_login_if_neccessary, only: :home
   # before_action :redirect_from_login_if_necessary # don't create new user or view form if user already exists
 
   def signup
@@ -22,7 +24,6 @@ class UsersController < SessionsController
       render status: 500, nothing: true, json: { errors: u.errors.messages }
     else
       session[:user_uuid] = u.uuid
-      
       if cart
         cart.update_attributes(user: u)
       end

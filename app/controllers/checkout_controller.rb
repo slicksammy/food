@@ -23,6 +23,11 @@ class CheckoutController < SessionsController
     end
   end
 
+  def redirect_to_login_if_neccessary
+    @redirect_url = '/checkout'
+    super
+  end
+
   # this route is for updating shipping address (address_id), payment method (stripe_token_id), or delivery date (expected_delivery_date)
   # def update_order
   #   order = Cart.find cart_id
@@ -55,12 +60,7 @@ class CheckoutController < SessionsController
     session[:cart_uuid] = nil
   end
 
-  def cart_uuid
-    session[:cart_uuid]
-  end
-
   def order
-    # dont want to cache order here bc it gets updated in some methods
     cart.try(:order)
   end
 
@@ -80,22 +80,7 @@ class CheckoutController < SessionsController
     @delivery_options = options.delivery_dates.map { |n| { id: n, display: n} }
   end
 
-  def create_addresses
-    addresses = current_user.addresses
-    @addresses = format_addresses(addresses)
-  end
-
   def allow_update_order_params
     params.require(:order)
-  end
-
-  def cart
-    Cart.find_by_uuid cart_uuid
-  end
-
-  # the id mapping is a hack bc the component uses id as the value. can update these to have an explicit value
-  def create_delivery_dates
-    delivery_dates = ::Checkout::OrderDefaults.new(order).available_delivery_dates
-    @delivery_dates = delivery_dates.map { |n| { value: n, display: n} }
   end
 end
