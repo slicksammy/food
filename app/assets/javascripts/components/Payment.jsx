@@ -9,7 +9,7 @@ class Payment extends React.Component {
 
   updateState(e) {
     this.setState(
-      {[e.target.id]: e.target.value, canSubmit: true}
+      {[e.target.id]: e.target.value, canSubmit: true, error: false}
     )
   }
 
@@ -72,14 +72,14 @@ class Payment extends React.Component {
       width: '10px',
       color: 'green',
       padding: '5px',
-      marginRight: '10px'
+      marginLeft: '10px'
     }
 
     var incomplete_style = {
       color: 'grey',
       height: '10px',
       width: '10px',
-      marginRight: '10px',
+      marginLeft: '10px',
     }
 
     var inputStyle = {
@@ -88,11 +88,24 @@ class Payment extends React.Component {
     }
 
     var long = {
-      width: '60%'
+      width: '80%'
     }
 
     var short = {
       width: '20%'
+    }
+
+    var divStyle = {
+      marginLeft: '10px'
+    }
+
+    var selectStyle = {
+      margin: '10px 10px 0px 10px'
+    }
+
+    var errorStyle = {
+      color: 'red',
+      margin: '10px'
     }
 
     var numberStyle = this.validNumber() ? complete_style : incomplete_style
@@ -107,15 +120,18 @@ class Payment extends React.Component {
         </div>
         <div className="base-container">
           <form id="card">
-            {this.state.error ? <div>There was an error, please wait a few seconds and try again</div> : null }
-            {this.state.success ? <Success message="congrats" wait="2000" /> : null }
-            <div>
+            {this.state.error ? <div style={errorStyle}>There was an error, please wait a few seconds and try again</div> : null }
+            <div style={divStyle}>
               <input className="base-input" style={long} id="number" onChange={this.updateState} placeholder="card number" type="text" /><span style={numberStyle} className="glyphicon glyphicon-ok"></span>
-              <input className="base-input" style={short} onChange={this.updateState} id="cvc" placeholder="cvc" type="text" /><span style={cvcStyle} className="glyphicon glyphicon-ok"></span>
             </div>
-             <div>
+             <div style={selectStyle}>
               <Months onChange={this.updateState} id="month"/><span style={monthStyle} className="glyphicon glyphicon-ok"></span>
+              </div>
+              <div style={selectStyle}>
               <Years onChange={this.updateState} id="year"/><span style={yearStyle} className="glyphicon glyphicon-ok"></span>
+            </div>
+            <div style={divStyle}>
+              <input className="base-input" style={short} onChange={this.updateState} id="cvc" placeholder="cvc" type="text" /><span style={cvcStyle} className="glyphicon glyphicon-ok"></span>
             </div>
             <div className="centered">
               <button className="btn btn-success base-button" disabled={!this.canSubmit()} onClick={this.createPayment} ref="button" type="submit">Save</button>
@@ -129,7 +145,7 @@ class Payment extends React.Component {
 
 const Months = (props) => {
   return(
-    <select className="base-input" id={props.id} onChange={props.onChange} style={props.selectStyle}>
+    <select id={props.id} onChange={props.onChange} style={props.selectStyle}>
       <option style={props.optionStyle}>Month</option>
       <option style={props.optionStyle} value="1">Jan</option>
       <option style={props.optionStyle} value="2">Feb</option>
@@ -149,7 +165,7 @@ const Months = (props) => {
 
 const Years = (props) => {
   return(
-    <select className="base-input" id={props.id} onChange={props.onChange} >
+    <select id={props.id} onChange={props.onChange} >
       <option>Year</option>
       <option value="2017">2017</option>
       <option value="2018">2018</option>

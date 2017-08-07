@@ -117,6 +117,10 @@ class Register extends React.Component {
       margin: '0 auto'
     }
 
+    var labelStyle = {
+      fontSize: 'x-small'
+    }
+
     return(
       <form id="register">
         <div>
@@ -133,6 +137,7 @@ class Register extends React.Component {
         </div>
         <div>
           { this.state.errors.password ? <span className="create-user-error">{this.state.errors.password}</span> : null }
+          <label style={labelStyle}>password must include one letter, one number and be at least 6 characters long</label>
           <input style={inputStyle} onChange={this.updateState} type="password" className="base-input" placeholder="Password" id="password"/><span style={passwordStyle} className="glyphicon glyphicon-ok"></span>
         </div>
         <button style={buttonStyle} disabled={!this.state.canSubmit} onClick={this.completeRegistration} ref="button" className="btn btn-success btn-submit" type="submit">Sign Up</button>

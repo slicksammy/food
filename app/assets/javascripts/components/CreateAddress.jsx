@@ -121,7 +121,8 @@ class CreateAddress extends React.Component {
 
   render() {
     var address_style = {
-      display: 'inline-block'
+      display: 'inline-block',
+      width: '80%'
     }
 
     var address_2_style = {

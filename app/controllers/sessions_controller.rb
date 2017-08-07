@@ -32,7 +32,7 @@ class SessionsController < ActionController::Base
   end
 
   def new
-    unless user = User.find_by_lower_email(params[:email])
+    unless user = User.find_by_lower_email(params["email"])
       return render status: 401, json: { error: 'email and password do not match' }
     end
 

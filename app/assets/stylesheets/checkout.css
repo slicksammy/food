@@ -1,21 +1,23 @@
 /*Order.jsx*/
+/*body {
+  background: #c7a7a7;
+}*/
+
 .base-container {
-  background-color: #ff3333;
-  border-radius: 0px 0px 25px 25px;
   display: inline-block;
-  box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 40px -6px black;
   font-size: 24px;
   width: 100%;
 }
 
 .base-title {
   font-size: 30px;
-  background-color: #87cccc;
+  background-color: #e1e5f4;
   text-align: center;
   padding: 20px;
-  border-radius: 25px 25px 0px 0px;
-  display: inline-block;
+  /*display: inline-block;*/
   width: 100%;
+  font-family: Arial;
 }
 
 .centered {
@@ -25,7 +27,8 @@
 .base-input {
   display: inline-block;
   font-size: 24px;
-  border: grey solid;
+  border: none;
+  border-bottom: 2px solid;
   outline: none;
   margin: 5px;
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801200847) do
+ActiveRecord::Schema.define(version: 20170807161709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,16 @@ ActiveRecord::Schema.define(version: 20170801200847) do
     t.datetime "updated_at", null: false
     t.index ["cart_uuid"], name: "index_orders_on_cart_uuid"
     t.index ["uuid"], name: "index_orders_on_uuid"
+  end
+
+  create_table "password_reset_tokens", force: :cascade do |t|
+    t.string "user_uuid"
+    t.string "uuid"
+    t.boolean "used"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_uuid"], name: "index_password_reset_tokens_on_user_uuid"
+    t.index ["uuid"], name: "index_password_reset_tokens_on_uuid"
   end
 
   create_table "place_statuses", force: :cascade do |t|

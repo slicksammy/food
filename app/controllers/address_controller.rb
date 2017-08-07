@@ -25,6 +25,9 @@ class AddressController < SessionsController
     end
   end
 
+  def available
+  end
+
   def check_availability    
     render status: 200, json: { available: available? }   
   end

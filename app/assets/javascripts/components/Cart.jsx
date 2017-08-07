@@ -45,14 +45,11 @@ class Cart extends React.Component {
 
     return(
       <div>
-        <div style={buttonContainer}>
-          <button className="btn btn-success" style={buttonStyle} onClick={this.continueToCheckout}>Checkout >>></button>
+        <div className="row">
+          <Products onChange={this.updateSubtotal} products={this.props.products} />
         </div>
         <div style={subtotalStyle} className="row">
           Subtotal: ${this.state.subtotal}
-        </div>
-        <div className="row">
-          <Products onChange={this.updateSubtotal} products={this.props.products} />
         </div>
         <div style={buttonContainer}>
           <button className="btn btn-success" style={buttonStyle} onClick={this.continueToCheckout}>Checkout >>></button>

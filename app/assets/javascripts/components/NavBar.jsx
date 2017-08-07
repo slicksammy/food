@@ -42,7 +42,13 @@ class NavBar extends React.Component {
 
     var bigFont = {
       fontSize: '40px',
-      backgroundColor: '#999999',
+      backgroundColor: 'red',
+      color: 'white'
+    }
+
+    var containerStyle = {
+      fontSize: '40px',
+      backgroundColor: 'red',
       color: 'white'
     }
 
@@ -64,13 +70,15 @@ class NavBar extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a style={bigFont} className="navbar-brand">I<span className="glyphicon glyphicon-heart"></span>Meat</a>
+            <a style={bigFont} href="/store" className="navbar-brand">I<span className="glyphicon glyphicon-heart"></span>Meat</a>
           </div>
           <div style={noBorder} className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
               <li><a style={bigFont} href="/cart"><span className="glyphicon glyphicon-shopping-cart">{this.state.cart > 0 ? this.state.cart : null }</span></a></li>
               <li><a style={bigFont} href="/about"><span className="glyphicon">About</span></a></li>
-              { this.props.signedIn? <li><a style={bigFont} href="/logout"><span className="glyphicon">Logout</span></a></li> : <li><a style={bigFont} href="/login"><span className="glyphicon">LogIn</span></a></li> }
+              <li><a style={bigFont} href="/availability"><span className="glyphicon">Availability</span></a></li>
+              { this.props.signedIn? <li><a style={bigFont} href="/home"><span className="glyphicon">Home</span></a></li> : null }
+              { this.props.signedIn? <li><a style={bigFont} href="/logout"><span className="glyphicon">Logout</span></a></li> : <li><a style={bigFont} href="/login"><span className="glyphicon">Login</span></a></li> }
             </ul>
           </div>
         </div>

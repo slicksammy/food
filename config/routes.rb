@@ -50,11 +50,15 @@ Rails.application.routes.draw do
   post '/address' => 'address#save'
   post '/address/availability' => 'address#check_availability'
   get '/addresses' => 'address#get_for_user'
+  get '/availability' => 'address#available'
 
   # START USERS
   get '/signup' => 'users#signup'
   post '/users/create' => 'users#create'
   get '/home' => 'users#home'
+  post '/forgot_password' => 'users#forgot_password'
+  get '/reset_password' => 'users#reset_password'
+  post '/reset_password' => 'users#reset_password!'
 
   # START SESSIONS
   post '/sessions/new' => 'sessions#new'

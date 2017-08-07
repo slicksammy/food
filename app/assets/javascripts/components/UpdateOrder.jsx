@@ -36,16 +36,17 @@ class UpdateOrder extends React.Component {
     var divStyle = {
       margin: '20px',
       display: 'block',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      padding: '10px'
     }
 
-    var inputStyle = {
-      marginRight: '0px'
+    var spanStyle = {
+      marginLeft: '10px'
     }
 
     var options = this.state.options.map( (option) => {
       var checked = this.state.selected == option.value
-      return(<div style={divStyle}><input style={inputStyle} type="radio" checked={checked} onChange={()=>this.update(option.value)} value={option.value} /><span>{option.display}</span></div>)
+      return(<div style={divStyle}><input type="radio" checked={checked} onChange={()=>this.update(option.value)} value={option.value} /><span style={spanStyle}>{option.display}</span></div>)
     });
 
     var header_style = {

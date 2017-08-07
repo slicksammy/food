@@ -17,9 +17,10 @@ class CheckoutController < SessionsController
 
       render 'view', status: 202
     rescue Checkout::OrderTotals::MissingCartError => e
-      @message = 'nothing here'
+      @message = 'Nothing Here'
+      @signed_in = logged_in?
 
-      render :file => 'public/nothing_here.html.erb', :status => :not_found, :layout => 'bootstrap'
+      render :file => 'public/nothing_here.html.erb', :layout => 'bootstrap'
     end
   end
 

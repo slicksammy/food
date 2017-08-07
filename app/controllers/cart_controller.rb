@@ -12,12 +12,14 @@ class CartController < SessionsController
     if cart && products.any?
       @products = product_information(products, cart_uuid)
       @subtotal = subtotal.to_s
+      @signed_in = logged_in?
 
       render 'view', status: 202
     else
       @message = "Your cart is empty"
+      @signed_in = logged_in?
 
-      render :file => 'public/nothing_here.html.erb', :status => :not_found, :layout => 'bootstrap'
+      render :file => 'public/nothing_here.html.erb', :layout => 'bootstrap'
     end
   end
 

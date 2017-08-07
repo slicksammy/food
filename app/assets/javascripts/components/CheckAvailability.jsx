@@ -18,7 +18,7 @@ class CheckAvailability extends React.Component {
         url: '/address/availability',
         data: { coordinates: {lat: lat.value, lng: lng.value} },
         success: function(response) {
-          this.setState({available: response.available, showForm: false})
+          this.setState({available: response.available})
           setTimeout(function() {this.complete()}.bind(this), 5000)
         }.bind(this)
       })
@@ -57,7 +57,7 @@ class CheckAvailability extends React.Component {
     var form = (
       <div>
         <div id="locationField">
-          <input style={inputStyle} onBlur={()=> setTimeout(function() {this.checkAvailability()}.bind(this), 1000)} id="autocomplete" placeholder="Check our Availability" type="text"></input>
+          <input style={inputStyle} onBlur={()=> setTimeout(function() {this.checkAvailability()}.bind(this), 1000)} id="autocomplete" placeholder="Your Address (start typing)" type="text"></input>
         </div>
         <data id="street_number" ref="street_number"/>
         <data id="route" ref="route"/>
@@ -75,17 +75,33 @@ class CheckAvailability extends React.Component {
       textAlign: 'center'
     }
 
+    var available = (
+      <div style={baseStyle}>
+        We are available. Let's <span><a href="/store">Shop!</a></span>
+      </div>
+    )
+
+    var divStyle = {
+      margin: '10px 0 px 10px 0px'
+    }
+
     var component = (
       <div>
-        { this.state.showForm ? form : null }
-        { this.state.available ? <div style={baseStyle}>Yay! We Sure Are!</div> : null }
-        { this.state.available === false ? <div style={baseStyle}>Unfortunately we are not available in your area at the moment</div> : null }
+        <div style={divStyle}>
+          { this.state.available ? available : null }
+        </div>
+        <div style={divStyle}>
+          { this.state.available === false ? <div style={baseStyle}>Unfortunately we are not available in your area at the moment</div> : null }
+        </div>
+        <div style={divStyle}>
+          { this.state.showForm ? form : null }
+        </div>
       </div>
     )
 
     return(
       <div>
-        { !this.state.completed ? component : null }
+        { component }
       </div>
     )
   }

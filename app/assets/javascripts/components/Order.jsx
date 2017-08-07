@@ -14,7 +14,7 @@ class Order extends React.Component {
   render() {
 
     var tdStyle = {
-      borderBottom: 'solid',
+      borderBottom: '1 px solid',
       padding: '10px 5px 10px 5px',
       width: '25%',
       fontSize: '4vw'

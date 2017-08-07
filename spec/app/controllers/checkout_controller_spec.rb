@@ -15,7 +15,7 @@ RSpec.describe CheckoutController, type: :controller do
 
       subject
 
-      expect(assigns(:message)).to eql('nothing here')
+      expect(assigns(:message)).to eql('Nothing Here')
     end
 
     it 'signed in with items' do
