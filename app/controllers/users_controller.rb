@@ -64,7 +64,7 @@ class UsersController < SessionsController
       puts '!!!!!!!!!'
       puts '!!!!!!!!!'
       puts session[:user_uuid]
-      render status: 202, body: nil
+      render status: 200, body: nil
     else
       render status: 505, body: nil
     end
