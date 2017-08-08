@@ -46,7 +46,6 @@ class Places extends React.Component {
   }
 
   render() {
-    console.log("heeeee")
     var places = this.map(this.state.data.places)
 
     var types = this.state.data.types.map( (type) => {

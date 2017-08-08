@@ -81,8 +81,6 @@ class ResetPassword extends React.Component {
       width: '65%'
     }
 
-    console.log(this.state)
-
     return(
       <div>
         <div className="base-title">Reset Password</div>

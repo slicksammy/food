@@ -26,7 +26,6 @@ class Login extends React.Component {
       url: '/sessions/new',
       data: { email: this.state.email, password: this.state.password },
       success: function(response) {
-        console.log(this.props.redirect_url)
         window.location = this.props.redirect_url || response.redirectUrl
       }.bind(this),
       error: function(response) {

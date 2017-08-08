@@ -96,8 +96,6 @@ class Checkout extends React.Component {
 
     var canCancelPayment = this.state.payment ? { display: 'none' } : {}
 
-    console.log(this.state.address)
-
     var address = (
       <div className="col-xs-12 col-sm-9 col-md-6 col-lg-6" style={container}>
         <div hidden={!this.shouldShowCreateAddress()} id="create-address">

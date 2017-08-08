@@ -4,7 +4,6 @@ class Place extends React.Component {
     this.state = { notes: props.notes, status: props.status}
     this.saveNote = this.saveNote.bind(this)
     this.updateStatus = this.updateStatus.bind(this)
-    console.log(props)
   }
 
 
