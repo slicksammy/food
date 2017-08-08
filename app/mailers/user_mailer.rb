@@ -23,7 +23,8 @@ class UserMailer < ActionMailer::Base
   # end
   def password_reset(token)
     @url = "#{Env.base_uri}/reset_password?token=#{token.uuid}"
-    #@url = 'www.heroku.com'
-    mail(from: 'sam@brokolly.com', to: 'sam@brokolly.com', subject: 'Password Reset Instructions')
+    to = token.user.email
+
+    mail(from: 'sam@brokolly.com', to: to, subject: 'Password Reset Instructions')
   end
 end
