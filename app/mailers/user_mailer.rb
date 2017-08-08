@@ -27,4 +27,7 @@ class UserMailer < ActionMailer::Base
 
     mail(from: 'sam@brokolly.com', to: to, subject: 'Password Reset Instructions')
   end
+
+  def welcome(user)
+  end
 end

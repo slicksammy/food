@@ -61,6 +61,9 @@ class UsersController < SessionsController
     if token && token.is_valid?
       token.update_users_password!(params["password"])
       session[:user_uuid] = token.user.uuid
+      puts '!!!!!!!!!'
+      puts '!!!!!!!!!'
+      puts session[:user_uuid]
       render status: 202, body: nil
     else
       render status: 505, body: nil

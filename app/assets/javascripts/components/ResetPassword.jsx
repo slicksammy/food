@@ -39,7 +39,7 @@ class ResetPassword extends React.Component {
       url: '/reset_password',
       data: this.state,
       success: function(response) {
-        window.location = '/store'
+        window.location = '/'
       }
     })
   }
@@ -91,7 +91,7 @@ class ResetPassword extends React.Component {
           <input style={inputStyle} onChange={this.updateState} type="password" className="base-input" placeholder="Password" id="password"/><span style={passwordStyle} className="glyphicon glyphicon-ok"></span>
           <input style={inputStyle} onChange={this.updateState} type="password" className="base-input" placeholder="Confirm Password" id="confirm"/><span style={confirmStyle} className="glyphicon glyphicon-ok"></span>
           <div>
-            <button style={buttonStyle} disabled={!this.state.canSubmit} onClick={this.resetPassword} ref="button" className="btn btn-success btn-submit" type="submit">Sign Up</button>
+            <button style={buttonStyle} disabled={!this.state.canSubmit} onClick={this.resetPassword} ref="button" className="btn btn-success btn-submit" type="submit">Reset Password</button>
           </div>
         </div>
       </div>
