@@ -4,7 +4,7 @@ class PasswordResetToken < ActiveRecord::Base
   include UUIDHelper
   belongs_to :user, foreign_key: :user_uuid, primary_key: :uuid
 
-  def valid
+  def is_valid?
     created_at > 24.hours.ago && !used
   end
 

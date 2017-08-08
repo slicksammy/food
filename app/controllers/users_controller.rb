@@ -34,7 +34,8 @@ class UsersController < SessionsController
 
   def forgot_password
     if u = User.find_by_lower_email(params["email"])
-      PasswordResetToken.create!(user: u)
+      p = PasswordResetToken.create!(user: u)
+      UserMailer.password_reset(p).deliver!
     end
 
     render status: 202, body: nil
@@ -44,7 +45,7 @@ class UsersController < SessionsController
     token_uuid = params["token"]
     token = PasswordResetToken.find_by_uuid token_uuid
 
-    if token && token.valid?
+    if token && token.is_valid?
       @token = token_uuid
       render status: 202
     else
@@ -57,8 +58,9 @@ class UsersController < SessionsController
     token_uuid = params["token"]
     token = PasswordResetToken.find_by_uuid token_uuid
 
-    if token && token.valid
+    if token && token.is_valid?
       token.update_users_password!(params["password"])
+      session[:user_uuid] = token.user.uuid
       render status: 202, body: nil
     else
       render status: 505, body: nil
