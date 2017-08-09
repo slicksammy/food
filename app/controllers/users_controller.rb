@@ -1,9 +1,9 @@
 class UsersController < SessionsController
   include CheckoutHelper
 
-  # before_action :permit_create_user_params, only: :create
-  # before_action :redirect_from_login_if_necessary, only: [:signup]
-  # before_action :redirect_to_login_if_neccessary, only: :home
+  before_action :permit_create_user_params, only: [:create]
+  before_action :redirect_from_login_if_necessary, only: [:signup, :reset_password]
+  before_action :redirect_to_login_if_neccessary, only: [:home]
   # before_action :redirect_from_login_if_necessary # don't create new user or view form if user already exists
 
   def signup

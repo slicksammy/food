@@ -17,7 +17,7 @@ class SessionsController < ActionController::Base
 
   def redirect_from_login_if_necessary
     if logged_in?
-      redirect_to '/store'
+      redirect_to '/'
     end
   end
 
