@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def version
-    render status: 200, json: { version: 1.0 }
+    render status: 200, json: { version: 1.0, user: session[:user_uuid] }
   end
 
   def places
