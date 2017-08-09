@@ -24036,7 +24036,10 @@ var ResetPassword = (function (_React$Component) {
       $.ajax({
         method: 'POST',
         url: '/reset_password',
-        data: this.state
+        data: this.state,
+        success: function (response) {
+          window.location = '/';
+        }
       });
     }
   }, {
