@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'store#index'
 
+  get '/application/version' => 'application#version'
+
   get '/places' => 'application#places'
 
   get '/places/:id' => 'application#place', constraints: { id: /[0-9]+/ }

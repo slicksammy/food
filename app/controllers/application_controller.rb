@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     
   end
 
+  def version
+    render status: 200, json: { version: 1.0 }
+  end
+
   def places
     places = Place.all
     types = PlaceType.all

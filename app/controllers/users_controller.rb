@@ -59,6 +59,7 @@ class UsersController < SessionsController
     token = PasswordResetToken.find_by_uuid token_uuid
 
     session[:user_uuid] = User.last.uuid
+    
     if token && token.is_valid?
       token.update_users_password!(params["password"])
       session[:user_uuid] = token.user_uuid
