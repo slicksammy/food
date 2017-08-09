@@ -38,9 +38,9 @@ class ResetPassword extends React.Component {
       method: 'POST',
       url: '/reset_password',
       data: this.state,
-      success: function(response) {
-        window.location = '/'
-      }
+      // success: function(response) {
+      //   window.location = '/'
+      // }
     })
   }
 
