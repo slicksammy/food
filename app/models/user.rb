@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :carts, foreign_key: :user_uuid, primary_key: :uuid
   has_many :orders, through: :carts
   has_many :password_reset_tokens, primary_key: :uuid, foreign_key: :user_uuid
+  has_one :admin, primary_key: :uuid, foreign_key: :user_uuid
 
   # validated on the front end
   # EMAIL_REGEX = /[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9][a-z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?/i
@@ -41,5 +42,9 @@ class User < ActiveRecord::Base
     encrypted_password = BCrypt::Engine.hash_secret(password, self.salt)
 
     self.update_attributes!(encrypted_password: encrypted_password)
+  end
+
+  def admin?
+    admin.present?
   end
 end

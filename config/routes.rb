@@ -67,6 +67,9 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#logout'
   get '/login' => 'sessions#login'
 
+  # ADMIN
+  get '/admin' => 'admin#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
