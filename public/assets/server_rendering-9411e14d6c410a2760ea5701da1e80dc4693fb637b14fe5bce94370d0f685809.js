@@ -22253,6 +22253,23 @@ var Home = (function (_React$Component) {
         return React.createElement(
           'div',
           { style: margin },
+          React.createElement(
+            'h2',
+            null,
+            'Status: ',
+            order.order.status
+          ),
+          order.order.delivered_on ? React.createElement(
+            'h2',
+            null,
+            'Delivered on: ',
+            order.order.delivered_on
+          ) : React.createElement(
+            'h2',
+            null,
+            'Order should arrive by ',
+            order.order.formatted_expected_delivery_date
+          ),
           React.createElement(Order, { order: order.order, items: order.items })
         );
       });
@@ -24423,6 +24440,8 @@ var UpdateOrder = (function (_React$Component) {
 
       var options = this.state.options.map(function (option) {
         var checked = _this.state.selected == option.value;
+        console.log(_this.state.selected);
+        console.log(option.value);
         return React.createElement(
           'div',
           { style: divStyle },
