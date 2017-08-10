@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170807161709) do
+ActiveRecord::Schema.define(version: 20170810203628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,14 @@ ActiveRecord::Schema.define(version: 20170807161709) do
     t.text "note_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "order_status_logs", force: :cascade do |t|
+    t.string "order_uuid"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_uuid"], name: "index_order_status_logs_on_order_uuid"
   end
 
   create_table "orders", force: :cascade do |t|

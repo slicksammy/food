@@ -1,3 +1,5 @@
+require 'checkout/order_totals'
+
 class UsersController < SessionsController
   include CheckoutHelper
 

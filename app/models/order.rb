@@ -8,6 +8,7 @@ class Order < ActiveRecord::Base
   belongs_to :address, foreign_key: :address_uuid, primary_key: :uuid
   belongs_to :stripe_token, primary_key: :uuid, foreign_key: :stripe_token_uuid
   has_many :stripe_charges, primary_key: :uuid, foreign_key: :order_uuid
+  has_many :order_status_logs, primary_key: :uuid, foreign_key: :order_uuid
 
   monetize :subtotal_cents, :tax_cents, :shipping_cents, :total_cents
 
@@ -17,12 +18,24 @@ class Order < ActiveRecord::Base
 
   scope :ordered, -> { order("created_at DESC") }
 
+  after_save :create_order_status_log, if: :status_changed?
+
   PURCHASED_STATUS = 'paid'
+  DElIVERED_STATUS = 'delivered'
   ONGOING_STATUS = nil
+
+  def self.find_by_order_number(order_number)
+    all.select { |o| o.order_number == order_number }
+  end
 
   def confirm!
     self.status = 'confirmed'
     self.save!
+  end
+
+  def delivered_on
+    # find the last log
+    order_status_logs.ordered.find { |log| log.status == DElIVERED_STATUS }.try(:created_at)
   end
 
   def paid?
@@ -31,6 +44,10 @@ class Order < ActiveRecord::Base
 
   def valid_expected_delivery_date?
     expected_delivery_date
+  end
+
+  def create_order_status_log
+    OrderStatusLog.create!(order: self, status: self.status)
   end
 
   # hack but will do for now
@@ -43,6 +60,10 @@ class Order < ActiveRecord::Base
     self.status == ONGOING_STATUS
   end
 
+  def delivered?
+    self.status == DElIVERED_STATUS
+  end
+
   def purchase!
     self.status = PURCHASED_STATUS
     self.save!
@@ -53,7 +74,8 @@ class Order < ActiveRecord::Base
   end
 
   def deliver!
-    # package has been delivered
+    self.status = DElIVERED_STATUS
+    self.save!
   end
 
   def ask_for_refund!

@@ -28,12 +28,15 @@ module CheckoutHelper
       address_uuid: order.address_uuid,
       stripe_token_uuid: order.stripe_token_uuid,
       expected_delivery_date: order.expected_delivery_date,
-      order_number: order.order_number
+      formatted_expected_delivery_date: format_date(order.expected_delivery_date),
+      order_number: order.order_number,
+      delivered_on: format_date(order.delivered_on),
+      status: order.status.try(:capitalize)
     }
   end
 
   def format_date(date)
-    date.strftime("%A %B %dth")
+    date.try(:strftime, ("%A %B %dth"))
   end
 
 end
