@@ -22134,7 +22134,7 @@ var Cart = (function (_React$Component) {
         React.createElement(
           'div',
           { style: rowStyle },
-          React.createElement(Products, { onChange: this.updateSubtotal, products: this.props.products })
+          React.createElement(Products, { onChange: this.updateSubtotal, products: this.props.products, hideOnZero: 'true' })
         ),
         React.createElement(
           'div',
@@ -22246,7 +22246,7 @@ var CheckAvailability = (function (_React$Component) {
               return setTimeout((function () {
                 this.checkAvailability();
               }).bind(_this), 1000);
-            }, id: 'autocomplete', placeholder: 'Your Address (start typing)', type: 'text' })
+            }, id: 'autocomplete', placeholder: 'start typing...', type: 'text' })
         ),
         React.createElement('data', { id: 'street_number', ref: 'street_number' }),
         React.createElement('data', { id: 'route', ref: 'route' }),
@@ -22282,9 +22282,22 @@ var CheckAvailability = (function (_React$Component) {
         margin: '10px 0 px 10px 0px'
       };
 
+      var centered = {
+        textAlign: 'center'
+      };
+
       var component = React.createElement(
         'div',
         null,
+        React.createElement(
+          'div',
+          null,
+          React.createElement(
+            'h2',
+            { style: centered },
+            'Type your address below to see if we deliver to your area'
+          )
+        ),
         React.createElement(
           'div',
           { style: divStyle },
@@ -23426,13 +23439,13 @@ var LoginSignup = (function (_React$Component) {
 
   return LoginSignup;
 })(React.Component);
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var NavBar = (function (_React$Component) {
   _inherits(NavBar, _React$Component);
@@ -23440,21 +23453,16 @@ var NavBar = (function (_React$Component) {
   function NavBar() {
     _classCallCheck(this, NavBar);
 
-    _get(Object.getPrototypeOf(NavBar.prototype), "constructor", this).call(this);
+    _get(Object.getPrototypeOf(NavBar.prototype), 'constructor', this).call(this);
     this.state = {};
     this.getCount = this.getCount.bind(this);
   }
 
   _createClass(NavBar, [{
-    key: "componentWillMount",
+    key: 'componentWillMount',
     value: function componentWillMount() {
       $(document).ready((function () {
-        $("#cart_add").click((function () {
-          setTimeout((function () {
-            this.getCount();
-          }).bind(this), 500);
-        }).bind(this));
-        $("#cart_subtract").click((function () {
+        $(".cart_update").click((function () {
           setTimeout((function () {
             this.getCount();
           }).bind(this), 500);
@@ -23462,12 +23470,12 @@ var NavBar = (function (_React$Component) {
       }).bind(this));
     }
   }, {
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
       this.getCount();
     }
   }, {
-    key: "getCount",
+    key: 'getCount',
     value: function getCount() {
       $.ajax({
         method: 'GET',
@@ -23478,7 +23486,7 @@ var NavBar = (function (_React$Component) {
       });
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       var navStyle = {
         borderRadius: '0px'
@@ -23502,14 +23510,7 @@ var NavBar = (function (_React$Component) {
 
       var bigFont = {
         fontSize: '40px',
-        backgroundColor: 'red',
-        color: 'white'
-      };
-
-      var containerStyle = {
-        fontSize: '40px',
-        backgroundColor: 'red',
-        color: 'white'
+        color: '#FCFCFC'
       };
 
       var noBorder = {
@@ -23521,114 +23522,114 @@ var NavBar = (function (_React$Component) {
       };
 
       return React.createElement(
-        "nav",
-        { className: "navbar navbar-default navbar-fixed-top", style: navStyle },
+        'nav',
+        { className: 'navbar navbar-default navbar-fixed-top', style: navStyle },
         React.createElement(
-          "div",
-          { style: bigFont, className: "container-fluid" },
+          'div',
+          { style: bigFont, className: 'container-fluid blue-marine' },
           React.createElement(
-            "div",
-            { style: padded, className: "navbar-header" },
+            'div',
+            { style: padded, className: 'navbar-header' },
             React.createElement(
-              "button",
-              { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#bs-example-navbar-collapse-1", "aria-expanded": "false" },
+              'button',
+              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1', 'aria-expanded': 'false' },
               React.createElement(
-                "span",
-                { className: "sr-only" },
-                "Toggle navigation"
+                'span',
+                { className: 'sr-only' },
+                'Toggle navigation'
               ),
-              React.createElement("span", { className: "icon-bar" }),
-              React.createElement("span", { className: "icon-bar" }),
-              React.createElement("span", { className: "icon-bar" })
+              React.createElement('span', { className: 'icon-bar' }),
+              React.createElement('span', { className: 'icon-bar' }),
+              React.createElement('span', { className: 'icon-bar' })
             ),
             React.createElement(
-              "a",
-              { style: bigFont, href: "/", className: "navbar-brand" },
-              "I",
-              React.createElement("span", { className: "glyphicon glyphicon-heart" }),
-              "Meat"
+              'a',
+              { style: bigFont, href: '/', className: 'navbar-brand' },
+              'I',
+              React.createElement('span', { className: 'glyphicon glyphicon-heart' }),
+              'Meat'
             )
           ),
           React.createElement(
-            "div",
-            { style: noBorder, className: "collapse navbar-collapse", id: "bs-example-navbar-collapse-1" },
+            'div',
+            { style: noBorder, className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
             React.createElement(
-              "ul",
-              { className: "nav navbar-nav" },
+              'ul',
+              { className: 'nav navbar-nav' },
               React.createElement(
-                "li",
+                'li',
                 null,
                 React.createElement(
-                  "a",
-                  { style: bigFont, href: "/cart" },
+                  'a',
+                  { style: bigFont, href: '/cart' },
                   React.createElement(
-                    "span",
-                    { className: "glyphicon glyphicon-shopping-cart" },
+                    'span',
+                    { className: 'glyphicon glyphicon-shopping-cart' },
                     this.state.cart > 0 ? this.state.cart : null
                   )
                 )
               ),
               React.createElement(
-                "li",
+                'li',
                 null,
                 React.createElement(
-                  "a",
-                  { style: bigFont, href: "/about" },
+                  'a',
+                  { style: bigFont, href: '/about' },
                   React.createElement(
-                    "span",
-                    { className: "glyphicon" },
-                    "About"
+                    'span',
+                    { className: 'glyphicon' },
+                    'About'
                   )
                 )
               ),
               React.createElement(
-                "li",
+                'li',
                 null,
                 React.createElement(
-                  "a",
-                  { style: bigFont, href: "/availability" },
+                  'a',
+                  { style: bigFont, href: '/availability' },
                   React.createElement(
-                    "span",
-                    { className: "glyphicon" },
-                    "Availability"
+                    'span',
+                    { className: 'glyphicon' },
+                    'Availability'
                   )
                 )
               ),
               this.props.signedIn ? React.createElement(
-                "li",
+                'li',
                 null,
                 React.createElement(
-                  "a",
-                  { style: bigFont, href: "/home" },
+                  'a',
+                  { style: bigFont, href: '/home' },
                   React.createElement(
-                    "span",
-                    { className: "glyphicon" },
-                    "Home"
+                    'span',
+                    { className: 'glyphicon' },
+                    'Orders'
                   )
                 )
               ) : null,
               this.props.signedIn ? React.createElement(
-                "li",
+                'li',
                 null,
                 React.createElement(
-                  "a",
-                  { style: bigFont, href: "/logout" },
+                  'a',
+                  { style: bigFont, href: '/logout' },
                   React.createElement(
-                    "span",
-                    { className: "glyphicon" },
-                    "Logout"
+                    'span',
+                    { className: 'glyphicon' },
+                    'Logout'
                   )
                 )
               ) : React.createElement(
-                "li",
+                'li',
                 null,
                 React.createElement(
-                  "a",
-                  { style: bigFont, href: "/login" },
+                  'a',
+                  { style: bigFont, href: '/login' },
                   React.createElement(
-                    "span",
-                    { className: "glyphicon" },
-                    "Login"
+                    'span',
+                    { className: 'glyphicon' },
+                    'Login'
                   )
                 )
               )
@@ -24670,12 +24671,16 @@ var Products = (function (_React$Component) {
           margin: '20px 0px 20px 0px'
         };
 
+        if (!_this.hasProduct(product.uuid) && !!_this.props.hideOnZero) {
+          return null;
+        }
+
         return React.createElement(
           "div",
           { style: colCentered, className: "col-lg-4 col-md-4 col-sm-6 col-xs-12" },
           React.createElement(
             "div",
-            { className: "base-title " },
+            { className: "base-title" },
             product.name,
             _this.hasProduct(product.uuid) ? React.createElement(
               "span",
@@ -24709,14 +24714,14 @@ var Products = (function (_React$Component) {
             ),
             React.createElement(
               "button",
-              { style: buttonStyle, className: "btn btn-danger", onClick: function () {
+              { style: buttonStyle, className: "btn btn-danger cart_update layer-shadow1", onClick: function () {
                   return _this.add(product.uuid, -1);
                 }, id: "cart_subtract" },
               "-"
             ),
             React.createElement(
               "button",
-              { style: buttonStyle, className: "btn btn-success", onClick: function () {
+              { style: buttonStyle, className: "btn btn-success cart_update layer-shadow1", onClick: function () {
                   return _this.add(product.uuid, 1);
                 }, id: "cart_add" },
               "+"
