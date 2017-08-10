@@ -2,22 +2,33 @@ class NavBar extends React.Component {
   constructor() {
     super();
     this.state = {};
-    // this.getCount = this.getCount.bind(this);
+    this.getCount = this.getCount.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.getCount()
-  // }
+  componentWillMount() {
+    $(document).ready(function(){
+        $("#cart_add").click(function(){
+            setTimeout(function() {this.getCount()}.bind(this), 500)
+        }.bind(this));
+        $("#cart_subtract").click(function(){
+            setTimeout(function() {this.getCount()}.bind(this), 500)
+        }.bind(this));
+    }.bind(this));
+  }
 
-  // getCount() {
-  //   $.ajax({
-  //     method: 'GET',
-  //     url: '/cart/count',
-  //     success: function(response) {
-  //       this.setState({cart: response.count})
-  //     }.bind(this)
-  //   })
-  // }
+  componentDidMount() {
+    this.getCount()
+  }
+
+  getCount() {
+    $.ajax({
+      method: 'GET',
+      url: '/cart/count',
+      success: function(response) {
+        this.setState({cart: response.count})
+      }.bind(this)
+    })
+  }
 
   render() {
     var navStyle = {
@@ -74,7 +85,7 @@ class NavBar extends React.Component {
           </div>
           <div style={noBorder} className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><a style={bigFont} href="/cart"><span className="glyphicon glyphicon-shopping-cart"></span></a></li>
+              <li><a style={bigFont} href="/cart"><span className="glyphicon glyphicon-shopping-cart">{this.state.cart > 0 ? this.state.cart : null}</span></a></li>
               <li><a style={bigFont} href="/about"><span className="glyphicon">About</span></a></li>
               <li><a style={bigFont} href="/availability"><span className="glyphicon">Availability</span></a></li>
               { this.props.signedIn? <li><a style={bigFont} href="/home"><span className="glyphicon">Home</span></a></li> : null }

@@ -20,7 +20,9 @@ class Products extends React.Component {
       data: {amount: amount, product_id: uuid},
       success: function() {
         this.setState({[uuid]: amount})
-        this.props.onChange()
+        if(this.props.onChange) {
+          this.props.onChange()
+        }
       }.bind(this)
     });
   }
@@ -99,8 +101,8 @@ class Products extends React.Component {
                { this.showDescription(product.uuid) ? <div style={descriptionStyle}>{product.description}</div> : null }
             </div>
             <h2>${product.price} / each</h2>
-            <button style={buttonStyle} className="btn btn-danger" onClick={()=> this.add(product.uuid, -1) }>-</button>
-            <button style={buttonStyle} className="btn btn-success" onClick={()=> this.add(product.uuid, 1) }>+</button>
+            <button style={buttonStyle} className="btn btn-danger" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
+            <button style={buttonStyle} className="btn btn-success" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
           </div>
         </div>
       )
