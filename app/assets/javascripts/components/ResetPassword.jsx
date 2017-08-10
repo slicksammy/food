@@ -83,15 +83,28 @@ class ResetPassword extends React.Component {
       width: '65%'
     }
 
+    var colCentered = {
+      display: 'inline-block',
+      float: 'none',
+      margin: '20px 0px 20px 0px',
+      fontSize: '24px'
+    }
+
+    var centered = {
+      textAlign: 'center'
+    }
+
     return(
-      <div>
-        <div className="base-title">Reset Password</div>
-        <div className="base-container" style={containerStyle}>
-          <label style={labelStyle}>password must include one letter, one number and be at least 6 characters long</label>
-          <input style={inputStyle} onChange={this.updateState} type="password" className="base-input" placeholder="Password" id="password"/><span style={passwordStyle} className="glyphicon glyphicon-ok"></span>
-          <input style={inputStyle} onChange={this.updateState} type="password" className="base-input" placeholder="Confirm Password" id="confirm"/><span style={confirmStyle} className="glyphicon glyphicon-ok"></span>
-          <div>
-            <button style={buttonStyle} disabled={!this.state.canSubmit} onClick={this.resetPassword} ref="button" className="btn btn-success btn-submit" type="submit">Reset Password</button>
+      <div style={centered}>
+        <div className="col-xs-9 col-md-6 col-lg-6 col-sm-6" style={colCentered}>
+          <div className="base-title">Reset Password</div>
+          <div className="base-container" style={containerStyle}>
+            <label style={labelStyle}>password must include one letter, one number and be at least 6 characters long</label>
+            <input style={inputStyle} onChange={this.updateState} type="password" className="base-input" placeholder="Password" id="password"/><span style={passwordStyle} className="glyphicon glyphicon-ok"></span>
+            <input style={inputStyle} onChange={this.updateState} type="password" className="base-input" placeholder="Confirm Password" id="confirm"/><span style={confirmStyle} className="glyphicon glyphicon-ok"></span>
+            <div>
+              <button style={buttonStyle} disabled={!this.state.canSubmit} onClick={this.resetPassword} ref="button" className="btn btn-success btn-submit" type="submit">Reset Password</button>
+            </div>
           </div>
         </div>
       </div>

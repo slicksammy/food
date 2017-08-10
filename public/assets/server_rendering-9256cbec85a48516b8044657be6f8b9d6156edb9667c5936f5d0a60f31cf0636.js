@@ -24148,33 +24148,48 @@ var ResetPassword = (function (_React$Component) {
         width: '65%'
       };
 
+      var colCentered = {
+        display: 'inline-block',
+        float: 'none',
+        margin: '20px 0px 20px 0px',
+        fontSize: '24px'
+      };
+
+      var centered = {
+        textAlign: 'center'
+      };
+
       return React.createElement(
         'div',
-        null,
+        { style: centered },
         React.createElement(
           'div',
-          { className: 'base-title' },
-          'Reset Password'
-        ),
-        React.createElement(
-          'div',
-          { className: 'base-container', style: containerStyle },
-          React.createElement(
-            'label',
-            { style: labelStyle },
-            'password must include one letter, one number and be at least 6 characters long'
-          ),
-          React.createElement('input', { style: inputStyle, onChange: this.updateState, type: 'password', className: 'base-input', placeholder: 'Password', id: 'password' }),
-          React.createElement('span', { style: passwordStyle, className: 'glyphicon glyphicon-ok' }),
-          React.createElement('input', { style: inputStyle, onChange: this.updateState, type: 'password', className: 'base-input', placeholder: 'Confirm Password', id: 'confirm' }),
-          React.createElement('span', { style: confirmStyle, className: 'glyphicon glyphicon-ok' }),
+          { className: 'col-xs-9 col-md-6 col-lg-6 col-sm-6', style: colCentered },
           React.createElement(
             'div',
-            null,
+            { className: 'base-title' },
+            'Reset Password'
+          ),
+          React.createElement(
+            'div',
+            { className: 'base-container', style: containerStyle },
             React.createElement(
-              'button',
-              { style: buttonStyle, disabled: !this.state.canSubmit, onClick: this.resetPassword, ref: 'button', className: 'btn btn-success btn-submit', type: 'submit' },
-              'Reset Password'
+              'label',
+              { style: labelStyle },
+              'password must include one letter, one number and be at least 6 characters long'
+            ),
+            React.createElement('input', { style: inputStyle, onChange: this.updateState, type: 'password', className: 'base-input', placeholder: 'Password', id: 'password' }),
+            React.createElement('span', { style: passwordStyle, className: 'glyphicon glyphicon-ok' }),
+            React.createElement('input', { style: inputStyle, onChange: this.updateState, type: 'password', className: 'base-input', placeholder: 'Confirm Password', id: 'confirm' }),
+            React.createElement('span', { style: confirmStyle, className: 'glyphicon glyphicon-ok' }),
+            React.createElement(
+              'div',
+              null,
+              React.createElement(
+                'button',
+                { style: buttonStyle, disabled: !this.state.canSubmit, onClick: this.resetPassword, ref: 'button', className: 'btn btn-success btn-submit', type: 'submit' },
+                'Reset Password'
+              )
             )
           )
         )
