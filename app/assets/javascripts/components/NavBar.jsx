@@ -49,7 +49,7 @@ class NavBar extends React.Component {
     }
 
     var bigFont = {
-      fontSize: '40px',
+      fontSize: '26px',
       color: '#FCFCFC'
     }
 
@@ -63,7 +63,7 @@ class NavBar extends React.Component {
 
     return(
       <nav className="navbar navbar-default navbar-fixed-top" style={navStyle}>
-        <div style={bigFont} className="container-fluid blue-marine">
+        <div style={bigFont} className="container-fluid dark-gray">
           <div style={padded} className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
               <span className="sr-only">Toggle navigation</span>

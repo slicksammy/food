@@ -7,6 +7,7 @@
   --color-blue-gray: #8F99AD;
   --color-blue-marine: #2D6BEF;
   --color-blue: #0449DD;
+  --color-dark-gray: #363a42;
 
   /* Secondary Colors: */
   --color-red: #DE1A1A; /* error */
@@ -37,6 +38,7 @@
 .blue-gray { background: var(--color-blue-gray); }
 .blue-marine { background: var(--color-blue-marine); }
 .blue { background: var(--color-blue); }
+.dark-gray { background: var(--color-dark-gray); }
 
 .text-black { color: var(--color-black); }
 .text-white { color: var(--color-white); }
