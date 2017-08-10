@@ -16,11 +16,11 @@ class CheckoutController < SessionsController
       create_options
 
       render 'view', status: 202
-    rescue Checkout::OrderTotals::MissingCartError => e
+    rescue Checkout::OrderTotals::MissingCartError, Checkout::OrderTotals::NoItemsInCart => e
       @message = 'Nothing Here'
       @signed_in = logged_in?
 
-      render :file => 'public/nothing_here.html.erb', :layout => 'bootstrap'
+      render :file => 'public/nothing_here.html.erb', :layout => 'checkout.html.erb'
     end
   end
 

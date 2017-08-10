@@ -1,11 +1,79 @@
-/*Order.jsx*/
-/*body {
-  background: #c7a7a7;
-}*/
+/*kevin yun is the man*/
+
+:root {
+  --color-black: #020202;
+  --color-white: #FCFCFC;
+  --color-gunmetal: #273043;
+  --color-blue-gray: #8F99AD;
+  --color-blue-marine: #2D6BEF;
+  --color-blue: #0449DD;
+
+  /* Secondary Colors: */
+  --color-red: #DE1A1A; /* error */
+  --color-green: #04DD98; /* success */
+
+  --layer-shadow0:
+    none;
+  --layer-shadow1:
+    0 2px 10px rgba(0, 0, 0, 0.08), 0 2px 10px rgba(0, 0, 0, 0.16),
+    0 2px 5px rgba(0, 0, 0, 0.13), 0 2px 5px rgba(0, 0, 0, 0.26);
+  --layer-shadow2:
+    0 6px 20px rgba(0, 0, 0, 0.10), 0 6px 20px rgba(0, 0, 0, 0.19),
+    0 8px 17px rgba(0, 0, 0, 0.10), 0 8px 17px rgba(0, 0, 0, 0.20);
+  --layer-shadow3:
+    0 17px 50px rgba(0, 0, 0, 0.10), 0 17px 50px rgba(0, 0, 0, 0.19),
+    0 12px 15px rgba(0, 0, 0, 0.12), 0 12px 15px rgba(0, 0, 0, 0.24);
+  --layer-shadow4:
+    0 25px 55px rgba(0, 0, 0, 0.11), 0 25px 55px rgba(0, 0, 0, 0.21),
+    0 16px 28px rgba(0, 0, 0, 0.11), 0 16px 28px rgba(0, 0, 0, 0.22);
+  --layer-shadow5:
+    0 40px 77px rgba(0, 0, 0, 0.11), 0 40px 77px rgba(0, 0, 0, 0.22),
+    0 27px 24px rgba(0, 0, 0, 0.1), 0 27px 24px rgba(0, 0, 0, 0.2);
+}
+
+.black { background: var(--color-black); }
+.white { background: var(--color-white); }
+.gunmetal { background: var(--color-gunmetal); }
+.blue-gray { background: var(--color-blue-gray); }
+.blue-marine { background: var(--color-blue-marine); }
+.blue { background: var(--color-blue); }
+
+.text-black { color: var(--color-black); }
+.text-white { color: var(--color-white); }
+.text-gunmetal { color: var(--color-gunmetal); }
+.text-blue-gray { color: var(--color-blue-gray); }
+.text-blue-marine { color: var(--color-blue-marine); }
+
+
+
+/**
+ *
+ * Typography
+ *
+ */
+
+html, body {
+  font-family: 'Crimson Text', serif; /* Paste this into your HTML file: <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet"> */
+  letter-spacing: 0.1rem;
+}
+
+
+/**
+ *
+ * Layers
+ *
+ */
+
+.layer-shadow0 { box-shadow: var(--layer-shadow0) }
+.layer-shadow1 { box-shadow: var(--layer-shadow1) }
+.layer-shadow2 { box-shadow: var(--layer-shadow2) }
+.layer-shadow3 { box-shadow: var(--layer-shadow3) }
+.layer-shadow4 { box-shadow: var(--layer-shadow4) }
+.layer-shadow5 { box-shadow: var(--layer-shadow5) }
 
 .base-container {
   display: inline-block;
-  box-shadow: 0 8px 40px -6px black;
+  box-shadow: var(--layer-shadow2);
   font-size: 24px;
   width: 100%;
   padding: 20px;
@@ -18,7 +86,8 @@
   padding: 20px;
   /*display: inline-block;*/
   width: 100%;
-  font-family: Arial;
+  color: var(--color-white);
+  background-color: var(--color-gunmetal);
 }
 
 .centered {
@@ -54,3 +123,10 @@
 .top-margin {
   margin-top: 100px;
 }
+
+.navbar {
+  box-shadow: var(--layer-shadow1);
+  border: none;
+}
+
+

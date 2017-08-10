@@ -57,7 +57,7 @@ class CheckAvailability extends React.Component {
     var form = (
       <div>
         <div id="locationField">
-          <input style={inputStyle} onBlur={()=> setTimeout(function() {this.checkAvailability()}.bind(this), 1000)} id="autocomplete" placeholder="Your Address (start typing)" type="text"></input>
+          <input style={inputStyle} onBlur={()=> setTimeout(function() {this.checkAvailability()}.bind(this), 1000)} id="autocomplete" placeholder="start typing..." type="text"></input>
         </div>
         <data id="street_number" ref="street_number"/>
         <data id="route" ref="route"/>
@@ -85,8 +85,15 @@ class CheckAvailability extends React.Component {
       margin: '10px 0 px 10px 0px'
     }
 
+    var centered = {
+      textAlign: 'center'
+    }
+
     var component = (
       <div>
+        <div>
+          <h2 style={centered}>Type your address below to see if we deliver to your area</h2>
+        </div>
         <div style={divStyle}>
           { this.state.available ? available : null }
         </div>

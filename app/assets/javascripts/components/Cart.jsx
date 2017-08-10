@@ -53,7 +53,7 @@ class Cart extends React.Component {
     return(
       <div>
         <div style={rowStyle}>
-          <Products onChange={this.updateSubtotal} products={this.props.products} />
+          <Products onChange={this.updateSubtotal} products={this.props.products} hideOnZero="true" />
         </div>
         <div style={subtotalStyle} className="row">
           Subtotal: ${this.state.subtotal}

@@ -13,6 +13,10 @@ class Order < ActiveRecord::Base
 
   scope :ongoing, -> { where(status: ONGOING_STATUS) }
 
+  scope :completed, -> { where.not(status: nil) }
+
+  scope :ordered, -> { order("created_at DESC") }
+
   PURCHASED_STATUS = 'paid'
   ONGOING_STATUS = nil
 

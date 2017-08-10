@@ -7,10 +7,7 @@ class NavBar extends React.Component {
 
   componentWillMount() {
     $(document).ready(function(){
-        $("#cart_add").click(function(){
-            setTimeout(function() {this.getCount()}.bind(this), 500)
-        }.bind(this));
-        $("#cart_subtract").click(function(){
+        $(".cart_update").click(function(){
             setTimeout(function() {this.getCount()}.bind(this), 500)
         }.bind(this));
     }.bind(this));
@@ -53,14 +50,7 @@ class NavBar extends React.Component {
 
     var bigFont = {
       fontSize: '40px',
-      backgroundColor: 'red',
-      color: 'white'
-    }
-
-    var containerStyle = {
-      fontSize: '40px',
-      backgroundColor: 'red',
-      color: 'white'
+      color: '#FCFCFC'
     }
 
     var noBorder = {
@@ -73,7 +63,7 @@ class NavBar extends React.Component {
 
     return(
       <nav className="navbar navbar-default navbar-fixed-top" style={navStyle}>
-        <div style={bigFont} className="container-fluid">
+        <div style={bigFont} className="container-fluid blue-marine">
           <div style={padded} className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
               <span className="sr-only">Toggle navigation</span>
@@ -88,7 +78,7 @@ class NavBar extends React.Component {
               <li><a style={bigFont} href="/cart"><span className="glyphicon glyphicon-shopping-cart">{this.state.cart > 0 ? this.state.cart : null}</span></a></li>
               <li><a style={bigFont} href="/about"><span className="glyphicon">About</span></a></li>
               <li><a style={bigFont} href="/availability"><span className="glyphicon">Availability</span></a></li>
-              { this.props.signedIn? <li><a style={bigFont} href="/home"><span className="glyphicon">Home</span></a></li> : null }
+              { this.props.signedIn? <li><a style={bigFont} href="/home"><span className="glyphicon">Orders</span></a></li> : null }
               { this.props.signedIn? <li><a style={bigFont} href="/logout"><span className="glyphicon">Logout</span></a></li> : <li><a style={bigFont} href="/login"><span className="glyphicon">Login</span></a></li> }
             </ul>
           </div>

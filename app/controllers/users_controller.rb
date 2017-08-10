@@ -56,7 +56,7 @@ class UsersController < SessionsController
       render status: 202
     else
       @message = 'Nothing Here'
-      render :file => 'public/nothing_here.html.erb', :layout => 'bootstrap'
+      render :file => 'public/nothing_here.html.erb', :layout => 'checkout.html.erb'
     end
   end
 
@@ -74,7 +74,7 @@ class UsersController < SessionsController
   end
 
   def home
-    orders = current_user.orders
+    orders = current_user.orders.completed.ordered
     @orders = orders.map { |o| {order: format_order(o), items: to_string(::Checkout::OrderTotals.new(order: o).items) } }
   end
 

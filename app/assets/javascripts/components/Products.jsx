@@ -89,20 +89,24 @@ class Products extends React.Component {
       var colCentered = {
         display: 'inline-block',
         float: 'none',
-        margin: '20px 0px 20px 0px'
+        margin: '20px 0px 20px 0px',
+      }
+
+      if (!this.hasProduct(product.uuid)  && !!this.props.hideOnZero) {
+        return(null)
       }
 
       return(
         <div style={colCentered} className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-          <div className="base-title ">{product.name}{ this.hasProduct(product.uuid) ? <span style={spanStyle} className="glyphicon glyphicon-shopping-cart">{this.state[product.uuid]}</span> : null }</div>
+          <div className="base-title">{product.name}{ this.hasProduct(product.uuid) ? <span style={spanStyle} className="glyphicon glyphicon-shopping-cart">{this.state[product.uuid]}</span> : null }</div>
           <div  className="base-container">
             <div onMouseEnter={()=> this.toggleShowDescription(product.uuid, true)} onMouseLeave={()=> this.toggleShowDescription(product.uuid, false)} style={hoverBoxStyle}>
                <img style={imageStyle} src={product.image_url}/> 
                { this.showDescription(product.uuid) ? <div style={descriptionStyle}>{product.description}</div> : null }
             </div>
             <h2>${product.price} / each</h2>
-            <button style={buttonStyle} className="btn btn-danger" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
-            <button style={buttonStyle} className="btn btn-success" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
+            <button style={buttonStyle} className="btn btn-danger cart_update layer-shadow1" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
+            <button style={buttonStyle} className="btn btn-success cart_update layer-shadow1" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
           </div>
         </div>
       )

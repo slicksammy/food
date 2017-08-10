@@ -4,12 +4,16 @@ module Checkout
     class MissingCartError < StandardError
     end
 
+    class NoItemsInCart < StandardError
+    end
+
     attr_reader :cart, :user, :order
 
     def initialize(cart: nil, order: nil)
       @cart = cart || order.try(:cart)
 
       raise OrderTotals::MissingCartError unless @cart
+      raise OrderTotals::NoItemsInCart if carts_products.empty?
     end
 
     # main method
@@ -19,11 +23,11 @@ module Checkout
     end
 
     def carts_products
-      @carts_products = cart.active_carts_products
+      cart.active_carts_products
     end
 
     def products
-      @products = cart.active_products
+      cart.active_products
     end
 
     # helper method can be moved to helper at some point but it requires a lot of the same objects
