@@ -2,22 +2,22 @@ class NavBar extends React.Component {
   constructor() {
     super();
     this.state = {};
-    this.getCount = this.getCount.bind(this);
+    // this.getCount = this.getCount.bind(this);
   }
 
-  componentDidMount() {
-    this.getCount()
-  }
+  // componentDidMount() {
+  //   this.getCount()
+  // }
 
-  getCount() {
-    $.ajax({
-      method: 'GET',
-      url: '/cart/count',
-      success: function(response) {
-        this.setState({cart: response.count})
-      }.bind(this)
-    })
-  }
+  // getCount() {
+  //   $.ajax({
+  //     method: 'GET',
+  //     url: '/cart/count',
+  //     success: function(response) {
+  //       this.setState({cart: response.count})
+  //     }.bind(this)
+  //   })
+  // }
 
   render() {
     var navStyle = {
@@ -61,7 +61,7 @@ class NavBar extends React.Component {
     }
 
     return(
-      <nav className="navbar navbar-default" style={navStyle}>
+      <nav className="navbar navbar-default navbar-fixed-top" style={navStyle}>
         <div style={bigFont} className="container-fluid">
           <div style={padded} className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -70,11 +70,11 @@ class NavBar extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a style={bigFont} href="/store" className="navbar-brand">I<span className="glyphicon glyphicon-heart"></span>Meat</a>
+            <a style={bigFont} href="/" className="navbar-brand">I<span className="glyphicon glyphicon-heart"></span>Meat</a>
           </div>
           <div style={noBorder} className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><a style={bigFont} href="/cart"><span className="glyphicon glyphicon-shopping-cart">{this.state.cart > 0 ? this.state.cart : null }</span></a></li>
+              <li><a style={bigFont} href="/cart"><span className="glyphicon glyphicon-shopping-cart"></span></a></li>
               <li><a style={bigFont} href="/about"><span className="glyphicon">About</span></a></li>
               <li><a style={bigFont} href="/availability"><span className="glyphicon">Availability</span></a></li>
               { this.props.signedIn? <li><a style={bigFont} href="/home"><span className="glyphicon">Home</span></a></li> : null }

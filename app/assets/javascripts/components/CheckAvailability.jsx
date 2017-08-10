@@ -77,7 +77,7 @@ class CheckAvailability extends React.Component {
 
     var available = (
       <div style={baseStyle}>
-        We are available. Let's <span><a href="/store">Shop!</a></span>
+        We are available. Let's <span><a href="/">Shop!</a></span>
       </div>
     )
 

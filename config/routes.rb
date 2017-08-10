@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
 
   # START STORE
-  get '/store' => 'store#index'
+  # get '/store' => 'store#index'
 
   # START CART
   get '/cart' => 'cart#view'
@@ -115,4 +115,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  match '*path', :to => 'application#routing_error', via: [:get, :post]
 end

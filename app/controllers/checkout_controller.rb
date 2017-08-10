@@ -38,9 +38,13 @@ class CheckoutController < SessionsController
 
   def update_order
     params[:order].each_pair do |k,v|
-      obj = k.camelize.constantize.find_by_uuid v
-      if obj.user == current_user 
-        order.update_attributes!(:"#{k}" => obj)
+      if k == "expected_delivery_date"
+        order.update_attributes!(expected_delivery_date: v)
+      else
+        obj = k.camelize.constantize.find_by_uuid v
+        if obj.user == current_user 
+          order.update_attributes!(:"#{k}" => obj)
+        end
       end
     end
   end
@@ -76,9 +80,9 @@ class CheckoutController < SessionsController
   def create_options
     options = ::Checkout::OrderOptions.new(cart)
 
-    @address_options = format_addresses(options.addresses)
-    @payment_options = options.stripe_tokens
-    @delivery_options = options.delivery_dates.map { |n| { id: n, display: n} }
+    # @address_options = format_addresses(options.addresses)
+    # @payment_options = options.stripe_tokens
+    @delivery_options = options.delivery_dates.map { |n| { value: n, display: format_date(n)} }
   end
 
   def allow_update_order_params

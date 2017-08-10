@@ -26,6 +26,7 @@ class AddressController < SessionsController
   end
 
   def available
+    @signed_in = logged_in?
   end
 
   def check_availability    

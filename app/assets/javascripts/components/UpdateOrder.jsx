@@ -1,7 +1,7 @@
 class UpdateOrder extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { selected: props.default, options: [] };
+    this.state = { selected: props.default, options: this.props.options || [] };
     this.update = this.update.bind(this);
     this.getOptions = this.getOptions.bind(this);
   }
@@ -11,6 +11,8 @@ class UpdateOrder extends React.Component {
   }
 
   getOptions() {
+    if (this.props.options) { return }
+      
     $.ajax({
       method: 'GET',
       url: this.props.optionsUrl,
@@ -54,7 +56,8 @@ class UpdateOrder extends React.Component {
     }
 
     var containerStyle = {
-      width: '100%'
+      width: '100%',
+      textAlign: 'left'
     }
 
     return(

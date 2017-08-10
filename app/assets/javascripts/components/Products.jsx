@@ -84,10 +84,16 @@ class Products extends React.Component {
         color: 'green'
       }
 
+      var colCentered = {
+        display: 'inline-block',
+        float: 'none',
+        margin: '20px 0px 20px 0px'
+      }
+
       return(
-        <div style={mainContainerStyle} className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-          <div className="base-title">{product.name}{ this.hasProduct(product.uuid) ? <span style={spanStyle} className="glyphicon glyphicon-shopping-cart">{this.state[product.uuid]}</span> : null }</div>
-          <div style={containerStyle} className="base-container">
+        <div style={colCentered} className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+          <div className="base-title ">{product.name}{ this.hasProduct(product.uuid) ? <span style={spanStyle} className="glyphicon glyphicon-shopping-cart">{this.state[product.uuid]}</span> : null }</div>
+          <div  className="base-container">
             <div onMouseEnter={()=> this.toggleShowDescription(product.uuid, true)} onMouseLeave={()=> this.toggleShowDescription(product.uuid, false)} style={hoverBoxStyle}>
                <img style={imageStyle} src={product.image_url}/> 
                { this.showDescription(product.uuid) ? <div style={descriptionStyle}>{product.description}</div> : null }
@@ -100,8 +106,12 @@ class Products extends React.Component {
       )
     })
 
+    var centered = {
+        textAlign: 'center'
+      }
+
     return(
-      <div>{products}</div>
+      <div style={centered} className="row">{products}</div>
     )
   }
 }

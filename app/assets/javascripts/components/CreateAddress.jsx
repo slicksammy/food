@@ -168,12 +168,16 @@ class CreateAddress extends React.Component {
       margin: '0px 10px 0px 10px'
     }
 
+    var containerStyle = {
+      textAlign: 'left'
+    }
+
     return(
       <div>
         <div>
           <div className="base-title">New Address</div>
         </div>
-        <div className="base-container centered">
+        <div className="base-container" style={containerStyle}>
           {this.state.success ? <div>saved</div> : 
             <div>
               {this.state.error ? <h3 style={errorStyle}>{this.state.error}</h3> : null}

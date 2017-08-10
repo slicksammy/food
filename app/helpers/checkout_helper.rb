@@ -32,4 +32,8 @@ module CheckoutHelper
     }
   end
 
+  def format_date(date)
+    date.strftime("%A %B %dth")
+  end
+
 end

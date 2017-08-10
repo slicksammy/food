@@ -43,9 +43,16 @@ class Cart extends React.Component {
       fontSize: '3em'
     }
 
+    var rowStyle = {
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      width: '100%',
+      display: 'block'
+    }
+
     return(
       <div>
-        <div className="row">
+        <div style={rowStyle}>
           <Products onChange={this.updateSubtotal} products={this.props.products} />
         </div>
         <div style={subtotalStyle} className="row">

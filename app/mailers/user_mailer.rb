@@ -25,9 +25,13 @@ class UserMailer < ActionMailer::Base
     @url = "#{Env.base_uri}/reset_password?token=#{token.uuid}"
     to = token.user.email
 
-    mail(from: 'sam@brokolly.com', to: to, subject: 'Password Reset Instructions')
+    mail(from: DEFAULT_FROM, to: to, subject: 'Password Reset Instructions')
   end
 
   def welcome(user)
+    to = user.email
+    @name = user.full_name
+
+    mail(from: DEFAULT_FROM, to: to, subject: 'Welcome to IHeartMeat')
   end
 end

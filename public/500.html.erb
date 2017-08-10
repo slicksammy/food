@@ -17,9 +17,6 @@
     font-size: 4vw;
   }
 
-  .top-margin {
-    margin-top: 100px;
-  }
 </style>
 
 <script>
@@ -29,9 +26,9 @@
 </script>
 
 <%= react_component('NavBar', signedIn: @signed_in) %> 
-<div class="container top-margin">
+<div class="container">
   <div class="message">
-    <%= @message %>
+    Woops, this page does not exist!
   </div>
   <div class="shop">
     <button class="btn btn-success shop-button" onClick="shop()">Keep Shopping</button>

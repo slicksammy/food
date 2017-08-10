@@ -2,6 +2,11 @@ class SessionsController < ActionController::Base
 
   before_action :redirect_from_login_if_necessary, only: [:login]
 
+  rescue_from ActionController::RoutingError, with: lambda { |exception| render_error }
+
+  def render_error
+  end
+
   def authorize!
     unless logged_in?
       render status: 505
@@ -10,7 +15,7 @@ class SessionsController < ActionController::Base
 
   def redirect_to_login_if_neccessary
     unless logged_in?
-      session[:previous_url] = @redirect_url || '/store'
+      session[:previous_url] = @redirect_url || '/'
       redirect_to '/signup'
     end
   end
@@ -24,7 +29,7 @@ class SessionsController < ActionController::Base
   def logout
     session[:user_uuid] = nil
 
-    redirect_to '/store' 
+    redirect_to '/' 
   end
 
   def login
@@ -41,7 +46,7 @@ class SessionsController < ActionController::Base
     if BCrypt::Engine.hash_secret(params[:password], salt) == user.encrypted_password
       session[:user_uuid] = user.uuid
       set_cart
-      render status: 202, body: nil, json: { redirectUrl: '/store' }
+      render status: 202, body: nil, json: { redirectUrl: '/' }
     else
       render status: 401, json: { error: 'email and password do not match' }
     end
@@ -81,6 +86,6 @@ class SessionsController < ActionController::Base
   end
 
   def default_redirect_url
-    '/store'
+    '/'
   end
 end

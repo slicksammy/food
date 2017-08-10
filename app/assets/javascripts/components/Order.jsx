@@ -17,7 +17,7 @@ class Order extends React.Component {
       borderBottom: '1 px solid',
       padding: '10px 5px 10px 5px',
       width: '25%',
-      fontSize: '4vw'
+      fontSize: '3vw'
     }
 
     var items_2 = this.props.items.map( (item) => {
@@ -50,7 +50,7 @@ class Order extends React.Component {
     }
 
     var totalStyle = {
-      fontSize: '4vw',
+      fontSize: '3vw',
       display: 'block',
       width: '70%',
       margin: '0 auto'
@@ -58,6 +58,12 @@ class Order extends React.Component {
 
     var noBorder = {
       borderBottom: 'none'
+    }
+
+    var borderTop = {
+      borderTop: 'solid 1px',
+      display: 'block',
+      marginBottom: '10px'
     }
 
     return(
@@ -79,6 +85,7 @@ class Order extends React.Component {
               </tbody>
             </table>
           </div>
+          <span style={borderTop}></span>
           <div style={totalStyle} className="row"><span className="left-float">Subtotal</span><span className="right-float">${this.props.order.subtotal}</span></div>
           <div style={totalStyle} className="row"><span className="left-float">Tax</span><span className="right-float">${this.props.order.tax}</span></div>
           <div style={totalStyle} className="row"><span className="left-float">Shipping</span><span className="right-float">${this.props.order.shipping}</span></div>

@@ -28,6 +28,12 @@ class UsersController < SessionsController
         cart.update_attributes(user: u)
       end
 
+      begin
+        UserMailer.welcome(u).deliver!
+      rescue Net::SMTPFatalError => e
+        nil
+      end
+
       render status: 200, json: { redirectUrl: session[:previous_url] }
     end
   end

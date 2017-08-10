@@ -13,6 +13,7 @@ RSpec.describe UsersController, type: :controller do
 
       expect(User.count).to eql(1)
       expect(session[:user_uuid]).to eql(User.last.uuid)
+      # expect(UserMailer).to receive(:welcome).with(User.last)
       expect(response.status).to eql(200)
     end
 

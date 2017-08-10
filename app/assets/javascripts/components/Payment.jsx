@@ -108,6 +108,10 @@ class Payment extends React.Component {
       margin: '10px'
     }
 
+    var containerStyle = {
+      textAlign: 'left'
+    }
+
     var numberStyle = this.validNumber() ? complete_style : incomplete_style
     var monthStyle = this.validMonth() ? complete_style : incomplete_style
     var yearStyle = this.validYear() ? complete_style : incomplete_style
@@ -118,7 +122,7 @@ class Payment extends React.Component {
         <div>
           <div className="base-title">New Credit Card</div>
         </div>
-        <div className="base-container">
+        <div className="base-container" style={containerStyle}>
           <form id="card">
             {this.state.error ? <div style={errorStyle}>There was an error, please wait a few seconds and try again</div> : null }
             <div style={divStyle}>

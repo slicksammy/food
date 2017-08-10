@@ -5,6 +5,7 @@ class Checkout extends React.Component {
     this.confirmOrder = this.confirmOrder.bind(this);
     this.updateAddress = this.updateAddress.bind(this)
     this.updatePayment = this.updatePayment.bind(this)
+    this.updateDelivery = this.updateDelivery.bind(this)
     this.hideForver = this.hideForver.bind(this)
   }
 
@@ -30,7 +31,7 @@ class Checkout extends React.Component {
       method: 'POST',
       url: 'order/update',
       data: { order: {address: uuid} },
-      success: function() {
+      success: function(response) {
         this.setState({address: uuid, newAddress: false})
         this.toggleCreateAddress(false)
       }.bind(this)
@@ -42,9 +43,20 @@ class Checkout extends React.Component {
       method: 'POST',
       url: 'order/update',
       data: { order: {stripe_token: uuid} },
-      success: function() {
+      success: function(response) {
         this.setState({stripe_token: uuid, newPayment: false})
         this.togglePayment(false)
+      }.bind(this)
+    })
+  }
+
+  updateDelivery(date) {
+    $.ajax({
+      method: 'POST',
+      url: 'order/update',
+      data: { order: {expected_delivery_date: date} },
+      success: function(response) {
+        this.setState({expected_delivery_date: date})
       }.bind(this)
     })
   }
@@ -96,21 +108,28 @@ class Checkout extends React.Component {
 
     var canCancelPayment = this.state.payment ? { display: 'none' } : {}
 
+    var colCentered = {
+      display: 'inline-block',
+      float: 'none',
+      margin: '20px 0px 20px 0px',
+      fontSize: '24px'
+    }
+
     var address = (
-      <div className="col-xs-12 col-sm-9 col-md-6 col-lg-6" style={container}>
+      <div className="col-xs-12 col-sm-9 col-md-9 col-lg-9" style={colCentered}>
         <div hidden={!this.shouldShowCreateAddress()} id="create-address">
           <CreateAddress onSuccess={this.updateAddress}/>
           { this.state.address ? <button className="btn btn-danger" style={buttonStyle} onClick={()=>this.toggleCreateAddress(false)}>Cancel</button> : null }
         </div>
         <div hidden={this.shouldShowCreateAddress()} id="update-address">
-          <UpdateOrder optionsUrl='/addresses' default={this.state.address} onUpdate={this.updateAddress} title="Shipping Address" ref="address"/>
+          <UpdateOrder optionsUrl='/addresses' default={this.state.address} onUpdate={this.updateDelivery} title="Shipping Address" ref="address"/>
           <button className="btn" style={buttonStyle} hidden={!this.state.newAddress} onClick={()=>this.toggleCreateAddress(true)}>New Address</button>
         </div>
       </div>
     )
 
     var payment = (
-      <div className="col-xs-12 col-sm-9 col-md-6 col-lg-6" style={container}>
+      <div className="col-xs-12 col-sm-9 col-md-9 col-lg-9" style={colCentered}>
         <div hidden={!this.shouldShowPayment()} id="create-payment">
           <Payment onSuccess={this.updatePayment}/>
           { this.state.stripe_token ? <button className="btn btn-danger" style={buttonStyle} onClick={()=>this.togglePayment(false)}>Cancel</button> : null }
@@ -118,6 +137,14 @@ class Checkout extends React.Component {
         <div hidden={this.shouldShowPayment()} id="update-payment">
           <UpdateOrder optionsUrl='/stripe' default={this.state.stripe_token} onUpdate={this.updatePayment} title="Payment" ref="payment"/>
           <button className="btn" style={buttonStyle} hidden={!this.state.newPayment} onClick={()=>this.togglePayment(true)}>New Card</button>
+        </div>
+      </div>
+    )
+
+    var delivery = (
+      <div className="col-xs-12 col-sm-9 col-md-9 col-lg-9" style={colCentered}>
+        <div id="update-delivery">
+          <UpdateOrder default={this.state.expected_delivery_date} onUpdate={this.updateDelivery} options={this.props.delivery_options} title="Delivery Date" ref="delivery"/>
         </div>
       </div>
     )
@@ -141,20 +168,25 @@ class Checkout extends React.Component {
     }
 
     var centered = {
-      margin: '0 auto',
-      width: '100%'
+      textAlign: 'center',
+      display: 'block'
     }
 
     var form = ( 
       <div>
-        <div>
-          <Order items={this.props.items} order={this.props.order} />
+        <div style={centered}>
+          <div style={colCentered} className="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+            <Order items={this.props.items} order={this.props.order} />
+          </div>
         </div>
         <div style={centered}>
           {address}
         </div>
-        <div>
+        <div style={centered}>
           {payment}
+        </div>
+        <div style={centered}>
+          {delivery}
         </div>
         <div style={totalContainerStyle}>
           <h1>Total: ${this.props.order.total}</h1>
