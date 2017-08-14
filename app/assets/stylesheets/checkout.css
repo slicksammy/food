@@ -104,6 +104,7 @@ html, body {
   border-bottom: 2px solid;
   outline: none;
   margin: 5px;
+  -webkit-box-shadow: none;
   -webkit-text-size-adjust: auto;
 }
 
