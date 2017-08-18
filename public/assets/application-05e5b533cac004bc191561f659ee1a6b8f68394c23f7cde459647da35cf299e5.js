@@ -22162,7 +22162,7 @@ var Cart = (function (_React$Component) {
     key: 'render',
     value: function render() {
       var buttonStyle = {
-        fontSize: '3vw',
+        fontSize: '4vw',
         margin: '20px'
       };
 
