@@ -70,6 +70,10 @@ Rails.application.routes.draw do
   # ADMIN
   get '/admin' => 'admin#index'
 
+  # INFORMATION
+
+  get '/about' => 'information#about'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
