@@ -22552,7 +22552,7 @@ var Checkout = (function (_React$Component) {
         React.createElement(
           'div',
           { hidden: this.shouldShowCreateAddress(), id: 'update-address' },
-          React.createElement(UpdateOrder, { optionsUrl: '/addresses', 'default': this.state.address, onUpdate: this.updateDelivery, title: 'Shipping Address', ref: 'address' }),
+          React.createElement(UpdateOrder, { optionsUrl: '/addresses', 'default': this.state.address, onUpdate: this.updateAddress, title: 'Shipping Address', ref: 'address' }),
           React.createElement(
             'button',
             { className: 'btn', style: buttonStyle, hidden: !this.state.newAddress, onClick: function () {
@@ -24715,7 +24715,7 @@ var Products = (function (_React$Component) {
         };
 
         var buttonStyle = {
-          margin: '10px'
+          margin: '30px'
         };
 
         var mainContainerStyle = {
@@ -24740,14 +24740,22 @@ var Products = (function (_React$Component) {
         };
 
         var spanStyle = {
-          float: 'right',
-          color: 'green'
+          // float: 'left',
+          color: 'green',
+          clear: 'both',
+          fontSize: '30px',
+          display: 'inline-block',
+          width: '25px'
         };
 
         var colCentered = {
           display: 'inline-block',
           float: 'none',
           margin: '20px 0px 20px 0px'
+        };
+
+        var margin = {
+          margin: '-5px'
         };
 
         if (!_this.hasProduct(product.uuid) && !!_this.props.hideOnZero) {
@@ -24759,17 +24767,12 @@ var Products = (function (_React$Component) {
           { style: colCentered, className: "col-lg-4 col-md-4 col-sm-6 col-xs-12" },
           React.createElement(
             "div",
-            { className: "base-title" },
-            product.name,
-            _this.hasProduct(product.uuid) ? React.createElement(
-              "span",
-              { style: spanStyle, className: "glyphicon glyphicon-shopping-cart" },
-              _this.state[product.uuid]
-            ) : null
+            { className: "base-title-product" },
+            product.name
           ),
           React.createElement(
             "div",
-            { className: "base-container" },
+            { className: "base-container-product" },
             React.createElement(
               "div",
               { onMouseEnter: function () {
@@ -24777,7 +24780,7 @@ var Products = (function (_React$Component) {
                 }, onMouseLeave: function () {
                   return _this.toggleShowDescription(product.uuid, false);
                 }, style: hoverBoxStyle },
-              React.createElement("img", { style: imageStyle, src: product.image_url }),
+              React.createElement("img", { style: imageStyle, className: "layer-shadow2", src: product.image_url }),
               _this.showDescription(product.uuid) ? React.createElement(
                 "div",
                 { style: descriptionStyle },
@@ -24788,8 +24791,7 @@ var Products = (function (_React$Component) {
               "h2",
               null,
               "$",
-              product.price,
-              " / each"
+              product.price
             ),
             React.createElement(
               "button",
@@ -24797,6 +24799,15 @@ var Products = (function (_React$Component) {
                   return _this.add(product.uuid, -1);
                 }, id: "cart_subtract" },
               "-"
+            ),
+            React.createElement(
+              "div",
+              { style: spanStyle },
+              _this.hasProduct(product.uuid) ? React.createElement(
+                "span",
+                { style: margin, className: "glyphicon glyphicon-shopping-cart centered" },
+                _this.state[product.uuid]
+              ) : null
             ),
             React.createElement(
               "button",
@@ -25384,8 +25395,6 @@ var UpdateOrder = (function (_React$Component) {
 
       var options = this.state.options.map(function (option) {
         var checked = _this.state.selected == option.value;
-        console.log(_this.state.selected);
-        console.log(option.value);
         return React.createElement(
           'div',
           { style: divStyle },
