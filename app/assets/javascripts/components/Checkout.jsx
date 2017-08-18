@@ -122,7 +122,7 @@ class Checkout extends React.Component {
           { this.state.address ? <button className="btn btn-danger" style={buttonStyle} onClick={()=>this.toggleCreateAddress(false)}>Cancel</button> : null }
         </div>
         <div hidden={this.shouldShowCreateAddress()} id="update-address">
-          <UpdateOrder optionsUrl='/addresses' default={this.state.address} onUpdate={this.updateDelivery} title="Shipping Address" ref="address"/>
+          <UpdateOrder optionsUrl='/addresses' default={this.state.address} onUpdate={this.updateAddress} title="Shipping Address" ref="address"/>
           <button className="btn" style={buttonStyle} hidden={!this.state.newAddress} onClick={()=>this.toggleCreateAddress(true)}>New Address</button>
         </div>
       </div>

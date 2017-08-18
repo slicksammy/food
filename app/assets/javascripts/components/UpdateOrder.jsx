@@ -48,8 +48,6 @@ class UpdateOrder extends React.Component {
 
     var options = this.state.options.map( (option) => {
       var checked = this.state.selected == option.value
-      console.log(this.state.selected)
-      console.log(option.value)
       return(<div style={divStyle}><input type="radio" checked={checked} onChange={()=>this.update(option.value)} value={option.value} /><span style={spanStyle}>{option.display}</span></div>)
     });
 

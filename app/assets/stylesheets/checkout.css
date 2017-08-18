@@ -75,10 +75,20 @@ html, body {
 
 .base-container {
   display: inline-block;
-  box-shadow: var(--layer-shadow2);
+  box-shadow: var(--layer-shadow1);
   font-size: 24px;
   width: 100%;
   padding: 20px;
+  /*border: solid .5px;*/
+}
+
+.base-container-product {
+  display: inline-block;
+  /*box-shadow: var(--layer-shadow0);*/
+  font-size: 24px;
+  width: 100%;
+  padding: 20px;
+  /*border: solid .5px;*/
 }
 
 .base-title {
@@ -90,6 +100,17 @@ html, body {
   width: 100%;
   color: var(--color-white);
   background-color: var(--color-gunmetal);
+}
+
+.base-title-product {
+  font-size: 30px;
+  /*background-color: #e1e5f4;*/
+  text-align: center;
+  padding: 20px;
+  /*display: inline-block;*/
+  width: 100%;
+  /*color: var(--color-white);*/
+  /*background-color: var(--color-gunmetal);*/
 }
 
 .centered {
