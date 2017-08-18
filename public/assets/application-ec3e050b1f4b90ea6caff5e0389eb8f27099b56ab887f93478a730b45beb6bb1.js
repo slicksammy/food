@@ -23594,10 +23594,11 @@ var NavBar = (function (_React$Component) {
 
       var header = {
         fontSize: '24px',
-        color: '#FCFCFC'
+        color: '#FCFCFC',
+        // width: '30%',
+        marginRight: '40px'
       };
 
-      // width: '30%'
       var noBorder = {
         borderTop: 'none'
       };
@@ -23607,7 +23608,7 @@ var NavBar = (function (_React$Component) {
       };
 
       var ulStyle = {
-        width: '80%',
+        width: '70%',
         textAlign: 'center'
       };
 
@@ -23642,6 +23643,15 @@ var NavBar = (function (_React$Component) {
               'I',
               React.createElement('span', { className: 'glyphicon glyphicon-heart' }),
               'Meat'
+            ),
+            React.createElement(
+              'a',
+              { style: header, href: '/cart', className: 'navbar-brand' },
+              React.createElement(
+                'span',
+                { className: 'glyphicon glyphicon-shopping-cart' },
+                this.state.cart > 0 ? this.state.cart : null
+              )
             )
           ),
           React.createElement(
@@ -23650,19 +23660,7 @@ var NavBar = (function (_React$Component) {
             React.createElement(
               'ul',
               { style: ulStyle, className: 'nav navbar-nav' },
-              React.createElement(
-                'li',
-                { style: ilStyle },
-                React.createElement(
-                  'a',
-                  { style: bigFont, href: '/cart' },
-                  React.createElement(
-                    'span',
-                    { className: 'glyphicon glyphicon-shopping-cart' },
-                    this.state.cart > 0 ? this.state.cart : null
-                  )
-                )
-              ),
+              React.createElement('li', { style: ilStyle }),
               React.createElement(
                 'li',
                 { style: ilStyle },
@@ -23826,7 +23824,7 @@ var Order = (function (_React$Component) {
         borderBottom: '1 px solid',
         padding: '10px 5px 10px 5px',
         width: '25%',
-        fontSize: '3vw'
+        fontSize: '24px'
       };
 
       var items_2 = this.props.items.map(function (item) {
@@ -23867,7 +23865,7 @@ var Order = (function (_React$Component) {
       };
 
       var totalStyle = {
-        fontSize: '3vw',
+        fontSize: '24px',
         display: 'block',
         width: '70%',
         margin: '0 auto'
@@ -23913,17 +23911,17 @@ var Order = (function (_React$Component) {
                   null,
                   React.createElement(
                     'th',
-                    { className: 'centered', style: { tdStyle: tdStyle, noBorder: noBorder } },
+                    { className: 'centered', style: tdStyle },
                     'Item'
                   ),
                   React.createElement(
                     'th',
-                    { className: 'centered', style: { tdStyle: tdStyle, noBorder: noBorder } },
+                    { className: 'centered', style: tdStyle },
                     'Quantity'
                   ),
                   React.createElement(
                     'th',
-                    { className: 'centered', style: { tdStyle: tdStyle, noBorder: noBorder } },
+                    { className: 'centered', style: tdStyle },
                     'Subtotal'
                   )
                 ),

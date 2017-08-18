@@ -17,7 +17,7 @@ class Order extends React.Component {
       borderBottom: '1 px solid',
       padding: '10px 5px 10px 5px',
       width: '25%',
-      fontSize: '3vw'
+      fontSize: '24px'
     }
 
     var items_2 = this.props.items.map( (item) => {
@@ -50,7 +50,7 @@ class Order extends React.Component {
     }
 
     var totalStyle = {
-      fontSize: '3vw',
+      fontSize: '24px',
       display: 'block',
       width: '70%',
       margin: '0 auto'
@@ -76,10 +76,10 @@ class Order extends React.Component {
             <table style={tableStyle}>
               <tbody>
                 <tr>
-                  <th className="centered" style={{tdStyle,noBorder}}>Item</th>
+                  <th className="centered" style={tdStyle}>Item</th>
                   {/*<th className="centered" style={{tdStyle,noBorder}}>Description</th>*/}
-                  <th className="centered" style={{tdStyle,noBorder}}>Quantity</th>
-                  <th className="centered" style={{tdStyle,noBorder}}>Subtotal</th>
+                  <th className="centered" style={tdStyle}>Quantity</th>
+                  <th className="centered" style={tdStyle}>Subtotal</th>
                 </tr>
                 {items_2}
               </tbody>

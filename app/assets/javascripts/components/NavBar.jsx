@@ -56,7 +56,8 @@ class NavBar extends React.Component {
     var header = {
       fontSize: '24px',
       color: '#FCFCFC',
-      // width: '30%'
+      // width: '30%',
+      marginRight: '40px'
     }
 
     var noBorder = {
@@ -68,7 +69,7 @@ class NavBar extends React.Component {
     }
 
     var ulStyle = {
-      width: '80%',
+      width: '70%',
       textAlign: 'center'
     }
 
@@ -87,10 +88,11 @@ class NavBar extends React.Component {
               <span className="icon-bar"></span>
             </button>
             <a style={header} href="/" className="navbar-brand">I<span className="glyphicon glyphicon-heart"></span>Meat</a>
+            <a style={header} href="/cart" className="navbar-brand"><span className="glyphicon glyphicon-shopping-cart">{this.state.cart > 0 ? this.state.cart : null}</span></a>
           </div>
           <div style={noBorder} className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul style={ulStyle} className="nav navbar-nav">
-              <li style={ilStyle}><a style={bigFont} href="/cart"><span className="glyphicon glyphicon-shopping-cart">{this.state.cart > 0 ? this.state.cart : null}</span></a></li>
+              <li style={ilStyle}></li>
               <li style={ilStyle}><a style={bigFont} href="/about"><span className="glyphicon">About</span></a></li>
               <li style={ilStyle}><a style={bigFont} href="/availability"><span className="glyphicon">Availability</span></a></li>
               { this.props.signedIn? <li style={ilStyle}><a style={bigFont} href="/orders"><span className="glyphicon">Orders</span></a></li> : null }
