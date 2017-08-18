@@ -21539,7 +21539,7 @@ var Checkout = (function (_React$Component) {
         method: 'POST',
         url: '/order/buy',
         success: function () {
-          window.location = '/home';
+          window.location = '/orders';
         },
         error: (function () {
           this.setState({ error: true });
@@ -22702,14 +22702,20 @@ var NavBar = (function (_React$Component) {
       };
 
       var brandStyle = {
-        width: '20%'
+        // width: '20%'
       };
 
       var bigFont = {
-        fontSize: '26px',
+        fontSize: '24px',
         color: '#FCFCFC'
       };
 
+      var header = {
+        fontSize: '24px',
+        color: '#FCFCFC'
+      };
+
+      // width: '30%'
       var noBorder = {
         borderTop: 'none'
       };
@@ -22718,12 +22724,21 @@ var NavBar = (function (_React$Component) {
         paddingBottom: '15px'
       };
 
+      var ulStyle = {
+        width: '80%',
+        textAlign: 'center'
+      };
+
+      var ilStyle = {
+        width: '20%'
+      };
+
       return React.createElement(
         'nav',
         { className: 'navbar navbar-default navbar-fixed-top', style: navStyle },
         React.createElement(
           'div',
-          { style: bigFont, className: 'container-fluid dark-gray' },
+          { style: bigFont, className: 'container-fluid sexy-blue' },
           React.createElement(
             'div',
             { style: padded, className: 'navbar-header' },
@@ -22741,7 +22756,7 @@ var NavBar = (function (_React$Component) {
             ),
             React.createElement(
               'a',
-              { style: bigFont, href: '/', className: 'navbar-brand' },
+              { style: header, href: '/', className: 'navbar-brand' },
               'I',
               React.createElement('span', { className: 'glyphicon glyphicon-heart' }),
               'Meat'
@@ -22752,10 +22767,10 @@ var NavBar = (function (_React$Component) {
             { style: noBorder, className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
             React.createElement(
               'ul',
-              { className: 'nav navbar-nav' },
+              { style: ulStyle, className: 'nav navbar-nav' },
               React.createElement(
                 'li',
-                null,
+                { style: ilStyle },
                 React.createElement(
                   'a',
                   { style: bigFont, href: '/cart' },
@@ -22768,7 +22783,7 @@ var NavBar = (function (_React$Component) {
               ),
               React.createElement(
                 'li',
-                null,
+                { style: ilStyle },
                 React.createElement(
                   'a',
                   { style: bigFont, href: '/about' },
@@ -22781,7 +22796,7 @@ var NavBar = (function (_React$Component) {
               ),
               React.createElement(
                 'li',
-                null,
+                { style: ilStyle },
                 React.createElement(
                   'a',
                   { style: bigFont, href: '/availability' },
@@ -22794,10 +22809,10 @@ var NavBar = (function (_React$Component) {
               ),
               this.props.signedIn ? React.createElement(
                 'li',
-                null,
+                { style: ilStyle },
                 React.createElement(
                   'a',
-                  { style: bigFont, href: '/home' },
+                  { style: bigFont, href: '/orders' },
                   React.createElement(
                     'span',
                     { className: 'glyphicon' },
@@ -22805,10 +22820,10 @@ var NavBar = (function (_React$Component) {
                   )
                 )
               ) : null,
-              this.props.signedIn ? React.createElement(
+              React.createElement(
                 'li',
-                null,
-                React.createElement(
+                { className: 'right-float', style: ilStyle },
+                this.props.signedIn ? React.createElement(
                   'a',
                   { style: bigFont, href: '/logout' },
                   React.createElement(
@@ -22816,11 +22831,7 @@ var NavBar = (function (_React$Component) {
                     { className: 'glyphicon' },
                     'Logout'
                   )
-                )
-              ) : React.createElement(
-                'li',
-                null,
-                React.createElement(
+                ) : React.createElement(
                   'a',
                   { style: bigFont, href: '/login' },
                   React.createElement(
@@ -22828,7 +22839,8 @@ var NavBar = (function (_React$Component) {
                     { className: 'glyphicon' },
                     'Login'
                   )
-                )
+                ),
+                ' '
               )
             )
           )
@@ -23848,7 +23860,8 @@ var Products = (function (_React$Component) {
           right: '0',
           background: 'rgba(29, 106, 154, 0.72)',
           color: '#fff',
-          transition: 'opacity .2s, visibility .2s'
+          transition: 'opacity .2s, visibility .2s',
+          padding: '10px'
         };
 
         var hoverBoxStyle = {
