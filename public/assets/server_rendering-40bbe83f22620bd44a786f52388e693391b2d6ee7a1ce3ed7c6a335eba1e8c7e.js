@@ -21412,7 +21412,7 @@ var CheckAvailability = (function (_React$Component) {
         borderBottom: 'solid 5px',
         height: '50px',
         width: '100%',
-        fontSize: '3em',
+        fontSize: '3vw',
         textAlign: 'center'
       };
 
@@ -22822,7 +22822,7 @@ var NavBar = (function (_React$Component) {
               ) : null,
               React.createElement(
                 'li',
-                { className: 'right-float', style: ilStyle },
+                { style: ilStyle },
                 this.props.signedIn ? React.createElement(
                   'a',
                   { style: bigFont, href: '/logout' },

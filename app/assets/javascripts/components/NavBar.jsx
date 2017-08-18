@@ -94,7 +94,7 @@ class NavBar extends React.Component {
               <li style={ilStyle}><a style={bigFont} href="/about"><span className="glyphicon">About</span></a></li>
               <li style={ilStyle}><a style={bigFont} href="/availability"><span className="glyphicon">Availability</span></a></li>
               { this.props.signedIn? <li style={ilStyle}><a style={bigFont} href="/orders"><span className="glyphicon">Orders</span></a></li> : null }
-              <li className="right-float" style={ilStyle}>{ this.props.signedIn? <a style={bigFont} href="/logout"><span className="glyphicon">Logout</span></a> : <a style={bigFont} href="/login"><span className="glyphicon">Login</span></a>} </li> 
+              <li style={ilStyle}>{ this.props.signedIn? <a style={bigFont} href="/logout"><span className="glyphicon">Logout</span></a> : <a style={bigFont} href="/login"><span className="glyphicon">Login</span></a>} </li> 
             </ul>
           </div>
         </div>
