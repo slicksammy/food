@@ -14,7 +14,7 @@ class Checkout extends React.Component {
       method: 'POST',
       url: '/order/buy',
       success: function() {
-        window.location = '/home'
+        window.location = '/orders'
       },
       error: function() {
         this.setState({error: true })

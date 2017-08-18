@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   # START USERS
   get '/signup' => 'users#signup'
   post '/users/create' => 'users#create'
-  get '/home' => 'users#home'
+  get '/orders' => 'users#home'
   post '/forgot_password' => 'users#forgot_password'
   get '/reset_password' => 'users#reset_password'
   post '/reset_password' => 'users#reset_password!'

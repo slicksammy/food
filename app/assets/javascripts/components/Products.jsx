@@ -73,6 +73,7 @@ class Products extends React.Component {
         background: 'rgba(29, 106, 154, 0.72)',
         color: '#fff',
         transition: 'opacity .2s, visibility .2s',
+        padding: '10px'
       }
 
       var hoverBoxStyle = {
