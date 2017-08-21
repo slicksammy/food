@@ -22,8 +22,6 @@ class Checkout extends React.Component {
         this.setState({error: response.responseJSON.error || 'there was an error please try again' })
       }.bind(this)
     });
-
-    e.target.disabled = false
   }
 
   toggleAddress(val) {
