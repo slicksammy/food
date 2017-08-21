@@ -119,11 +119,11 @@ class Checkout extends React.Component {
       <div className="col-xs-12 col-sm-9 col-md-9 col-lg-9" style={colCentered}>
         <div hidden={!this.shouldShowCreateAddress()} id="create-address">
           <CreateAddress onSuccess={this.updateAddress}/>
-          { this.state.address ? <button className="btn" style={buttonStyle} onClick={()=>this.toggleCreateAddress(false)}>Cancel</button> : null }
+          { this.state.address ? <button className="btn btn-default" style={buttonStyle} onClick={()=>this.toggleCreateAddress(false)}>Cancel</button> : null }
         </div>
         <div hidden={this.shouldShowCreateAddress()} id="update-address">
           <UpdateOrder optionsUrl='/addresses' default={this.state.address} onUpdate={this.updateAddress} title="Shipping Address" ref="address"/>
-          <button className="btn" style={buttonStyle} hidden={!this.state.newAddress} onClick={()=>this.toggleCreateAddress(true)}>New Address</button>
+          <button className="btn btn-default" style={buttonStyle} hidden={!this.state.newAddress} onClick={()=>this.toggleCreateAddress(true)}>New Address</button>
         </div>
       </div>
     )
@@ -132,11 +132,11 @@ class Checkout extends React.Component {
       <div className="col-xs-12 col-sm-9 col-md-9 col-lg-9" style={colCentered}>
         <div hidden={!this.shouldShowPayment()} id="create-payment">
           <Payment onSuccess={this.updatePayment}/>
-          { this.state.stripe_token ? <button className="btn" style={buttonStyle} onClick={()=>this.togglePayment(false)}>Cancel</button> : null }
+          { this.state.stripe_token ? <button className="btn btn-default" style={buttonStyle} onClick={()=>this.togglePayment(false)}>Cancel</button> : null }
         </div>
         <div hidden={this.shouldShowPayment()} id="update-payment">
           <UpdateOrder optionsUrl='/stripe' default={this.state.stripe_token} onUpdate={this.updatePayment} title="Payment" ref="payment"/>
-          <button className="btn" style={buttonStyle} hidden={!this.state.newPayment} onClick={()=>this.togglePayment(true)}>New Card</button>
+          <button className="btn btn-default" style={buttonStyle} hidden={!this.state.newPayment} onClick={()=>this.togglePayment(true)}>New Card</button>
         </div>
       </div>
     )
@@ -175,7 +175,7 @@ class Checkout extends React.Component {
     var form = ( 
       <div>
         <div style={centered}>
-          <div style={colCentered} className="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+          <div>
             <Order items={this.props.items} order={this.props.order} />
           </div>
         </div>

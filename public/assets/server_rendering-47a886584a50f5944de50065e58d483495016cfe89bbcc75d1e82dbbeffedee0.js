@@ -21661,7 +21661,7 @@ var Checkout = (function (_React$Component) {
           React.createElement(CreateAddress, { onSuccess: this.updateAddress }),
           this.state.address ? React.createElement(
             'button',
-            { className: 'btn', style: buttonStyle, onClick: function () {
+            { className: 'btn btn-default', style: buttonStyle, onClick: function () {
                 return _this.toggleCreateAddress(false);
               } },
             'Cancel'
@@ -21673,7 +21673,7 @@ var Checkout = (function (_React$Component) {
           React.createElement(UpdateOrder, { optionsUrl: '/addresses', 'default': this.state.address, onUpdate: this.updateAddress, title: 'Shipping Address', ref: 'address' }),
           React.createElement(
             'button',
-            { className: 'btn', style: buttonStyle, hidden: !this.state.newAddress, onClick: function () {
+            { className: 'btn btn-default', style: buttonStyle, hidden: !this.state.newAddress, onClick: function () {
                 return _this.toggleCreateAddress(true);
               } },
             'New Address'
@@ -21690,7 +21690,7 @@ var Checkout = (function (_React$Component) {
           React.createElement(Payment, { onSuccess: this.updatePayment }),
           this.state.stripe_token ? React.createElement(
             'button',
-            { className: 'btn', style: buttonStyle, onClick: function () {
+            { className: 'btn btn-default', style: buttonStyle, onClick: function () {
                 return _this.togglePayment(false);
               } },
             'Cancel'
@@ -21702,7 +21702,7 @@ var Checkout = (function (_React$Component) {
           React.createElement(UpdateOrder, { optionsUrl: '/stripe', 'default': this.state.stripe_token, onUpdate: this.updatePayment, title: 'Payment', ref: 'payment' }),
           React.createElement(
             'button',
-            { className: 'btn', style: buttonStyle, hidden: !this.state.newPayment, onClick: function () {
+            { className: 'btn btn-default', style: buttonStyle, hidden: !this.state.newPayment, onClick: function () {
                 return _this.togglePayment(true);
               } },
             'New Card'
@@ -21751,7 +21751,7 @@ var Checkout = (function (_React$Component) {
           { style: centered },
           React.createElement(
             'div',
-            { style: colCentered, className: 'col-xs-12 col-sm-9 col-md-9 col-lg-9' },
+            null,
             React.createElement(Order, { items: this.props.items, order: this.props.order })
           )
         ),
