@@ -21,7 +21,7 @@ class ApplicationController < SessionsController
   end
 
   def record_page_visit
-    PageVisit.create!(url: params["url"], user_uuid: current_user_uuid)
+    PageVisit.create!(url: params["url"], user_uuid: current_user_uuid, ip_address: request.remote_ip)
   end
 
   private

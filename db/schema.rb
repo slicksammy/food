@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20170821231837) do
   create_table "page_visits", force: :cascade do |t|
     t.string "user_uuid"
     t.string "url"
+    t.string "ip_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
