@@ -1,11 +1,19 @@
 <style>
   .centered {
-    margin: 0 auto;
-    width: 400px;
-    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: block;
+  }
+
+  .col-centered {
+    display: inline-block;
+    float: none;
   }
 </style>
 
 <div class='container centered'>
-  <%= react_component('LoginSignup', show: 'login', redirect_url: @redirect_url) %>
+  <div class="col-centered col-xs-11 col-sm-10 col-lg-6 col-md-6">
+    <%= react_component('LoginSignup', show: 'login', redirect_url: @redirect_url) %>
+  </div>
 </div>
