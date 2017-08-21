@@ -22740,6 +22740,10 @@ var NavBar = (function (_React$Component) {
         color: 'red'
       };
 
+      var img = {
+        width: '110px'
+      };
+
       return React.createElement(
         'nav',
         { className: 'navbar navbar-default navbar-fixed-top', style: navStyle },
@@ -22764,9 +22768,7 @@ var NavBar = (function (_React$Component) {
             React.createElement(
               'a',
               { style: header, href: '/', className: 'navbar-brand' },
-              'I',
-              React.createElement('span', { style: red, className: 'glyphicon glyphicon-heart' }),
-              'Meat'
+              React.createElement('img', { style: img, src: 'assets/logo_simple.png' })
             ),
             React.createElement(
               'a',

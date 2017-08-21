@@ -82,6 +82,10 @@ class NavBar extends React.Component {
       color: 'red'
     }
 
+    var img = {
+      width: '110px'
+    }
+
     return(
       <nav className="navbar navbar-default navbar-fixed-top" style={navStyle}>
         <div style={bigFont} className="container-fluid sexy-blue">
@@ -92,7 +96,7 @@ class NavBar extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a style={header} href="/" className="navbar-brand">I<span style={red} className="glyphicon glyphicon-heart"></span>Meat</a>
+            <a style={header} href="/" className="navbar-brand"><img style={img} src="assets/logo_simple.png" /></a>
             <a style={header} href="/cart" className="navbar-brand"><span style={{marginTop: '2px'}} className="glyphicon glyphicon-shopping-cart">{this.state.cart > 0 ? this.state.cart : null}</span></a>
           </div>
           <div style={noBorder} className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
