@@ -1,0 +1,9 @@
+<div>
+  <p><%= @user.full_name %></p>
+
+  <p>Order #<%=@order[:order_number] %> has been placed and is expected to arrive on <%=@order[:formatted_expected_delivery_date]%>. We hope you enjoy it!</p>
+
+  <p>If you have any questions, comments or suggestions you can reach us at the email below.</p>
+
+  <%= render partial: 'user_mailer/support_signature' %>
+</div>

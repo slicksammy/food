@@ -1,4 +1,4 @@
-class StoreController < CartController
+class StoreController < SessionsController
   include StoreHelper
 
   # at some point you should have a smart sorting algorithm

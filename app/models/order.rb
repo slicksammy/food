@@ -9,6 +9,7 @@ class Order < ActiveRecord::Base
   belongs_to :stripe_token, primary_key: :uuid, foreign_key: :stripe_token_uuid
   has_many :stripe_charges, primary_key: :uuid, foreign_key: :order_uuid
   has_many :order_status_logs, primary_key: :uuid, foreign_key: :order_uuid
+  has_one :user, through: :cart
 
   monetize :subtotal_cents, :tax_cents, :shipping_cents, :total_cents
 

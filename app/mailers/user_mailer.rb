@@ -4,6 +4,7 @@ class UserMailer < ActionMailer::Base
 
   attr_reader :to, :from
 
+  # TODO update this email
   DEFAULT_FROM = 'sam@brokolly.com'
 
   layout 'bootstrap'

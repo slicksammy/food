@@ -165,7 +165,8 @@ class CreateAddress extends React.Component {
     var address2Style = this.validAddress2() ? complete_style : incomplete_style
 
     var errorStyle = {
-      margin: '0px 10px 0px 10px'
+      margin: '0px 10px 0px 10px',
+      color: 'red'
     }
 
     var containerStyle = {

@@ -57,7 +57,8 @@ class NavBar extends React.Component {
       fontSize: '24px',
       color: '#FCFCFC',
       // width: '30%',
-      marginRight: '40px'
+      marginRight: '40px',
+      marginTop: '-4px'
     }
 
     var noBorder = {
@@ -93,10 +94,10 @@ class NavBar extends React.Component {
           <div style={noBorder} className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul style={ulStyle} className="nav navbar-nav">
               <li style={ilStyle}></li>
-              <li style={ilStyle}><a style={bigFont} href="/about"><span className="glyphicon">About</span></a></li>
-              <li style={ilStyle}><a style={bigFont} href="/availability"><span className="glyphicon">Availability</span></a></li>
-              { this.props.signedIn? <li style={ilStyle}><a style={bigFont} href="/orders"><span className="glyphicon">Orders</span></a></li> : null }
-              <li style={ilStyle}>{ this.props.signedIn? <a style={bigFont} href="/logout"><span className="glyphicon">Logout</span></a> : <a style={bigFont} href="/login"><span className="glyphicon">Login</span></a>} </li> 
+              <li style={ilStyle}><a style={bigFont} href="/about"><span className="">About</span></a></li>
+              <li style={ilStyle}><a style={bigFont} href="/availability"><span className="">Availability</span></a></li>
+              { this.props.signedIn? <li style={ilStyle}><a style={bigFont} href="/orders">My Orders</a></li> : null }
+              <li style={ilStyle}>{ this.props.signedIn? <a style={bigFont} href="/logout">Logout</a> : <a style={bigFont} href="/login">Login</a>} </li> 
             </ul>
           </div>
         </div>

@@ -2,9 +2,10 @@ class SessionsController < ActionController::Base
 
   before_action :redirect_from_login_if_necessary, only: [:login]
 
-  rescue_from ActionController::RoutingError, with: lambda { |exception| render_error }
+  before_action :set_logged_in
 
-  def render_error
+  def set_logged_in
+    @logged_in = logged_in?
   end
 
   def authorize!

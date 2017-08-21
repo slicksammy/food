@@ -20,7 +20,7 @@ class CheckoutController < SessionsController
       @message = 'Nothing Here'
       @signed_in = logged_in?
 
-      render :file => 'public/nothing_here.html.erb', :layout => 'checkout.html.erb'
+      render :file => 'public/nothing_here.html.erb'
     end
   end
 

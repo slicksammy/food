@@ -1,11 +1,3 @@
-<link rel="stylesheet" type="text/css" href="assets/store.css">
-<script type="text/javascript" src="assets/autocomplete.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaTHvfZtxVUnyQGVYTrajZ_gCsmGXKoJM&libraries=places&callback=initAutocomplete" async defer></script>
-<link rel="stylesheet" type="text/css" href="assets/checkout.css">
-<link rel="stylesheet" type="text/css" href="assets/products.css">
-<link rel="stylesheet" type="text/css" href="assets/kevin_yun.scss">
-<link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
-
 <style>
   .header {
     font-size: 40px;
@@ -13,7 +5,6 @@
   }
 </style>
 
-<%= react_component('NavBar', signedIn: @signed_in) %> 
 <div class="container top-margin" >
   <h1 class="header">We are currently in testing and will be live in mid-September</h1>
   <%= react_component('Products', products: @products) %> 

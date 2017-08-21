@@ -19,7 +19,7 @@ class CartController < SessionsController
       @message = "Your cart is empty"
       @signed_in = logged_in?
 
-      render :file => 'public/nothing_here.html.erb', :layout => 'checkout.html.erb'
+      render :file => 'public/nothing_here.html.erb'
     end
   end
 

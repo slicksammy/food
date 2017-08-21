@@ -21,7 +21,7 @@ class AddressController < SessionsController
       end
     else
       # should throw an error with a description
-      render json: {error: 'Unfortunately we do not delivery to your area yet' }, status: 505
+      render json: {error: 'Unfortunately we do not deliver to your area yet' }, status: 505
     end
   end
 

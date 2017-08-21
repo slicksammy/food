@@ -22195,11 +22195,6 @@ var Cart = (function (_React$Component) {
         null,
         React.createElement(
           'div',
-          { style: rowStyle },
-          React.createElement(Products, { onChange: this.updateSubtotal, products: this.props.products, hideOnZero: 'true' })
-        ),
-        React.createElement(
-          'div',
           { style: subtotalStyle, className: 'row' },
           'Subtotal: $',
           this.state.subtotal
@@ -22210,8 +22205,13 @@ var Cart = (function (_React$Component) {
           React.createElement(
             'button',
             { className: 'btn btn-success', style: buttonStyle, onClick: this.continueToCheckout },
-            'Checkout >>>'
+            'Checkout'
           )
+        ),
+        React.createElement(
+          'div',
+          { style: rowStyle },
+          React.createElement(Products, { onChange: this.updateSubtotal, products: this.props.products, hideOnZero: 'true' })
         )
       );
     }
@@ -22543,7 +22543,7 @@ var Checkout = (function (_React$Component) {
           React.createElement(CreateAddress, { onSuccess: this.updateAddress }),
           this.state.address ? React.createElement(
             'button',
-            { className: 'btn btn-danger', style: buttonStyle, onClick: function () {
+            { className: 'btn', style: buttonStyle, onClick: function () {
                 return _this.toggleCreateAddress(false);
               } },
             'Cancel'
@@ -22572,7 +22572,7 @@ var Checkout = (function (_React$Component) {
           React.createElement(Payment, { onSuccess: this.updatePayment }),
           this.state.stripe_token ? React.createElement(
             'button',
-            { className: 'btn btn-danger', style: buttonStyle, onClick: function () {
+            { className: 'btn', style: buttonStyle, onClick: function () {
                 return _this.togglePayment(false);
               } },
             'Cancel'
@@ -22960,7 +22960,8 @@ var CreateAddress = (function (_React$Component) {
       var address2Style = this.validAddress2() ? complete_style : incomplete_style;
 
       var errorStyle = {
-        margin: '0px 10px 0px 10px'
+        margin: '0px 10px 0px 10px',
+        color: 'red'
       };
 
       var containerStyle = {
@@ -23596,7 +23597,8 @@ var NavBar = (function (_React$Component) {
         fontSize: '24px',
         color: '#FCFCFC',
         // width: '30%',
-        marginRight: '40px'
+        marginRight: '40px',
+        marginTop: '-4px'
       };
 
       var noBorder = {
@@ -23669,7 +23671,7 @@ var NavBar = (function (_React$Component) {
                   { style: bigFont, href: '/about' },
                   React.createElement(
                     'span',
-                    { className: 'glyphicon' },
+                    { className: '' },
                     'About'
                   )
                 )
@@ -23682,7 +23684,7 @@ var NavBar = (function (_React$Component) {
                   { style: bigFont, href: '/availability' },
                   React.createElement(
                     'span',
-                    { className: 'glyphicon' },
+                    { className: '' },
                     'Availability'
                   )
                 )
@@ -23693,11 +23695,7 @@ var NavBar = (function (_React$Component) {
                 React.createElement(
                   'a',
                   { style: bigFont, href: '/orders' },
-                  React.createElement(
-                    'span',
-                    { className: 'glyphicon' },
-                    'Orders'
-                  )
+                  'My Orders'
                 )
               ) : null,
               React.createElement(
@@ -23706,19 +23704,11 @@ var NavBar = (function (_React$Component) {
                 this.props.signedIn ? React.createElement(
                   'a',
                   { style: bigFont, href: '/logout' },
-                  React.createElement(
-                    'span',
-                    { className: 'glyphicon' },
-                    'Logout'
-                  )
+                  'Logout'
                 ) : React.createElement(
                   'a',
                   { style: bigFont, href: '/login' },
-                  React.createElement(
-                    'span',
-                    { className: 'glyphicon' },
-                    'Login'
-                  )
+                  'Login'
                 ),
                 ' '
               )

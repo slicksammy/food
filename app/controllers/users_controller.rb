@@ -75,7 +75,13 @@ class UsersController < SessionsController
     end
   end
 
+  # def redirect_to_login_if_neccessary
+  #   @redirect_url = '/checkout'
+  #   super
+  # end
+
   def home
+    byebug
     orders = current_user.orders.completed.ordered
     @orders = orders.map { |o| {order: format_order(o), items: to_string(::Checkout::OrderTotals.new(order: o).items) } }
   end

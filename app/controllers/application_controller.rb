@@ -16,9 +16,8 @@ class ApplicationController < SessionsController
 
   def routing_error
     @message = 'Woops! This page does not exist.'
-    @signed_in = logged_in?
 
-    render :file => 'public/nothing_here.html.erb', :layout => 'checkout.html.erb'
+    render :file => 'public/nothing_here.html.erb'
   end
 
   # def places
