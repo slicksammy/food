@@ -1,9 +1,9 @@
-require 'distance'
-
 class ApplicationController < SessionsController
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   # protect_from_forgery with: :exception
+
+  before_action :permit_page_visit_params, only: [:record_page_visit]
 
   def index
     
@@ -19,6 +19,18 @@ class ApplicationController < SessionsController
 
     render :file => 'public/nothing_here.html.erb'
   end
+
+  def record_page_visit
+    PageVisit.create!(url: params["url"], user_uuid: current_user_uuid)
+  end
+
+  private
+
+  def permit_page_visit_params
+    params.permit(:url)
+  end
+
+
 
   # def places
   #   places = Place.all
