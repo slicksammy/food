@@ -9,17 +9,21 @@ class Checkout extends React.Component {
     this.hideForver = this.hideForver.bind(this)
   }
 
-  confirmOrder() {
+  confirmOrder(e) {
+    e.target.disabled = true
+
     $.ajax({
       method: 'POST',
       url: '/order/buy',
       success: function() {
         window.location = '/orders'
       },
-      error: function() {
-        this.setState({error: true })
+      error: function(response) {
+        this.setState({error: response.responseJSON.error || 'there was an error please try again' })
       }.bind(this)
     });
+
+    e.target.disabled = false
   }
 
   toggleAddress(val) {
@@ -190,9 +194,9 @@ class Checkout extends React.Component {
         </div>
         <div style={totalContainerStyle}>
           <h1>Total: ${this.props.order.total}</h1>
-          { this.state.error ? <h2 style={errorStyle}>There was an error. Please update your information and try again.</h2> : null}
+          { this.state.error ? <h2 style={errorStyle}>{this.state.error}</h2> : null}
           {/*disable button on submit so customer doesn't try buying twice*/}
-          <button style={buyButtonStyle} disabled={!this.canBuy()}className="btn btn-success" onClick={this.confirmOrder}>Buy</button>
+          <button style={buyButtonStyle} disabled={!this.canBuy()} className="btn btn-success" onClick={this.confirmOrder}>Buy</button>
         </div> 
       </div>
     )

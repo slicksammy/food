@@ -50,13 +50,15 @@ class CheckoutController < SessionsController
   end
 
   def buy
-    if ::Stripe::MakeCharge.new(order).charge!
+    begin
+      ::Stripe::MakeCharge.new(order).charge!
       order.purchase!
       OrderMailer.order_confirmation(order).deliver!
       clear_cart
       render body: nil, status: 202
-    else
-      render body: nil, status: 401
+    rescue ::Stripe::MakeCharge::DuplicateChargeError => e
+      clear_cart
+      render body: nil, status: 401, json: { error: 'Order has already been paid for' }
     end
   end
 
