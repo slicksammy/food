@@ -3,9 +3,22 @@
     font-size: 40px;
     text-align: center ;
   }
+
+  .logo {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .centered {
+    text-align: center
+  }
 </style>
 
 <div class="container top-margin" >
-  <h1 class="header">We are currently in testing and will be live in mid-September</h1>
+  <!-- <h1 class="header">We are currently in testing and will be live in mid-September</h1> -->
+  <img class="logo img img-responsive" src="assets/logo.png" />
+  <div class="centered">
+    <a href="/about">Learn More</a>
+  </div>
   <%= react_component('Products', products: @products) %> 
 </div>
