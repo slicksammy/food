@@ -52,6 +52,7 @@ class CheckoutController < SessionsController
   def buy
     if ::Stripe::MakeCharge.new(order).charge!
       order.purchase!
+      OrderMailer.order_confirmation(order).deliver!
       clear_cart
       render body: nil, status: 202
     else
