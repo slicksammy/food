@@ -81,7 +81,6 @@ class UsersController < SessionsController
   # end
 
   def home
-    byebug
     orders = current_user.orders.completed.ordered
     @orders = orders.map { |o| {order: format_order(o), items: to_string(::Checkout::OrderTotals.new(order: o).items) } }
   end
