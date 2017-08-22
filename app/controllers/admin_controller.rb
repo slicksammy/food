@@ -1,10 +1,13 @@
 require 'checkout/order_totals'
+require 'stats'
 
 class AdminController < SessionsController
   include CheckoutHelper
 
   # TODO uncomment - commented for now for testing purposes
   # before_action :authorize!
+
+  before_action :stats, only: [:dashboard, :get_stats]
 
   def authorize!
     redirect_to '/' unless admin?
@@ -13,6 +16,19 @@ class AdminController < SessionsController
   def index
     orders = Order.all
     @orders = format_orders(orders)
+  end
+
+  def dashboard
+    # view
+  end
+
+  def stats
+    i = Stats.new(params["time"] || 60)
+    @stats = { orders: i.orders, users: i.users, carts: i.carts, page_views: i.page_views }
+  end
+
+  def get_stats
+    render json: { stats: @stats }
   end
 
   private
