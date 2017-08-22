@@ -21742,7 +21742,8 @@ var Checkout = (function (_React$Component) {
       var totalContainerStyle = {
         textAlign: 'center',
         marginBottom: '50px',
-        clear: 'both'
+        clear: 'both',
+        opacity: this.state.loader || this.state.success ? .1 : 1
       };
 
       var errorStyle = {
