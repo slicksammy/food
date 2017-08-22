@@ -11,17 +11,23 @@ class Checkout extends React.Component {
 
   confirmOrder(e) {
     e.target.disabled = true
+    this.setState({loader: true})
 
     $.ajax({
       method: 'POST',
       url: '/order/buy',
       success: function() {
-        window.location = '/orders'
-      },
+        this.showSuccess()
+      }.bind(this),
       error: function(response) {
         this.setState({error: response.responseJSON.error || 'there was an error please try again' })
       }.bind(this)
     });
+  }
+
+  showSuccess() {
+    this.setState({success: true, loader: false})
+    setTimeout(function() {window.location = '/orders', 2000})
   }
 
   toggleAddress(val) {
@@ -171,11 +177,14 @@ class Checkout extends React.Component {
 
     var centered = {
       textAlign: 'center',
-      display: 'block'
+      display: 'block',
+      opacity: this.state.loader || this.state.success ? .1 : 1
     }
 
     var form = ( 
       <div>
+        {this.state.loader ? <div className="loader"></div> : null }
+        {this.state.success ? <div className="success"><span className=" glyphicon glyphicon-ok"></span>Congrats! Purhcase Complete.</div> : null }
         <div style={centered}>
           <div>
             <Order items={this.props.items} order={this.props.order} />
@@ -200,7 +209,7 @@ class Checkout extends React.Component {
     )
 
     return(
-      <div> {this.state.success ? <OrderSuccess orderNumber={this.state.orderNumber}/> : form } </div>
+      <div>{ form }</div>
     )  
   }
 }

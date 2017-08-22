@@ -107,12 +107,14 @@ class Products extends React.Component {
 
       return(
         <div style={colCentered} className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-          <div className="base-title-product">{product.name}</div>
+          <div className="base-title-product"><strong>{product.name}</strong></div>
           <div  className="base-container-product">
-            <div onMouseEnter={()=> this.toggleShowDescription(product.uuid, true)} onMouseLeave={()=> this.toggleShowDescription(product.uuid, false)} style={hoverBoxStyle}>
-               <img style={imageStyle} className="layer-shadow2" src={product.image_url}/> 
+            <img style={imageStyle} className="img-rounded layer-shadow2" src={product.image_url}/> 
+            {/*<div onMouseEnter={()=> this.toggleShowDescription(product.uuid, true)} onMouseLeave={()=> this.toggleShowDescription(product.uuid, false)} style={hoverBoxStyle}>
+              
                { this.showDescription(product.uuid) ? <div style={descriptionStyle}>{product.description}</div> : null }
-            </div>
+            </div>*/}
+            <h3>{product.description}</h3>
             <h2>${product.price}</h2>
             <button style={buttonStyle} className="btn btn-danger cart_update layer-shadow1" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
             <div style={spanStyle}>

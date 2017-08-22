@@ -58,7 +58,7 @@ class NavBar extends React.Component {
       color: '#FCFCFC',
       // width: '30%',
       marginRight: '40px',
-      marginTop: '-4px'
+      marginTop: '-8px'
     }
 
     var noBorder = {
@@ -75,7 +75,7 @@ class NavBar extends React.Component {
     }
 
     var ilStyle = {
-      width: '20%'
+      width: '20%',
     }
 
     var red = {
@@ -87,7 +87,7 @@ class NavBar extends React.Component {
     }
 
     return(
-      <nav className="navbar navbar-default navbar-fixed-top" style={navStyle}>
+      <nav className="navbar navbar-default" style={navStyle}>
         <div style={bigFont} className="container-fluid sexy-blue">
           <div style={padded} className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">

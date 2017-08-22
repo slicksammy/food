@@ -1,7 +1,6 @@
 <script type="text/javascript" src="assets/autocomplete.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaTHvfZtxVUnyQGVYTrajZ_gCsmGXKoJM&libraries=places&callback=initAutocomplete" async defer></script>
 
-<%= react_component('NavBar', signedIn: true) %> 
 <div class="container top-margin">
   <%= react_component('Checkout', order: @order, items: @items, payments: @payment_options, addresses: @address_options, delivery_options: @delivery_options) %>
 </div>
