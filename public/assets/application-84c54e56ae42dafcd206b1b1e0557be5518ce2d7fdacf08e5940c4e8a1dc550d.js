@@ -22607,6 +22607,29 @@ var Checkout = (function (_React$Component) {
         'div',
         { className: 'col-xs-12 col-sm-9 col-md-9 col-lg-9', style: colCentered },
         React.createElement(
+          'h2',
+          null,
+          'Orders will arrive between ',
+          React.createElement(
+            'strong',
+            null,
+            '3pm'
+          ),
+          ' and ',
+          React.createElement(
+            'strong',
+            null,
+            '7pm'
+          ),
+          ' and must be put in the fridge or freezer by ',
+          React.createElement(
+            'strong',
+            null,
+            '10pm'
+          ),
+          ' to stay fresh.'
+        ),
+        React.createElement(
           'div',
           { id: 'update-delivery' },
           React.createElement(UpdateOrder, { 'default': this.state.expected_delivery_date, onUpdate: this.updateDelivery, options: this.props.delivery_options, title: 'Delivery Date', ref: 'delivery' })
@@ -23721,7 +23744,7 @@ var NavBar = (function (_React$Component) {
 
       return React.createElement(
         'nav',
-        { className: 'navbar navbar-default', style: navStyle },
+        { className: 'navbar navbar-default navbar-fixed-top', style: navStyle },
         React.createElement(
           'div',
           { style: bigFont, className: 'container-fluid sexy-blue' },
@@ -23932,8 +23955,7 @@ var Order = (function (_React$Component) {
               'div',
               { style: { clear: 'both' } },
               item.name
-            ),
-            React.createElement('img', { style: imageStyle, src: item.image })
+            )
           ),
           React.createElement(
             'td',
@@ -24090,9 +24112,9 @@ var Order = (function (_React$Component) {
 var ProductsTable = function (props) {
   return React.createElement('table', null);
 };
-/*<td style={tdStyle}>
- {item.description}
-</td>*/ /*<th className="centered" style={{tdStyle,noBorder}}>Description</th>*/ /*<button onClick={this.order}>Buy</button>*/;
+/*<img style={imageStyle} src={item.image} />*/ /*<td style={tdStyle}>
+                                                 {item.description}
+                                                </td>*/ /*<th className="centered" style={{tdStyle,noBorder}}>Description</th>*/ /*<button onClick={this.order}>Buy</button>*/;
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
@@ -24803,7 +24825,7 @@ var Products = (function (_React$Component) {
 
       var products = this.props.products.map(function (product) {
         var imageStyle = {
-          width: '100%',
+          width: '75%',
           height: '200px'
         };
 
@@ -24814,7 +24836,7 @@ var Products = (function (_React$Component) {
         };
 
         var buttonStyle = {
-          margin: '30px'
+          margin: '15px'
         };
 
         var mainContainerStyle = {
@@ -24841,11 +24863,13 @@ var Products = (function (_React$Component) {
 
         var spanStyle = {
           // float: 'left',
-          color: 'green',
           clear: 'both',
           fontSize: '30px',
-          display: 'inline-block',
-          width: '25px'
+          display: 'block',
+          width: '25px',
+          margin: '0 auto',
+          marginTop: '-50px',
+          marginBottom: '5px'
         };
 
         var colCentered = {
@@ -24864,7 +24888,7 @@ var Products = (function (_React$Component) {
 
         return React.createElement(
           "div",
-          { style: colCentered, className: "col-lg-4 col-md-4 col-sm-6 col-xs-12" },
+          { style: colCentered, className: "col-lg-4 col-md-4 col-sm-6 col-xs-9" },
           React.createElement(
             "div",
             { className: "base-title-product" },
@@ -24878,6 +24902,11 @@ var Products = (function (_React$Component) {
             "div",
             { className: "base-container-product" },
             React.createElement("img", { style: imageStyle, className: "img-rounded layer-shadow2", src: product.image_url }),
+            _this.hasProduct(product.uuid) ? React.createElement(
+              "span",
+              { style: spanStyle, className: "glyphicon glyphicon-shopping-cart centered no-line text-blue" },
+              _this.state[product.uuid]
+            ) : null,
             React.createElement(
               "h3",
               null,
@@ -24895,15 +24924,6 @@ var Products = (function (_React$Component) {
                   return _this.add(product.uuid, -1);
                 }, id: "cart_subtract" },
               "-"
-            ),
-            React.createElement(
-              "div",
-              { style: spanStyle },
-              _this.hasProduct(product.uuid) ? React.createElement(
-                "span",
-                { style: margin, className: "glyphicon glyphicon-shopping-cart centered" },
-                _this.state[product.uuid]
-              ) : null
             ),
             React.createElement(
               "button",
