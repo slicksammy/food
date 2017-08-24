@@ -128,10 +128,10 @@ class Payment extends React.Component {
             <div style={divStyle}>
               <input className="base-input" style={long} id="number" onChange={this.updateState} placeholder="card number" type="text" /><span style={numberStyle} className="glyphicon glyphicon-ok"></span>
             </div>
-             <div style={selectStyle}>
+            <div style={selectStyle}>
               <Months onChange={this.updateState} id="month"/><span style={monthStyle} className="glyphicon glyphicon-ok"></span>
-              </div>
-              <div style={selectStyle}>
+            </div>
+            <div style={selectStyle}>
               <Years onChange={this.updateState} id="year"/><span style={yearStyle} className="glyphicon glyphicon-ok"></span>
             </div>
             <div style={divStyle}>

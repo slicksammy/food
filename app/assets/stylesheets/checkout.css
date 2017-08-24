@@ -48,6 +48,7 @@
 .text-gunmetal { color: var(--color-gunmetal); }
 .text-blue-gray { color: var(--color-blue-gray); }
 .text-blue-marine { color: var(--color-blue-marine); }
+.text-blue { color: var(--color-blue); }
 
 
 
@@ -212,6 +213,10 @@ html, body {
 
 .block {
   display: block;
+}
+
+.no-line {
+  line-height: normal;
 }
 
 

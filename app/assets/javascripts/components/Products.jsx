@@ -46,7 +46,7 @@ class Products extends React.Component {
   render() {
     var products = this.props.products.map( (product) => {
       var imageStyle = {
-        width: '100%',
+        width: '75%',
         height: '200px'
       }
 
@@ -57,7 +57,7 @@ class Products extends React.Component {
       }
 
       var buttonStyle = {
-        margin: '30px'
+        margin: '15px'
       }
 
       var mainContainerStyle = {
@@ -84,11 +84,13 @@ class Products extends React.Component {
 
       var spanStyle = {
         // float: 'left',
-        color: 'green',
         clear: 'both',
         fontSize: '30px',
-        display: 'inline-block',
-        width: '25px'
+        display: 'block',
+        width: '25px',
+        margin: '0 auto',
+        marginTop: '-50px',
+        marginBottom: '5px'
       }
 
       var colCentered = {
@@ -106,10 +108,11 @@ class Products extends React.Component {
       }
 
       return(
-        <div style={colCentered} className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div style={colCentered} className="col-lg-4 col-md-4 col-sm-6 col-xs-9">
           <div className="base-title-product"><strong>{product.name}</strong></div>
           <div  className="base-container-product">
             <img style={imageStyle} className="img-rounded layer-shadow2" src={product.image_url}/> 
+            { this.hasProduct(product.uuid) ? <span style={spanStyle} className="glyphicon glyphicon-shopping-cart centered no-line text-blue">{this.state[product.uuid]}</span> : null }
             {/*<div onMouseEnter={()=> this.toggleShowDescription(product.uuid, true)} onMouseLeave={()=> this.toggleShowDescription(product.uuid, false)} style={hoverBoxStyle}>
               
                { this.showDescription(product.uuid) ? <div style={descriptionStyle}>{product.description}</div> : null }
@@ -117,9 +120,6 @@ class Products extends React.Component {
             <h3>{product.description}</h3>
             <h2>${product.price}</h2>
             <button style={buttonStyle} className="btn btn-danger cart_update layer-shadow1" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
-            <div style={spanStyle}>
-              { this.hasProduct(product.uuid) ? <span style={margin} className="glyphicon glyphicon-shopping-cart centered">{this.state[product.uuid]}</span> : null }
-            </div>
             <button style={buttonStyle} className="btn btn-success cart_update layer-shadow1" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
           </div>
         </div>

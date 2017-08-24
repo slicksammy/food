@@ -30,7 +30,7 @@ class Order extends React.Component {
         <tr>
           <td style={tdStyle}>
             <div style={{clear: 'both'}}>{item.name}</div>
-            <img style={imageStyle} src={item.image} />
+            {/*<img style={imageStyle} src={item.image} />*/}
           </td>
           {/*<td style={tdStyle}>
             {item.description}
