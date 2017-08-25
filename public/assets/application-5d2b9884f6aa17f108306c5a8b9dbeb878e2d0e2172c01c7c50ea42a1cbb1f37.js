@@ -24869,7 +24869,8 @@ var Products = (function (_React$Component) {
           width: '25px',
           margin: '0 auto',
           marginTop: '-50px',
-          marginBottom: '5px'
+          marginBottom: '5px',
+          color: 'white'
         };
 
         var colCentered = {
@@ -24904,7 +24905,7 @@ var Products = (function (_React$Component) {
             React.createElement("img", { style: imageStyle, className: "img-rounded layer-shadow2", src: product.image_url }),
             _this.hasProduct(product.uuid) ? React.createElement(
               "span",
-              { style: spanStyle, className: "glyphicon glyphicon-shopping-cart centered no-line text-blue" },
+              { style: spanStyle, className: "glyphicon glyphicon-shopping-cart centered no-line" },
               _this.state[product.uuid]
             ) : null,
             React.createElement(
