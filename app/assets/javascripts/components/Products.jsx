@@ -90,7 +90,8 @@ class Products extends React.Component {
         width: '25px',
         margin: '0 auto',
         marginTop: '-50px',
-        marginBottom: '5px'
+        marginBottom: '5px',
+        color: 'white'
       }
 
       var colCentered = {
@@ -112,7 +113,7 @@ class Products extends React.Component {
           <div className="base-title-product"><strong>{product.name}</strong></div>
           <div  className="base-container-product">
             <img style={imageStyle} className="img-rounded layer-shadow2" src={product.image_url}/> 
-            { this.hasProduct(product.uuid) ? <span style={spanStyle} className="glyphicon glyphicon-shopping-cart centered no-line text-blue">{this.state[product.uuid]}</span> : null }
+            { this.hasProduct(product.uuid) ? <span style={spanStyle} className="glyphicon glyphicon-shopping-cart centered no-line">{this.state[product.uuid]}</span> : null }
             {/*<div onMouseEnter={()=> this.toggleShowDescription(product.uuid, true)} onMouseLeave={()=> this.toggleShowDescription(product.uuid, false)} style={hoverBoxStyle}>
               
                { this.showDescription(product.uuid) ? <div style={descriptionStyle}>{product.description}</div> : null }
