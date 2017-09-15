@@ -22,7 +22,7 @@ class Cart extends React.Component {
 
   render() {
     var buttonStyle = {
-      fontSize: '2vw',
+      fontSize: '3vw',
       margin: '20px'
     }
 

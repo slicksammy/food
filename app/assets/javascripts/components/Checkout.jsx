@@ -161,7 +161,7 @@ class Checkout extends React.Component {
     var buyButtonStyle = {
       width: '25%',
       // height: '3em',
-      fontSize: '2vw',
+      fontSize: '3vw',
       dispaly: 'inline-block',
       paddingBottom: '20px'
     }
