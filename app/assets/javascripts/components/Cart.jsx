@@ -22,7 +22,7 @@ class Cart extends React.Component {
 
   render() {
     var buttonStyle = {
-      fontSize: '4vw',
+      fontSize: '2vw',
       margin: '20px'
     }
 
@@ -55,13 +55,12 @@ class Cart extends React.Component {
         <div style={subtotalStyle} className="row">
           Subtotal: ${this.state.subtotal}
         </div>
-        <div style={buttonContainer}>
-          <button className="btn btn-success" style={buttonStyle} onClick={this.continueToCheckout}>Checkout</button>
-        </div>
         <div style={rowStyle}>
           <Products onChange={this.updateSubtotal} products={this.props.products} hideOnZero="true" />
         </div>
-        
+        <div style={buttonContainer}>
+          <button className="btn btn-success" style={buttonStyle} onClick={this.continueToCheckout}>Checkout</button>
+        </div>
       </div>
     )
   }

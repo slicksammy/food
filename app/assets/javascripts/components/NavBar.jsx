@@ -29,19 +29,19 @@ class NavBar extends React.Component {
 
   render() {
     var navStyle = {
-      borderRadius: '0px',
+      // borderRadius: '0px',
     }
 
     var aStyle = {
-      fontSize: '40px'
+      // fontSize: '40px'
     }
 
     var floatRight = {
-      float: 'right'
+      // float: 'right'
     }
 
     var greenColor = {
-      color: 'green'
+      // color: 'green'
     }
 
     var brandStyle = {
@@ -49,48 +49,48 @@ class NavBar extends React.Component {
     }
 
     var bigFont = {
-      fontSize: '24px',
-      color: '#FCFCFC'
+      // fontSize: '24px',
+      // color: '#FCFCFC'
     }
 
     var header = {
-      fontSize: '27px',
-      color: '#FCFCFC',
-      // width: '30%',
-      marginRight: '40px',
-      marginTop: '-8px'
+      // fontSize: '27px',
+      // // color: '#FCFCFC',
+      // // width: '30%',
+      // marginRight: '40px',
+      // marginTop: '-8px'
     }
 
     var noBorder = {
-      borderTop: 'none'
+      // borderTop: 'none'
     }
 
     var padded = {
-      paddingBottom: '15px'
+      // paddingBottom: '15px'
     }
 
     var ulStyle = {
-      width: '70%',
-      textAlign: 'center'
+      // width: '70%',
+      // textAlign: 'center'
     }
 
     var ilStyle = {
-      width: '20%',
+      // width: '20%',
     }
 
     var red = {
-      color: 'red'
+      // color: 'red'
     }
 
     var img = {
-      width: '110px'
+      width: '75px'
     }
 
     return(
-      <nav className="navbar navbar-default navbar-fixed-top" style={navStyle}>
-        <div style={bigFont} className="container-fluid sexy-blue">
+      <nav className="navbar navbar-toggleable-md navbar-light bg-faded navbar-fixed-top navbar-default" style={navStyle}>
+        <div style={bigFont} className="container-fluid">
           <div style={padded} className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" className="navbar-toggle navbar-toggler-right" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
