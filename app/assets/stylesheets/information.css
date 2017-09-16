@@ -8,7 +8,8 @@ h1 {
 }
 
 .question {
-  text-decoration: underline;
+  /*text-decoration: underline;*/
+  color: #7d7d7d;
 }
 
 .bottom-margin {
