@@ -91,7 +91,7 @@ class Products extends React.Component {
         margin: '0 auto',
         marginTop: '-50px',
         marginBottom: '5px',
-        color: 'white'
+        color: '#02ff02',
       }
 
       var colCentered = {
@@ -102,6 +102,11 @@ class Products extends React.Component {
 
       var margin = {
         margin: '-5px'
+      }
+
+      var restPrice = {
+        textDecoration: 'line-through',
+        color: '#6f6faf'
       }
 
       if (!this.hasProduct(product.uuid)  && !!this.props.hideOnZero) {
@@ -120,6 +125,7 @@ class Products extends React.Component {
             </div>*/}
             <h3>{product.description}</h3>
             <h2>${product.price}</h2>
+            <h3 style={restPrice}>Restaurant price: ${product.r_price}</h3>
             <button style={buttonStyle} className="btn btn-danger cart_update layer-shadow1" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
             <button style={buttonStyle} className="btn btn-success cart_update layer-shadow1" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
           </div>

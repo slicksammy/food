@@ -51,14 +51,39 @@
     text-decoration: underline;
     font-size: 50px;
   }
+
+  .image-style {
+    width: 150px;
+    display: inline;
+    height: 30px;
+    margin-top: -10px;
+    margin-right: 8px;
+  }
+
+  p {
+    font-size: 30px;
+  }
+
+  .about {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .margin-bottom {
+    margin-bottom: 50px;
+  }
+
 </style>
 
 
 <div>
   <section class="minus-margin-top">
-    <div class="row centered">
+    <div class="row centered margin-bottom">
       <!-- <h1 class="header">We are currently in testing and will be live in mid-September</h1> -->
       <img class="logo img img-responsive" src="assets/logo.png" />
+    </div>
+    <div class="about">
+      <p class="bigger">Prior to <span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span>the only way to enjoy a truely remarkable steak was to go to an expensive steakhouse or wait a 7-10 days for a steak to arrive from who knows where. How about the grocery store you might ask? It's not even close - their steaks are not in the same universe as our steaks. We age every steak, they age none. Most of our steaks are USDA Prime, theirs aren't. This is why we started <span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span> - to bring you the best steaks at reasonable prices.</p>
     </div>
     <div class="row centered top-margin">
       <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3">
@@ -102,7 +127,7 @@
   </section>
   
   <section class="container top-margin">
-    <h1 class="centered underline">Our Delicious Steaks</h1>
+    <h1 class="centered">Order Your Steaks Now</h1>
     <%= react_component('Products', products: @products) %> 
   </section>
 </div>

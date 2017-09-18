@@ -12,7 +12,8 @@ module StoreHelper
       description: product.description,
       price: product.price.to_s,
       image_url: product.image_url,
-      amount: amount
+      amount: amount,
+      r_price: product.r_price.to_s
     }
   end
 

@@ -22912,7 +22912,7 @@ var NavBar = (function (_React$Component) {
                   React.createElement(
                     'span',
                     { className: '' },
-                    'About'
+                    'FAQ'
                   )
                 )
               ),
@@ -22938,6 +22938,19 @@ var NavBar = (function (_React$Component) {
                   'My Orders'
                 )
               ) : null,
+              React.createElement(
+                'li',
+                { style: ilStyle },
+                React.createElement(
+                  'a',
+                  { style: bigFont, href: '/about#contact' },
+                  React.createElement(
+                    'span',
+                    { className: '' },
+                    'Contact'
+                  )
+                )
+              ),
               React.createElement(
                 'li',
                 { style: ilStyle },
@@ -23988,7 +24001,7 @@ var Products = (function (_React$Component) {
           margin: '0 auto',
           marginTop: '-50px',
           marginBottom: '5px',
-          color: 'white'
+          color: '#02ff02'
         };
 
         var colCentered = {
@@ -23999,6 +24012,11 @@ var Products = (function (_React$Component) {
 
         var margin = {
           margin: '-5px'
+        };
+
+        var restPrice = {
+          textDecoration: 'line-through',
+          color: '#6f6faf'
         };
 
         if (!_this.hasProduct(product.uuid) && !!_this.props.hideOnZero) {
@@ -24036,6 +24054,12 @@ var Products = (function (_React$Component) {
               null,
               "$",
               product.price
+            ),
+            React.createElement(
+              "h3",
+              { style: restPrice },
+              "Restaurant price: $",
+              product.r_price
             ),
             React.createElement(
               "button",
