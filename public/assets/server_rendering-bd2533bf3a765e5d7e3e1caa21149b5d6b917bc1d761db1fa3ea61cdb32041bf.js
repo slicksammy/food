@@ -23799,26 +23799,28 @@ var Places = (function (_React$Component) {
 
     _get(Object.getPrototypeOf(Places.prototype), 'constructor', this).call(this, props);
     this.state = { type: 'all', data: props.data };
-    // this.get = this.get.bind(this);
+    this.get = this.get.bind(this);
     this.updateTypes = this.updateTypes.bind(this);
     this.map = this.map.bind(this);
     this.updateType = this.updateType.bind(this);
   }
 
-  // get() {
-  //   $.ajax({
-  //     url: '/places'
-  //     success: function(response) {
-  //       this.setState({data: response.data})
-  //     }
-  //   })
-  // }
-
-  // componentDidMount() {
-  //   this.get()
-  // }
-
   _createClass(Places, [{
+    key: 'get',
+    value: function get() {
+      $.ajax({
+        url: '/places',
+        success: function (response) {
+          this.setState({ data: response.data });
+        }
+      });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.get();
+    }
+  }, {
     key: 'updateTypes',
     value: function updateTypes() {
       var val = this.refs.type.value;
