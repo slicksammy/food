@@ -24,64 +24,60 @@ class ApplicationController < SessionsController
     PageVisit.create!(url: params["url"], user_uuid: current_user_uuid, ip_address: request.remote_ip)
   end
 
-  private
-
   def permit_page_visit_params
+    byebug
     params.permit(:url)
   end
 
+  def places
+    places = Place.all
+    types = PlaceType.all
+    @data = {types: types, places: places}
 
+    # render json: { data: data }
+  end
 
-  # def places
-  #   places = Place.all
-  #   types = PlaceType.all
+  def place
+    @place = Place.find params["id"]
+    @status = @place.status
+    @data = Place.grocery.first(5)
+    # @data = Distance.sort_stores(@place).first(5)
+    @notes = @place.notes.ordered
+    @statuses = Status.all
+  end
 
-  #   @data = {types: types, places: places}
+  def notes
+    place = Place.find params["id"]
 
-  #   # render json: { data: data }
-  # end
+    place.notes.create!(note_text: params["text"])
 
-  # def place
-  #   @place = Place.find params["id"]
-  #   @status = @place.status
-  #   @data = Place.grocery.first(5)
-  #   # @data = Distance.sort_stores(@place).first(5)
-  #   @notes = @place.notes.ordered
-  #   @statuses = Status.all
-  # end
+    render nothing: true
+  end
 
-  # def notes
-  #   place = Place.find params["id"]
+  def update_status
+    Place.find(params["id"]).status = params["status"]
+  end
 
-  #   place.notes.create!(note_text: params["text"])
+  def get_callbacks
+    c = Place.find(params["id"]).callbacks
 
-  #   render nothing: true
-  # end
+    render nothing: true, json: { callbacks: c }
+  end
 
-  # def update_status
-  #   Place.find(params["id"]).status = params["status"]
-  # end
+  def new
+    if request.post?
+      p = Place.create!(name: params["name"], phone_number: params["phone"], address: params["address"], place_type_id: params["place_type"])
+      if params["note"].present?
+        p.notes.create!(note_text: params["note"])
+      end
+    else 
+      @types = PlaceType.all
+    end
+  end
 
-  # def get_callbacks
-  #   c = Place.find(params["id"]).callbacks
+  def search
+    notes = Note.search(params["search"]).sort_by(&:place_id).map{ |n| { text: n.note_text, place_id: n.place_id, name: n.place.name } }
 
-  #   render nothing: true, json: { callbacks: c }
-  # end
-
-  # def new
-  #   if request.post?
-  #     p = Place.create!(name: params["name"], phone_number: params["phone"], address: params["address"], place_type_id: params["place_type"])
-  #     if params["note"].present?
-  #       p.notes.create!(note_text: params["note"])
-  #     end
-  #   else 
-  #     @types = PlaceType.all
-  #   end
-  # end
-
-  # def search
-  #   notes = Note.search(params["search"]).sort_by(&:place_id).map{ |n| { text: n.note_text, place_id: n.place_id, name: n.place.name } }
-
-  #   render nothing: true, json: { notes: notes }
-  # end
+    render nothing: true, json: { notes: notes }
+  end
 end
