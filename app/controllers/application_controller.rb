@@ -25,7 +25,6 @@ class ApplicationController < SessionsController
   end
 
   def permit_page_visit_params
-    byebug
     params.permit(:url)
   end
 
