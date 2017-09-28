@@ -35,6 +35,10 @@ gem 'bcrypt'
 gem 'stripe'
 # money
 gem 'money-rails'
+# holidays
+gem 'holidays'
+# business days
+gem 'business_time'
 
 group :production do
   # error tracking
