@@ -21280,8 +21280,10 @@ var Cart = (function (_React$Component) {
     key: 'render',
     value: function render() {
       var buttonStyle = {
-        fontSize: '3vw',
-        margin: '20px'
+        fontSize: '3em',
+        margin: '20px',
+        minHeight: '100px',
+        minWidth: '120px'
       };
 
       var buttonContainer = {
@@ -24065,17 +24067,17 @@ var Products = (function (_React$Component) {
             ),
             React.createElement(
               "button",
-              { style: buttonStyle, className: "btn btn-danger cart_update layer-shadow1", onClick: function () {
-                  return _this.add(product.uuid, -1);
-                }, id: "cart_subtract" },
-              "-"
-            ),
-            React.createElement(
-              "button",
               { style: buttonStyle, className: "btn btn-success cart_update layer-shadow1", onClick: function () {
                   return _this.add(product.uuid, 1);
                 }, id: "cart_add" },
               "+"
+            ),
+            React.createElement(
+              "button",
+              { style: buttonStyle, className: "btn btn-danger cart_update layer-shadow1", onClick: function () {
+                  return _this.add(product.uuid, -1);
+                }, id: "cart_subtract" },
+              "-"
             )
           )
         );
