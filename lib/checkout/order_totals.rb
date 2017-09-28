@@ -53,11 +53,11 @@ module Checkout
     end
 
     def total
-      (tax + subtotal)
+      (tax + subtotal + shipping)
     end
 
     def shipping
-      0
+      4.99.to_money
     end
   end
 end
