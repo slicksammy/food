@@ -2,6 +2,8 @@
 # and this needs to be rechecked on every page load i.e. customer starts order today
 # and wants to pay 3 days from now - his original delivery date was set for 2 days ago
 # also working with only 1 supplier for now so his criteria are hard-coded here
+require 'business_time'
+
 module Checkout
   class OrderOptions
 
@@ -38,7 +40,8 @@ module Checkout
     # offering next 3 days delivery
     # instead of +n need to use business days
     def delivery_dates
-      (0..2).to_a.map { |n| earliest_available_delivery_date + n }
+      #(0..2).to_a.map { |n| earliest_available_delivery_date + n }
+      (1..3).to_a.map { |n| n.business_days.from_now }.map(&:to_date)
     end
 
     def cutoff_time
