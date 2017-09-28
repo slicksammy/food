@@ -22,8 +22,10 @@ class Cart extends React.Component {
 
   render() {
     var buttonStyle = {
-      fontSize: '3vw',
-      margin: '20px'
+      fontSize: '3em',
+      margin: '20px',
+      minHeight: '100px',
+      minWidth: '120px'
     }
 
     var buttonContainer = {
