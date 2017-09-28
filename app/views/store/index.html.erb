@@ -7,7 +7,7 @@
   }
 
   .logo {
-    /*width: 50%;*/
+    /*width: 75%;*/
     margin: 0 auto;
     /*height: 300px;*/
   }
@@ -21,7 +21,7 @@
   }
 
   .colcentered {
-    display: inline-block;
+    /*display: inline-block;*/
     float: none;
     margin: 0 auto;
   }
@@ -29,14 +29,16 @@
   .block {
     display: block;
     font-size: 50px;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
   }
 
   .item-main {
-    font-size: 25px;
+    font-size: 30px;
     background: #c7c4c4;
     margin: 20px 20px 20px 20px;
     padding: 20px 20px 20px 20px;
+    height: 250px;
+    display: inline-block ;
   }
 
   .top-margin {
@@ -73,6 +75,26 @@
     margin-bottom: 50px;
   }
 
+  @media (max-width: 768px) {
+  .item-main {
+    font-size: 20px;
+    height: 200px;
+  }
+
+  .block {
+    margin-bottom: inherit;
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  .logo {
+    width: 75%;
+  }
+}
+
 </style>
 
 
@@ -91,38 +113,38 @@
         <span class="fa-stack fa-lg block centered">
           <i class="fa  fa-spinner fa-lg"></i>
         </span>
-        Our steaks are wet or dry aged to perfection for a rich, mouthwatering taste.
+        <p>Our steaks are aged to perfection for a rich, mouthwatering taste.</p>
       </div>
       <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3">
         <span class="fa-stack fa-lg centered block">
           <i class="fa fa-dollar fa-lg"></i>
         </span>
-        Why pay restaurant prices when you can save over 50% by ordering from us?
+        <p>Why pay restaurant prices when you can save over 50% by ordering from us?</p>
       </div>
       <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3">
         <span class="fa-stack fa-lg block centered">
           <i class="fa fa-shopping-basket fa-stack-1x"></i>
           <i class="fa fa-ban fa-stack-2x"></i>
         </span>
-        You won't find meat of this quality at the grocery store.
+        <p>You won't find these steaks at the grocery store.</p>
       </div>
       <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3">
         <span class="fa-stack fa-lg block centered">
           <i class="fa fa-car fa-lg" aria-hidden="true"></i>
         </span>
-        Order steaks today, get them tomorrow.
+        <p>Order your steaks today, get them tomorrow.</p>
       </div>
       <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3">
         <span class="fa-stack fa-lg block centered">
           <i class="fa fa-cutlery fa-lg" aria-hidden="true"></i>
         </span>
-        Very easy to prepare and cook.
+        <p>Very easy to prepare and cook.</p>
       </div>
       <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3">
         <span class="fa-stack fa-lg block centered">
           <i class="fa fa-check-square-o fa-lg"></i>
         </span>
-        Satisfaction guaranteed, or your money back.
+        <p>Satisfaction guaranteed, or your money back.</p>
       </div>
     </div>
   </section>
