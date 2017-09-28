@@ -35,7 +35,7 @@ module Checkout
 
       # check to make sure order is not stale and has a date
       unless options.delivery_dates.include? order.expected_delivery_date
-        order.expected_delivery_date = options.earliest_available_delivery_date
+        order.expected_delivery_date = options.delivery_dates.first
       end
       # set address unless user has set it
       unless order.address
