@@ -26,7 +26,7 @@ class Order < ActiveRecord::Base
   ONGOING_STATUS = nil
 
   def self.find_by_order_number(order_number)
-    all.select { |o| o.order_number == order_number }
+    all.select { |o| o.order_number.downcase == order_number.downcase }
   end
 
   def confirm!
@@ -54,7 +54,7 @@ class Order < ActiveRecord::Base
   # hack but will do for now
   # there can be overlap here but by name and order_number we should be able to locate the order
   def order_number
-    uuid.first(6)
+    uuid.first(6).upcase
   end
 
   def ongoing?
