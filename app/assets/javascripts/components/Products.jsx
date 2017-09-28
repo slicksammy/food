@@ -126,8 +126,8 @@ class Products extends React.Component {
             <h3>{product.description}</h3>
             <h2>${product.price}</h2>
             <h3 style={restPrice}>Restaurant price: ${product.r_price}</h3>
-            <button style={buttonStyle} className="btn btn-danger cart_update layer-shadow1" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
             <button style={buttonStyle} className="btn btn-success cart_update layer-shadow1" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
+            <button style={buttonStyle} className="btn btn-danger cart_update layer-shadow1" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
           </div>
         </div>
       )
