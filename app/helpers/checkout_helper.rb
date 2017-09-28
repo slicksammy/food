@@ -36,7 +36,7 @@ module CheckoutHelper
   end
 
   def format_date(date)
-    date.try(:strftime, ("%A %B %dth"))
+    date.try(:strftime, ("%A %B %d"))
   end
 
 end
