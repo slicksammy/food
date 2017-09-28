@@ -29,6 +29,7 @@ class SessionsController < ActionController::Base
 
   def logout
     session[:user_uuid] = nil
+    session[:cart_uuid] = nil
 
     redirect_to '/' 
   end
