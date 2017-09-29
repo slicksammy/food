@@ -5,7 +5,7 @@ class UserMailer < ActionMailer::Base
   attr_reader :to, :from
 
   # TODO update this email
-  DEFAULT_FROM = 'sam@brokolly.com'
+  SUPPORT_EMAIL = 'support@iheartmeat.com'
 
   layout 'bootstrap'
 
@@ -26,13 +26,13 @@ class UserMailer < ActionMailer::Base
     @url = "#{Env.base_uri}/reset_password?token=#{token.uuid}"
     to = token.user.email
 
-    mail(from: DEFAULT_FROM, to: to, subject: 'Password Reset Instructions')
+    mail(from: SUPPORT_EMAIL, to: to, subject: 'Password Reset Instructions')
   end
 
   def welcome(user)
     to = user.email
     @name = user.full_name
 
-    mail(from: DEFAULT_FROM, to: to, subject: 'Welcome to IHeartMeat')
+    mail(from: SUPPORT_EMAIL, to: to, subject: 'Welcome to IHeartMeat')
   end
 end
