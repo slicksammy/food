@@ -14,10 +14,11 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # TODO reconfigure to production settings
   config.action_mailer.smtp_settings = {
     authentication:       :plain,
     address:              'smtp.mailgun.org',
-    user_name:            'postmaster@iheartmeat.com',
+    user_name:            'postmaster@sandbox93f6473a97db4bc4a73145414370813c.mailgun.org',
     password:             '80c19860e510b8680366e17862d0d6cf',
     enable_starttls_auto: true
   }

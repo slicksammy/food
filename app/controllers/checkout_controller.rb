@@ -80,7 +80,7 @@ class CheckoutController < SessionsController
         OrderMailer.order_confirmation(cached_order).deliver!
         render body: nil, status: 202
       # the user will not know that he didn't pay the second time
-      rescue ::Stripe::MakeCharge::DuplicateChargeError, ::Net::SMTPFatalError => e
+      rescue ::Stripe::MakeCharge::DuplicateChargeError, ::Net::SMTPFatalError, ::Net::SMTPAuthenticationError => e
         clear_cart
         render body: nil, status: 202 #, json: { error: 'Order has already been paid for' }
       end
