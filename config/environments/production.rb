@@ -18,7 +18,7 @@ Rails.application.configure do
     authentication:       :plain,
     address:              'smtp.mailgun.org',
     user_name:            'postmaster@iheartmeat.com',
-    password:             'f28ebde7f3abf593b12259769744d694',
+    password:             '80c19860e510b8680366e17862d0d6cf',
     enable_starttls_auto: true
   }
 
