@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get '/checkout' => 'checkout#view'
   post '/order/buy' => 'checkout#buy'
   post '/order/update' => 'checkout#update_order'
+  post '/order/promo' => 'checkout#apply_promo'
   post '/order/confirm' => 'checkout#confirm_order'
 
   # START PAYMENTS
