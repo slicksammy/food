@@ -33,6 +33,6 @@ class UserMailer < ActionMailer::Base
     to = user.email
     @name = user.full_name
 
-    mail(from: SUPPORT_EMAIL, to: to, subject: 'Welcome to IHeartMeat')
+    mail(from: SUPPORT_EMAIL, to: to, subject: 'Welcome to iheartmeat')
   end
 end
