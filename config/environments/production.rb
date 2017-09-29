@@ -18,8 +18,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     authentication:       :plain,
     address:              'smtp.mailgun.org',
-    user_name:            'postmaster@sandbox93f6473a97db4bc4a73145414370813c.mailgun.org',
-    password:             '80c19860e510b8680366e17862d0d6cf',
+    user_name:            'postmaster@iheartmeat.com',
+    password:             'f28ebde7f3abf593b12259769744d694',
     enable_starttls_auto: true
   }
 
