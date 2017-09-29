@@ -57,8 +57,8 @@ class UsersController < SessionsController
       @token = token_uuid
       render status: 202
     else
-      @message = 'Nothing Here'
-      render :file => 'public/nothing_here.html.erb', :layout => 'checkout.html.erb'
+      @message = 'Your password reset link is no longer valid'
+      render :file => 'public/nothing_here.html.erb'
     end
   end
 
