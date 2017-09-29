@@ -21,7 +21,7 @@ class Home extends React.Component {
 
     return(
       <div>
-        {orders}
+        { orders ? <h1>No orders yet, let's <a href="/">shop!</a></h1> : {orders} }
       </div>
     )
   }
