@@ -1,27 +1,32 @@
-require 'checkout/order_defaults'
+require_relative 'order_prepare'
 require 'delivery/availability'
 
 module Checkout
   class FinalOrderCheck
 
-    attr_reader :order
+    attr_reader :order_details, :order
 
-    def initialize(order)
+    def initialize(order_details, order)
+      @order_details = order_details
       @order = order
     end
 
-    def is_valid?
-      valid_exptected_delivery_date? && has_stripe_token? && correct_totals? && valid_address?
+    def valid?      
+      totals = ::Checkout::OrderTotals.new(order: order).get_totals
+
+      available_delivery_dates = ::Checkout::OrderOptions.new(order.cart).delivery_dates
+
+      valid_exptected_delivery_date?(available_delivery_dates) && valid_total?(totals)
     end
 
     private
 
-    def valid_exptected_delivery_date?
-      order.expected_delivery_date && order.expected_delivery_date >= ::Checkout::OrderDefaults.cutoff_time
+    def valid_exptected_delivery_date?(dates)
+      dates.include? order.expected_delivery_date
     end
 
-    def valid_totals?
-      # I should check this but maybe don't need to
+    def valid_total?(totals)
+      totals[:total] == order_details[:total].to_money
     end
 
     def valid_stripe_token?
@@ -30,7 +35,7 @@ module Checkout
     end
 
     def valid_address?
-      order.address_id && # address in proximity
+      # order.address_id && # address in proximity
     end
 
   end

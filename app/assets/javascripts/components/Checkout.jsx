@@ -1,26 +1,30 @@
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { address: props.order.address_uuid, stripe_token: props.order.stripe_token_uuid, expected_delivery_date: props.order.expected_delivery_date, newAddress: true, newPayment: true }
+    this.state = { order: props.order, address: props.order.address_uuid, stripe_token: props.order.stripe_token_uuid, expected_delivery_date: props.order.expected_delivery_date, newAddress: true, newPayment: true }
     this.confirmOrder = this.confirmOrder.bind(this);
-    this.updateAddress = this.updateAddress.bind(this)
-    this.updatePayment = this.updatePayment.bind(this)
-    this.updateDelivery = this.updateDelivery.bind(this)
-    this.hideForver = this.hideForver.bind(this)
+    this.updateAddress = this.updateAddress.bind(this);
+    this.updatePayment = this.updatePayment.bind(this);
+    this.updateDelivery = this.updateDelivery.bind(this);
+    this.hideForver = this.hideForver.bind(this);
+    this.applyPromo = this.applyPromo.bind(this);
+    this.showSuccess = this.showSuccess.bind(this)
   }
 
   confirmOrder(e) {
     e.target.disabled = true
+
     this.setState({loader: true})
 
     $.ajax({
       method: 'POST',
       url: '/order/buy',
+      data: { order: this.state.order },
       success: function() {
         this.showSuccess()
       }.bind(this),
       error: function(response) {
-        this.setState({error: response.responseJSON.error || 'there was an error please try again' })
+        this.setState({error: response.responseJSON.error || 'there was an error please try again', loader: false })
       }.bind(this)
     });
   }
@@ -65,6 +69,22 @@ class Checkout extends React.Component {
       data: { order: {expected_delivery_date: date} },
       success: function(response) {
         this.setState({expected_delivery_date: date})
+      }.bind(this)
+    })
+  }
+
+  applyPromo() {
+    var code = this.refs.promo.value
+    console.log(code)
+    $.ajax({
+      method: 'POST',
+      url: 'order/promo',
+      data: { code: code },
+      success: function(response) {
+        this.setState({order: response.order, promo: true})
+      }.bind(this),
+      error: function(response) {
+        this.setState({promoError: response.responseJSON.error || 'there was an error please try again' })
       }.bind(this)
     })
   }
@@ -158,11 +178,49 @@ class Checkout extends React.Component {
       </div>
     )
 
+    var header_style = {
+      width: '100%'
+    }
+
+    var container_style = {
+      width: '100%',
+      textAlign: 'center'
+    }
+
+    var promo_style = {
+      width: '100%',
+      display: 'inline-block',
+      textAlign: 'left'
+      // background: '#d0cbcb',
+      // borderBottom: 'none'
+    }
+
+    var promo_button_style = {
+      display: 'inline-block',
+      width: '30%',
+    }
+
+    var promo = (
+      <div className="col-xs-6 col-sm-6 col-md-4 col-lg-4" style={colCentered}>
+        <div>
+          <div style={header_style} className='base-title'>Apply Promo</div>
+        </div>
+        <div style={container_style} className='base-container'>
+          <div>
+            <input  style={promo_style} className="base-input" type='text' placeholder="Enter code" ref="promo"></input>
+          </div>
+          <div className="centered">
+            <button className="btn btn-success base-button" onClick={this.applyPromo}>Apply</button>
+          </div>
+        </div>
+      </div>
+    )
+
     var buyButtonStyle = {
       width: '25%',
       // height: '3em',
       fontSize: '3em',
-      dispaly: 'inline-block',
+      display: 'inline-block',
       paddingBottom: '20px',
       minHeight: '100px',
       minWidth: '120px'
@@ -191,8 +249,11 @@ class Checkout extends React.Component {
         {this.state.success ? <div className="success"><span className=" glyphicon glyphicon-ok"></span>Congrats! Purhcase Complete.</div> : null }
         <div style={centered}>
           <div>
-            <Order items={this.props.items} order={this.props.order} />
+            <Order items={this.props.items} order={this.state.order} />
           </div>
+        </div>
+        <div style={centered}>
+          {promo}
         </div>
         <div style={centered}>
           {address}
@@ -204,7 +265,7 @@ class Checkout extends React.Component {
           {delivery}
         </div>
         <div style={totalContainerStyle}>
-          <h1>Total: ${this.props.order.total}</h1>
+          <h1>Total: ${this.state.order.total}</h1>
           { this.state.error ? <h2 style={errorStyle}>{this.state.error}</h2> : null}
           {/*disable button on submit so customer doesn't try buying twice*/}
           <button style={buyButtonStyle} disabled={!this.canBuy()} className="btn btn-success" onClick={this.confirmOrder}>Buy</button>

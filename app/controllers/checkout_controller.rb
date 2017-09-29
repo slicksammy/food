@@ -2,11 +2,13 @@ require 'checkout/order_prepare'
 require 'checkout/order_options'
 require 'checkout/order_totals'
 require 'stripe/make_charge'
+require 'checkout/final_order_check'
 
 class CheckoutController < SessionsController
   include CheckoutHelper
 
   before_action :allow_update_order_params, only: [:update_order, :safe_update]
+  before_action :allow_promo_params, only: [:apply_promo]
   before_action :redirect_to_login_if_neccessary
 
   def view
@@ -49,16 +51,39 @@ class CheckoutController < SessionsController
     end
   end
 
+  # TODO finish this
+  def apply_promo
+    params["code"]
+
+    create_order
+
+    render body: nil, json: { order: @order }
+  end
+
   def buy
-    begin
-      ::Stripe::MakeCharge.new(order).charge!
-      order.purchase!
-      OrderMailer.order_confirmation(order).deliver!
-      clear_cart
-      render body: nil, status: 202
-    rescue ::Stripe::MakeCharge::DuplicateChargeError => e
-      clear_cart
-      render body: nil, status: 401, json: { error: 'Order has already been paid for' }
+    # TODO add validation to order before buying
+    # ie customer keeps tab open with next day delivery and then trys buying on same date again
+    # or prices have changed
+    # error message should be "please refresh and try again"
+
+    valid = ::Checkout::FinalOrderCheck.new(params["order"], order).valid?
+
+    if !valid
+      render body: nil, status: 401, json: { error: 'oops, there was an error please refresh the page and try again' }
+    else
+      begin
+        ::Stripe::MakeCharge.new(order).charge!
+        order.purchase!
+        # caching order here because first we clear cart (more important than sending email) but we still need access to the order for the email
+        cached_order = order
+        clear_cart
+        OrderMailer.order_confirmation(cached_order).deliver!
+        render body: nil, status: 202
+      # the user will not know that he didn't pay the second time
+      rescue ::Stripe::MakeCharge::DuplicateChargeError, ::Net::SMTPFatalError => e
+        clear_cart
+        render body: nil, status: 202 #, json: { error: 'Order has already been paid for' }
+      end
     end
   end
 
@@ -90,5 +115,9 @@ class CheckoutController < SessionsController
 
   def allow_update_order_params
     params.require(:order)
+  end
+
+  def allow_promo_params
+    params.require(:code)
   end
 end

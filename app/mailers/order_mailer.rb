@@ -6,18 +6,18 @@ class OrderMailer < ActionMailer::Base
   attr_reader :to, :from
 
   # TODO update this email
-  DEFAULT_FROM = 'sam@brokolly.com'
+  # DEFAULT_FROM = 'sam@brokolly.com'
+  SUPPORT_EMAIL = 'support@iheartmeat.com'
 
   layout 'bootstrap'
 
   def order_confirmation(order)
     @order = format_order(order)
     @user = order.user
-    
     # TODO change sam@brokolly below to 'to'
     to = @user.email
 
-    mail(from: DEFAULT_FROM, to: to , subject: 'Order Confirmation')
+    mail(from: SUPPORT_EMAIL, to: to , subject: 'Order Confirmation', bcc: SUPPORT_EMAIL)
   end
 
 end
