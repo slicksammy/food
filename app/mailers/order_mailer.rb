@@ -14,10 +14,10 @@ class OrderMailer < ActionMailer::Base
   def order_confirmation(order)
     @order = format_order(order)
     @user = order.user
-    # TODO change sam@brokolly below to 'to'
+    # TODO update support name in google to iheartmeat
     to = @user.email
 
-    mail(from: SUPPORT_EMAIL, to: to , subject: 'Order Confirmation', bcc: SUPPORT_EMAIL)
+    mail(from: SUPPORT_EMAIL, to: to , subject: "iheartmeat order ##{@order[:order_number]}")
   end
 
 end
