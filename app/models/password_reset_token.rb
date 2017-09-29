@@ -5,8 +5,7 @@ class PasswordResetToken < ActiveRecord::Base
   belongs_to :user, foreign_key: :user_uuid, primary_key: :uuid
 
   def is_valid?
-    true
-    #created_at > 24.hours.ago && !used
+    created_at > 24.hours.ago && !used
   end
 
   def use!
