@@ -21,7 +21,7 @@ module Stripe
       charge = Stripe::Charge.create(
         :amount => @amount,
         :currency => "usd",
-        :description => "I Heart Meat",
+        :description => "iheartmeat",
         :source => 'tok_mastercard_prepaid' # @stripe_token,
       )
 
