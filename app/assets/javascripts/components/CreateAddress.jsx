@@ -198,7 +198,9 @@ class CreateAddress extends React.Component {
               <data id="place-id" ref="place_id"/>
               <data id="lat" ref="lat"/>
               <data id="lng" ref="lng"/>
-              <button style={buttonStyle} disabled={!this.state.canSubmit} className="btn btn-success" onClick={this.saveAddress}>Save</button>
+              <div className="centered">
+                <button style={buttonStyle} disabled={!this.state.canSubmit} className="btn btn-success" onClick={this.saveAddress}>Save</button>
+              </div>
             </div>
           }
         </div>
