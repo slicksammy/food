@@ -6,6 +6,10 @@
     text-align: center ;
   }
 
+  .max-width-1000 {
+    max-width: 1000px;
+  }
+
   .logo {
     /*width: 75%;*/
     margin: 0 auto;
@@ -24,6 +28,7 @@
     /*display: inline-block;*/
     float: none;
     margin: 0 auto;
+    min-height: 300px;
   }
 
   .block {
@@ -35,7 +40,7 @@
   .item-main {
     font-size: 30px;
     background: #c7c4c4;
-    margin: 20px 20px 20px 20px;
+    margin: 20px 40px 20px 40px;
     padding: 20px 20px 20px 20px;
     height: 250px;
     display: inline-block ;
@@ -75,25 +80,34 @@
     margin-bottom: 50px;
   }
 
-  @media (max-width: 768px) {
-  .item-main {
-    font-size: 20px;
-    height: 200px;
+  .bigger {
+    line-height: 200%;
   }
 
-  .block {
-    margin-bottom: inherit;
-    font-size: 30px;
-  }
+  @media (max-width: 992px) {
+    .item-main {
+      font-size: 20px;
+      height: 200px;
+    }
 
-  p {
-    font-size: 20px;
-  }
+    .block {
+      margin-bottom: inherit;
+      font-size: 30px;
+    }
 
-  .logo {
-    width: 75%;
+    p {
+      font-size: 20px;
+    }
+
+    .logo {
+      width: 75%;
+    }
+
+    .colcentered {
+      min-height: 150px;
+      float: none;
+    }
   }
-}
 
 </style>
 
@@ -106,9 +120,10 @@
       <img class="logo img img-responsive" src="assets/logo.png" />
     </div>
     <div class="about">
-      <p class="bigger"><span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span> was launched so that you can enjoy the best steaks at reasonable prices with the convenience of next day delivery. All of our steaks are perfectly aged and mostly USDA Prime, which is why they melt in your mouth. These are the steaks that the finest restaurants use and you can't find at the grocery store. Try our steaks and then tell us if you have ever had a better cut of meat anywhere else.</p>
+      <!-- <p class="bigger"><span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span> was launched so that you can enjoy the best steaks at reasonable prices with the convenience of next day delivery. All of our steaks are perfectly aged and mostly USDA Prime, which is why they melt in your mouth. These are the steaks that the finest restaurants use and you can't find at the grocery store. Try our steaks and then tell us if you have ever had a better cut of meat anywhere else.</p> -->
+      <p class="bigger"><span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span> was started so that you wouldn't have to settle on mediocre quality grocery store steaks or alternatively, break the bank at the steak house. Now you have a 3rd, better option, that comes with a 100% satisfaction guarantee.
     </div>
-    <div class="row centered top-margin">
+    <div class="row centered top-margin max-width-1000">
       <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3">
         <span class="fa-stack fa-lg block centered">
           <i class="fa  fa-spinner fa-lg"></i>
@@ -119,7 +134,13 @@
         <span class="fa-stack fa-lg centered block">
           <i class="fa fa-dollar fa-lg"></i>
         </span>
-        <p>Why pay restaurant prices when you can save over 50% by ordering from us?</p>
+        <p>Cut your steak bill in <u>half</u> without sacrificing quality or taste</p>
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3">
+        <span class="fa-stack fa-lg block centered">
+          <i class="fa fa-play fa-lg"></i>
+        </span>
+        <p>All steaks are freshly cut to order, never frozen.</p>
       </div>
       <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3">
         <span class="fa-stack fa-lg block centered">
@@ -138,57 +159,14 @@
         <span class="fa-stack fa-lg block centered">
           <i class="fa fa-cutlery fa-lg" aria-hidden="true"></i>
         </span>
-        <p>Very easy to prepare and cook.</p>
-      </div>
-      <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3">
-        <span class="fa-stack fa-lg block centered">
-          <i class="fa fa-check-square-o fa-lg"></i>
-        </span>
-        <p>Satisfaction guaranteed, or your money back.</p>
+        <p>Preparation and cooking is simple.</p>
       </div>
     </div>
   </section>
   
   <section class="container top-margin">
     <h1 class="centered">Order Your Steaks Now</h1>
+    <h4 class="centered top-margin">*All steaks come raw</h4>
     <%= react_component('Products', products: @products) %> 
   </section>
 </div>
-
-<!-- <script>
-  var slideIndex = 0;
-
-  showSlides();
-
-  function back() {
-    console.log(slideIndex)
-    this.slideIndex--
-    window.clearTimeout()
-    this.showSlides();
-  }
-
-  function next() {
-    this.slideIndex++
-    window.clearTimeout()
-    this.showSlides();
-  }
-
-  function showSlides() {
-    console.log("show")
-    var slides = document.getElementsByClassName("mySlides");
-
-    var slideIndex = this.slideIndex % slides.length
-    console.log(slideIndex)
-
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none"; 
-    }
-
-    slides[slideIndex].style.display = "block";
-
-    this.slideIndex++;
-
-    setTimeout(showSlides , 10000);
-  }
-
-</script> -->
