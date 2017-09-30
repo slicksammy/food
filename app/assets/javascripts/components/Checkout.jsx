@@ -204,11 +204,12 @@ class Checkout extends React.Component {
       color: 'red'
     }
 
+    // TODO disable button until something is in the input box
     var promoForm = (
       <div>
         <div>
           { this.state.promoError ? <div style={errorStyle}>{this.state.promoError}</div> : null }
-          <input  style={promo_style} className="base-input" type='text' placeholder="Enter code" ref="promo"></input> 
+          <input style={promo_style} className="base-input" type='text' placeholder="Enter code" ref="promo"></input> 
         </div>
         <div className="centered">
           <button className="btn btn-success base-button" onClick={this.applyPromo}>Apply</button>
