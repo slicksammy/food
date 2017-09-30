@@ -15,7 +15,11 @@ class Cart extends React.Component {
       method: 'GET',
       url: '/cart/subtotal',
       success: function(response) {
+        var subtotal = parseFloat(response.subtotal)
         this.setState({subtotal: response.subtotal})
+        if (subtotal == 0) {
+          window.location = '/cart'
+        }
       }.bind(this)
     })
   }

@@ -34,11 +34,15 @@ class CartController < SessionsController
   end
 
   def get_subtotal
-    render json: { subtotal: subtotal }, status: 202
+    render json: { subtotal: subtotal.to_s }, status: 202
   end
 
   def subtotal
-    ::Checkout::OrderTotals.new(cart: cart).get_totals[:subtotal].to_s
+    begin
+      ::Checkout::OrderTotals.new(cart: cart).get_totals[:subtotal]
+    rescue ::Checkout::OrderTotals::NoItemsInCart => e
+      0
+    end
   end
 
   def count
