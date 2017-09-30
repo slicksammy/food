@@ -25224,6 +25224,10 @@ var Register = (function (_React$Component) {
         fontSize: 'x-small'
       };
 
+      var errorStyle = {
+        color: 'red'
+      };
+
       return React.createElement(
         'form',
         { id: 'register' },
@@ -25232,7 +25236,7 @@ var Register = (function (_React$Component) {
           null,
           this.state.errors.first_name ? React.createElement(
             'span',
-            { className: 'create-user-error' },
+            { style: errorStyle },
             this.state.errors.first_name
           ) : null,
           React.createElement('input', { style: inputStyle, onChange: this.updateState, type: 'text', className: 'base-input', ref: 'firstName', placeholder: 'First Name', id: 'firstName' }),
@@ -25243,7 +25247,7 @@ var Register = (function (_React$Component) {
           null,
           this.state.errors.last_name ? React.createElement(
             'span',
-            { className: 'create-user-error' },
+            { style: errorStyle },
             this.state.errors.last_name
           ) : null,
           React.createElement('input', { style: inputStyle, onChange: this.updateState, type: 'text', className: 'base-input', placeholder: 'Last Name', id: 'lastName' }),
@@ -25254,7 +25258,7 @@ var Register = (function (_React$Component) {
           null,
           this.state.errors.email ? React.createElement(
             'span',
-            { className: 'create-user-error' },
+            { style: errorStyle },
             this.state.errors.email
           ) : null,
           React.createElement('input', { style: inputStyle, onChange: this.updateState, type: 'text', className: 'base-input', placeholder: 'Email', id: 'email' }),
@@ -25265,7 +25269,7 @@ var Register = (function (_React$Component) {
           null,
           this.state.errors.password ? React.createElement(
             'span',
-            { className: 'create-user-error' },
+            { style: errorStyle },
             this.state.errors.password
           ) : null,
           React.createElement(
