@@ -43,6 +43,8 @@ gem 'business_time'
 group :production do
   # error tracking
   gem 'newrelic_rpm'
+
+  gem 'le'
 end
 
 # gem 'strong_parameters'

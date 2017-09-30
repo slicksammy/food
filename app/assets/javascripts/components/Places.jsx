@@ -2,24 +2,24 @@ class Places extends React.Component {
   constructor(props) {
     super(props);
     this.state = { type: 'all', data: props.data };
-    // this.get = this.get.bind(this);
+    this.get = this.get.bind(this);
     this.updateTypes = this.updateTypes.bind(this);
     this.map = this.map.bind(this);
     this.updateType = this.updateType.bind(this)
   }
 
-  // get() {
-  //   $.ajax({
-  //     url: '/places'
-  //     success: function(response) {
-  //       this.setState({data: response.data})
-  //     }
-  //   })
-  // }
+  get() {
+    $.ajax({
+      url: '/places',
+      success: function(response) {
+        this.setState({data: response.data})
+      }
+    })
+  }
 
-  // componentDidMount() {
-  //   this.get()
-  // }
+  componentDidMount() {
+    this.get()
+  }
 
   updateTypes() {
     var val = this.refs.type.value
