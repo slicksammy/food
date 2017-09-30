@@ -44,7 +44,7 @@ group :production do
   # error tracking
   gem 'newrelic_rpm'
 
-  gem 'le'
+  # gem 'le'
 end
 
 # gem 'strong_parameters'
