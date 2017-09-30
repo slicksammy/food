@@ -1,5 +1,6 @@
 require_relative 'order_prepare'
 require 'delivery/availability'
+require_relative 'apply_promo'
 
 module Checkout
   class FinalOrderCheck
@@ -11,7 +12,9 @@ module Checkout
       @order = order
     end
 
-    def valid?      
+    def valid?
+      order = validate_promotion
+
       totals = ::Checkout::OrderTotals.new(order: order).get_totals
 
       available_delivery_dates = ::Checkout::OrderOptions.new(order.cart).delivery_dates
@@ -27,6 +30,10 @@ module Checkout
 
     def valid_total?(totals)
       totals[:total] == order_details[:total].to_money
+    end
+
+    def validate_promotion
+      ::Checkout::ApplyPromo.new(order).validate_promotion(order.subtotal)
     end
 
     def valid_stripe_token?

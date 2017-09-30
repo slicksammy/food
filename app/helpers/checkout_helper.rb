@@ -25,6 +25,8 @@ module CheckoutHelper
       subtotal: order.subtotal.to_s,
       tax: order.tax.to_s,
       shipping: order.shipping.to_s,
+      discount: order.discount > 0 ? order.discount.to_s : nil ,
+      promo: order.promotion.try(:code),
       address_uuid: order.address_uuid,
       stripe_token_uuid: order.stripe_token_uuid,
       expected_delivery_date: order.expected_delivery_date,

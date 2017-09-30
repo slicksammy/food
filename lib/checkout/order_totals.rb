@@ -1,3 +1,5 @@
+require_relative 'apply_promo'
+
 module Checkout
   class OrderTotals
 
@@ -11,6 +13,7 @@ module Checkout
 
     def initialize(cart: nil, order: nil)
       @cart = cart || order.try(:cart)
+      @order = order || cart.order
 
       raise OrderTotals::MissingCartError unless @cart
       raise OrderTotals::NoItemsInCart if carts_products.empty?
@@ -19,7 +22,7 @@ module Checkout
     # main method
     # return these values and then can save into order object
     def get_totals
-      { subtotal: subtotal, tax: tax, total: total, shipping: shipping}
+      { subtotal: subtotal, tax: tax, total: total, shipping: shipping, discount: discount}
     end
 
     def carts_products
@@ -44,16 +47,26 @@ module Checkout
       }
     end
 
+    def discount
+      return 0 unless @order
+      order = ::Checkout::ApplyPromo.new(@order).validate_promotion(subtotal)
+      @discount ||= order.discount
+    end
+
     def subtotal
-      items.sum{ |p| p[:total] }
+      @subtotal ||= items.sum{ |p| p[:total] }
     end
 
     def tax
-      (subtotal*0.1)
+      taxable = subtotal
+      taxable -= discount if discount.present?
+      taxable*0.1025
     end
 
     def total
-      (tax + subtotal + shipping)
+      total = (tax + subtotal + shipping)
+      total -= discount if discount.present?
+      total
     end
 
     def shipping

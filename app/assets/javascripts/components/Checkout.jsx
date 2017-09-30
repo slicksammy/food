@@ -1,7 +1,7 @@
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { order: props.order, address: props.order.address_uuid, stripe_token: props.order.stripe_token_uuid, expected_delivery_date: props.order.expected_delivery_date, newAddress: true, newPayment: true }
+    this.state = { order: props.order,  promo: props.order.promo, address: props.order.address_uuid, stripe_token: props.order.stripe_token_uuid, expected_delivery_date: props.order.expected_delivery_date, newAddress: true, newPayment: true }
     this.confirmOrder = this.confirmOrder.bind(this);
     this.updateAddress = this.updateAddress.bind(this);
     this.updatePayment = this.updatePayment.bind(this);
@@ -75,13 +75,13 @@ class Checkout extends React.Component {
 
   applyPromo() {
     var code = this.refs.promo.value
-    console.log(code)
+
     $.ajax({
       method: 'POST',
       url: 'order/promo',
       data: { code: code },
       success: function(response) {
-        this.setState({order: response.order, promo: true})
+        this.setState({order: response.order, promo: code})
       }.bind(this),
       error: function(response) {
         this.setState({promoError: response.responseJSON.error || 'there was an error please try again' })
@@ -200,18 +200,29 @@ class Checkout extends React.Component {
       width: '30%',
     }
 
+    var errorStyle = {
+      color: 'red'
+    }
+
+    var promoForm = (
+      <div>
+        <div>
+          { this.state.promoError ? <div style={errorStyle}>{this.state.promoError}</div> : null }
+          <input  style={promo_style} className="base-input" type='text' placeholder="Enter code" ref="promo"></input> 
+        </div>
+        <div className="centered">
+          <button className="btn btn-success base-button" onClick={this.applyPromo}>Apply</button>
+        </div>
+      </div>
+    )
+
     var promo = (
       <div className="col-xs-9 col-sm-9 col-md-4 col-lg-4" style={colCentered}>
         <div>
-          <div style={header_style} className='base-title'>Apply Promo</div>
+          <div style={header_style} className='base-title'>Promo Code</div>
         </div>
         <div style={container_style} className='base-container'>
-          <div>
-            <input  style={promo_style} className="base-input" type='text' placeholder="Enter code" ref="promo"></input>
-          </div>
-          <div className="centered">
-            <button className="btn btn-success base-button" onClick={this.applyPromo}>Apply</button>
-          </div>
+          { this.state.promo ? <div>{this.state.promo}</div> : promoForm }
         </div>
       </div>
     )
@@ -231,10 +242,6 @@ class Checkout extends React.Component {
       marginBottom: '50px',
       clear: 'both',
       opacity: this.state.loader || this.state.success ? .1 : 1
-    }
-
-    var errorStyle = {
-      color: 'red'
     }
 
     var centered = {

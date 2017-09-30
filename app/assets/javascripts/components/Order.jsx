@@ -87,6 +87,7 @@ class Order extends React.Component {
           </div>
           <span style={borderTop}></span>
           <div style={totalStyle} className="row"><span className="left-float">Subtotal</span><span className="right-float">${this.props.order.subtotal}</span></div>
+          {this.props.order.discount ? <div style={totalStyle} className="row"><span className="left-float">Discount</span><span className="right-float">-${this.props.order.discount}</span></div> : null }
           <div style={totalStyle} className="row"><span className="left-float">Tax</span><span className="right-float">${this.props.order.tax}</span></div>
           <div style={totalStyle} className="row"><span className="left-float">Shipping</span><span className="right-float">${this.props.order.shipping}</span></div>
           <div style={totalStyle} className="row"><span className="left-float">Total</span><span className="right-float">${this.props.order.total}</span></div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918144352) do
+ActiveRecord::Schema.define(version: 20170930164631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,11 +88,12 @@ ActiveRecord::Schema.define(version: 20170918144352) do
     t.integer "total_cents"
     t.date "expected_delivery_date"
     t.datetime "delivered_at"
-    t.boolean "paid"
     t.string "status"
     t.string "uuid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "promotion_id"
+    t.integer "discount_cents"
     t.index ["cart_uuid"], name: "index_orders_on_cart_uuid"
     t.index ["uuid"], name: "index_orders_on_uuid"
   end
@@ -154,6 +155,16 @@ ActiveRecord::Schema.define(version: 20170918144352) do
     t.integer "price_cents"
     t.integer "r_price_cents"
     t.index ["uuid"], name: "index_products_on_uuid"
+  end
+
+  create_table "promotions", force: :cascade do |t|
+    t.string "code", null: false
+    t.integer "minimum_order_cents", default: 0
+    t.string "discount", null: false
+    t.boolean "expired"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_promotions_on_code", unique: true
   end
 
   create_table "statuses", force: :cascade do |t|

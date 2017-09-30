@@ -3,6 +3,7 @@ require 'checkout/order_options'
 require 'checkout/order_totals'
 require 'stripe/make_charge'
 require 'checkout/final_order_check'
+require 'checkout/apply_promo'
 
 class CheckoutController < SessionsController
   include CheckoutHelper
@@ -53,11 +54,16 @@ class CheckoutController < SessionsController
 
   # TODO finish this
   def apply_promo
-    params["code"]
+    return render body: nil, json: { error: 'code is required' } unless params["code"]
 
-    create_order
+    result = ::Checkout::ApplyPromo.new(order).apply_promotion(params["code"])
 
-    render body: nil, json: { order: @order }
+    if result[:success]
+      create_order
+      render body: nil, status: 202, json: { order: @order }
+    else
+      render body: nil, status: 500, json: { error: result[:error] }
+    end
   end
 
   def buy

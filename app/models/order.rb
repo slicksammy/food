@@ -10,8 +10,9 @@ class Order < ActiveRecord::Base
   has_many :stripe_charges, primary_key: :uuid, foreign_key: :order_uuid
   has_many :order_status_logs, primary_key: :uuid, foreign_key: :order_uuid
   has_one :user, through: :cart
+  belongs_to :promotion
 
-  monetize :subtotal_cents, :tax_cents, :shipping_cents, :total_cents
+  monetize :subtotal_cents, :tax_cents, :shipping_cents, :total_cents, :discount_cents
 
   scope :ongoing, -> { where(status: ONGOING_STATUS) }
 
@@ -19,7 +20,7 @@ class Order < ActiveRecord::Base
 
   scope :ordered, -> { order("created_at DESC") }
 
-  after_save :create_order_status_log, if: :status_changed?
+  after_save :create_order_status_log, if: :saved_change_to_status?
 
   PURCHASED_STATUS = 'paid'
   DElIVERED_STATUS = 'delivered'
@@ -41,6 +42,10 @@ class Order < ActiveRecord::Base
 
   def paid?
     stripe_charges.succeeded.any?
+  end
+
+  def discounted?
+    discount > 0
   end
 
   def valid_expected_delivery_date?
