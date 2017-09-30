@@ -201,7 +201,7 @@ class Checkout extends React.Component {
     }
 
     var promo = (
-      <div className="col-xs-6 col-sm-6 col-md-4 col-lg-4" style={colCentered}>
+      <div className="col-xs-9 col-sm-9 col-md-4 col-lg-4" style={colCentered}>
         <div>
           <div style={header_style} className='base-title'>Apply Promo</div>
         </div>
