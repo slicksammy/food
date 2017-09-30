@@ -9,17 +9,17 @@ Rails.application.routes.draw do
 
   get '/application/version' => 'application#version'
 
-  get '/places' => 'application#places'
+  # get '/places' => 'application#places'
 
-  get '/places/:id' => 'application#place', constraints: { id: /[0-9]+/ }
+  # get '/places/:id' => 'application#place', constraints: { id: /[0-9]+/ }
 
-  post '/places/:id/notes' => 'application#notes'
+  # post '/places/:id/notes' => 'application#notes'
 
-  post '/places/:id/update_status' => 'application#update_status'
+  # post '/places/:id/update_status' => 'application#update_status'
 
-  get '/places/:id/callbacks' => 'application#get_callbacks'
+  # get '/places/:id/callbacks' => 'application#get_callbacks'
 
-  match 'places/new', to: 'application#new', via: [:get, :post]
+  # match 'places/new', to: 'application#new', via: [:get, :post]
 
   # get 'places/new' => 'application#new'
 
