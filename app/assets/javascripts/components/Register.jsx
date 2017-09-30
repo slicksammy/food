@@ -121,22 +121,26 @@ class Register extends React.Component {
       fontSize: 'x-small'
     }
 
+    var errorStyle = {
+      color: 'red'
+    }
+
     return(
       <form id="register">
         <div>
-          { this.state.errors.first_name ? <span className="create-user-error">{this.state.errors.first_name}</span> : null }
+          { this.state.errors.first_name ? <span style={errorStyle}>{this.state.errors.first_name}</span> : null }
           <input style={inputStyle} onChange={this.updateState} type="text" className="base-input" ref="firstName" placeholder="First Name" id="firstName" /><span style={firstNameStyle} className="glyphicon glyphicon-ok"></span>
         </div>
         <div>
-          { this.state.errors.last_name ? <span className="create-user-error">{this.state.errors.last_name}</span> : null }
+          { this.state.errors.last_name ? <span style={errorStyle}>{this.state.errors.last_name}</span> : null }
           <input style={inputStyle} onChange={this.updateState} type="text" className="base-input" placeholder="Last Name" id="lastName"/><span style={lastNameStyle} className="glyphicon glyphicon-ok"></span>
         </div>
         <div>
-          { this.state.errors.email ? <span className="create-user-error">{this.state.errors.email}</span> : null }
+          { this.state.errors.email ? <span style={errorStyle}>{this.state.errors.email}</span> : null }
           <input style={inputStyle} onChange={this.updateState} type="text" className="base-input" placeholder="Email" id="email"/><span style={emailStyle} className="glyphicon glyphicon-ok"></span>
         </div>
         <div>
-          { this.state.errors.password ? <span className="create-user-error">{this.state.errors.password}</span> : null }
+          { this.state.errors.password ? <span style={errorStyle}>{this.state.errors.password}</span> : null }
           <label style={labelStyle}>password must include one letter, one number and be at least 6 characters long</label>
           <input style={inputStyle} onChange={this.updateState} type="password" className="base-input" placeholder="Password" id="password"/><span style={passwordStyle} className="glyphicon glyphicon-ok"></span>
         </div>
