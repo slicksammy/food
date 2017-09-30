@@ -22689,6 +22689,7 @@ var Checkout = (function (_React$Component) {
         color: 'red'
       };
 
+      // TODO disable button until something is in the input box
       var promoForm = React.createElement(
         'div',
         null,
@@ -22700,7 +22701,7 @@ var Checkout = (function (_React$Component) {
             { style: errorStyle },
             this.state.promoError
           ) : null,
-          React.createElement('input', { style: promo_style, className: 'base-input', type: 'text', placeholder: 'Enter code', ref: 'promo' })
+          React.createElement('input', { onChange: this.updateState({ promo: this.value }), style: promo_style, className: 'base-input', type: 'text', placeholder: 'Enter code', ref: 'promo' })
         ),
         React.createElement(
           'div',
