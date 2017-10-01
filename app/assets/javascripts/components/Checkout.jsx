@@ -15,13 +15,14 @@ class Checkout extends React.Component {
 
   confirmOrder(e) {
     e.target.disabled = true
+    var instructions = this.refs.instructions.value
 
     this.setState({loader: true})
 
     $.ajax({
       method: 'POST',
       url: '/order/buy',
-      data: { order: this.state.order },
+      data: { order: this.state.order, instructions: instructions },
       success: function() {
         this.showSuccess()
       }.bind(this),
@@ -238,6 +239,24 @@ class Checkout extends React.Component {
       </div>
     )
 
+    var textAreaStyle = {
+      width: '80%',
+      fontSize: '14px',
+      // height: '50px'
+    }
+
+    var instructions = (
+      <div className="col-xs-12 col-sm-9 col-md-9 col-lg-9" style={colCentered}>
+        <p>We are not responsible for theft, so please make sure to let us know the where the best place to leave your steaks is.</p>
+        <div>
+          <div style={header_style} className='base-title'>Delivery Instructions</div>
+        </div>
+        <div style={container_style} className='base-container'>
+          <textarea ref="instructions" rows="4" style={textAreaStyle} placeholder="Best place to leaver your package, door code, etc. (optional)" />
+        </div>
+      </div>
+    )
+
     var buyButtonStyle = {
       width: '25%',
       // height: '3em',
@@ -281,6 +300,9 @@ class Checkout extends React.Component {
         </div>
         <div style={centered}>
           {delivery}
+        </div>
+        <div style={centered}>
+          {instructions}
         </div>
         <div style={totalContainerStyle}>
           <h1>Total: ${this.state.order.total}</h1>

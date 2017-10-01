@@ -22428,13 +22428,14 @@ var Checkout = (function (_React$Component) {
     key: 'confirmOrder',
     value: function confirmOrder(e) {
       e.target.disabled = true;
+      var instructions = this.refs.instructions.value;
 
       this.setState({ loader: true });
 
       $.ajax({
         method: 'POST',
         url: '/order/buy',
-        data: { order: this.state.order },
+        data: { order: this.state.order, instructions: instructions },
         success: (function () {
           this.showSuccess();
         }).bind(this),
@@ -22749,6 +22750,36 @@ var Checkout = (function (_React$Component) {
         )
       );
 
+      var textAreaStyle = {
+        width: '80%',
+        fontSize: '14px'
+      };
+
+      // height: '50px'
+      var instructions = React.createElement(
+        'div',
+        { className: 'col-xs-12 col-sm-9 col-md-9 col-lg-9', style: colCentered },
+        React.createElement(
+          'p',
+          null,
+          'We are not responsible for theft, so please make sure to let us know the where the best place to leave your steaks is.'
+        ),
+        React.createElement(
+          'div',
+          null,
+          React.createElement(
+            'div',
+            { style: header_style, className: 'base-title' },
+            'Delivery Instructions'
+          )
+        ),
+        React.createElement(
+          'div',
+          { style: container_style, className: 'base-container' },
+          React.createElement('textarea', { ref: 'instructions', rows: '4', style: textAreaStyle, placeholder: 'Best place to leaver your package, door code, etc. (optional)' })
+        )
+      );
+
       var buyButtonStyle = {
         width: '25%',
         // height: '3em',
@@ -22810,6 +22841,11 @@ var Checkout = (function (_React$Component) {
           'div',
           { style: centered },
           delivery
+        ),
+        React.createElement(
+          'div',
+          { style: centered },
+          instructions
         ),
         React.createElement(
           'div',

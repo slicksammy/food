@@ -11,6 +11,7 @@ class CheckoutController < SessionsController
   before_action :allow_update_order_params, only: [:update_order, :safe_update]
   before_action :allow_promo_params, only: [:apply_promo]
   before_action :redirect_to_login_if_neccessary
+  before_action :permit_instruction_param, only: [:buy]
 
   def view
     begin
@@ -71,6 +72,7 @@ class CheckoutController < SessionsController
     # ie customer keeps tab open with next day delivery and then trys buying on same date again
     # or prices have changed
     # error message should be "please refresh and try again"
+    order.update_attributes(instructions: params["instructions"])
 
     valid = ::Checkout::FinalOrderCheck.new(params["order"], order).valid?
 
@@ -86,7 +88,7 @@ class CheckoutController < SessionsController
         OrderMailer.order_confirmation(cached_order).deliver!
         render body: nil, status: 202
       # the user will not know that he didn't pay the second time
-      rescue ::Stripe::MakeCharge::DuplicateChargeError, ::Net::SMTPFatalError, ::Net::SMTPAuthenticationError => e
+      rescue ::Stripe::MakeCharge::DuplicateChargeError, ::Net::SMTPFatalError, ::Net::SMTPAuthenticationError, ::Net::OpenTimeout  => e
         clear_cart
         render body: nil, status: 202 #, json: { error: 'Order has already been paid for' }
       end
@@ -125,5 +127,9 @@ class CheckoutController < SessionsController
 
   def allow_promo_params
     params.require(:code)
+  end
+
+  def permit_instruction_param
+    params.permit(:instructions)
   end
 end
