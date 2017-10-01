@@ -24188,7 +24188,10 @@ var Products = (function (_React$Component) {
         };
 
         var buttonStyle = {
-          margin: '15px'
+          margin: '15px',
+          fontSize: '20px',
+          width: '40px',
+          height: '40px'
         };
 
         var mainContainerStyle = {
@@ -24284,14 +24287,14 @@ var Products = (function (_React$Component) {
             ),
             React.createElement(
               "button",
-              { style: buttonStyle, className: "btn btn-success cart_update layer-shadow1", onClick: function () {
+              { style: buttonStyle, className: "btn btn-success cart_update layer-shadow1 blue", onClick: function () {
                   return _this.add(product.uuid, 1);
                 }, id: "cart_add" },
               "+"
             ),
             React.createElement(
               "button",
-              { style: buttonStyle, className: "btn btn-danger cart_update layer-shadow1", onClick: function () {
+              { style: buttonStyle, className: "btn btn-danger cart_update layer-shadow1 red", onClick: function () {
                   return _this.add(product.uuid, -1);
                 }, id: "cart_subtract" },
               "-"
