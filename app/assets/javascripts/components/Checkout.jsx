@@ -76,7 +76,7 @@ class Checkout extends React.Component {
   }
 
   applyPromo() {
-    var code = this.refs.promo.value
+    var code = this.state.promo
 
     $.ajax({
       method: 'POST',
@@ -96,7 +96,7 @@ class Checkout extends React.Component {
   }
 
   canApplyPromo() {
-    return(!this.state.promoSuccess)
+    return(this.state.promo)
   }
 
   shouldShowCreateAddress() {
