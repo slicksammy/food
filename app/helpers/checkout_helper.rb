@@ -33,7 +33,8 @@ module CheckoutHelper
       formatted_expected_delivery_date: format_date(order.expected_delivery_date),
       order_number: order.order_number,
       delivered_on: format_date(order.delivered_on),
-      status: order.status.try(:capitalize)
+      status: order.status.try(:capitalize),
+      instructions: order.instructions
     }
   end
 

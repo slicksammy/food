@@ -66,6 +66,13 @@ class Order extends React.Component {
       marginBottom: '10px'
     }
 
+    var instructionsStyle = {
+      fontSize: '30px',
+      float: 'left',
+      display: 'block',
+      marginTop: '20px'
+    }
+
     return(
      <div>
         <div>
@@ -91,6 +98,7 @@ class Order extends React.Component {
           <div style={totalStyle} className="row"><span className="left-float">Tax</span><span className="right-float">${this.props.order.tax}</span></div>
           <div style={totalStyle} className="row"><span className="left-float">Shipping</span><span className="right-float">${this.props.order.shipping}</span></div>
           <div style={totalStyle} className="row"><span className="left-float">Total</span><span className="right-float">${this.props.order.total}</span></div>
+          { this.props.order.instructions ? <p style={instructionsStyle}>Instructions: {this.props.order.instructions}</p> : null }
         </div>
         {/*<button onClick={this.order}>Buy</button>*/}
       </div>

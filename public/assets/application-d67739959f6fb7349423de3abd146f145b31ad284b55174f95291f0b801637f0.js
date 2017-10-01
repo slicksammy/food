@@ -24170,6 +24170,13 @@ var Order = (function (_React$Component) {
         marginBottom: '10px'
       };
 
+      var instructionsStyle = {
+        fontSize: '30px',
+        float: 'left',
+        display: 'block',
+        marginTop: '20px'
+      };
+
       return React.createElement(
         'div',
         null,
@@ -24293,7 +24300,13 @@ var Order = (function (_React$Component) {
               '$',
               this.props.order.total
             )
-          )
+          ),
+          this.props.order.instructions ? React.createElement(
+            'p',
+            { style: instructionsStyle },
+            'Instructions: ',
+            this.props.order.instructions
+          ) : null
         )
       );
     }
