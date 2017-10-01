@@ -4,8 +4,7 @@ require 'stats'
 class AdminController < SessionsController
   include CheckoutHelper
 
-  # TODO uncomment - commented for now for testing purposes
-  # before_action :authorize!
+  before_action :authorize!
 
   before_action :stats, only: [:dashboard, :get_stats]
 
