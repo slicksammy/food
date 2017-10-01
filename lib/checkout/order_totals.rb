@@ -13,7 +13,7 @@ module Checkout
 
     def initialize(cart: nil, order: nil)
       @cart = cart || order.try(:cart)
-      @order = order || cart.order
+      @order = order || cart.try(:order)
 
       raise OrderTotals::MissingCartError unless @cart
       raise OrderTotals::NoItemsInCart if carts_products.empty?
