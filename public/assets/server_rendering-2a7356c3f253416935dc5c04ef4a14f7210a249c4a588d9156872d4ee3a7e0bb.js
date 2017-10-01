@@ -24419,6 +24419,8 @@ var Register = (function (_React$Component) {
       register.addEventListener('submit', function (event) {
         event.preventDefault();
       });
+
+      this.refs.marketing.checked = true;
     }
   }, {
     key: 'componentDidUpdate',
@@ -24434,7 +24436,8 @@ var Register = (function (_React$Component) {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        marketing: this.refs.marketing.checked
       };
 
       $.ajax({
@@ -24531,6 +24534,25 @@ var Register = (function (_React$Component) {
         color: 'red'
       };
 
+      var inputStyleContainer = {
+        width: '75%',
+        display: 'inline-block',
+        textAlign: 'left'
+      };
+
+      var checkboxStyle = {
+        marginLeft: '-10px',
+        display: 'inline-block'
+      };
+
+      var checkboxLabel = {
+        display: 'inline-block',
+        fontSize: '12px',
+        float: 'right',
+        width: '95%',
+        paddingTop: '10px'
+      };
+
       return React.createElement(
         'form',
         { id: 'register' },
@@ -24582,6 +24604,21 @@ var Register = (function (_React$Component) {
           ),
           React.createElement('input', { style: inputStyle, onChange: this.updateState, type: 'password', className: 'base-input', placeholder: 'Password', id: 'password' }),
           React.createElement('span', { style: passwordStyle, className: 'glyphicon glyphicon-ok' })
+        ),
+        React.createElement(
+          'div',
+          null,
+          React.createElement(
+            'div',
+            { style: inputStyleContainer },
+            React.createElement('input', { style: checkboxStyle, type: 'checkbox', id: 'marketing', ref: 'marketing' }),
+            React.createElement(
+              'label',
+              { style: checkboxLabel },
+              'I would like to receive marketing emails from ',
+              React.createElement('img', { style: { width: '30%' }, src: 'assets/logo_simple.png' })
+            )
+          )
         ),
         React.createElement(
           'button',
