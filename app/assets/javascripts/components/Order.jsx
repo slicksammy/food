@@ -73,7 +73,7 @@ class Order extends React.Component {
             <td className="order-td">
 
             </td>
-            <td className="order-td">
+            <td className="order-td" style={{color: 'green'}}>
               -${this.props.order.discount}
             </td>
           </tr> : null }
