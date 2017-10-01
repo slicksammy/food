@@ -28,17 +28,17 @@ class Order extends React.Component {
 
       return(
         <tr>
-          <td style={tdStyle}>
+          <td className="order-td">
             <div style={{clear: 'both'}}>{item.name}</div>
             {/*<img style={imageStyle} src={item.image} />*/}
           </td>
           {/*<td style={tdStyle}>
             {item.description}
           </td>*/}
-          <td style={tdStyle}>
+          <td className="order-td">
             {item.amount}
           </td>
-          <td style={tdStyle}>
+          <td className="order-td">
             ${item.total}
           </td>
         </tr>
@@ -83,10 +83,10 @@ class Order extends React.Component {
             <table style={tableStyle}>
               <tbody>
                 <tr>
-                  <th className="centered" style={tdStyle}>Item</th>
+                  <th className="centered order-td">Item</th>
                   {/*<th className="centered" style={{tdStyle,noBorder}}>Description</th>*/}
-                  <th className="centered" style={tdStyle}>Quantity</th>
-                  <th className="centered" style={tdStyle}>Subtotal</th>
+                  <th className="centered order-td">Quantity</th>
+                  <th className="centered order-td">Subtotal</th>
                 </tr>
                 {items_2}
               </tbody>
