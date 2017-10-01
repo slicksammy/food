@@ -32,7 +32,7 @@ class UsersController < SessionsController
 
       begin
         UserMailer.welcome(u).deliver!
-      rescue Net::SMTPFatalError => e
+      rescue Net::SMTPFatalError, Net::OpenTimeout => e
         nil
       end
 
