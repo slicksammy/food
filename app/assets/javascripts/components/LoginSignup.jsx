@@ -23,7 +23,7 @@ class LoginSignup extends React.Component {
 
     var title = this.state.show == 'login' ? 'Login' : 'Create Account'
 
-    var link = this.state.show == 'login' ? 'New user?' : 'Already Signed Up?'
+    var link = this.state.show == 'login' ? 'New user?' : 'Already have an account?'
 
     var a_style = {
       color: 'blue',
