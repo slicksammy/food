@@ -106,7 +106,7 @@ class Products extends React.Component {
 
       var restPrice = {
         textDecoration: 'line-through',
-        color: '#6f6faf'
+        color: '#d40766'
       }
 
       if (!this.hasProduct(product.uuid)  && !!this.props.hideOnZero) {
