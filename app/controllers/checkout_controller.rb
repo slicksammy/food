@@ -4,6 +4,7 @@ require 'checkout/order_totals'
 require 'stripe/make_charge'
 require 'checkout/final_order_check'
 require 'checkout/apply_promo'
+require 'env'
 
 class CheckoutController < SessionsController
   include CheckoutHelper
@@ -14,6 +15,8 @@ class CheckoutController < SessionsController
   before_action :permit_instruction_param, only: [:buy]
 
   def view
+    @accepting_orders = Env.accepting_orders?
+
     begin
       create_items # error will be raised here first
       create_order
@@ -68,6 +71,7 @@ class CheckoutController < SessionsController
   end
 
   def buy
+    return unless Env.accepting_orders?
     # TODO add validation to order before buying
     # ie customer keeps tab open with next day delivery and then trys buying on same date again
     # or prices have changed

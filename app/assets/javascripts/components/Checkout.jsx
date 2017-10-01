@@ -121,7 +121,7 @@ class Checkout extends React.Component {
   }
 
   canBuy() {
-    return(this.state.address && this.state.stripe_token && !this.state.error)
+    return(this.state.address && this.state.stripe_token && !this.state.error && this.props.accepting_orders)
   }
 
 
@@ -246,6 +246,7 @@ class Checkout extends React.Component {
     var textAreaStyle = {
       width: '80%',
       fontSize: '14px',
+      border: 'solid 2px black'
       // height: '50px'
     }
 
@@ -284,8 +285,15 @@ class Checkout extends React.Component {
       opacity: this.state.loader || this.state.success ? .1 : 1
     }
 
+    var noOrdersStyle = {
+      color: 'red',
+      textAlign: 'center',
+      marginBottom: '30px'
+    }
+
     var form = ( 
       <div>
+        {this.props.accepting_orders ? null : <h1 style={noOrdersStyle} >We apologize but we are currently not accepting orders. Please check back soon.</h1> }
         {this.state.loader ? <div className="loader"></div> : null }
         {this.state.success ? <div className="success"><span className=" glyphicon glyphicon-ok"></span>Congrats! Purhcase Complete.</div> : null }
         <div style={centered}>
