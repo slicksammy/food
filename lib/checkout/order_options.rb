@@ -41,7 +41,10 @@ module Checkout
     # instead of +n need to use business days
     def delivery_dates
       #(0..2).to_a.map { |n| earliest_available_delivery_date + n }
-      (1..3).to_a.map { |n| n.business_days.from_now }.map(&:to_date)
+      dates = (1..3).to_a.map { |n| n.business_days.from_now }.map(&:to_date)
+      # for orders coming in on Sat or Sun we need to hack this in
+      # disscussed here https://github.com/bokmann/business_time/pull/116
+      dates.map { |d| d - 1 } unless Date.today.weekday?
     end
 
     def cutoff_time
