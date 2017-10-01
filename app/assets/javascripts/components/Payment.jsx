@@ -126,6 +126,10 @@ class Payment extends React.Component {
           <form id="card">
             {this.state.error ? <div style={errorStyle}>There was an error, please wait a few seconds and try again</div> : null }
             <div style={divStyle}>
+              <div>
+                <p style={{fontSize: '14px'}}>We take security very seriously. All payment info is securely processed through Stripe. For more info click <a href='https://stripe.com/about' target="_blank" >here.</a></p>
+                <img className="img img-responsive" src="assets/powered_by_stripe.png" />
+              </div>
               <input className="base-input" style={long} id="number" onChange={this.updateState} placeholder="card number" type="text" /><span style={numberStyle} className="glyphicon glyphicon-ok"></span>
             </div>
             <div style={selectStyle}>
