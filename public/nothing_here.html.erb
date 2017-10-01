@@ -1,6 +1,6 @@
 <style>
   .message {
-    font-size: 6vw;
+    font-size: 30px;
   }
 
   .container {
@@ -20,20 +20,19 @@
   .top-margin {
     margin-top: 100px;
   }
+
+  p {
+    font-size: 50px;
+  }
 </style>
 
-<script>
-  function shop() {
-    window.location = '/#store'
-  }
-</script>
 
 <div class="container">
   <div class="message">
     <%= @message %>
   </div>
   <div class="shop">
-    <button class="btn btn-success shop-button" onClick="shop()">Keep Shopping</button>
+    <p>Let's <a href='/#store'>shop</a>
   </div>
 <div>
 
