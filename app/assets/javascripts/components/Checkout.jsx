@@ -180,9 +180,13 @@ class Checkout extends React.Component {
       </div>
     )
 
+    var warningStyle = {
+      fontSize: '24px',
+    }
+
     var delivery = (
       <div className="col-xs-12 col-sm-9 col-md-9 col-lg-9" style={colCentered}>
-        <h2>Orders will arrive between <strong>3pm</strong> and <strong>7pm</strong> and must be put in the fridge or freezer by <strong>10pm</strong> to stay fresh.</h2>
+        <p style={warningStyle}>Orders will arrive between <strong>3pm</strong> and <strong>7pm</strong> and must be put in the fridge or freezer by <strong>10pm</strong> to stay fresh.</p>
         <div id="update-delivery">
           <UpdateOrder default={this.state.expected_delivery_date} onUpdate={this.updateDelivery} options={this.props.delivery_options} title="Delivery Date" ref="delivery"/>
         </div>
