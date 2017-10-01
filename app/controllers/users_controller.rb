@@ -17,7 +17,8 @@ class UsersController < SessionsController
       {
         first_name: params['firstName'],
         last_name: params['lastName'],
-        email: params['email']
+        email: params['email'],
+        marketing_opt_in: params['marketing']
       },
       params["password"]
     )
@@ -86,6 +87,6 @@ class UsersController < SessionsController
   end
 
   def permit_create_user_params
-    params.permit(:firstName, :lastName, :email)
+    params.permit(:firstName, :lastName, :email, :marketing)
   end
 end

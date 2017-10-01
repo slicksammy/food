@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171001060042) do
+ActiveRecord::Schema.define(version: 20171001221639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,6 +206,7 @@ ActiveRecord::Schema.define(version: 20171001060042) do
     t.string "uuid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "marketing_opt_in"
     t.index ["email"], name: "index_users_on_email"
     t.index ["uuid"], name: "index_users_on_uuid"
   end

@@ -19,6 +19,8 @@ class Register extends React.Component {
     register.addEventListener('submit', function(event) {
       event.preventDefault() }
     )
+
+    this.refs.marketing.checked = true
   }
 
   componentDidUpdate() {
@@ -32,7 +34,8 @@ class Register extends React.Component {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      marketing: this.refs.marketing.checked
     };
 
     $.ajax({
@@ -125,6 +128,25 @@ class Register extends React.Component {
       color: 'red'
     }
 
+    var inputStyleContainer= {
+      width: '75%',
+      display: 'inline-block',
+      textAlign: 'left'
+    }
+
+    var checkboxStyle = {
+      marginLeft: '-10px',
+      display: 'inline-block'
+    }
+
+    var checkboxLabel = {
+      display: 'inline-block',
+      fontSize: '12px',
+      float: 'right',
+      width: '95%',
+      paddingTop: '10px'
+    }
+
     return(
       <form id="register">
         <div>
@@ -143,6 +165,12 @@ class Register extends React.Component {
           { this.state.errors.password ? <span style={errorStyle}>{this.state.errors.password}</span> : null }
           <label style={labelStyle}>password must include one letter, one number and be at least 6 characters long</label>
           <input style={inputStyle} onChange={this.updateState} type="password" className="base-input" placeholder="Password" id="password"/><span style={passwordStyle} className="glyphicon glyphicon-ok"></span>
+        </div>
+        <div>
+          <div style={inputStyleContainer}>
+            <input style={checkboxStyle} type="checkbox" id="marketing" ref="marketing"/>
+            <label style={checkboxLabel}>I would like to receive marketing emails from <img style={{width: '30%'}} src="assets/logo_simple.png" /></label>
+          </div>
         </div>
         <button style={buttonStyle} disabled={!this.state.canSubmit} onClick={this.completeRegistration} ref="button" className="btn btn-success btn-submit" type="submit">Sign Up</button>
       </form>
