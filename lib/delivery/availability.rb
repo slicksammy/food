@@ -31,7 +31,7 @@ module Delivery
 
     def self.max_radius
       # max distance
-      2.5
+      8
     end
 
     def distance
