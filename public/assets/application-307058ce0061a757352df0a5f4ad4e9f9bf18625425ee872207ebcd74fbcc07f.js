@@ -24984,8 +24984,8 @@ var Products = (function (_React$Component) {
 
       var products = this.props.products.map(function (product) {
         var imageStyle = {
-          width: '75%',
-          height: '200px'
+          maxWidth: '95%',
+          maxHeight: '200px'
         };
 
         var containerStyle = {
@@ -25053,7 +25053,7 @@ var Products = (function (_React$Component) {
 
         return React.createElement(
           "div",
-          { style: colCentered, className: "col-lg-4 col-md-4 col-sm-6 col-xs-9" },
+          { style: colCentered, className: "col-lg-4 col-md-4 col-sm-6 col-xs-11" },
           React.createElement(
             "div",
             { className: "base-title-product" },
