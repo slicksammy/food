@@ -45,6 +45,86 @@ class Order extends React.Component {
       )
     })
 
+    var totals = [{name: 'subtotal', value: this.props.order.subtotal}, {name: 'discount', value: this.props.order.discount},
+      {name: 'tax', value: this.props.order.tax}, {name: 'shipping', value: this.props.order.shipping}, {name: 'total', value: this.props.order.total}]
+
+    var totalsForm = (
+      <tbody>
+        <tr>
+          <td className="order-td">
+            <div style={{clear: 'both'}}>Subtotal</div>
+            {/*<img style={imageStyle} src={item.image} />*/}
+          </td>
+          {/*<td style={tdStyle}>
+            {item.description}
+          </td>*/}
+          <td className="order-td">
+            
+          </td>
+          <td className="order-td">
+            ${this.props.order.subtotal}
+          </td>
+        </tr>
+        { this.props.order.discount ? 
+          <tr>
+            <td className="order-td">
+              <div style={{clear: 'both'}}>Discount</div>
+            </td>
+            <td className="order-td">
+
+            </td>
+            <td className="order-td">
+              -${this.props.order.discount}
+            </td>
+          </tr> : null }
+        <tr>
+          <td className="order-td">
+            <div style={{clear: 'both'}}>Tax</div>
+            {/*<img style={imageStyle} src={item.image} />*/}
+          </td>
+          {/*<td style={tdStyle}>
+            {item.description}
+          </td>*/}
+          <td className="order-td">
+            
+          </td>
+          <td className="order-td">
+            ${this.props.order.tax}
+          </td>
+        </tr>
+        <tr>
+          <td className="order-td">
+            <div style={{clear: 'both'}}>Delivery Fee</div>
+            {/*<img style={imageStyle} src={item.image} />*/}
+          </td>
+          {/*<td style={tdStyle}>
+            {item.description}
+          </td>*/}
+          <td className="order-td">
+            
+          </td>
+          <td className="order-td">
+            {this.props.order.shipping}
+          </td>
+        </tr>
+        <tr>
+          <td className="order-td">
+            <div style={{clear: 'both', fontWeight: 'bold'}}>Total</div>
+            {/*<img style={imageStyle} src={item.image} />*/}
+          </td>
+          {/*<td style={tdStyle}>
+            {item.description}
+          </td>*/}
+          <td className="order-td">
+            
+          </td>
+          <td className="order-td">
+            ${this.props.order.total}
+          </td>
+        </tr>
+      </tbody>
+    )
+
     var tableStyle = {
       width: '100%'
     }
@@ -93,12 +173,18 @@ class Order extends React.Component {
             </table>
           </div>
           <span style={borderTop}></span>
-          <div style={totalStyle} className="row"><span className="left-float">Subtotal</span><span className="right-float">${this.props.order.subtotal}</span></div>
+          <div>
+            <table style={tableStyle}>
+              {totalsForm}
+            </table>
+          </div>
+          {/*<div style={totalStyle} className="row"><span className="left-float">Subtotal</span><span className="right-float">${this.props.order.subtotal}</span></div>
           {this.props.order.discount ? <div style={totalStyle} className="row"><span className="left-float">Discount</span><span className="right-float">-${this.props.order.discount}</span></div> : null }
           <div style={totalStyle} className="row"><span className="left-float">Tax</span><span className="right-float">${this.props.order.tax}</span></div>
           <div style={totalStyle} className="row"><span className="left-float">Shipping</span><span className="right-float">${this.props.order.shipping}</span></div>
           <div style={totalStyle} className="row"><span className="left-float">Total</span><span className="right-float">${this.props.order.total}</span></div>
           { this.props.order.instructions ? <p style={instructionsStyle}>Instructions: {this.props.order.instructions}</p> : null }
+          {totalsForm}*/}
         </div>
         {/*<button onClick={this.order}>Buy</button>*/}
       </div>
