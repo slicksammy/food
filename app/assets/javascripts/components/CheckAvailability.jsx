@@ -50,7 +50,7 @@ class CheckAvailability extends React.Component {
       borderBottom: 'solid 5px',
       height: '50px',
       width: '100%',
-      fontSize: '3vw',
+      fontSize: '30px',
       textAlign: 'center'
     }
 
