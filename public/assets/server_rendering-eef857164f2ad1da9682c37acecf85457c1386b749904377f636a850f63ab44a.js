@@ -22850,7 +22850,7 @@ var LoginSignup = (function (_React$Component) {
 
       var title = this.state.show == 'login' ? 'Login' : 'Create Account';
 
-      var link = this.state.show == 'login' ? 'New user?' : 'Already Signed Up?';
+      var link = this.state.show == 'login' ? 'New user?' : 'Already have an account?';
 
       var a_style = {
         color: 'blue',
@@ -23560,6 +23560,21 @@ var Payment = (function (_React$Component) {
             React.createElement(
               'div',
               { style: divStyle },
+              React.createElement(
+                'div',
+                null,
+                React.createElement(
+                  'p',
+                  { style: { fontSize: '14px' } },
+                  'We take security very seriously. All payment info is securely processed through Stripe. For more info click ',
+                  React.createElement(
+                    'a',
+                    { href: 'https://stripe.com/about', target: '_blank' },
+                    'here.'
+                  )
+                ),
+                React.createElement('img', { className: 'img img-responsive', src: 'assets/powered_by_stripe.png' })
+              ),
               React.createElement('input', { className: 'base-input', style: long, id: 'number', onChange: this.updateState, placeholder: 'card number', type: 'text' }),
               React.createElement('span', { style: numberStyle, className: 'glyphicon glyphicon-ok' })
             ),
