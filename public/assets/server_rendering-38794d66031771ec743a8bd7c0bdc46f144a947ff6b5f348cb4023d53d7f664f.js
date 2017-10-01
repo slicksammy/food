@@ -23290,6 +23290,112 @@ var Order = (function (_React$Component) {
         );
       });
 
+      var totals = [{ name: 'subtotal', value: this.props.order.subtotal }, { name: 'discount', value: this.props.order.discount }, { name: 'tax', value: this.props.order.tax }, { name: 'shipping', value: this.props.order.shipping }, { name: 'total', value: this.props.order.total }];
+
+      var totalsForm = React.createElement(
+        'tbody',
+        null,
+        React.createElement(
+          'tr',
+          null,
+          React.createElement(
+            'td',
+            { className: 'order-td' },
+            React.createElement(
+              'div',
+              { style: { clear: 'both' } },
+              'Subtotal'
+            )
+          ),
+          React.createElement('td', { className: 'order-td' }),
+          React.createElement(
+            'td',
+            { className: 'order-td' },
+            '$',
+            this.props.order.subtotal
+          )
+        ),
+        this.props.order.discount ? React.createElement(
+          'tr',
+          null,
+          React.createElement(
+            'td',
+            { className: 'order-td' },
+            React.createElement(
+              'div',
+              { style: { clear: 'both' } },
+              'Discount'
+            )
+          ),
+          React.createElement('td', { className: 'order-td' }),
+          React.createElement(
+            'td',
+            { className: 'order-td', style: { color: 'green' } },
+            '-$',
+            this.props.order.discount
+          )
+        ) : null,
+        React.createElement(
+          'tr',
+          null,
+          React.createElement(
+            'td',
+            { className: 'order-td' },
+            React.createElement(
+              'div',
+              { style: { clear: 'both' } },
+              'Tax'
+            )
+          ),
+          React.createElement('td', { className: 'order-td' }),
+          React.createElement(
+            'td',
+            { className: 'order-td' },
+            '$',
+            this.props.order.tax
+          )
+        ),
+        React.createElement(
+          'tr',
+          null,
+          React.createElement(
+            'td',
+            { className: 'order-td' },
+            React.createElement(
+              'div',
+              { style: { clear: 'both' } },
+              'Delivery Fee'
+            )
+          ),
+          React.createElement('td', { className: 'order-td' }),
+          React.createElement(
+            'td',
+            { className: 'order-td' },
+            this.props.order.shipping
+          )
+        ),
+        React.createElement(
+          'tr',
+          null,
+          React.createElement(
+            'td',
+            { className: 'order-td' },
+            React.createElement(
+              'div',
+              { style: { clear: 'both', fontWeight: 'bold' } },
+              'Total'
+            )
+          ),
+          React.createElement('td', { className: 'order-td' }),
+          React.createElement(
+            'td',
+            { className: 'order-td' },
+            '$',
+            this.props.order.total
+          )
+        )
+      );
+
       var tableStyle = {
         width: '100%'
       };
@@ -23369,85 +23475,13 @@ var Order = (function (_React$Component) {
           React.createElement('span', { style: borderTop }),
           React.createElement(
             'div',
-            { style: totalStyle, className: 'row' },
+            null,
             React.createElement(
-              'span',
-              { className: 'left-float' },
-              'Subtotal'
-            ),
-            React.createElement(
-              'span',
-              { className: 'right-float' },
-              '$',
-              this.props.order.subtotal
+              'table',
+              { style: tableStyle },
+              totalsForm
             )
-          ),
-          this.props.order.discount ? React.createElement(
-            'div',
-            { style: totalStyle, className: 'row' },
-            React.createElement(
-              'span',
-              { className: 'left-float' },
-              'Discount'
-            ),
-            React.createElement(
-              'span',
-              { className: 'right-float' },
-              '-$',
-              this.props.order.discount
-            )
-          ) : null,
-          React.createElement(
-            'div',
-            { style: totalStyle, className: 'row' },
-            React.createElement(
-              'span',
-              { className: 'left-float' },
-              'Tax'
-            ),
-            React.createElement(
-              'span',
-              { className: 'right-float' },
-              '$',
-              this.props.order.tax
-            )
-          ),
-          React.createElement(
-            'div',
-            { style: totalStyle, className: 'row' },
-            React.createElement(
-              'span',
-              { className: 'left-float' },
-              'Shipping'
-            ),
-            React.createElement(
-              'span',
-              { className: 'right-float' },
-              '$',
-              this.props.order.shipping
-            )
-          ),
-          React.createElement(
-            'div',
-            { style: totalStyle, className: 'row' },
-            React.createElement(
-              'span',
-              { className: 'left-float' },
-              'Total'
-            ),
-            React.createElement(
-              'span',
-              { className: 'right-float' },
-              '$',
-              this.props.order.total
-            )
-          ),
-          this.props.order.instructions ? React.createElement(
-            'p',
-            { style: instructionsStyle },
-            'Instructions: ',
-            this.props.order.instructions
-          ) : null
+          )
         )
       );
     }
@@ -23461,7 +23495,21 @@ var ProductsTable = function (props) {
 };
 /*<img style={imageStyle} src={item.image} />*/ /*<td style={tdStyle}>
                                                  {item.description}
-                                                </td>*/ /*<th className="centered" style={{tdStyle,noBorder}}>Description</th>*/ /*<button onClick={this.order}>Buy</button>*/;
+                                                </td>*/ /*<img style={imageStyle} src={item.image} />*/ /*<td style={tdStyle}>
+                                                                                                         {item.description}
+                                                                                                        </td>*/ /*<img style={imageStyle} src={item.image} />*/ /*<td style={tdStyle}>
+                                                                                                                                                                 {item.description}
+                                                                                                                                                                </td>*/ /*<img style={imageStyle} src={item.image} />*/ /*<td style={tdStyle}>
+                                                                                                                                                                                                                         {item.description}
+                                                                                                                                                                                                                        </td>*/ /*<img style={imageStyle} src={item.image} />*/ /*<td style={tdStyle}>
+                                                                                                                                                                                                                                                                                 {item.description}
+                                                                                                                                                                                                                                                                                </td>*/ /*<th className="centered" style={{tdStyle,noBorder}}>Description</th>*/ /*<div style={totalStyle} className="row"><span className="left-float">Subtotal</span><span className="right-float">${this.props.order.subtotal}</span></div>
+                                                                                                                                                                                                                                                                                                                                                                 {this.props.order.discount ? <div style={totalStyle} className="row"><span className="left-float">Discount</span><span className="right-float">-${this.props.order.discount}</span></div> : null }
+                                                                                                                                                                                                                                                                                                                                                                 <div style={totalStyle} className="row"><span className="left-float">Tax</span><span className="right-float">${this.props.order.tax}</span></div>
+                                                                                                                                                                                                                                                                                                                                                                 <div style={totalStyle} className="row"><span className="left-float">Shipping</span><span className="right-float">${this.props.order.shipping}</span></div>
+                                                                                                                                                                                                                                                                                                                                                                 <div style={totalStyle} className="row"><span className="left-float">Total</span><span className="right-float">${this.props.order.total}</span></div>
+                                                                                                                                                                                                                                                                                                                                                                 { this.props.order.instructions ? <p style={instructionsStyle}>Instructions: {this.props.order.instructions}</p> : null }
+                                                                                                                                                                                                                                                                                                                                                                 {totalsForm}*/ /*<button onClick={this.order}>Buy</button>*/;
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
