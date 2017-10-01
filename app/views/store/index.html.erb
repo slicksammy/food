@@ -8,13 +8,6 @@
     max-width: 1000px;
   }
 
-  .logo {
-    /*width: 75%;*/
-    margin: 0 auto;
-    margin-bottom: 50px;
-    /*height: 300px;*/
-  }
-
   .centered {
     text-align: center
   }
@@ -74,6 +67,7 @@
   .about {
     width: 80%;
     margin: 0 auto;
+    padding: 40px 0px 40px 0px;
   }
 
   .margin-bottom {
@@ -102,10 +96,21 @@
     padding: 20px;
   }
 
+  .learn-more {
+    padding: 10px;
+    font-size: 30px;
+    margin-top: 20px;
+    border: white 2px solid;
+    background: #2D6BEF;
+    color: black;
+    font-weight: bold;
+  }
+
   @media (max-width: 992px) {
     .item-main {
       font-size: 20px;
-      height: 200px;
+      height: 220px;
+      padding-bottom: 0px
     }
 
     .block {
@@ -122,10 +127,6 @@
       font-weight: bold;
     }
 
-    .logo {
-      width: 75%;
-    }
-
     .colcentered {
       min-height: 150px;
       float: none;
@@ -140,10 +141,10 @@
   <section class="minus-margin-top">
     <div class="row centered margin-bottom main-section">
       <!-- <h1 class="header">We are currently in testing and will be live in mid-September</h1> -->
-      <img class="logo img img-responsive" src="assets/logo.png" />
       <div class="about">
       <!-- <p class="bigger"><span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span> was launched so that you can enjoy the best steaks at reasonable prices with the convenience of next day delivery. All of our steaks are perfectly aged and mostly USDA Prime, which is why they melt in your mouth. These are the steaks that the finest restaurants use and you can't find at the grocery store. Try our steaks and then tell us if you have ever had a better cut of meat anywhere else.</p> -->
-      <p class="bigger"><span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span> was started so that you wouldn't have to settle on mediocre quality grocery store steaks or alternatively, break the bank at the steak house. Now you have a 3rd, better option, that comes with a 100% satisfaction guarantee.
+      <p class="bigger"><span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span> was started so that you wouldn't have to settle on mediocre quality grocery store steaks or alternatively, break the bank at the steak house. Now you have a 3rd, better option, that comes with a 100% satisfaction guarantee.</p>
+      <button onclick="window.location = '/about'"class="learn-more">Learn More</button>
     </div>
     </div>
     <div class="row centered top-margin max-width-1000">
