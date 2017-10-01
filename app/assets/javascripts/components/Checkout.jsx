@@ -251,7 +251,7 @@ class Checkout extends React.Component {
 
     var instructions = (
       <div className="col-xs-12 col-sm-9 col-md-9 col-lg-9" style={colCentered}>
-        <p>We are not responsible for theft, so please make sure to let us know the where the best place to leave your steaks is.</p>
+        <p>We are not responsible for theft, so please make sure to let us know where the best place to leave your steaks is.</p>
         <div>
           <div style={header_style} className='base-title'>Delivery Instructions</div>
         </div>
