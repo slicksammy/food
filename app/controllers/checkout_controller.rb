@@ -72,7 +72,7 @@ class CheckoutController < SessionsController
     # ie customer keeps tab open with next day delivery and then trys buying on same date again
     # or prices have changed
     # error message should be "please refresh and try again"
-    order.update_attributes(instructions: params["instructions"])
+    order.update_attributes(instructions: params["instructions"]) if params["instructions"].present? # dont update with empty string
 
     valid = ::Checkout::FinalOrderCheck.new(params["order"], order).valid?
 
