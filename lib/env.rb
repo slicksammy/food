@@ -18,4 +18,8 @@ class Env
     env_to_boolean(ENV['ACCEPTING_ORDERS'])
   end
 
+  def self.stripe_api_key
+    ENV['STRIPE_API_KEY']
+  end
+
 end
