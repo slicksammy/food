@@ -21668,7 +21668,7 @@ var Checkout = (function (_React$Component) {
   }, {
     key: 'canBuy',
     value: function canBuy() {
-      return this.state.address && this.state.stripe_token && !this.state.error;
+      return this.state.address && this.state.stripe_token && !this.state.error && this.props.accepting_orders;
     }
   }, {
     key: 'render',
@@ -21874,10 +21874,11 @@ var Checkout = (function (_React$Component) {
 
       var textAreaStyle = {
         width: '80%',
-        fontSize: '14px'
+        fontSize: '14px',
+        border: 'solid 2px black'
+        // height: '50px'
       };
 
-      // height: '50px'
       var instructions = React.createElement(
         'div',
         { className: 'col-xs-12 col-sm-9 col-md-9 col-lg-9', style: colCentered },
@@ -21925,9 +21926,20 @@ var Checkout = (function (_React$Component) {
         opacity: this.state.loader || this.state.success ? .1 : 1
       };
 
+      var noOrdersStyle = {
+        color: 'red',
+        textAlign: 'center',
+        marginBottom: '30px'
+      };
+
       var form = React.createElement(
         'div',
         null,
+        this.props.accepting_orders ? null : React.createElement(
+          'h1',
+          { style: noOrdersStyle },
+          'We apologize but we are currently not accepting orders. Please check back soon.'
+        ),
         this.state.loader ? React.createElement('div', { className: 'loader' }) : null,
         this.state.success ? React.createElement(
           'div',
