@@ -21,7 +21,7 @@ class CheckoutController < SessionsController
 
       render 'view', status: 202
     rescue Checkout::OrderTotals::MissingCartError, Checkout::OrderTotals::NoItemsInCart => e
-      @message = 'Nothing Here'
+      @message = 'Your cart is empty'
       @signed_in = logged_in?
 
       render :file => 'public/nothing_here.html.erb'
