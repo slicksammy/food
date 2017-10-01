@@ -1,14 +1,16 @@
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { order: props.order,  promo: props.order.promo, address: props.order.address_uuid, stripe_token: props.order.stripe_token_uuid, expected_delivery_date: props.order.expected_delivery_date, newAddress: true, newPayment: true }
+    this.state = { order: props.order,  promo: props.order.promo, promoSuccess: !!props.order.promo, address: props.order.address_uuid, stripe_token: props.order.stripe_token_uuid, expected_delivery_date: props.order.expected_delivery_date, newAddress: true, newPayment: true }
     this.confirmOrder = this.confirmOrder.bind(this);
     this.updateAddress = this.updateAddress.bind(this);
     this.updatePayment = this.updatePayment.bind(this);
     this.updateDelivery = this.updateDelivery.bind(this);
     this.hideForver = this.hideForver.bind(this);
     this.applyPromo = this.applyPromo.bind(this);
-    this.showSuccess = this.showSuccess.bind(this)
+    this.showSuccess = this.showSuccess.bind(this);
+    this.updatePromo = this.updatePromo.bind(this)
+    this.canApplyPromo = this.canApplyPromo.bind(this);
   }
 
   confirmOrder(e) {
@@ -81,12 +83,20 @@ class Checkout extends React.Component {
       url: 'order/promo',
       data: { code: code },
       success: function(response) {
-        this.setState({order: response.order, promo: code})
+        this.setState({order: response.order, promoSuccess: true})
       }.bind(this),
       error: function(response) {
         this.setState({promoError: response.responseJSON.error || 'there was an error please try again' })
       }.bind(this)
     })
+  }
+
+  updatePromo(e) {
+    this.setState({ promo: e.target.value})
+  }
+
+  canApplyPromo() {
+    return(!this.state.promoSuccess)
   }
 
   shouldShowCreateAddress() {
@@ -209,10 +219,10 @@ class Checkout extends React.Component {
       <div>
         <div>
           { this.state.promoError ? <div style={errorStyle}>{this.state.promoError}</div> : null }
-          <input style={promo_style} className="base-input" type='text' placeholder="Enter code" ref="promo"></input> 
+          <input onChange={this.updatePromo} style={promo_style} className="base-input" type='text' placeholder="Enter code" ref="promo"></input> 
         </div>
         <div className="centered">
-          <button className="btn btn-success base-button" onClick={this.applyPromo}>Apply</button>
+          <button disabled={!this.canApplyPromo()} className="btn btn-success base-button" onClick={this.applyPromo}>Apply</button>
         </div>
       </div>
     )
@@ -223,7 +233,7 @@ class Checkout extends React.Component {
           <div style={header_style} className='base-title'>Promo Code</div>
         </div>
         <div style={container_style} className='base-container'>
-          { this.state.promo ? <div>{this.state.promo}</div> : promoForm }
+          { this.state.promoSuccess ? <div>{this.state.promo}</div> : promoForm }
         </div>
       </div>
     )
