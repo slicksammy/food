@@ -2,5 +2,5 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaTHvfZtxVUnyQGVYTrajZ_gCsmGXKoJM&libraries=places&callback=initAutocomplete" async defer></script>
 
 <div class="container top-margin">
-  <%= react_component('Checkout', order: @order, items: @items, payments: @payment_options, addresses: @address_options, delivery_options: @delivery_options) %>
+  <%= react_component('Checkout', order: @order, items: @items, payments: @payment_options, addresses: @address_options, delivery_options: @delivery_options, accepting_orders: @accepting_orders) %>
 </div>
