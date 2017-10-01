@@ -46,8 +46,8 @@ class Products extends React.Component {
   render() {
     var products = this.props.products.map( (product) => {
       var imageStyle = {
-        width: '75%',
-        height: '200px'
+        maxWidth: '95%',
+        maxHeight: '200px'
       }
 
       var containerStyle = {
@@ -114,7 +114,7 @@ class Products extends React.Component {
       }
 
       return(
-        <div style={colCentered} className="col-lg-4 col-md-4 col-sm-6 col-xs-9">
+        <div style={colCentered} className="col-lg-4 col-md-4 col-sm-6 col-xs-11">
           <div className="base-title-product"><strong>{product.name}</strong></div>
           <div  className="base-container-product">
             <img style={imageStyle} className="img-rounded layer-shadow2" src={product.image_url}/> 
