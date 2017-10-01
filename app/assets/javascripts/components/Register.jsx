@@ -169,7 +169,7 @@ class Register extends React.Component {
         <div>
           <div style={inputStyleContainer}>
             <input style={checkboxStyle} type="checkbox" id="marketing" ref="marketing"/>
-            <label style={checkboxLabel}>I would like to receive marketing emails from <img style={{width: '30%'}} src="assets/logo_simple.png" /></label>
+            <label style={checkboxLabel}>I would like to hear about specials from <img style={{width: '30%'}} src="assets/logo_simple.png" /></label>
           </div>
         </div>
         <button style={buttonStyle} disabled={!this.state.canSubmit} onClick={this.completeRegistration} ref="button" className="btn btn-success btn-submit" type="submit">Sign Up</button>
