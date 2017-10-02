@@ -20,6 +20,10 @@ class Order < ActiveRecord::Base
 
   scope :ordered, -> { order("created_at DESC") }
 
+  scope :paid, -> { where(status: PURCHASED_STATUS ) }
+
+  scope :for_today, -> { where(expected_delivery_date: Date.today) }
+
   after_save :create_order_status_log, if: :saved_change_to_status?
 
   PURCHASED_STATUS = 'paid'

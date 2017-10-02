@@ -1,0 +1,38 @@
+<style>
+  th{
+    padding: 10px;
+  }
+
+  td {
+    padding: 10px;
+  }
+</style>
+
+
+<div class="container">
+  <p>Good morning Joel,</p>
+
+  <p>This is an automated email. We have <%=@orders.count%> orders for today.</p>
+
+  <% @orders.each do |order| %>
+    <h2>Order #<%=order[:order_number] %></h2>
+    <table>
+      <tbody>
+        <tr>
+          <th>Type</th>
+          <th>Quantity</th>
+        </tr>
+        <% order[:items].each do |item| %>
+          <tr>
+            <td>
+              <%= item[:name] %>
+            </td>
+            <td>
+              <%= item[:amount] %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

@@ -1,4 +1,5 @@
 require 'env'
+require 'checkout/order_totals'
 
 class OrderMailer < ActionMailer::Base
   include CheckoutHelper
@@ -8,6 +9,8 @@ class OrderMailer < ActionMailer::Base
   # TODO update this email
   # DEFAULT_FROM = 'sam@brokolly.com'
   SUPPORT_EMAIL = 'support@iheartmeat.com'
+  SAM_EMAIL = 'sam@iheartmeat.com'
+  ORDER_EMAIL = ''
 
   layout 'bootstrap'
 
@@ -18,6 +21,12 @@ class OrderMailer < ActionMailer::Base
     to = @user.email
 
     mail(from: SUPPORT_EMAIL, to: to , subject: "iheartmeat order ##{@order[:order_number]}")
+  end
+
+  def place_order(orders=Order.paid.for_today)
+    @orders = orders.map { |order| {order_number: order.order_number, items: to_string(::Checkout::OrderTotals.new(order: order).items)} }
+
+    mail(from: SAM_EMAIL, to: SAM_EMAIL, cc: SAM_EMAIL, subject: "Orders for today")
   end
 
 end
