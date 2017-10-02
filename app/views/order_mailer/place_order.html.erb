@@ -14,7 +14,7 @@
         <% order[:items].each do |item| %>
           <tr>
             <td style="padding: 30px; padding-top: 15px;width: 30px;">
-              <%= item[:name] %>
+              <%= item[:name] %>, <%= item[:description] %>
             </td>
             <td style="float: right; padding: 30px; padding-top: 15px;width: 30px;">
               <%= item[:amount] %>
