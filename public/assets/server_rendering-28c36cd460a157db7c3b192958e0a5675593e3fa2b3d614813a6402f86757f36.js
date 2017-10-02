@@ -21166,12 +21166,28 @@ var Admin = (function (_React$Component) {
         )
       );
 
-      console.log(this.props.orders);
-
       var orders = this.props.orders.map(function (order) {
         return React.createElement(
           "div",
           null,
+          React.createElement(
+            "h3",
+            null,
+            "Name: ",
+            order.name
+          ),
+          React.createElement(
+            "h3",
+            null,
+            "Status: ",
+            order.status
+          ),
+          React.createElement(
+            "h3",
+            null,
+            "Delivery Date: ",
+            order.order.formatted_expected_delivery_date
+          ),
           React.createElement(Order, { order: order.order, items: order.items })
         );
       });
@@ -23371,6 +23387,7 @@ var Order = (function (_React$Component) {
           React.createElement(
             'td',
             { className: 'order-td' },
+            '$',
             this.props.order.shipping
           )
         ),
