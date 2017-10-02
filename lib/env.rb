@@ -22,4 +22,8 @@ class Env
     ENV['STRIPE_API_KEY']
   end
 
+  def self.delivery_radius
+    ENV['DELIVERY_RADIUS'].to_f
+  end
+
 end

@@ -2,6 +2,7 @@
 # if the distance is less than the max radius than return true
 require 'google/coordinates'
 require 'delivery/distance'
+require 'env'
 
 module Delivery
   class Availability
@@ -31,7 +32,7 @@ module Delivery
 
     def self.max_radius
       # max distance
-      3
+      Env.delivery_radius
     end
 
     def distance
