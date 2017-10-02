@@ -8,15 +8,15 @@
     <table>
       <tbody>
         <tr>
-          <th style="padding: 30px;text-decoration: underline;">Type</th>
-          <th style="padding: 30px;text-decoration: underline;">Quantity</th>
+          <th style="padding: 30px; padding-top: 15px;text-decoration: underline;">Type</th>
+          <th style="padding: 30px; padding-top: 15px;text-decoration: underline;">Quantity</th>
         </tr>
         <% order[:items].each do |item| %>
           <tr>
-            <td style="padding: 30px;width: 30px;">
+            <td style="padding: 30px; padding-top: 15px;width: 30px;">
               <%= item[:name] %>
             </td>
-            <td style="float: right; padding: 30px;width: 30px;">
+            <td style="float: right; padding: 30px; padding-top: 15px;width: 30px;">
               <%= item[:amount] %>
             </td>
           </tr>

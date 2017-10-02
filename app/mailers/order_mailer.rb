@@ -10,7 +10,7 @@ class OrderMailer < ActionMailer::Base
   # DEFAULT_FROM = 'sam@brokolly.com'
   SUPPORT_EMAIL = 'support@iheartmeat.com'
   SAM_EMAIL = 'sam@iheartmeat.com'
-  ORDER_EMAIL = ''
+  JOEL_EMAIL = 'joel@worldsbeststeak.com'
 
   layout 'bootstrap'
 
@@ -26,7 +26,7 @@ class OrderMailer < ActionMailer::Base
   def place_order(orders=Order.paid.for_today)
     @orders = orders.map { |order| {order_number: order.order_number, items: to_string(::Checkout::OrderTotals.new(order: order).items)} }
 
-    mail(from: SAM_EMAIL, to: SAM_EMAIL, cc: SAM_EMAIL, subject: "Orders for today")
+    mail(from: SAM_EMAIL, to: JOEL_EMAIL, cc: SAM_EMAIL, subject: "Orders for today")
   end
 
 end
