@@ -104,7 +104,7 @@ class Order extends React.Component {
             
           </td>
           <td className="order-td">
-            {this.props.order.shipping}
+            ${this.props.order.shipping}
           </td>
         </tr>
         <tr>

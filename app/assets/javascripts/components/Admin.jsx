@@ -18,11 +18,12 @@ class Admin extends React.Component {
       </tr>
     )
 
-    console.log(this.props.orders)
-
     var orders = this.props.orders.map( order => {
       return(
         <div>
+          <h3>Name: {order.name}</h3>
+          <h3>Status: {order.status}</h3>
+          <h3>Delivery Date: {order.order.formatted_expected_delivery_date}</h3>
           <Order order={order.order} items={order.items} />
         </div>
       )

@@ -1,0 +1,72 @@
+<style>
+  .centered {
+    text-align: center;
+    /*padding-right: 50px;
+    padding-left: 50px;*/
+  }
+
+  .label-item {
+    /*width: 500px;*/
+    /*height: 1000px;*/
+    display: block;
+    margin: 0 auto;
+    /*margin-top: 100px;*/
+    /*padding: 100px 100px 100px 100px;*/
+    margin-top: 100px;
+    margin-bottom: 20px;
+    padding-top: 100px;
+    /*background: blue;*/
+  }
+
+  .logo {
+    width: 240px;
+    height: 80px;
+    margin: 0 auto;
+    margin-bottom: 0px
+  }
+
+  .name {
+    font-size: 40px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+
+  .address-info {
+    font-size: 30px
+  }
+
+  .page {
+    /*width: 700px;*/
+    /*height: 2000px;*/
+    margin: 0 auto;
+    /*background: yellow;*/
+  }
+
+  .printable {}
+
+  .label-item:nth-child(even) {page-break-after: always; background: green;}
+
+  .label-item:nth-child(odd) {margin-bottom: 300px;}
+
+  @media print {
+    
+  }
+</style>
+
+
+
+<div class="container centered">
+  <% @orders.each do |two_orders| %>
+    <div class="page">
+      <% two_orders.each do |order| %>
+        <div class="label-item centered printable">
+          <img class="logo img img-responsive" src="/assets/logo_simple.png" />
+          <p class="name"><%= order[:name]%></p>
+          <p class="address-info"><%= order[:address]%></p>
+          <p class="address-info"><%= order[:city_state_zip]%></p>
+          <p class="address-info">Order # <%= order[:order]%></p>
+        </div>
+      <%end%> 
+    </div>
+  <%end%>
+</div>

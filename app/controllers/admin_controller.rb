@@ -3,6 +3,7 @@ require 'stats'
 
 class AdminController < SessionsController
   include CheckoutHelper
+  include AdminHelper
 
   before_action :authorize!
 
@@ -30,6 +31,12 @@ class AdminController < SessionsController
     render json: { stats: @stats }
   end
 
+  def lables
+    orders = Order.paid.for_today
+
+    @orders = orders.map { |order| format_label(order) }.in_groups_of(2).map { |group| group.compact } # take cares when there is an odd number
+  end
+
   private
 
   def admin?
@@ -45,7 +52,7 @@ class AdminController < SessionsController
   end
 
   def format_orders(orders)
-    orders.map{ |o| {order: format_order(o), items: products(o) } }
+    orders.map{ |o| {order: format_order(o), items: products(o), status: o.status, name: o.user.full_name } }
   end
 
 end

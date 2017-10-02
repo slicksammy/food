@@ -74,6 +74,7 @@ Rails.application.routes.draw do
   get '/admin' => 'admin#index'
   get '/dashboard' => 'admin#dashboard'
   get '/admin/get_stats' => 'admin#get_stats'
+  get '/admin/labels' => 'admin#lables'
 
   # INFORMATION
 
