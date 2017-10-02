@@ -1,38 +1,22 @@
 <div class="container">
-  <style>
-    th{
-      padding: 30px;
-      text-decoration: underline;
-    }
-
-    td {
-      padding: 30px;
-      width: 30px;
-    }
-
-    .right {
-      float: right;
-    }
-  </style>
-  
   <p>Good morning Joel,</p>
 
-  <p>This is an automated email. We have <%=@orders.count%> orders for today.</p>
+  <p>This is an automated email. We have <%=@orders.count%> order(s) for today.</p>
 
   <% @orders.each do |order| %>
     <h3>Order #<%=order[:order_number] %></h3>
     <table>
       <tbody>
         <tr>
-          <th>Type</th>
-          <th>Quantity</th>
+          <th style="padding: 30px;text-decoration: underline;">Type</th>
+          <th style="padding: 30px;text-decoration: underline;">Quantity</th>
         </tr>
         <% order[:items].each do |item| %>
           <tr>
-            <td>
+            <td style="padding: 30px;width: 30px;">
               <%= item[:name] %>
             </td>
-            <td class="right">
+            <td style="float: right; padding: 30px;width: 30px;">
               <%= item[:amount] %>
             </td>
           </tr>
@@ -40,4 +24,5 @@
       </tbody>
     </table>
   <% end %>
+  <p>Sam</p>
 </div>
