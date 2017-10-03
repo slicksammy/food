@@ -5,7 +5,7 @@
   }
 
   .max-width-1000 {
-    max-width: 1000px;
+    max-width: 1500px;
   }
 
   .centered {
@@ -20,7 +20,7 @@
     /*display: inline-block;*/
     float: none;
     margin: 0 auto;
-    min-height: 300px;
+    min-height: 200px;
   }
 
   .block {
@@ -53,11 +53,13 @@
   }
 
   .image-style {
-    width: 150px;
-    display: inline;
-    height: 30px;
+    width: 500px;
+    display: block;
+    height: 135px;
     margin-top: -10px;
-    margin-right: 8px;
+    /*margin-right: 8px;*/
+    margin: 0 auto;
+    margin-bottom: 50px;
   }
 
   p {
@@ -71,19 +73,22 @@
   }
 
   .margin-bottom {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   .bigger {
-    line-height: 200%;
-    font-weight: bold;
+    line-height: 120%;
+    /*font-weight: bold;*/
+    font-size: 50px;
+    font-family: 'Germania One', cursive;
+    margin-bottom: 50px;
   }
 
   .main-section {
     background: url(assets/background.png) no-repeat;
     background-size: cover;
     background-position: center center;
-    padding: 20px 0px 20px 0px;
+    padding: 20px 0px 40px 0px;
   }
 
   #store {
@@ -91,19 +96,29 @@
   }
 
   .why-us {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: bold;
     padding: 20px;
+    padding-bottom: 40px;
+    margin-top: 30px;
   }
 
   .learn-more {
     padding: 10px;
     font-size: 30px;
     margin-top: 20px;
-    border: white 2px solid;
-    background: #2D6BEF;
-    color: black;
+    /*border: white 2px solid;*/
+    background: black;
+    border: none;
+    color: white;
     font-weight: bold;
+    border-radius: 3px;
+    padding: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10), 0 6px 20px rgba(0, 0, 0, 0.19),
+    0 8px 17px rgba(0, 0, 0, 0.10), 0 8px 17px rgba(0, 0, 0, 0.20);
+    /*border: solid 2px*/
   }
 
   @media (max-width: 992px) {
@@ -125,13 +140,31 @@
     .bigger {
       font-size: 24px;
       font-weight: bold;
+      margin-bottom: 20px;
     }
 
     .colcentered {
       min-height: 150px;
       float: none;
     }
+
+    .image-style {
+      width: 90%;
+      height: 85%;
+      margin-bottom: 20px;
+    }
+
+    .why-us {
+      font-size: 35px;
+    }
   }
+
+  @media (max-width: 568px) {
+    .item-main {
+      font-size: 16px;
+      height: 220px;
+      padding-bottom: 0px
+    }
 
 </style>
 
@@ -139,16 +172,18 @@
 <div>
   <!-- <h1 class="centered">We will be accepting orders starting Oct 1st!</h1> -->
   <section class="minus-margin-top">
-    <div class="row centered margin-bottom main-section">
+    <div class="row centered main-section">
       <!-- <h1 class="header">We are currently in testing and will be live in mid-September</h1> -->
       <div class="about">
       <!-- <p class="bigger"><span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span> was launched so that you can enjoy the best steaks at reasonable prices with the convenience of next day delivery. All of our steaks are perfectly aged and mostly USDA Prime, which is why they melt in your mouth. These are the steaks that the finest restaurants use and you can't find at the grocery store. Try our steaks and then tell us if you have ever had a better cut of meat anywhere else.</p> -->
-      <p class="bigger"><span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span> was started so that you wouldn't have to settle on mediocre quality grocery store steaks or alternatively, break the bank at the steak house. Now you have a 3rd, better option, that comes with a 100% satisfaction guarantee.</p>
-      <button onclick="window.location = '/about'"class="learn-more">Learn More</button>
+        <img class="image-style" src="assets/logo_simple.png" />
+        <p class="bigger">Steak house steaks that don't break the bank.</p>
+        <p class="bigger">Delivered. Tomorrow.</p>
+        <button onclick="window.location = '/about'" class="learn-more">Learn More</button>
+      </div>
     </div>
-    </div>
-    <div class="row centered top-margin max-width-1000">
-      <h1 class="why-us">Don't settle for anything less</h1>
+    <div class="row centered margin-bottom max-width-1000">
+      <h1 class="why-us">It's An Experience Not Worth Settling For</h1>
       <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
         <span class="fa-stack fa-lg block centered">
           <i class="fa  fa-clock-o fa-lg"></i>
@@ -187,11 +222,10 @@
         <p>Preparation and cooking is simple.</p>
       </div>
     </div>
-  </section>
-  
-  <section id="store" class="top-margin">
-    <h1 class="why-us centered">Now it's your turn to enjoy the best steaks</h1>
-    <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4>
-    <%= react_component('Products', products: @products) %> 
+    <div id="store" class="row centered">
+      <h1 class="why-us centered">Now it's your turn to enjoy the best steaks</h1>
+      <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4>
+      <%= react_component('Products', products: @products) %> 
+  </div>
   </section>
 </div>
