@@ -20,7 +20,7 @@ class OrderMailer < ActionMailer::Base
     # TODO update support name in google to iheartmeat
     to = @user.email
 
-    mail(from: SUPPORT_EMAIL, to: to , subject: "iheartmeat order ##{@order[:order_number]}")
+    mail(from: SUPPORT_EMAIL, to: to, bcc: SAM_EMAIL, subject: "iheartmeat order ##{@order[:order_number]}")
   end
 
   def place_order(orders=Order.paid.for_today)
@@ -36,7 +36,7 @@ class OrderMailer < ActionMailer::Base
     # TODO update support name in google to iheartmeat
     to = @user.email
 
-    mail(from: SUPPORT_EMAIL, to: to , subject: "iheartmeat - your order has been delivered!")
+    mail(from: SUPPORT_EMAIL, to: to , bcc: SAM_EMAIL, subject: "iheartmeat - your order has been delivered!")
   end
 
 end
