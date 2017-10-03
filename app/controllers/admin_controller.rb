@@ -52,10 +52,6 @@ class AdminController < SessionsController
 
   private
 
-  def admin?
-    current_user && current_user.admin?
-  end
-
   def products(order)
     begin
       to_string(::Checkout::OrderTotals.new(order: order).items)

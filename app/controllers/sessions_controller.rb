@@ -90,4 +90,8 @@ class SessionsController < ActionController::Base
   def default_redirect_url
     '/'
   end
+
+  def admin?
+    current_user && current_user.admin?
+  end
 end
