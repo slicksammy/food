@@ -29,4 +29,14 @@ class OrderMailer < ActionMailer::Base
     mail(from: SAM_EMAIL, to: JOEL_EMAIL, cc: SAM_EMAIL, subject: "Orders for today")
   end
 
+  def delivered(order, note: nil)
+    @order = format_order(order)
+    @user = order.user
+    @note = note
+    # TODO update support name in google to iheartmeat
+    to = @user.email
+
+    mail(from: SUPPORT_EMAIL, to: to , subject: "iheartmeat - your order has been delivered!")
+  end
+
 end

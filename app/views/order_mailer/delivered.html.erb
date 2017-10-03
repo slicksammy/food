@@ -1,0 +1,15 @@
+<div>
+  <p><%= @user.first_name %>,</p>
+
+  <p>Order #<%=@order[:order_number] %> has been delivered. You are about to enjoy the best steaks you've ever had!</p>
+
+  <p>Please also remember to put your steaks in the fridge or freezer by <strong>10pm today</strong>.</p>
+
+  <p>If you have any questions, comments or suggestions regarding your order you can reach us at the email below.</p>
+
+  <% if @note%>
+    <p>A note from your delivery driver: <strong><%=@note%></strong></p>
+  <%end%>
+
+  <%= render partial: 'user_mailer/support_signature' %>
+</div>
