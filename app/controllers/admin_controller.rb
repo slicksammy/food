@@ -22,6 +22,19 @@ class AdminController < SessionsController
     # view
   end
 
+  def deliver_order
+    order = Order.find_by_uuid(params["uuid"])
+
+    if order
+      order.deliver!
+      OrderMailer.delivered(order, note: params["note"]).deliver!
+
+      render body: nil, status: 202
+    else
+      render body: nil, json: { error: 'something went wrong' }
+    end
+  end
+
   def stats
     i = Stats.new(params["time"] || 60)
     @stats = { orders: i.orders, users: i.users, carts: i.carts, page_views: i.page_views }
@@ -52,7 +65,7 @@ class AdminController < SessionsController
   end
 
   def format_orders(orders)
-    orders.map{ |o| {order: format_order(o), items: products(o), status: o.status, name: o.user.try(:full_name) } } # try in case something weird happens and order is created without user
+    orders.map{ |o| {order: format_order(o), items: products(o), status: o.status, name: o.user.try(:full_name), uuid: o.uuid } } # try in case something weird happens and order is created without user
   end
 
 end
