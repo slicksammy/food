@@ -52,7 +52,7 @@ class AdminController < SessionsController
   end
 
   def format_orders(orders)
-    orders.map{ |o| {order: format_order(o), items: products(o), status: o.status, name: o.user.full_name } }
+    orders.map{ |o| {order: format_order(o), items: products(o), status: o.status, name: o.user.try(:full_name) } } # try in case something weird happens and order is created without user
   end
 
 end
