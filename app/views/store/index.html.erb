@@ -91,15 +91,19 @@
     padding: 20px 0px 40px 0px;
   }
 
-  #store {
+  #satisfaction {
     background: #eaf0e9;
+    /*padding-top: 20px;*/
+    padding-bottom: 50px;
+    font-size: 20px;
+    /*margin-top:;*/
   }
 
   .why-us {
     font-size: 50px;
     font-weight: bold;
     padding: 20px;
-    padding-bottom: 40px;
+    /*padding-bottom: 40px;*/
     margin-top: 30px;
   }
 
@@ -119,6 +123,11 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10), 0 6px 20px rgba(0, 0, 0, 0.19),
     0 8px 17px rgba(0, 0, 0, 0.10), 0 8px 17px rgba(0, 0, 0, 0.20);
     /*border: solid 2px*/
+  }
+
+  .satisfaction-style {
+    margin-left: 20px;
+    display: inline-block;
   }
 
   @media (max-width: 992px) {
@@ -165,7 +174,22 @@
       height: 220px;
       padding-bottom: 0px
     }
+  }
 
+  @media (max-width: 743px) {
+    .satisfaction-style {
+      display: none;
+    }
+
+    #satisfaction {
+      /*background-image: url(assets/satisfaction_guarantee_opaque.png);
+      background-repeat: no-repeat;
+      background-position: 66% 83%;*/
+      font-weight: bold
+      font-size: 16px;
+      /*padding: 100px 0px 100px 0px;*/
+    }
+  }
 </style>
 
 
@@ -177,6 +201,7 @@
       <div class="about">
       <!-- <p class="bigger"><span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span> was launched so that you can enjoy the best steaks at reasonable prices with the convenience of next day delivery. All of our steaks are perfectly aged and mostly USDA Prime, which is why they melt in your mouth. These are the steaks that the finest restaurants use and you can't find at the grocery store. Try our steaks and then tell us if you have ever had a better cut of meat anywhere else.</p> -->
         <img class="image-style" src="assets/logo_simple.png" />
+        <!-- <img class="satisfaction-style" src="assets/satisfaction_guarantee.png" /> -->
         <p class="bigger">Steak house steaks that don't break the bank.</p>
         <p class="bigger">Delivered. Tomorrow.</p>
         <button onclick="window.location = '/about'" class="learn-more">Learn More</button>
@@ -222,7 +247,14 @@
         <p>Preparation and cooking is simple.</p>
       </div>
     </div>
-    <div id="store" class="row centered">
+    <div id="satisfaction">
+      <div class="container centered">
+        <h1 class="why-us centered">Our 100% Satisfaction Guarantee<span><img class="img img-responsive satisfaction-style" src="assets/satisfaction_guarantee.png" /></span></h1>
+        <!-- <img class="satisfaction-style" src="assets/satisfaction_guarantee.png" /> -->
+        <p class="satisfaction">If you don't like our steaks for any reason we will give you a 100% refund. Simple as that.</p>
+      </div>
+    </div>
+    <div class="row centered">
       <h1 class="why-us centered">Now it's your turn to enjoy the best steaks</h1>
       <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4>
       <%= react_component('Products', products: @products) %> 
