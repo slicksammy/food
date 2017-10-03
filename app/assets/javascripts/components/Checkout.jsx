@@ -257,7 +257,7 @@ class Checkout extends React.Component {
           <div style={header_style} className='base-title'>Delivery Instructions</div>
         </div>
         <div style={container_style} className='base-container'>
-          <textarea ref="instructions" rows="4" style={textAreaStyle} placeholder="Best place to leaver your package, door code, etc. (optional)" />
+          <textarea ref="instructions" rows="4" style={textAreaStyle} placeholder="Best place to leave your package, door code, etc. (optional)" />
         </div>
       </div>
     )
