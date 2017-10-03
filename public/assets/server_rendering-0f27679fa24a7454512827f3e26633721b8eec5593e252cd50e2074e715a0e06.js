@@ -22019,7 +22019,7 @@ var Checkout = (function (_React$Component) {
         React.createElement(
           'div',
           { style: container_style, className: 'base-container' },
-          React.createElement('textarea', { ref: 'instructions', rows: '4', style: textAreaStyle, placeholder: 'Best place to leaver your package, door code, etc. (optional)' })
+          React.createElement('textarea', { ref: 'instructions', rows: '4', style: textAreaStyle, placeholder: 'Best place to leave your package, door code, etc. (optional)' })
         )
       );
 
