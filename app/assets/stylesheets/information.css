@@ -41,5 +41,15 @@ h1 {
 
 #story {
   margin-bottom: 30px;
-  font-family: 'Germania One', cursive;;
+  font-family: 'Germania One', cursive;
+}
+
+#shop-button {
+  background: blue;
+  width: 200px;
+  height: 100px;
+  color: white;
+  font-size: 50px;
+  border: 1px solid black;
+  border-radius: 3px;
 }
