@@ -27,7 +27,7 @@ class Checkout extends React.Component {
         this.showSuccess()
       }.bind(this),
       error: function(response) {
-        this.setState({error: response.responseJSON.error || 'there was an error please try again', loader: false })
+        this.setState({error: 'oops there was an error, please refresh the page and try again', loader: false })
       }.bind(this)
     });
   }
