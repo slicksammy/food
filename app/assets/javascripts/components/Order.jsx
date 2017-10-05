@@ -183,8 +183,8 @@ class Order extends React.Component {
           <div style={totalStyle} className="row"><span className="left-float">Tax</span><span className="right-float">${this.props.order.tax}</span></div>
           <div style={totalStyle} className="row"><span className="left-float">Shipping</span><span className="right-float">${this.props.order.shipping}</span></div>
           <div style={totalStyle} className="row"><span className="left-float">Total</span><span className="right-float">${this.props.order.total}</span></div>
-          { this.props.order.instructions ? <p style={instructionsStyle}>Instructions: {this.props.order.instructions}</p> : null }
           {totalsForm}*/}
+         { this.props.order.instructions ? <p style={instructionsStyle}><strong>Instructions</strong>: {this.props.order.instructions}</p> : null }
         </div>
         {/*<button onClick={this.order}>Buy</button>*/}
       </div>
