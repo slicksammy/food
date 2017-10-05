@@ -124,7 +124,7 @@ class Payment extends React.Component {
         </div>
         <div className="base-container" style={containerStyle}>
           <form id="card">
-            {this.state.error ? <div style={errorStyle}>There was an error, please wait a few seconds and try again</div> : null }
+            {this.state.error ? <div style={errorStyle}>There was an error, please check your CC info and try again</div> : null }
             <div style={divStyle}>
               <div>
                 <p style={{fontSize: '14px'}}>We take security very seriously. All payment info is securely processed through Stripe. For more info click <a href='https://stripe.com/about' target="_blank" >here.</a></p>
