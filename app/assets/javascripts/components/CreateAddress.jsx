@@ -127,7 +127,8 @@ class CreateAddress extends React.Component {
 
     var address_2_style = {
       width: '20%',
-      display: 'inline-block'
+      display: 'inline-block',
+      minWidth: '80px'
     }
 
     var buttonStyle = {
