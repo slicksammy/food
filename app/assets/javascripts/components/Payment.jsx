@@ -47,7 +47,7 @@ class Payment extends React.Component {
   }
 
   validNumber() {
-    return(this.state.number.match(/^[0-9]{16}$/) ? true : false)
+    return(this.state.number.match(/^[0-9]{15,16}$/) ? true : false)
   }
 
   validMonth() {
