@@ -22777,13 +22777,13 @@ var Checkout = (function (_React$Component) {
           React.createElement(
             'strong',
             null,
-            '3pm'
+            '12pm'
           ),
           ' and ',
           React.createElement(
             'strong',
             null,
-            '7pm'
+            '2pm'
           ),
           ' and must be put in the fridge or freezer by ',
           React.createElement(
