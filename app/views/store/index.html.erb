@@ -130,6 +130,30 @@
     display: inline-block;
   }
 
+  .text-quote {
+    font-size: 30px;
+    margin-top: 20px;
+    display: block;
+    text-align: left
+    /*display: 'inline-block';*/
+  }
+
+  .quote {
+    font-size: 40px; 
+    font-weight: bold;
+  }
+
+  #store {
+    background-color: #eeeeee;
+    padding-bottom: 20px
+  }
+
+  #reviews {
+    padding-bottom: 20px;
+  }
+
+  /*.left { float: left; clear: none;}*/
+
   @media (max-width: 992px) {
     .item-main {
       font-size: 20px;
@@ -165,6 +189,23 @@
 
     .why-us {
       font-size: 35px;
+    }
+
+    .text-quote {
+      font-size: 22px;
+      margin-top: 10px;
+      display: block;
+      text-align: left
+      /*display: 'inline-block';*/
+    }
+
+    .quote {
+      font-size: 32px
+    }
+
+    .small {
+      font-size: 15px;
+      margin: 10px;
     }
   }
 
@@ -254,8 +295,20 @@
         <p class="satisfaction">If you don't like our steaks for any reason we will give you a 100% refund. Simple as that.</p>
       </div>
     </div>
+    <div id="reviews">
+      <div class="container centered">
+        <h1 class="why-us centered">The Reviews Are In</h1>
+        <!-- <img class="satisfaction-style" src="assets/satisfaction_guarantee.png" /> -->
+        <!-- <p class="quote left"><span class="small"><i class="fa fa-quote-left pull-left" aria-hidden="true"></i></span>My buddy who hates dry aged said it was the best dry aged he has ever had<span class="small"><i class="fa fa-quote-right fa-flip-vertical pull-left no-float" aria-hidden="true"></i></span></p>
+        <p class="quote left"><span class="small"><i class="fa fa-quote-left pull-left" aria-hidden="true"></i></span>10/10. Melts in your mouth<span class="small"><i class="fa fa-quote-right fa-flip-vertical pull-right no-float" aria-hidden="true"></i></span></p>
+        <p class="quote left"><span class="small"><i class="fa fa-quote-left pull-left" aria-hidden="true"></i></span>Damn i heart meat<span class="small"><i class="fa fa-quote-right fa-flip-vertical pull-right no-float" aria-hidden="true"></i></span></p> -->
+        <p class="text-quote"><span class="quote">"</span>My buddy who hates dry aged said it was the best dry aged he has ever had...<span class="quote">"</span> - Jason P.</p>
+        <p class="text-quote"><span class="quote">"</span>10/10. Melts in your mouth.<span class="quote">"</span> - Stefan D.</p>
+        <p class="text-quote"><span class="quote">"</span>Damn I heart meat.<span class="quote">"</span> - Jared R.</p>
+      </div>
+    </div>
     <div id="store" class="row centered">
-      <h1 class="why-us centered">Now it's your turn to enjoy the best steaks</h1>
+      <h1 class="why-us centered">Now You Enjoy The Best Steaks</h1>
       <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4>
       <%= react_component('Products', products: @products) %> 
   </div>
