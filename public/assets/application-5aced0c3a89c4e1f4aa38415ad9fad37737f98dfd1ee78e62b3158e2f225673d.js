@@ -24050,6 +24050,8 @@ var NavBar = (function (_React$Component) {
         width: '75px'
       };
 
+      var cartColor = this.state.cart > 0 ? 'blue' : '';
+
       return React.createElement(
         'nav',
         { className: 'navbar navbar-toggleable-md navbar-light bg-faded navbar-fixed-top navbar-default', style: navStyle },
@@ -24081,7 +24083,7 @@ var NavBar = (function (_React$Component) {
               { style: header, href: '/cart', className: 'navbar-brand' },
               React.createElement(
                 'span',
-                { style: { marginTop: '2px' }, className: 'glyphicon glyphicon-shopping-cart' },
+                { style: { marginTop: '2px', color: cartColor }, className: 'glyphicon glyphicon-shopping-cart' },
                 this.state.cart > 0 ? this.state.cart : null
               )
             )
