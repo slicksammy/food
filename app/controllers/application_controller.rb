@@ -22,7 +22,7 @@ class ApplicationController < SessionsController
 
   def record_page_visit
     unless admin?
-      PageVisit.create!(url: params["url"], user_uuid: current_user_uuid, ip_address: request.remote_ip)
+      PageVisit.create!(url: params["url"], user_uuid: current_user_uuid, ip_address: request.remote_ip, session_id: session[:session_id])
     end
     
     render body: nil
