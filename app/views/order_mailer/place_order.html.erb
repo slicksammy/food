@@ -1,7 +1,7 @@
 <div class="container">
   <p>Good morning Joel,</p>
 
-  <p>This is an automated email. We have <%=@orders.count%> order(s) for today.</p>
+  <p>We have <%=@orders.count%> order(s) for today.</p>
 
   <% @orders.each do |order| %>
     <h3>Order #<%=order[:order_number] %></h3>

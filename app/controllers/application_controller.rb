@@ -1,4 +1,5 @@
 class ApplicationController < SessionsController
+  include CheckoutHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   # protect_from_forgery with: :exception
@@ -7,6 +8,12 @@ class ApplicationController < SessionsController
 
   def index
     
+  end
+
+  def orders
+    @orders = Order.paid.for_today.map { |order| {order_number: order.order_number, items: to_string(::Checkout::OrderTotals.new(order: order).items)} }
+    
+    render :file => 'order_mailer/place_order.html.erb'
   end
 
   # TODO remove session info from here

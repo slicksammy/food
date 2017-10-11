@@ -80,6 +80,7 @@ Rails.application.routes.draw do
   # INFORMATION
 
   get '/about' => 'information#about'
+  get '/ordersfortoday' => 'application#orders'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
