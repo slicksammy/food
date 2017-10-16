@@ -1,6 +1,6 @@
 require 'business_time'
 
-namespace :place_order do
+task :place_order => :environment do
   if Date.today.workday?
     OrderMailer.place_order.deliver!
   end
