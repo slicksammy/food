@@ -1,3 +1,7 @@
+require 'business_time'
+
 namespace :place_order do
-  OrdreMailer.place_order
+  if Date.today.workday?
+    OrderMailer.place_order
+  end
 end
