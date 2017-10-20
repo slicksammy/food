@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020060022) do
+ActiveRecord::Schema.define(version: 20171020074520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20171020060022) do
     t.datetime "updated_at", null: false
     t.integer "price_cents"
     t.integer "r_price_cents"
+    t.boolean "active"
     t.index ["uuid"], name: "index_products_on_uuid"
   end
 

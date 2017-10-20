@@ -5,6 +5,8 @@ require 'uuid_helper'
 class Product < ActiveRecord::Base
   include UUIDHelper
 
+  scope :active, -> { where(active: [nil, true]) }
+
   monetize :price_cents, :r_price_cents
   # has_and_belongs_to_many :carts
 end

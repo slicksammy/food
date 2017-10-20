@@ -26,6 +26,10 @@ class Cart < ActiveRecord::Base
     !order || order.ongoing?
   end
 
+  def add_product(product, amount)
+    CartsProduct.find_or_create_by(cart_uuid: self.uuid, product_uuid: product.uuid).update_attributes!(amount: amount)
+  end
+
   def merge_into!(keep)
     self.active_carts_products.each { |cp|
       if keep.products.include? cp.product
