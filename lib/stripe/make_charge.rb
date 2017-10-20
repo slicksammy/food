@@ -11,6 +11,7 @@ module Stripe
     def initialize(order, should_validate: true)
       @order = order
       @amount = order.total.fractional
+      @stripe_customer_id = order.user.stripe_customer.stripe_customer_id
       @stripe_token = order.stripe_token
       @should_validate = should_validate 
     end
@@ -22,6 +23,7 @@ module Stripe
         :amount => @amount,
         :currency => "usd",
         :description => "iheartmeat",
+        :customer => @stripe_customer_id,
         :source => @stripe_token.stripe_card.stripe_card_id,
       )
 
