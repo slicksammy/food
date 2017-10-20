@@ -22,7 +22,7 @@ module Stripe
         :amount => @amount,
         :currency => "usd",
         :description => "iheartmeat",
-        :source => @stripe_token.token,
+        :source => @stripe_token.stripe_card.stripe_card_id,
       )
 
       save_info(charge)

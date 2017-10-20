@@ -15,7 +15,9 @@ module Stripe
     def create!
       #begin
       token = create_token
-      save_info!(token)
+      stripe_token = save_info!(token)
+      stripe_customer = create_customer
+      create_card!(stripe_token, stripe_customer)
       # rescue Stripe::CardError => e
       #   body = e.json_body
       #   err  = body[:error]
@@ -36,6 +38,14 @@ module Stripe
       )
     end
 
+    def create_customer
+      return user.stripe_customer if user.stripe_customer
+
+      response = Stripe::Customer.create
+
+      StripeCustomer.create!(user_uuid: user.user_uuid, stripe_customer_id: response.id)
+    end
+
     def save_info!(token)
       user.stripe_tokens.create!({
         token: token.id,
@@ -43,6 +53,19 @@ module Stripe
         response: token,
         active: true
       })
+    end
+
+    def create_card!(stripe_token, stripe_customer)
+      customer = Stripe::Customer.retrieve(stripe_customer.stripe_customer_id)
+
+      card = customer.sources.create(source: stripe_token.token)
+      card = save_card_info!(card)
+
+      stripe_token.create_stripe_card(card: card)
+    end
+
+    def save_card_info!(stripe_card)
+      StripeCard.create!(stripe_card_id: stripe_card.id)
     end
   end
 end

@@ -6,6 +6,7 @@ class StripeToken < ActiveRecord::Base
   scope :ordered, -> { order(created_at: :desc) }
 
   has_many :orders, primary_key: :uuid, foreign_key: :stripe_token_uuid
+  has_one :stripe_card, primary_key: :uuid, foreign_key: :stripe_token_uuid
 
   belongs_to :user, primary_key: :uuid, foreign_key: :user_uuid
 
