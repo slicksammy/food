@@ -24,6 +24,7 @@ module Stripe
 
       #   return err[:message]
       # end
+      stripe_token
     end
 
     # might want to add error handling here to show customer best message
@@ -43,7 +44,7 @@ module Stripe
 
       response = Stripe::Customer.create
 
-      StripeCustomer.create!(user_uuid: user.user_uuid, stripe_customer_id: response.id)
+      StripeCustomer.create!(user_uuid: user.uuid, stripe_customer_id: response.id)
     end
 
     def save_info!(token)
