@@ -14,7 +14,7 @@ class AdminController < SessionsController
   end
 
   def index
-    orders = Order.all
+    orders = Order.ordered
     @orders = format_orders(orders)
   end
 
