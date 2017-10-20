@@ -60,13 +60,8 @@ module Stripe
       customer = Stripe::Customer.retrieve(stripe_customer.stripe_customer_id)
 
       card = customer.sources.create(source: stripe_token.token)
-      card = save_card_info!(card)
 
-      stripe_token.create_stripe_card(card: card)
-    end
-
-    def save_card_info!(stripe_card)
-      StripeCard.create!(stripe_card_id: stripe_card.id)
+      stripe_token.create_stripe_card(stripe_card_id: card.id)
     end
   end
 end
