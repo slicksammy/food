@@ -24,6 +24,8 @@ class Order < ActiveRecord::Base
 
   scope :for_today, -> { where(expected_delivery_date: Date.today) }
 
+  scope :in_the_last_hours, ->(hours) { where("created_at > ?", hours.hours.ago ) }
+
   after_save :create_order_status_log, if: :saved_change_to_status?
 
   PURCHASED_STATUS = 'paid'
