@@ -40,4 +40,12 @@ class OrderMailer < ActionMailer::Base
     mail(from: SUPPORT_EMAIL, to: to , bcc: SAM_EMAIL, subject: "iheartmeat - your order has been delivered!")
   end
 
+  def continue_order(order)
+    return unless order.ongoing?
+
+    @user = order.user
+
+    mail(from: SUPPORT_EMAIL, to: @user.email , bcc: SAM_EMAIL, subject: "iheartmeat - order in progress")
+  end
+
 end

@@ -1,0 +1,7 @@
+<div>
+  <p><%= @user.first_name %>,</p>
+
+  <p>We noticed that you started an order but have not completed checkout. If there is anything we can do to help or you have any questions please let us know.</p>
+
+  <%= render partial: 'user_mailer/support_signature' %>
+</div>

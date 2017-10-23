@@ -6,4 +6,8 @@ class OrderMailerPreview < ActionMailer::Preview
   def delivered
     OrderMailer.delivered(Order.last, note: 'this is the note, cheers!')
   end
+
+  def continue_order
+    OrderMailer.continue_order(Order.ongoing.first)
+  end
 end
