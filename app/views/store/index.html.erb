@@ -290,6 +290,16 @@
         <button onclick="window.location = '/about'" class="learn-more">Learn More</button>
       </div>
     </div>
+    <div id="store" class="row centered">
+      <div>
+        <a href="/checkout" class="checkout">
+          Checkout
+        </a>
+      </div>
+      <h1 class="why-us centered">Our Wonderful Steaks</h1>
+      <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4>
+      <%= react_component('Products', products: @products) %> 
+    </div>
     <div class="row centered margin-bottom max-width-1000">
       <h1 class="why-us">Only Settle for the Best</h1>
       <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
@@ -348,15 +358,5 @@
         <p class="text-quote"><span class="quote">"</span>Damn I heart meat. Really good.<span class="quote">"</span> - Jared R.</p>
       </div>
     </div>
-    <div id="store" class="row centered">
-      <div>
-        <a href="/checkout" class="checkout">
-          Checkout
-        </a>
-      </div>
-      <h1 class="why-us centered">Now You Enjoy The Best Steaks</h1>
-      <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4>
-      <%= react_component('Products', products: @products) %> 
-  </div>
   </section>
 </div>
