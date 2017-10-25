@@ -19,7 +19,14 @@ class AdminController < SessionsController
   end
 
   def dashboard
-    # view
+    @page_visits = {}
+
+    PageVisit.ordered.reverse.each do |a|
+      @page_visits[a.session_id] = [] unless @page_visits[a.session_id]
+      @page_visits[a.session_id] << a.url
+    end
+
+    @page_visits
   end
 
   def deliver_order
