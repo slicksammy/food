@@ -76,6 +76,7 @@ Rails.application.routes.draw do
   get '/admin/get_stats' => 'admin#get_stats'
   get '/admin/labels' => 'admin#lables'
   post '/admin/deliver_order' => 'admin#deliver_order'
+  get '/analytics' => 'admin#analytics'
 
   # INFORMATION
 

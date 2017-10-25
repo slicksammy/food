@@ -19,6 +19,10 @@ class AdminController < SessionsController
   end
 
   def dashboard
+    
+  end
+
+  def analytics
     @page_visits = {}
 
     PageVisit.ordered.reverse.each do |a|
