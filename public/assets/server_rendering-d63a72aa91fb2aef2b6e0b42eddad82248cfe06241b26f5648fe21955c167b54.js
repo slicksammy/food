@@ -22713,6 +22713,12 @@ var Dashboard = (function (_React$Component) {
           null,
           'Page Views: ',
           this.state.stats.page_views
+        ),
+        React.createElement(
+          'h1',
+          null,
+          'Unique Visitors: ',
+          this.state.stats.unique_visitors
         )
       );
     }
