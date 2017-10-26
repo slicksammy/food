@@ -27,6 +27,7 @@ class Dashboard extends React.Component {
         <h1>Carts: {this.state.stats.carts}</h1>
         <h1>Users: {this.state.stats.users}</h1>
         <h1>Page Views: {this.state.stats.page_views}</h1>
+        <h1>Unique Visitors: {this.state.stats.unique_visitors}</h1>
       </div>
     )
   }

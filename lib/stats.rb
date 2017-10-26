@@ -27,4 +27,9 @@ class Stats
     results.rows.flatten.first
   end
 
+  def unique_visitors
+    results = conn.exec_query("select count(distinct session_id) from page_visits where created_at > current_timestamp - interval '#{time_ago} minutes'")
+    results.rows.flatten.first
+  end
+
 end
