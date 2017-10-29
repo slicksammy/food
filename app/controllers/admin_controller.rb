@@ -65,14 +65,14 @@ class AdminController < SessionsController
 
   def products(order)
     begin
-      to_string(::Checkout::OrderTotals.new(order: order).items)
+      to_string(order.products || ::Checkout::OrderTotals.new(order: order).items)
     rescue ::Checkout::OrderTotals::MissingCartError, ::Checkout::OrderTotals::NoItemsInCart => e
       []
     end
   end
 
   def format_orders(orders)
-    orders.map{ |o| {order: format_order(o), items: to_string(o.products), status: o.status, name: o.user.try(:full_name), uuid: o.uuid } } # try in case something weird happens and order is created without user
+    orders.map{ |o| {order: format_order(o), items: products(o), status: o.status, name: o.user.try(:full_name), uuid: o.uuid } } # try in case something weird happens and order is created without user
   end
 
 end
