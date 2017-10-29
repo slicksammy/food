@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020074520) do
+ActiveRecord::Schema.define(version: 20171029195911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20171020074520) do
     t.integer "promotion_id"
     t.integer "discount_cents"
     t.text "instructions"
+    t.string "products"
     t.index ["cart_uuid"], name: "index_orders_on_cart_uuid"
     t.index ["uuid"], name: "index_orders_on_uuid"
   end

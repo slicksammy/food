@@ -1,4 +1,5 @@
 require 'uuid_helper'
+require 'checkout/order_totals'
 
 class Order < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
@@ -27,6 +28,8 @@ class Order < ActiveRecord::Base
   scope :in_the_last_hours, ->(hours) { where("created_at > ?", hours.hours.ago ) }
 
   after_save :create_order_status_log, if: :saved_change_to_status?
+
+  serialize :products, Array
 
   PURCHASED_STATUS = 'paid'
   DElIVERED_STATUS = 'delivered'
@@ -78,6 +81,7 @@ class Order < ActiveRecord::Base
 
   def purchase!
     self.status = PURCHASED_STATUS
+    set_products
     self.save!
   end
 
@@ -96,5 +100,9 @@ class Order < ActiveRecord::Base
 
   def refund!
     # product has been refunded
+  end
+
+  def set_products
+    self.products = ::Checkout::OrderTotals.new(order: self).items
   end
 end

@@ -83,7 +83,7 @@ class UsersController < SessionsController
 
   def home
     orders = current_user.orders.completed.ordered
-    @orders = orders.map { |o| {order: format_order(o), items: to_string(::Checkout::OrderTotals.new(order: o).items) } }
+    @orders = orders.map { |o| {order: format_order(o), items: to_string(o.products) } }
   end
 
   def permit_create_user_params
