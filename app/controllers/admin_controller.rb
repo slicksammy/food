@@ -65,7 +65,7 @@ class AdminController < SessionsController
 
   def products(order)
     begin
-      to_string(order.products || ::Checkout::OrderTotals.new(order: order).items)
+      to_string(order.products.any? ? order.products : ::Checkout::OrderTotals.new(order: order).items)
     rescue ::Checkout::OrderTotals::MissingCartError, ::Checkout::OrderTotals::NoItemsInCart => e
       []
     end
