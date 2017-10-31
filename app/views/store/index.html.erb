@@ -80,9 +80,9 @@
   }
 
   .bigger {
-    line-height: 200%;
+    line-height: 100%;
     /*font-weight: bold;*/
-    font-size: 70px;
+    font-size: 60px;
     font-family: 'Crimson Text', serif;
     margin-bottom: 80px;
     font-weight: bold
@@ -179,7 +179,6 @@
       font-size: 30px;
       font-weight: bold;
       margin-bottom: 20px;
-      line-height: 140%;
     }
 
     .colcentered {
@@ -264,6 +263,7 @@
       <h1 class="why-us centered">Our Wonderful Steaks</h1>
       <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4>
       <%= react_component('Products', products: @products, showButtons: true, showCartTotals: true) %> 
+      <a href="/holidays"><p>View Our Holiday Packages ></p></a>
     </div>
     <div class="row centered margin-bottom max-width-1000">
       <h1 class="why-us">Only Settle for the Best</h1>
