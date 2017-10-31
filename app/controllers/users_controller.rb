@@ -87,6 +87,6 @@ class UsersController < SessionsController
   end
 
   def permit_create_user_params
-    params.permit(:firstName, :lastName, :email, :marketing)
+    params.permit(:firstName, :lastName, :email, :marketing, :password)
   end
 end
