@@ -6,6 +6,7 @@ class UserMailer < ActionMailer::Base
 
   # TODO update this email
   SUPPORT_EMAIL = 'support@iheartmeat.com'
+  SAM_EMAIL = 'sam@iheartmeat.com'
 
   layout 'bootstrap'
 
@@ -31,8 +32,17 @@ class UserMailer < ActionMailer::Base
 
   def welcome(user)
     to = user.email
-    @name = user.full_name
+    @name = user.first_name
 
-    mail(from: SUPPORT_EMAIL, to: to, subject: 'Welcome to iheartmeat')
+    mail(from: SUPPORT_EMAIL, to: to, bcc: SUPPORT_EMAIL, subject: 'Welcome to iheartmeat')
+  end
+
+  def holidays(user)
+    return unless user.marketing_opt_in?
+
+    to = user.email
+    @name = user.first_name
+
+    mail(from: SUPPORT_EMAIL, to: to, bcc: SUPPORT_EMAIL, subject: 'iheartmeat - The Holidays Are Coming Up')
   end
 end
