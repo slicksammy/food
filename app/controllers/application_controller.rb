@@ -29,14 +29,14 @@ class ApplicationController < SessionsController
 
   def record_page_visit
     unless admin?
-      PageVisit.create!(url: params["url"], user_uuid: current_user_uuid, ip_address: request.remote_ip, session_id: session[:session_id])
+      PageVisit.create!(url: params["url"], user_uuid: current_user_uuid, ip_address: request.remote_ip, session_id: session[:session_id], referrer: params["referrer"])
     end
     
     render body: nil
   end
 
   def permit_page_visit_params
-    params.permit(:url)
+    params.permit(:url, :referrer)
   end
 
   def places
