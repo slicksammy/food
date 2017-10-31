@@ -51,6 +51,7 @@ module Checkout
       subtotal >= promo.minimum_order
     end
 
+    # TODO figure out rounding
     def discount
       discount = promo.discount
 

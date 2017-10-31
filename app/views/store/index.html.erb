@@ -6,33 +6,6 @@
     text-align: center ;
   }
 
-  .checkout {
-    background-color: green;
-    right: 0;
-    bottom: 0;
-    top: auto;
-    z-index: 2;
-    position: fixed;
-    height: 50px;
-    width: 200px;
-    display: inline-block;
-    margin-right: 5px;
-    text-align: center;
-    border-radius: 25px;
-    vertical-align: center;
-    padding: 5px;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: white;
-    font-size: 26px;
-    /*transform: rotate(90deg);*/
-    /*transform-origin: left top 0;*/
-  }
-
-  .checkout:hover {
-    text-decoration: none;
-  }
-
   .max-width-1000 {
     max-width: 1200px;
   }
@@ -192,11 +165,6 @@
       padding-bottom: 0px
     }
 
-    .checkout {
-      font-size: 26px;
-      padding: 5px;
-    }
-
     .block {
       margin-bottom: inherit;
       font-size: 30px;
@@ -273,11 +241,6 @@
 
 <div>
   <!-- <h1 class="centered">We will be accepting orders starting Oct 1st!</h1> -->
-  <div>
-    <a href="/checkout" class="checkout">
-      <p class="vertical">Checkout</p>
-    </a>
-  </div>
   <section class="minus-margin-top">
     <div class="row centered main-section">
       <!-- <h1 class="header">We are currently in testing and will be live in mid-September</h1> -->
@@ -298,7 +261,7 @@
       </div>
       <h1 class="why-us centered">Our Wonderful Steaks</h1>
       <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4>
-      <%= react_component('Products', products: @products) %> 
+      <%= react_component('Products', products: @products, showButtons: true, showCartTotals: true) %> 
     </div>
     <div class="row centered margin-bottom max-width-1000">
       <h1 class="why-us">Only Settle for the Best</h1>

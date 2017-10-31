@@ -104,13 +104,14 @@ class NavBar extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a style={header} href="/" className="navbar-brand"><img style={img} src="assets/logo_simple.png" /></a>
+            <a style={header} href="/#store" className="navbar-brand"><img style={img} src="assets/logo_simple.png" /></a>
             <a style={header} href="/cart" className="navbar-brand"><span style={{marginTop: '2px', color: cartColor}} className="glyphicon glyphicon-shopping-cart">{this.state.cart > 0 ? this.state.cart : null}</span></a>
           </div>
           <div style={noBorder} className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul style={ulStyle} className="nav navbar-nav navbar-right">
               {/*<li style={ilStyle}></li>*/}
               <li style={ilStyle}><a style={bigFont} href="/about"><span className="">About</span></a></li>
+              <li style={ilStyle}><a style={bigFont} href="/holidays"><span className="">Holidays</span></a></li>
               <li style={ilStyle}><a style={bigFont} href="/availability"><span className="">Availability</span></a></li>
               { this.props.signedIn? <li style={ilStyle}><a style={bigFont} href="/orders">My Orders</a></li> : null }
               <li style={ilStyle}><a style={bigFont} href="/about#contact"><span className="">Contact</span></a></li>

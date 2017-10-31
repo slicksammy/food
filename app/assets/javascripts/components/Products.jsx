@@ -97,6 +97,27 @@ class Products extends React.Component {
         color: '#02ff02',
       }
 
+      var packageStyle = {
+        // clear: 'both',
+        // fontSize: '50px',
+        // display: 'block',
+        // width: '25px',
+        // height: '100px',
+        // margin: '0 auto',
+        // marginTop: '-20px',
+        // marginBottom: '30px',
+        // width: '40px',
+        // color: 'white',
+        // fontWeight: 'bold',
+        display: 'block',
+        horizontalAlign: 'center',
+        marginTop: '-40px'
+      }
+
+      var packagePadded = {
+        padding: '20px'
+      }
+
       var colCentered = {
         display: 'inline-block',
         float: 'none',
@@ -120,8 +141,13 @@ class Products extends React.Component {
         <div style={colCentered} className="col-lg-4 col-md-4 col-sm-6 col-xs-11">
           <div className="base-title-product"><strong>{product.name}</strong></div>
           <div  className="base-container-product">
+            { this.props.showPackageTotals ?
+              <div style={packageStyle}>
+                <span>Quantity: {this.state[product.uuid]}</span>
+              </div> : null 
+            }
             <img style={imageStyle} className="img-rounded layer-shadow2" src={product.image_url}/> 
-            { this.hasProduct(product.uuid) ? <span style={spanStyle} className="glyphicon glyphicon-shopping-cart centered no-line">{this.state[product.uuid]}</span> : null }
+            { this.hasProduct(product.uuid) && this.props.showCartTotals ? <span style={spanStyle} className="glyphicon glyphicon-shopping-cart centered no-line">{this.state[product.uuid]}</span> : null }
             {/*<div onMouseEnter={()=> this.toggleShowDescription(product.uuid, true)} onMouseLeave={()=> this.toggleShowDescription(product.uuid, false)} style={hoverBoxStyle}>
               
                { this.showDescription(product.uuid) ? <div style={descriptionStyle}>{product.description}</div> : null }
@@ -129,8 +155,12 @@ class Products extends React.Component {
             <h3>{product.description}</h3>
             <h2>${product.price}</h2>
             <h3 style={restPrice}>Restaurant price: ${product.r_price}</h3>
-            <button style={buttonStyle} className="btn btn-success cart_update layer-shadow1 blue" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
-            <button style={buttonStyle} className="btn btn-danger cart_update layer-shadow1 red" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
+            { !this.props.showButtons ? null :
+              <div>
+                <button style={buttonStyle} className="btn btn-success cart_update layer-shadow1 blue" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
+                <button style={buttonStyle} className="btn btn-danger cart_update layer-shadow1 red" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
+              </div>
+            }
           </div>
         </div>
       )

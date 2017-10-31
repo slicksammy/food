@@ -62,11 +62,11 @@ class Cart extends React.Component {
           Subtotal: ${this.state.subtotal}
         </div>
         <div style={rowStyle}>
-          <Products onChange={this.updateSubtotal} products={this.props.products} hideOnZero="true" />
+          <Products onChange={this.updateSubtotal} products={this.props.products} hideOnZero={true} showCartTotals={true} />
         </div>
-        <div style={buttonContainer}>
+        {/*<div style={buttonContainer}>
           <button className="btn btn-success" style={buttonStyle} onClick={this.continueToCheckout}>Checkout</button>
-        </div>
+        </div>*/}
       </div>
     )
   }

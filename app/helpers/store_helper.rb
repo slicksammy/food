@@ -6,6 +6,31 @@ module StoreHelper
       amount = cart.carts_products.find_by_product_uuid(product.uuid).try(:amount) || 0
     end
 
+    product_hash(product, amount)
+  end
+
+  def product_information(products, cart_uuid)
+    products.map{ |p| product_info(p, cart_uuid) }.flatten
+  end
+
+  def package_info(packages)
+    pkgs = []
+
+    packages.each do |package|
+      products = package.products
+      data = {}
+      data[:products] = products.map { |p| product_hash(Product.find_by_uuid(p[:uuid]), p[:amount]) }
+      data[:name] = package.package_name
+      data[:price] = package.price.to_s
+      data[:description] = package.description
+      data[:uuid] = package.uuid
+      pkgs << data
+    end
+
+    pkgs
+  end
+
+  def product_hash(product, amount)
     {   
       uuid: product.uuid,
       name: product.name,
@@ -15,9 +40,5 @@ module StoreHelper
       amount: amount,
       r_price: product.r_price.to_s
     }
-  end
-
-  def product_information(products, cart_uuid)
-    products.map{ |p| product_info(p, cart_uuid) }.flatten
   end
 end

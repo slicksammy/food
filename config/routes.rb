@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'store#index'
+  get '/holidays' => 'store#packages'
 
   get '/application/version' => 'application#version'
 
@@ -37,6 +38,7 @@ Rails.application.routes.draw do
   post '/cart' => 'cart#update'
   get 'cart/subtotal' =>'cart#get_subtotal'
   get 'cart/count' =>'cart#count'
+  post 'cart/package' => 'cart#add_package'
 
   # START CHECKOUT
   get '/checkout' => 'checkout#view'

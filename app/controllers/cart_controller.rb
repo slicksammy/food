@@ -51,6 +51,12 @@ class CartController < SessionsController
     render json: { count: count }, status: 202
   end
 
+  def add_package
+    package = Package.find_by_uuid(params["uuid"])
+
+    cart.add_package_products(package)
+  end
+
   private
 
   def create_cart

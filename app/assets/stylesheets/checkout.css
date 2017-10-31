@@ -238,11 +238,44 @@ html, body {
   .logo {
     width: 75%;
   }
+
+  .checkout {
+      font-size: 26px;
+      padding: 5px;
+    }
+
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.checkout {
+  background-color: green;
+  right: 0;
+  bottom: 0;
+  top: auto;
+  z-index: 2;
+  position: fixed;
+  height: 50px;
+  width: 200px;
+  display: inline-block;
+  margin-right: 5px;
+  text-align: center;
+  border-radius: 25px;
+  vertical-align: center;
+  padding: 5px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: white;
+  font-size: 26px;
+  /*transform: rotate(90deg);*/
+  /*transform-origin: left top 0;*/
+}
+
+.checkout:hover {
+  text-decoration: none;
 }
 
 

@@ -24,7 +24,7 @@ class ApplicationController < SessionsController
   def routing_error
     @message = 'Woops! This page does not exist.'
 
-    render :file => 'public/nothing_here.html.erb'
+    render :file => 'public/nothing_here.html.erb', status: 500
   end
 
   def record_page_visit

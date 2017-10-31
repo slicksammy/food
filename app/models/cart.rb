@@ -30,6 +30,16 @@ class Cart < ActiveRecord::Base
     CartsProduct.find_or_create_by(cart_uuid: self.uuid, product_uuid: product.uuid).update_attributes!(amount: amount)
   end
 
+  def add_package_products(package)
+    package.products.each do |p|
+      if cp = CartsProduct.find_by(cart_uuid: self.uuid, product_uuid: p[:uuid])
+        cp.update_attributes(amount: cp.amount + p[:amount])
+      else
+        CartsProduct.create!(cart_uuid: self.uuid, product_uuid: p[:uuid], amount: p[:amount])
+      end
+    end
+  end
+
   def merge_into!(keep)
     self.active_carts_products.each { |cp|
       if keep.products.include? cp.product

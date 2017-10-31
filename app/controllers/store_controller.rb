@@ -8,4 +8,8 @@ class StoreController < SessionsController
     @products = product_information(Product.active, cart_uuid)
     @signed_in = current_user_uuid.present? ? true : false
   end
+
+  def packages
+    @packages = package_info(Package.active)
+  end
 end
