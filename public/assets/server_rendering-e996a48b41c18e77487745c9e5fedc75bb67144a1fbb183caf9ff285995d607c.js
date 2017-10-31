@@ -23758,7 +23758,7 @@ var Packages = (function (_React$Component) {
 
       var packageDescription = {
         textAlign: 'center',
-        fontSize: '35px',
+        fontSize: '25px',
         textTransform: 'uppercase',
         paddingLeft: '10px',
         paddingRight: '10px'
