@@ -8,7 +8,7 @@ class OrderMailer < ActionMailer::Base
 
   # TODO update this email
   # DEFAULT_FROM = 'sam@brokolly.com'
-  SUPPORT_EMAIL = 'support@iheartmeat.com'
+  SUPPORT_EMAIL = 'iheartmeat <support@iheartmeat.com>'
   SAM_EMAIL = 'sam@iheartmeat.com'
   JOEL_EMAIL = 'joel@worldsbeststeak.com'
   L_L_EMAIL = 'orderdesk@worldsbeststeak.com'

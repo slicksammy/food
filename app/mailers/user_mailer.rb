@@ -5,7 +5,7 @@ class UserMailer < ActionMailer::Base
   attr_reader :to, :from
 
   # TODO update this email
-  SUPPORT_EMAIL = 'support@iheartmeat.com'
+  SUPPORT_EMAIL = 'iheartmeat <support@iheartmeat.com>'
   SAM_EMAIL = 'sam@iheartmeat.com'
 
   layout 'bootstrap'
