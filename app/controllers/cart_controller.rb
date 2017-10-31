@@ -5,7 +5,7 @@ require 'checkout/order_totals'
 class CartController < SessionsController
   include StoreHelper
 
-  before_action :create_cart, only: [:update]
+  before_action :create_cart, only: [:update, :add_package]
 
   def view
     # check if there is anything in the cart before showing to customer
