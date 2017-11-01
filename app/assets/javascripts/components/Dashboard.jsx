@@ -28,6 +28,8 @@ class Dashboard extends React.Component {
         <h1>Users: {this.state.stats.users}</h1>
         <h1>Page Views: {this.state.stats.page_views}</h1>
         <h1>Unique Visitors: {this.state.stats.unique_visitors}</h1>
+        <h1>Unique Visitors Non Admin: {this.state.stats.unique_visitors_non_admins}</h1>
+        <h1>Unique Page Views Non Admin: {this.state.stats.unique_page_views_non_admins}</h1>
       </div>
     )
   }
