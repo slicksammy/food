@@ -2,6 +2,7 @@ class Packages extends React.Component {
   constructor() {
     super();
     this.addPackage = this.addPackage.bind(this);
+    this.color = this.color.bind(this)
   }
 
   addPackage(package_uuid) {
@@ -15,14 +16,21 @@ class Packages extends React.Component {
     })
   }
 
-  render() {
-    var centered = {
-      textAlign: 'center'
+  color(index) {
+    switch(index % 2) {
+      case 0:
+        return('#e6e4e4')
+      case 1:
+        return('#ffffff')
     }
+  }
+
+  render() {
 
     var packageName = {
       textAlign: 'center',
-      fontSize: '50px'
+      fontSize: '50px',
+      paddingTop: '10px'
     }
 
     var packageDescription = {
@@ -49,7 +57,12 @@ class Packages extends React.Component {
       color: 'white'
     }
 
-    var packages = this.props.packages.map( pkg => {
+    var packages = this.props.packages.map( (pkg,index) => {
+      var centered = {
+        textAlign: 'center',
+        background: this.color(index),
+      }
+
       return(
         <div style={centered}>
           <h2 style={packageName}>{pkg.name}</h2>
