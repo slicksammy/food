@@ -8,6 +8,7 @@
   --color-blue-marine: #2D6BEF;
   --color-blue: #0449DD;
   --color-dark-gray: #363a42;
+  --color-bright-green: #55ff91;
 
   /* Secondary Colors: */
   --color-red: #DE1A1A; /* error */
@@ -42,6 +43,7 @@
 .blue { background: var(--color-blue); }
 .dark-gray { background: var(--color-dark-gray); }
 .sexy-blue { background: var(--color-sexy-blue); }
+.bright-green { background: var(--color-bright-green); }
 
 .text-black { color: var(--color-black); }
 .text-white { color: var(--color-white); }

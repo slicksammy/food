@@ -157,7 +157,7 @@ class Products extends React.Component {
             <h3 style={restPrice}>Restaurant price: ${product.r_price}</h3>
             { !this.props.showButtons ? null :
               <div>
-                <button style={buttonStyle} className="btn btn-success cart_update layer-shadow1 blue" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
+                <button style={buttonStyle} className="btn btn-success cart_update layer-shadow1 bright-green" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
                 <button style={buttonStyle} className="btn btn-danger cart_update layer-shadow1 red" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
               </div>
             }
