@@ -154,7 +154,7 @@ class Products extends React.Component {
             </div>*/}
             <h3>{product.description}</h3>
             <h2>${product.price}</h2>
-            <h3 style={restPrice}>Restaurant price: ${product.r_price}</h3>
+            <h3 style={restPrice}>Steak house price: ${product.r_price}</h3>
             { !this.props.showButtons ? null :
               <div>
                 <button style={buttonStyle} className="btn btn-success cart_update layer-shadow1 bright-green" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
