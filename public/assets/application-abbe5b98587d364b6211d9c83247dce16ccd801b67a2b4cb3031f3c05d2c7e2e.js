@@ -23596,18 +23596,6 @@ var Dashboard = (function (_React$Component) {
           null,
           'Unique Visitors: ',
           this.state.stats.unique_visitors
-        ),
-        React.createElement(
-          'h1',
-          null,
-          'Unique Visitors Non Admin: ',
-          this.state.stats.unique_visitors_non_admins
-        ),
-        React.createElement(
-          'h1',
-          null,
-          'Unique Page Views Non Admin: ',
-          this.state.stats.unique_page_views_non_admins
         )
       );
     }
@@ -25591,7 +25579,7 @@ var Products = (function (_React$Component) {
             React.createElement(
               "h3",
               { style: restPrice },
-              "Steak house price: $",
+              "Steakhouse price: $",
               product.r_price
             ),
             !_this.props.showButtons ? null : React.createElement(
