@@ -241,7 +241,7 @@ html, body {
     width: 75%;
   }
 
-  .checkout {
+  .checkout, .shop {
       font-size: 26px;
       padding: 5px;
     }
@@ -253,7 +253,7 @@ html, body {
   100% { transform: rotate(360deg); }
 }
 
-.checkout {
+.shop, .checkout {
   background-color: green;
   right: 0;
   bottom: 0;
@@ -276,7 +276,7 @@ html, body {
   /*transform-origin: left top 0;*/
 }
 
-.checkout:hover {
+.shop:hover, .checkout:hover {
   text-decoration: none;
 }
 
