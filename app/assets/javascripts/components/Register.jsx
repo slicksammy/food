@@ -29,7 +29,9 @@ class Register extends React.Component {
     }
   }
 
-  completeRegistration () {
+  completeRegistration (e) {
+    e.target.disabled = true
+
     var params = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -47,7 +49,8 @@ class Register extends React.Component {
       }.bind(this),
       error: function(result) {
         this.setState({
-          errors: result.responseJSON.errors
+          errors: result.responseJSON.errors,
+          canSubmit: false
         })
       }.bind(this)
     });

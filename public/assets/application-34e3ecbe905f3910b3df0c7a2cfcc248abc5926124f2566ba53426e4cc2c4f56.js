@@ -25672,7 +25672,9 @@ var Register = (function (_React$Component) {
     }
   }, {
     key: 'completeRegistration',
-    value: function completeRegistration() {
+    value: function completeRegistration(e) {
+      e.target.disabled = true;
+
       var params = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -25690,7 +25692,8 @@ var Register = (function (_React$Component) {
         }).bind(this),
         error: (function (result) {
           this.setState({
-            errors: result.responseJSON.errors
+            errors: result.responseJSON.errors,
+            canSubmit: false
           });
         }).bind(this)
       });
