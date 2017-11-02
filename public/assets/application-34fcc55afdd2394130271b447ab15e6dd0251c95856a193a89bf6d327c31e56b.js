@@ -25591,7 +25591,7 @@ var Products = (function (_React$Component) {
             React.createElement(
               "h3",
               { style: restPrice },
-              "Restaurant price: $",
+              "Steak house price: $",
               product.r_price
             ),
             !_this.props.showButtons ? null : React.createElement(
