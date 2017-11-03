@@ -6,7 +6,8 @@ class Register extends React.Component {
       email: '',
       password: '',
       lastName: '',
-      firstName: ''
+      firstName: '',
+      loader: false
     }
     this.completeRegistration = this.completeRegistration.bind(this)
     this.updateState = this.updateState.bind(this)
@@ -31,6 +32,7 @@ class Register extends React.Component {
 
   completeRegistration (e) {
     e.target.disabled = true
+    this.setState({loader: true})
 
     var params = {
       firstName: this.state.firstName,
@@ -50,7 +52,8 @@ class Register extends React.Component {
       error: function(result) {
         this.setState({
           errors: result.responseJSON.errors,
-          canSubmit: false
+          canSubmit: false,
+          loader: false,
         })
       }.bind(this)
     });
@@ -150,33 +153,40 @@ class Register extends React.Component {
       paddingTop: '10px'
     }
 
+    var opaque = {
+      opacity: this.state.loader ? .1 : 1
+    }
+
     return(
       <form id="register">
-        <div>
-          { this.state.errors.first_name ? <span style={errorStyle}>{this.state.errors.first_name}</span> : null }
-          <input style={inputStyle} onChange={this.updateState} type="text" className="base-input" ref="firstName" placeholder="First Name" id="firstName" /><span style={firstNameStyle} className="glyphicon glyphicon-ok"></span>
-        </div>
-        <div>
-          { this.state.errors.last_name ? <span style={errorStyle}>{this.state.errors.last_name}</span> : null }
-          <input style={inputStyle} onChange={this.updateState} type="text" className="base-input" placeholder="Last Name" id="lastName"/><span style={lastNameStyle} className="glyphicon glyphicon-ok"></span>
-        </div>
-        <div>
-          { this.state.errors.email ? <span style={errorStyle}>{this.state.errors.email}</span> : null }
-          <input style={inputStyle} onChange={this.updateState} type="text" className="base-input" placeholder="Email" id="email"/><span style={emailStyle} className="glyphicon glyphicon-ok"></span>
-        </div>
-        <div>
-          { this.state.errors.password ? <span style={errorStyle}>{this.state.errors.password}</span> : null }
-          <label style={labelStyle}>password must include one letter, one number and be at least 6 characters long</label>
-          <input style={inputStyle} onChange={this.updateState} type="password" className="base-input" placeholder="Password" id="password"/><span style={passwordStyle} className="glyphicon glyphicon-ok"></span>
-        </div>
-        <div>
-          <div style={inputStyleContainer}>
-            <input style={checkboxStyle} type="checkbox" id="marketing" ref="marketing"/>
-            <label style={checkboxLabel}>I would like to hear about specials from <img style={{width: '30%'}} src="assets/logo_simple.png" /></label>
+        { this.state.loader ? <div className="loader"></div> : null }
+        <div style={opaque}>
+          <div>
+            { this.state.errors.first_name ? <span style={errorStyle}>{this.state.errors.first_name}</span> : null }
+            <input style={inputStyle} onChange={this.updateState} type="text" className="base-input" ref="firstName" placeholder="First Name" id="firstName" /><span style={firstNameStyle} className="glyphicon glyphicon-ok"></span>
           </div>
+          <div>
+            { this.state.errors.last_name ? <span style={errorStyle}>{this.state.errors.last_name}</span> : null }
+            <input style={inputStyle} onChange={this.updateState} type="text" className="base-input" placeholder="Last Name" id="lastName"/><span style={lastNameStyle} className="glyphicon glyphicon-ok"></span>
+          </div>
+          <div>
+            { this.state.errors.email ? <span style={errorStyle}>{this.state.errors.email}</span> : null }
+            <input style={inputStyle} onChange={this.updateState} type="text" className="base-input" placeholder="Email" id="email"/><span style={emailStyle} className="glyphicon glyphicon-ok"></span>
+          </div>
+          <div>
+            { this.state.errors.password ? <span style={errorStyle}>{this.state.errors.password}</span> : null }
+            <label style={labelStyle}>password must include one letter, one number and be at least 6 characters long</label>
+            <input style={inputStyle} onChange={this.updateState} type="password" className="base-input" placeholder="Password" id="password"/><span style={passwordStyle} className="glyphicon glyphicon-ok"></span>
+          </div>
+          <div>
+            <div style={inputStyleContainer}>
+              <input style={checkboxStyle} type="checkbox" id="marketing" ref="marketing"/>
+              <label style={checkboxLabel}>I would like to hear about specials from <img style={{width: '30%'}} src="assets/logo_simple.png" /></label>
+            </div>
+          </div>
+          <button style={buttonStyle} disabled={!this.state.canSubmit} onClick={this.completeRegistration} ref="button" className="btn btn-success btn-submit" type="submit">Sign Up</button>  
         </div>
-        <button style={buttonStyle} disabled={!this.state.canSubmit} onClick={this.completeRegistration} ref="button" className="btn btn-success btn-submit" type="submit">Sign Up</button>
-      </form>
+      </form> 
     )
   }
 }
