@@ -12,7 +12,7 @@ module Checkout
       @promo = Promotion.find_by_code(promo_code)
       @code = promo_code
 
-      # return { error: 'discount already added to your order' } if order.discounted?
+      return { error: 'discount already added to your order' } if order.discounted?
       return { error: 'promotion code is invalid' } unless promo
 
       return { error: 'promotion has expired' } if expired?
