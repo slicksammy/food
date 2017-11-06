@@ -32,7 +32,9 @@ module Checkout
       @promo = order.promotion
 
       if !expired? && meets_minum_order?(subtotal)
-        apply_promotion(@promo.code)
+        order.discount = discount(subtotal: subtotal)
+        order.save!
+        order.reload
       else
         order.discount = 0
         order.promotion = nil
@@ -52,7 +54,7 @@ module Checkout
     end
 
     # TODO figure out rounding
-    def discount
+    def discount(subtotal: nil)
       discount = promo.discount
 
       case
@@ -62,7 +64,7 @@ module Checkout
       when 0.3 < discount.to_f && discount.to_f < 1
         nil
       when discount.to_f < 0.3
-        order.subtotal * discount.to_f
+        (subtotal || order.subtotal) * discount.to_f
       when discount.to_f > 1
         discount.to_f
       end
