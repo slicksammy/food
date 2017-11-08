@@ -3,4 +3,8 @@ class UserMailerPreview < ActionMailer::Preview
   def holidays
     UserMailer.holidays(User.last)
   end
+
+  def social_media
+    UserMailer.social_media(User.last)
+  end
 end

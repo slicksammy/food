@@ -45,4 +45,13 @@ class UserMailer < ActionMailer::Base
 
     mail(from: SUPPORT_EMAIL, to: to, bcc: SUPPORT_EMAIL, subject: 'iheartmeat - The Holidays Are Coming Up')
   end
+
+  def social_media(user)
+    return unless user.marketing_opt_in?
+
+    to = user.email
+    @name = user.first_name
+
+    mail(from: SUPPORT_EMAIL, to: to, bcc: SUPPORT_EMAIL, subject: 'iheartmeat - We\'re on Social Media')
+  end
 end
