@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'store#index'
+  get '/steaks' => 'store#products'
   get '/holidays' => 'store#packages'
 
   get '/application/version' => 'application#version'

@@ -276,8 +276,16 @@ html, body {
   /*transform-origin: left top 0;*/
 }
 
+.checkout {
+  display: none;
+}
+
 .shop:hover, .checkout:hover {
   text-decoration: none;
+}
+
+.shop-background {
+  background-image: linear-gradient(to bottom, #63c359 0%, #48ab3e 100%);
 }
 
 

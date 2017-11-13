@@ -21,7 +21,7 @@ class Home extends React.Component {
 
     return(
       <div>
-        { orders.length > 0 ? orders : <h1>No orders yet, let's <a href="/#store">shop!</a></h1> }
+        { orders.length > 0 ? orders : <h1>No orders yet, let's <a href="/steaks">shop!</a></h1> }
       </div>
     )
   }

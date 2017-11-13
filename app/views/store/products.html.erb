@@ -1,0 +1,31 @@
+<style>
+  .store {
+    /*background-color: #eeeeee;*/
+    padding-bottom: 100px;
+    font-family: 'Fredoka One', cursive;
+    text-align: center
+  }
+
+  .smaller {
+    font-size: 16px;
+    margin-top: 30px;
+  }
+
+  p {
+    font-size: 30px;
+  }
+
+</style>
+
+<div class="store" class="row centered">
+  <div>
+    <a href="/checkout" class="shop-background checkout">
+      Checkout >>>
+    </a>
+  </div>
+  <h1 class="why-us centered">You Won't Find A Better Steak, Guaranteed</h1>
+  <!-- <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4> -->
+  <%= react_component('Products', products: @products, showButtons: true, showCartTotals: true) %> 
+  <a href="/holidays"><p>View Our Curated Holiday Packages</p></a>
+  <a href="mailto:support@iheartmeat.com?subject=Special Request"><p class="smaller">Can't find what you are looking for? Email us</p></a>
+</div>

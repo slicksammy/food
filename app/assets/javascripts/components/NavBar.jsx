@@ -92,6 +92,14 @@ class NavBar extends React.Component {
       width: '75px'
     }
 
+    var steaksStyle = {
+      // border: '2px solid green',
+      // borderRadius: '5px',
+      padding: '3px 3px 3px 3px',
+      // boxShadow: '5px',
+      color: 'white',
+    }
+
     var cartColor = this.state.cart > 0 ? 'blue' : ''
 
     return(
@@ -104,7 +112,8 @@ class NavBar extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a style={header} href="/#store" className="navbar-brand"><img style={img} src="assets/logo_simple.png" /></a>
+            <a style={header} href="/" className="navbar-brand"><img style={img} src="assets/logo_simple.png" /></a>
+            <a style={header} href="/steaks" className="navbar-brand"><span className="layer-shadow1 shop-background" style={steaksStyle}>Steaks</span></a>
             <a style={header} href="/cart" className="navbar-brand"><span style={{marginTop: '2px', color: cartColor}} className="glyphicon glyphicon-shopping-cart">{this.state.cart > 0 ? this.state.cart : null}</span></a>
           </div>
           <div style={noBorder} className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

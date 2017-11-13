@@ -40,9 +40,9 @@ h1 {
   margin-bottom: 25px
 }
 
-#story {
+.story {
   margin-bottom: 30px;
-  font-family: 'Crimson Text', serif;
+  font-family: 'Fredoka One', cursive;
 }
 
 #shop-button {
