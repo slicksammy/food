@@ -284,6 +284,7 @@ html, body {
   text-decoration: none;
   color: white;
   font-size: 26px;
+  font-family: 'Crimson Text', serif;
   /*transform: rotate(90deg);*/
   /*transform-origin: left top 0;*/
 }
