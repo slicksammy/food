@@ -54,6 +54,7 @@ class Places extends React.Component {
 
     return (
       <div>
+        <a href="/places/new"><p>New Place</p></a>
         <select ref="type" onChange={this.updateType}><option value="all">all</option>{types}</select>
         {places}
       </div>

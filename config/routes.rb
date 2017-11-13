@@ -11,23 +11,15 @@ Rails.application.routes.draw do
 
   get '/application/version' => 'application#version'
 
-  # get '/places' => 'application#places'
-
-  # get '/places/:id' => 'application#place', constraints: { id: /[0-9]+/ }
-
-  # post '/places/:id/notes' => 'application#notes'
-
-  # post '/places/:id/update_status' => 'application#update_status'
-
-  # get '/places/:id/callbacks' => 'application#get_callbacks'
-
-  # match 'places/new', to: 'application#new', via: [:get, :post]
-
-  # get 'places/new' => 'application#new'
-
-  get '/search' => 'application#search'
-
-  post '/record_page_visit' => 'application#record_page_visit'
+  get '/places' => 'admin#places'
+  get '/places/:id' => 'admin#place', constraints: { id: /[0-9]+/ }
+  post '/places/:id/notes' => 'admin#notes'
+  post '/places/:id/update_status' => 'admin#update_status'
+  get '/places/:id/callbacks' => 'admin#get_callbacks'
+  match 'places/new', to: 'admin#new_place', via: [:get, :post]
+  get 'places/new' => 'admin#new'
+  get '/search' => 'admin#search'
+  post '/record_page_visit' => 'admin#record_page_visit'
 
 
   # START STORE

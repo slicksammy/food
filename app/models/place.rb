@@ -6,6 +6,8 @@ class Place < ActiveRecord::Base
   has_many :callbacks
   belongs_to :place_type
 
+  scope :ordered, -> { order("created_at DESC") }
+
   def self.grocery
     where(place_type_id: PlaceType::GROCERY_ID)
   end
