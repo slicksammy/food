@@ -60,8 +60,8 @@ class NavBar extends React.Component {
       // // width: '30%',
       // marginRight: '40px',
       // marginTop: '-8px'
-      paddingRight: '30px',
-      paddingLeft: '30px'
+      paddingRight: '10px',
+      paddingLeft: '10px'
     }
 
     var noBorder = {
@@ -112,9 +112,9 @@ class NavBar extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a style={header} href="/" className="navbar-brand"><img style={img} src="assets/logo_simple.png" /></a>
-            <a style={header} href="/steaks" className="navbar-brand"><span className="layer-shadow1 shop-background" style={steaksStyle}>Steaks</span></a>
-            <a style={header} href="/cart" className="navbar-brand"><span style={{marginTop: '2px', color: cartColor}} className="glyphicon glyphicon-shopping-cart">{this.state.cart > 0 ? this.state.cart : null}</span></a>
+            <a href="/" className="navbar-brand navbar-header"><img style={img} src="assets/logo_simple.png" /></a>
+            <a href="/steaks" className="navbar-brand navbar-header"><span className="layer-shadow1 shop-background" style={steaksStyle}>Steaks</span></a>
+            <a href="/cart" className="navbar-brand navbar-header"><span style={{marginTop: '2px', color: cartColor}} className="glyphicon glyphicon-shopping-cart">{this.state.cart > 0 ? this.state.cart : null}</span></a>
           </div>
           <div style={noBorder} className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul style={ulStyle} className="nav navbar-nav navbar-right">

@@ -24073,8 +24073,8 @@ var NavBar = (function (_React$Component) {
         // // width: '30%',
         // marginRight: '40px',
         // marginTop: '-8px'
-        paddingRight: '30px',
-        paddingLeft: '30px'
+        paddingRight: '10px',
+        paddingLeft: '10px'
       };
 
       var noBorder = {
@@ -24138,12 +24138,12 @@ var NavBar = (function (_React$Component) {
             ),
             React.createElement(
               'a',
-              { style: header, href: '/', className: 'navbar-brand' },
+              { href: '/', className: 'navbar-brand navbar-header' },
               React.createElement('img', { style: img, src: 'assets/logo_simple.png' })
             ),
             React.createElement(
               'a',
-              { style: header, href: '/steaks', className: 'navbar-brand' },
+              { href: '/steaks', className: 'navbar-brand navbar-header' },
               React.createElement(
                 'span',
                 { className: 'layer-shadow1 shop-background', style: steaksStyle },
@@ -24152,7 +24152,7 @@ var NavBar = (function (_React$Component) {
             ),
             React.createElement(
               'a',
-              { style: header, href: '/cart', className: 'navbar-brand' },
+              { href: '/cart', className: 'navbar-brand navbar-header' },
               React.createElement(
                 'span',
                 { style: { marginTop: '2px', color: cartColor }, className: 'glyphicon glyphicon-shopping-cart' },

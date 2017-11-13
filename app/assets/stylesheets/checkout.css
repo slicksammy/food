@@ -223,6 +223,11 @@ html, body {
   font-size: 24px;
 }
 
+.navbar-header {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
 @media(max-width: 320px) {
   .order-td {
     font-size: 20px;
@@ -236,15 +241,22 @@ html, body {
   /*height: 300px;*/
 }
 
+@media(max-width: 400px) {
+  .navbar-header {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
 @media (max-width: 992px) {
   .logo {
     width: 75%;
   }
 
   .checkout, .shop {
-      font-size: 26px;
-      padding: 5px;
-    }
+    font-size: 26px;
+    padding: 5px;
+  }
 
 }
 
