@@ -10,7 +10,11 @@ class AdminController < SessionsController
   before_action :stats, only: [:dashboard, :get_stats]
 
   def authorize!
-    redirect_to '/' unless admin?
+    unless admin?
+      @message = 'Woops! This page does not exist.'
+
+      render :file => 'public/nothing_here.html.erb', :layout => 'sessions', status: 500
+    end
   end
 
   def index
