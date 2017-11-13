@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   match 'places/new', to: 'admin#new_place', via: [:get, :post]
   get 'places/new' => 'admin#new'
   get '/search' => 'admin#search'
-  post '/record_page_visit' => 'admin#record_page_visit'
+  post '/record_page_visit' => 'application#record_page_visit'
 
 
   # START STORE
