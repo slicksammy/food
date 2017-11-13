@@ -36,6 +36,7 @@ class Packages extends React.Component {
     var packageDescription = {
       textAlign: 'center',
       fontSize: '25px',
+      fontFamily: "'Crimson Text', serif",
       textTransform: 'uppercase',
       paddingLeft: '10px',
       paddingRight: '10px'
@@ -68,7 +69,7 @@ class Packages extends React.Component {
           <h2 style={packageName}>{pkg.name}</h2>
           <h2 style={packageDescription}>{pkg.description}</h2>
           <h3 style={packagePrice}>${pkg.price}</h3>
-          <button style={buttonStyle} className="btn blue" onClick={()=> this.addPackage(pkg.uuid)}>Add Steaks</button>
+          <button style={buttonStyle} className="btn shop-background" onClick={()=> this.addPackage(pkg.uuid)}>Add Steaks</button>
           <Products products={pkg.products} showButtons={false} showPackageTotals={true} showCartTotals={false} />
         </div>
       )

@@ -24666,6 +24666,7 @@ var Packages = (function (_React$Component) {
       var packageDescription = {
         textAlign: 'center',
         fontSize: '25px',
+        fontFamily: "'Crimson Text', serif",
         textTransform: 'uppercase',
         paddingLeft: '10px',
         paddingRight: '10px'
@@ -24714,7 +24715,7 @@ var Packages = (function (_React$Component) {
           ),
           React.createElement(
             'button',
-            { style: buttonStyle, className: 'btn blue', onClick: function () {
+            { style: buttonStyle, className: 'btn shop-background', onClick: function () {
                 return _this.addPackage(pkg.uuid);
               } },
             'Add Steaks'
