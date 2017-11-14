@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101000631) do
+ActiveRecord::Schema.define(version: 20171114023114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20171101000631) do
     t.datetime "updated_at", null: false
     t.string "session_id"
     t.string "referrer"
+    t.text "user_agent"
     t.index ["session_id"], name: "index_page_visits_on_session_id"
   end
 

@@ -28,7 +28,7 @@ class ApplicationController < SessionsController
   end
 
   def record_page_visit
-    PageVisit.create!(url: params["url"], user_uuid: current_user_uuid, ip_address: request.remote_ip, session_id: session[:session_id], referrer: params["referrer"])
+    PageVisit.create!(url: params["url"], user_uuid: current_user_uuid, ip_address: request.remote_ip, session_id: session[:session_id], referrer: params["referrer"], user_agent: request.user_agent)
     
     render body: nil
   end
