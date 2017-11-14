@@ -22212,11 +22212,13 @@ var Analytics = (function (_React$Component) {
 
       var views = Object.keys(this.props.pageVisits).map(function (key, index) {
 
-        var pages = _this.props.pageVisits[key].map(function (url) {
+        var pages = _this.props.pageVisits[key].map(function (visit) {
           return React.createElement(
             "li",
             null,
-            url
+            visit.url,
+            ", ",
+            visit.time
           );
         });
 
