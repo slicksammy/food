@@ -8,7 +8,6 @@ $(document).ready(function() {
 });
 
 window.onbeforeunload = function() {
-  console.log(start)
   date = new Date()
   end = date.getTime();
 
@@ -17,8 +16,6 @@ window.onbeforeunload = function() {
     url: '/record_page_visit',
     data: { url: href, referrer: referrer, time: end - start }
   });
-
-  console.log('ended')
 };
 
 
