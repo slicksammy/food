@@ -28,13 +28,21 @@ class ApplicationController < SessionsController
   end
 
   def record_page_visit
-    PageVisit.create!(url: params["url"], user_uuid: current_user_uuid, ip_address: request.remote_ip, session_id: session[:session_id], referrer: params["referrer"], user_agent: request.user_agent, time_spent: params["time"])
+    p = PageVisit.create!(url: params["url"], user_uuid: current_user_uuid, ip_address: request.remote_ip, session_id: session[:session_id], referrer: params["referrer"], user_agent: request.user_agent)
     
-    render body: nil
+    render json: { pgid: p.id }, status: 200
+  end
+
+  def update_page_visit
+    p = PageVisit.find(params["pgid"])
+    p.time_spent = (Time.now - p.created_at)*1000
+    p.save!
+    
+    render body: nil, status: 200
   end
 
   def permit_page_visit_params
-    params.permit(:url, :referrer, :time)
+    params.permit(:url, :referrer)
   end
 
 end

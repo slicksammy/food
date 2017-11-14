@@ -1,20 +1,23 @@
 var href = window.location.href;
 var referrer = document.referrer;
-var start;
+var pgid;
 
 $(document).ready(function() {
-  date = new Date()
-  start = date.getTime()
-});
-
-window.onbeforeunload = function() {
-  date = new Date()
-  end = date.getTime();
-
   $.ajax({
     method: 'POST',
     url: '/record_page_visit',
-    data: { url: href, referrer: referrer, time: end - start }
+    data: { url: href, referrer: referrer },
+    success: function(response) {
+      pgid = response.pgid
+    }.bind(this)
+  });
+});
+
+window.onbeforeunload = function() {
+  $.ajax({
+    method: 'POST',
+    url: '/update_page_visit',
+    data: { pgid: pgid }
   });
 };
 

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'places/new' => 'admin#new'
   get '/search' => 'admin#search'
   post '/record_page_visit' => 'application#record_page_visit'
+  post '/update_page_visit' => 'application#update_page_visit'
 
 
   # START STORE
