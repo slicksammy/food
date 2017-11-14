@@ -28,13 +28,13 @@ class ApplicationController < SessionsController
   end
 
   def record_page_visit
-    PageVisit.create!(url: params["url"], user_uuid: current_user_uuid, ip_address: request.remote_ip, session_id: session[:session_id], referrer: params["referrer"], user_agent: request.user_agent)
+    PageVisit.create!(url: params["url"], user_uuid: current_user_uuid, ip_address: request.remote_ip, session_id: session[:session_id], referrer: params["referrer"], user_agent: request.user_agent, time_spent: params["time"])
     
     render body: nil
   end
 
   def permit_page_visit_params
-    params.permit(:url, :referrer)
+    params.permit(:url, :referrer, :time)
   end
 
 end
