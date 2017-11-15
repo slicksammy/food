@@ -7,4 +7,8 @@ class UserMailerPreview < ActionMailer::Preview
   def social_media
     UserMailer.social_media(User.last)
   end
+
+  def promotion_signup
+    UserMailer.promotion_signup(PromotionSignup.last)
+  end
 end

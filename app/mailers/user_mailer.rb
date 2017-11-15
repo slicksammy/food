@@ -1,6 +1,7 @@
 require 'env'
 
 class UserMailer < ActionMailer::Base
+  include PromotionHelper
 
   attr_reader :to, :from
 
@@ -53,5 +54,12 @@ class UserMailer < ActionMailer::Base
     @name = user.first_name
 
     mail(from: SUPPORT_EMAIL, to: to, bcc: SUPPORT_EMAIL, subject: 'iheartmeat - We\'re on Social Media')
+  end
+
+  def promotion_signup(promotion_signup)
+    @promotion_language = promotion_description(promotion_signup.promotion)
+    to = promotion_signup.email
+
+    mail(from: SUPPORT_EMAIL, to: to, bcc: SUPPORT_EMAIL, subject: 'iheartmeat - your promotion code')
   end
 end

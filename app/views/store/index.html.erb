@@ -438,192 +438,200 @@
   }
 </style>
 
+<!-- <script> 
+  $(function(){
+    $("#modalholder").load("/views/store/modal.html.erb"); 
+  });
+</script>  -->
 
 <div>
-  <!-- <h1 class="centered">We will be accepting orders starting Oct 1st!</h1> -->
-  <section class="minus-margin-top">
-    <div class="row centered main-section">
-      <!-- <h1 class="header">We are currently in testing and will be live in mid-September</h1> -->
-      <div class="about">
-      <!-- <p class="bigger"><span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span> was launched so that you can enjoy the best steaks at reasonable prices with the convenience of next day delivery. All of our steaks are perfectly aged and mostly USDA Prime, which is why they melt in your mouth. These are the steaks that the finest restaurants use and you can't find at the grocery store. Try our steaks and then tell us if you have ever had a better cut of meat anywhere else.</p> -->
-        <img class="image-style" src="assets/logo_simple.png" />
-        <!-- <img class="satisfaction-style" src="assets/satisfaction_guarantee.png" /> -->
-        <p class="bigger">The Highest Quality Steaks.</p>
-        <p class="bigger">Delivered Tomorrow.</p>
-        <button onclick="window.location = '/steaks'" class="learn-more layer-shadow5 shop-background">Shop Now</button>
-      </div>
-    </div>
-    <div class="padded">
-      <h1 class="why-us centered">How It Works</h1>
-      <div class="vertical-line"></div>
-      <div class="how-it-works">
-        <img src="assets/mouseclick.png" />
-        <p>You pick the steaks, no minimums</p>
-      </div>
-      <div class="how-it-works">
-        <img src="assets/butcher.png" />
-        <p>We find a local meat supplier*</p>
-      </div>
-      <div class="how-it-works">
-        <img src="assets/delivery.png" />
-        <p>We bring the steaks to your door</p>
-      </div>
-      <div class="how-it-works">
-        <img src="assets/pan.png"</div>
-        <p>Cook and enjoy</p>
-      </div>
-      <p class="disclaimer">*Our suppliers are fully licensed and pass rigorous inspections by the local and federal government including the USDA, FDA and IDA.</h2>
-    </div>
-    <div class="comparison-container">
-      <div class="comparison padded">
-        <h1 class="why-us centered">How Do We Compare?</h1>
-        <table>
-          <tbody>
-            <tr>
-              <th></th>
-              <th>Grocery Store</th>
-              <th>Steakhouse</th>
-              <th>Omaha Steaks</th>
-              <th><span><img class="logo" src="assets/logo_white.png"></span></th>
-            </tr>
-            <tr>
-              <th>Aged</th>
-              <td><span><img class="yes-no" src="assets/redx.png"></span></td>
-              <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
-              <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
-              <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
-            </tr>
-            <tr>
-              <th>Quality</th>
-              <td><span><img class="yes-no" src="assets/redx.png"></span></td>
-              <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
-              <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
-              <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
-            </tr>
-            <tr>
-              <th>Price</th>
-              <td><span class="na">N/A</span></td>
-              <td><span><img class="yes-no" src="assets/redx.png"></span></td>
-              <td><span><img class="yes-no" src="assets/redx.png"></span></td>
-              <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
-            </tr>
-            <tr>
-              <th>Delivered Next Day</th>
-              <td><span class="na">N/A</span></td>
-              <td><span class="na">N/A</span></td>
-              <td><span><img class="yes-no" src="assets/redx.png"></span></td>
-              <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
-            </tr>
-            <tr>
-              <th>Always Fresh, Never Frozen</th>
-              <td><span><img class="yes-no" src="assets/redx.png"></span></td>
-              <td><span><img class="yes-no" src="assets/redx.png"></span></td>
-              <td><span><img class="yes-no" src="assets/redx.png"></span></td>
-              <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!-- <div class="row centered margin-bottom max-width-1000">
-      <h1 class="why-us">Only Settle for the Best</h1>
-      <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
-        <span class="fa-stack fa-lg block centered">
-          <i class="fa  fa-clock-o fa-lg"></i>
-        </span>
-        <p>Our steaks are aged to perfection for a rich, mouthwatering taste.</p>
-      </div>
-      <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
-        <span class="fa-stack fa-lg centered block">
-          <i class="fa fa-dollar fa-lg"></i>
-        </span>
-        <p>Cut your steak bill in <u>half</u> without sacrificing quality or taste</p>
-      </div>
-      <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
-        <span class="fa-stack fa-lg block centered">
-          <i class="fa fa-calendar-check-o fa-lg"></i>
-        </span>
-        <p>All steaks are freshly cut to order, never frozen.</p>
-      </div>
-      <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
-        <span class="fa-stack fa-lg block centered">
-          <i class="fa fa-shopping-basket fa-stack-1x"></i>
-          <i class="fa fa-ban fa-stack-2x"></i>
-        </span>
-        <p>You won't find these steaks at the grocery store.</p>
-      </div>
-      <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
-        <span class="fa-stack fa-lg block centered">
-          <i class="fa fa-car fa-lg" aria-hidden="true"></i>
-        </span>
-        <p>Order your steaks today, get them tomorrow.</p>
-      </div>
-      <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
-        <span class="fa-stack fa-lg block centered">
-          <i class="fa fa-cutlery fa-lg" aria-hidden="true"></i>
-        </span>
-        <p>Preparation and cooking is simple.</p>
-      </div>
-    </div> -->
-    <div id="satisfaction" class="padded">
-      <div class="container centered">
-        <h1 class="why-us centered">Our 100% Satisfaction Guarantee<span><img class="img img-responsive satisfaction-style" src="assets/satisfaction_guarantee.png" /></span></h1>
-        <!-- <img class="satisfaction-style" src="assets/satisfaction_guarantee.png" /> -->
-        <p>If you don't like our steaks for any reason we will give you a 100% refund. Simple as that.</p>
-      </div>
-    </div>
-    <div id="reviews">
-      <div class="container centered">
-        <h1 class="why-us centered">Reviews</h1>
-        <div class="review">
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <p class="text-quote"><span class="quote">"</span>Fantastic steaks man. We both will be repeat customers.<span class="quote">"</span></p>
-        </div>
-        <div class="review">
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <p class="text-quote"><span class="quote">"</span>My buddy who hates dry aged said it was the best dry aged he has ever had and he's done all the others ones that specialize in that.<span class="quote">"</span></p>
-        </div>
-        <div class="review">
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <p class="text-quote"><span class="quote">"</span>10/10. Melts in your mouth.<span class="quote">"</span></p>
-        </div>
-        <div class="review">
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <p class="text-quote"><span class="quote">"</span>I grilled the steak and it came out perfect. Tender and juicy.<span class="quote">"</span></p>
-        </div>
-        <div class="review">
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <p class="text-quote"><span class="quote">"</span>Great quality, great price and delivered right to our door ready to cook!<span class="quote">"</span></p>
-        </div>
-        <div class="review">
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <i class="fa fa-star star" aria-hidden="true"></i>
-          <p class="text-quote"><span class="quote">"</span>Damn I heart meat. Really good.<span class="quote">"</span></p>
+  <%= render partial: 'modal', show: @show_modal %>
+  <div id="content">
+    <!-- <h1 class="centered">We will be accepting orders starting Oct 1st!</h1> -->
+    <section class="minus-margin-top">
+      <div class="row centered main-section">
+        <!-- <h1 class="header">We are currently in testing and will be live in mid-September</h1> -->
+        <div class="about">
+        <!-- <p class="bigger"><span class="centered"><img class="image-style" src="assets/logo_simple.png" /></span> was launched so that you can enjoy the best steaks at reasonable prices with the convenience of next day delivery. All of our steaks are perfectly aged and mostly USDA Prime, which is why they melt in your mouth. These are the steaks that the finest restaurants use and you can't find at the grocery store. Try our steaks and then tell us if you have ever had a better cut of meat anywhere else.</p> -->
+          <img class="image-style" src="assets/logo_simple.png" />
+          <!-- <img class="satisfaction-style" src="assets/satisfaction_guarantee.png" /> -->
+          <p class="bigger">The Highest Quality Steaks.</p>
+          <p class="bigger">Delivered Tomorrow.</p>
+          <button onclick="window.location = '/steaks'" class="learn-more layer-shadow5 shop-background">Shop Now</button>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="padded">
+        <h1 class="why-us centered">How It Works</h1>
+        <div class="vertical-line"></div>
+        <div class="how-it-works">
+          <img src="assets/mouseclick.png" />
+          <p>You pick the steaks, no minimums</p>
+        </div>
+        <div class="how-it-works">
+          <img src="assets/butcher.png" />
+          <p>We find a local meat supplier*</p>
+        </div>
+        <div class="how-it-works">
+          <img src="assets/delivery.png" />
+          <p>We bring the steaks to your door</p>
+        </div>
+        <div class="how-it-works">
+          <img src="assets/pan.png"</div>
+          <p>Cook and enjoy</p>
+        </div>
+        <p class="disclaimer">*Our suppliers are fully licensed and pass rigorous inspections by the local and federal government including the USDA, FDA and IDA.</h2>
+      </div>
+      <div class="comparison-container">
+        <div class="comparison padded">
+          <h1 class="why-us centered">How Do We Compare?</h1>
+          <table>
+            <tbody>
+              <tr>
+                <th></th>
+                <th>Grocery Store</th>
+                <th>Steakhouse</th>
+                <th>Omaha Steaks</th>
+                <th><span><img class="logo" src="assets/logo_white.png"></span></th>
+              </tr>
+              <tr>
+                <th>Aged</th>
+                <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+                <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+                <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+                <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+              </tr>
+              <tr>
+                <th>Quality</th>
+                <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+                <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+                <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+                <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+              </tr>
+              <tr>
+                <th>Price</th>
+                <td><span class="na">N/A</span></td>
+                <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+                <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+                <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+              </tr>
+              <tr>
+                <th>Delivered Next Day</th>
+                <td><span class="na">N/A</span></td>
+                <td><span class="na">N/A</span></td>
+                <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+                <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+              </tr>
+              <tr>
+                <th>Always Fresh, Never Frozen</th>
+                <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+                <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+                <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+                <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- <div class="row centered margin-bottom max-width-1000">
+        <h1 class="why-us">Only Settle for the Best</h1>
+        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
+          <span class="fa-stack fa-lg block centered">
+            <i class="fa  fa-clock-o fa-lg"></i>
+          </span>
+          <p>Our steaks are aged to perfection for a rich, mouthwatering taste.</p>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
+          <span class="fa-stack fa-lg centered block">
+            <i class="fa fa-dollar fa-lg"></i>
+          </span>
+          <p>Cut your steak bill in <u>half</u> without sacrificing quality or taste</p>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
+          <span class="fa-stack fa-lg block centered">
+            <i class="fa fa-calendar-check-o fa-lg"></i>
+          </span>
+          <p>All steaks are freshly cut to order, never frozen.</p>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
+          <span class="fa-stack fa-lg block centered">
+            <i class="fa fa-shopping-basket fa-stack-1x"></i>
+            <i class="fa fa-ban fa-stack-2x"></i>
+          </span>
+          <p>You won't find these steaks at the grocery store.</p>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
+          <span class="fa-stack fa-lg block centered">
+            <i class="fa fa-car fa-lg" aria-hidden="true"></i>
+          </span>
+          <p>Order your steaks today, get them tomorrow.</p>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-9 colcentered item-main layer-shadow3 sexy-blue">
+          <span class="fa-stack fa-lg block centered">
+            <i class="fa fa-cutlery fa-lg" aria-hidden="true"></i>
+          </span>
+          <p>Preparation and cooking is simple.</p>
+        </div>
+      </div> -->
+      <div id="satisfaction" class="padded">
+        <div class="container centered">
+          <h1 class="why-us centered">Our 100% Satisfaction Guarantee<span><img class="img img-responsive satisfaction-style" src="assets/satisfaction_guarantee.png" /></span></h1>
+          <!-- <img class="satisfaction-style" src="assets/satisfaction_guarantee.png" /> -->
+          <p>If you don't like our steaks for any reason we will give you a 100% refund. Simple as that.</p>
+        </div>
+      </div>
+      <div id="reviews">
+        <div class="container centered">
+          <h1 class="why-us centered">Reviews</h1>
+          <div class="review">
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <p class="text-quote"><span class="quote">"</span>Fantastic steaks man. We both will be repeat customers.<span class="quote">"</span></p>
+          </div>
+          <div class="review">
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <p class="text-quote"><span class="quote">"</span>My buddy who hates dry aged said it was the best dry aged he has ever had and he's done all the others ones that specialize in that.<span class="quote">"</span></p>
+          </div>
+          <div class="review">
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <p class="text-quote"><span class="quote">"</span>10/10. Melts in your mouth.<span class="quote">"</span></p>
+          </div>
+          <div class="review">
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <p class="text-quote"><span class="quote">"</span>I grilled the steak and it came out perfect. Tender and juicy.<span class="quote">"</span></p>
+          </div>
+          <div class="review">
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <p class="text-quote"><span class="quote">"</span>Great quality, great price and delivered right to our door ready to cook!<span class="quote">"</span></p>
+          </div>
+          <div class="review">
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <p class="text-quote"><span class="quote">"</span>Damn I heart meat. Really good.<span class="quote">"</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>

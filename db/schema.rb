@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115012211) do
+ActiveRecord::Schema.define(version: 20171115204629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,6 +177,13 @@ ActiveRecord::Schema.define(version: 20171115012211) do
     t.integer "r_price_cents"
     t.boolean "active"
     t.index ["uuid"], name: "index_products_on_uuid"
+  end
+
+  create_table "promotion_signups", force: :cascade do |t|
+    t.string "email"
+    t.integer "promotion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "promotions", force: :cascade do |t|

@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   post '/forgot_password' => 'users#forgot_password'
   get '/reset_password' => 'users#reset_password'
   post '/reset_password' => 'users#reset_password!'
+  post 'getpromotion' => 'users#get_promotion'
 
   # START SESSIONS
   post '/sessions/new' => 'sessions#new'

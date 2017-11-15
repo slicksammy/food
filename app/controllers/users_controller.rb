@@ -76,6 +76,17 @@ class UsersController < SessionsController
     end
   end
 
+  def get_promotion
+    params.permit(:email, :promotion_code)
+
+    if p = PromotionSignup.create_with_promotion_code!(params["email"], params["promotion_code"])
+      UserMailer.promotion_signup(p).deliver!
+      render body: nil, status: 200
+    else
+      render body: nil, status: 200
+    end
+  end
+
   # def redirect_to_login_if_neccessary
   #   @redirect_url = '/checkout'
   #   super

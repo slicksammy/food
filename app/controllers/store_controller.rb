@@ -6,10 +6,13 @@ class StoreController < SessionsController
 
   def index
     # @signed_in = current_user_uuid.present? ? true : false
+    @show_modal = !logged_in?
   end
 
   def products
     @products = product_information(Product.active, cart_uuid)
+
+    @show_modal = !logged_in?
   end
 
   def packages
