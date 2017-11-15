@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114024210) do
+ActiveRecord::Schema.define(version: 20171115012211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,7 +122,9 @@ ActiveRecord::Schema.define(version: 20171114024210) do
     t.string "referrer"
     t.text "user_agent"
     t.integer "time_spent"
+    t.string "uuid"
     t.index ["session_id"], name: "index_page_visits_on_session_id"
+    t.index ["uuid"], name: "index_page_visits_on_uuid"
   end
 
   create_table "password_reset_tokens", force: :cascade do |t|
