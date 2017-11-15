@@ -60,6 +60,6 @@ class UserMailer < ActionMailer::Base
     @promotion_language = promotion_description(promotion_signup.promotion)
     to = promotion_signup.email
 
-    mail(from: SUPPORT_EMAIL, to: to, bcc: SUPPORT_EMAIL, subject: 'iheartmeat - your promotion code')
+    mail(from: SUPPORT_EMAIL, to: to, bcc: SUPPORT_EMAIL, subject: 'iheartmeat - your special offer')
   end
 end
