@@ -12,7 +12,7 @@ class PromotionSignup < ActiveRecord::Base
     @@promotion ||= Promotion.find_by_code('iheartmeat2017')
   end
 
-  def self.create_with_promotion_code!(email, promotion_code)
-    self.create!(email: email, promotion: Promotion.find_by_code(promotion_code))
+  def self.create_with_promotion_code!(email, promotion_code, session_id)
+    self.create!(email: email, promotion: Promotion.find_by_code(promotion_code), session_id: session_id)
   end
 end
