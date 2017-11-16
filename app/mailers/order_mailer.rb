@@ -33,7 +33,12 @@ class OrderMailer < ActionMailer::Base
   def delivered(order, note: nil)
     @order = format_order(order)
     @user = order.user
-    @note = note
+
+    # bc controller will pass in empty string
+    if note.present?
+      @note = note
+    end
+    byebug
     # TODO update support name in google to iheartmeat
     to = @user.email
 
