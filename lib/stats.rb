@@ -50,4 +50,9 @@ class Stats
     results.rows.flatten.first
   end
 
+  def promotion_signups
+    results = conn.exec_query("select count(distinct email) from promotion_signups where created_at > current_timestamp - interval '#{time_ago} minutes'")
+    results.rows.flatten.first
+  end
+
 end

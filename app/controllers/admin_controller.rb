@@ -53,7 +53,7 @@ class AdminController < SessionsController
 
   def stats
     i = Stats.new(params["time"] || 60)
-    @stats = { orders: i.orders, users: i.users, carts: i.carts, page_views: i.unique_page_views_non_admins, unique_visitors: i.unique_visitors_non_admins }
+    @stats = { orders: i.orders, users: i.users, carts: i.carts, page_views: i.unique_page_views_non_admins, unique_visitors: i.unique_visitors_non_admins, promotion_signups: i.promotion_signups }
   end
 
   def get_stats
