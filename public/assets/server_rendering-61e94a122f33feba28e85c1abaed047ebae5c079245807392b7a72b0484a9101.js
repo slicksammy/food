@@ -23947,7 +23947,7 @@ var Payment = (function (_React$Component) {
   }, {
     key: 'validCvc',
     value: function validCvc() {
-      return this.state.cvc.match(/^[0-9]{3}$/) ? true : false;
+      return this.state.cvc.match(/^[0-9]{3,4}$/) ? true : false;
     }
   }, {
     key: 'render',
