@@ -49,4 +49,8 @@ class User < ActiveRecord::Base
   def admin?
     admin.present?
   end
+
+  def has_paid_orders?
+    orders.completed.any?
+  end
 end

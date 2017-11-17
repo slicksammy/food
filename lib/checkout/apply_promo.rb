@@ -14,6 +14,7 @@ module Checkout
 
       return { error: 'discount already added to your order' } if order.discounted?
       return { error: 'promotion code is invalid' } unless promo
+      return { error: 'promotion only good on first order'} if first_order_only
 
       return { error: 'promotion has expired' } if expired?
       return { error: "order does not meet minimum subtotal of $#{promo.minimum_order}" } unless meets_minum_order?(order.subtotal)
@@ -51,6 +52,10 @@ module Checkout
 
     def meets_minum_order?(subtotal)
       subtotal >= promo.minimum_order
+    end
+
+    def first_order_only
+      order.user.has_paid_orders?
     end
 
     # TODO figure out rounding
