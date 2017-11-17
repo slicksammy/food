@@ -3,7 +3,8 @@
 <script>
   $(document).ready( function() {
     if (Cookies.get('modalseen') != 'true') {
-      setTimeout(function() {$('#content').css("opacity", ".4"), $('#promo-modal').show()}, 5000); 
+      setTimeout(function() {$('#content').css("opacity", ".4"), $('#promo-modal').show()}, 5000);
+      Cookies.set('modalseen', true , { expires: 3 }); 
     }
   });
 </script>
@@ -106,7 +107,6 @@
   $('#modal-close').click( function() {
     $('#promo-modal').hide()
     $('#content').css("opacity", "1")
-    Cookies.set('modalseen', true , { expires: 3 });
   });
 
   $('#modal-form').submit(function(e) {
