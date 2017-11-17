@@ -38,7 +38,6 @@ class OrderMailer < ActionMailer::Base
     if note.present?
       @note = note
     end
-    byebug
     # TODO update support name in google to iheartmeat
     to = @user.email
 
