@@ -3,7 +3,7 @@
 <script>
   $(document).ready( function() {
     if (Cookies.get('modalseen') != 'true') {
-      setTimeout(function() {$('#content').css("opacity", ".4"), $('#promo-modal').show()}, 10000); 
+      setTimeout(function() {$('#content').css("opacity", ".4"), $('#promo-modal').show()}, 5000); 
     }
   });
 </script>
@@ -88,7 +88,7 @@
   <button id="modal-close">X</button>
 
   <div id="div-modal-form">
-    <p>Save on your first order today!</p>
+    <p>Get $20 off your first order of $50. Sign up now!</p>
     <form id="modal-form" method="POST" action="/getpromotion">
       <input id="promo-email" type="email" required="true" name="email" placeholder="Enter your email">
       <button type="submit" class="btn shop-background modal-submit" >Get My Offer</button>
