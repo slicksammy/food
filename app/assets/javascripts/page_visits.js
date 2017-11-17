@@ -1,6 +1,7 @@
 var href = window.location.href;
 var referrer = document.referrer;
 var defaultTimeout = 5000
+var repeats = 0
 var pgid;
 
 function updateVisit(repeat) {
@@ -10,8 +11,9 @@ function updateVisit(repeat) {
     data: { pgid: pgid }
   });
 
-  if (repeat) {
+  if (repeat && repeats < 6) {
     setTimeout(function() {updateVisit(true)}.bind(this), defaultTimeout)
+    repeats++
   }
 }
 
