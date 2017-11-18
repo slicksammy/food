@@ -4,7 +4,7 @@
   $(document).ready( function() {
     if (Cookies.get('modalseen') != 'true') {
       setTimeout(function() {$('#content').css("opacity", ".4"), $('#promo-modal').show()}, 5000);
-      Cookies.set('modalseen', true , { expires: 3 }); 
+      Cookies.set('modalseen', true , { expires: 1 }); 
     }
   });
 </script>
@@ -83,9 +83,22 @@
     width: 30%;
     height: 30%;
   }
+
+  #side-offer{
+    /*float: right;*/
+    /*top: 30%;*/
+    height: 200px;
+    width: 30px;
+    background: green;
+    z-index: 999;
+    position: fixed;
+  }
 </style>
 
 <div id="promo-modal" class="layer-shadow5">
+  <!-- <div id="side-offer">
+    Side Offer
+  <div> -->
   <button id="modal-close">X</button>
 
   <div id="div-modal-form">
