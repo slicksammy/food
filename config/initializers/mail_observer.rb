@@ -1,7 +1,9 @@
 class MailObserver
   def self.delivered_email(message)
     # puts message.to_s
-    EmailLog.create!(email: message.to, subject: message.subject)
+    message.to.each do |email|
+      EmailLog.create!(email: email, subject: message.subject)
+    end
   end
 end
 
