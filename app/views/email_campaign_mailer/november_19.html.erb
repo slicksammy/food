@@ -1,0 +1,7 @@
+<div>
+  <p><%= @params[:name].present? ? @params[:name] : 'Hi there' %>,</p>
+  <p>Are you ready to rumble?? We mean, are you ready for more steaks?! It's Sunday, and you're probably dreading the thought of going to the grocery store. Well, there's a better option - come to us and get your steaks delivered, tomorrow. Guaranteed to be fresh and never frozen, aged, and of the highest quality - you won't find a service like ours in Chicago!</p>
+  <p>So what are you waiting for. Check us out: www.iheartmeat.com/steaks</p>
+
+  <%= render partial: 'user_mailer/support_signature' %>
+</div>
