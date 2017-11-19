@@ -35,7 +35,8 @@ class ApplicationController < SessionsController
 
   def update_page_visit
     p = PageVisit.find_by_uuid(params["pgid"])
-    p.time_spent = (Time.now - p.created_at)*1000
+    # 4 byte integer and someone might not close out for a while
+    p.time_spent = [Time.now - p.created_at, 2147483647].min*1000
     p.save!
     
     render body: nil, status: 200
