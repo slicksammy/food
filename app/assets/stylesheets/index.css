@@ -445,7 +445,7 @@ tr:last-child {
     /*background-image: url(assets/satisfaction_guarantee_opaque.png);
     background-repeat: no-repeat;
     background-position: 66% 83%;*/
-    font-weight: bold
+    font-weight: bold;
     font-size: 16px;
     /*padding: 100px 0px 100px 0px;*/
   }
