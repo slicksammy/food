@@ -44,9 +44,9 @@
           <p>Cook and enjoy in under 20 minutes</p>
         </div>
         <p class="disclaimer">*Our suppliers are fully licensed and pass rigorous inspections by the local and federal government including the USDA, FDA and IDA.</h2>
-        <div id="video-container" class="padded centered">
-          <h1 class="margin-bottom centered">Simple Steps to Cooking the Perfect Steak</h1>
-          <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/AmC9SmCBUj4?rel=0&amp;controls=0" frameborder="0" allowfullscreen></iframe>
+        <div id="steaks" class="centered">
+          <%= react_component('Products', products: @steaks, showButtons: true, showCartTotals: true) %> 
+          <a href="/steaks"><button id="steaks-button" class="btn shop-background text-white" ><p>View More Steaks</p></button></a>
         </div>
       </div>
       
@@ -149,6 +149,11 @@
             <p class="text-quote"><span class="quote">"</span>Damn I heart meat. Really good.<span class="quote">"</span></p>
           </div>
         </div>
+      </div>
+      <div id="video-container" class="padded centered">
+        <h1 class="margin-bottom centered why-us">Simple Steps to Cooking the Perfect Steak</h1>
+        <p>Preparation and cooking takes less than 20 minutes</p>
+        <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/AmC9SmCBUj4?rel=0&amp;controls=0" frameborder="0" allowfullscreen class="margin-top"></iframe>
       </div>
     </section>
   </div>

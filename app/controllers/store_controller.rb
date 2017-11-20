@@ -5,6 +5,7 @@ class StoreController < SessionsController
   # this includes show products a customer has already ordered and let them reorder
 
   def index
+    @steaks = product_information(Product.active.first(2), cart_uuid)
     # @signed_in = current_user_uuid.present? ? true : false
     @show_modal = !logged_in?
   end
