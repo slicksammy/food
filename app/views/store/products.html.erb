@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="assets/index.css">
+
 <style>
   .store {
     /*background-color: #eeeeee;*/
@@ -14,7 +16,6 @@
   p {
     font-size: 30px;
   }
-
 </style>
 <div>
   <% if @show_modal %>
@@ -26,6 +27,8 @@
         Checkout >>>
       </a>
     </div>
+  </div>
+  <div class="centered" />
     <h1 class="why-us centered">You Won't Find A Better Steak, Guaranteed</h1>
     <!-- <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4> -->
     <%= react_component('Products', products: @products, showButtons: true, showCartTotals: true) %> 
@@ -33,3 +36,55 @@
     <a href="mailto:support@iheartmeat.com?subject=Special Request"><p class="smaller">Can't find what you are looking for? Email us</p></a>
   </div>
 </div>
+<div class="comparison-container">
+    <div class="comparison padded">
+      <h1 class="why-us centered">Why Choose Us</h1>
+      <table>
+        <tbody>
+          <tr>
+            <th></th>
+            <th><span><img class="logo" src="assets/logo_white.png"></span></th>
+            <th>Grocery Store</th>
+            <th>Steakhouse</th>
+            <th>Omaha Steaks</th>
+          </tr>
+          <tr>
+            <th>Aged</th>
+            <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+            <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+            <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+            <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+          </tr>
+          <tr>
+            <th>Quality</th>
+            <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+            <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+            <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+            <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+          </tr>
+          <tr>
+            <th>Price</th>
+            <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+            <!-- <td><span class="na">N/A</span></td> --><td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+            <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+            <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+          </tr>
+          <tr>
+            <th>Delivered Next Day</th>
+            <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+            <!-- <td><span class="na">N/A</span></td> --><td><span><img class="yes-no" src="assets/redx.png"></span></td>
+            <!-- <td><span class="na">N/A</span></td> --><td><span><img class="yes-no" src="assets/redx.png"></span></td>
+            <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+          </tr>
+          <tr>
+            <th>Always Fresh, Never Frozen</th>
+            <td><span><img class="yes-no" src="assets/greencheckmark.png"></span></td>
+            <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+            <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+            <td><span><img class="yes-no" src="assets/redx.png"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<div>

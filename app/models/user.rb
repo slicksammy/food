@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   validates :first_name, presence: { message: "Please enter a first name" }
   validates :last_name, presence: { message: "Please enter a last name" }
   # validates_length_of :password, minimum: 6, message: "password must be at least 6 characters long", if: :password_changed?
+  scope :opted_in, -> { where(marketing_opt_in: true) }
+
 
   def self.create_with_password!(attributes, password)
     attributes[:salt] = BCrypt::Engine.generate_salt
