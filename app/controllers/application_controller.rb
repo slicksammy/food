@@ -34,6 +34,7 @@ class ApplicationController < SessionsController
   end
 
   def update_page_visit
+    Rails.logger.error("page visit params " + params["pgid"])
     p = PageVisit.find_by_uuid(params["pgid"])
     # 4 byte integer and someone might not close out for a while
     p.time_spent = [(Time.now - p.created_at)*1000, 2147483647].min
