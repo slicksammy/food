@@ -3,7 +3,7 @@
 <script>
   $(document).ready( function() {
     if (Cookies.get('modalseen') != 'true') {
-      setTimeout(function() {$('#content').css("opacity", ".4"), $('#promo-modal').show()}, 5000);
+      setTimeout(function() {$('#content').css("opacity", ".4"), $('#promo-modal').show()}, 10000);
       Cookies.set('modalseen', true , { expires: 1 }); 
     }
   });

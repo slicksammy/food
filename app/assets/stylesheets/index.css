@@ -158,9 +158,10 @@ p {
 
 #reviews {
   padding-bottom: 20px;
-  background: url(background.png) no-repeat center center;
+  background: url(steak_board_3_opaque.png) no-repeat center center;
   background-size: cover;
   background-position: center;
+  /*color: white;*/
 }
 
 .inline-block {
