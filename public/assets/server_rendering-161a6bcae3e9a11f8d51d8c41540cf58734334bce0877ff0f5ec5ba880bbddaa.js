@@ -23822,6 +23822,11 @@ var Packages = (function (_React$Component) {
           background: _this.color(index)
         };
 
+        var restPrice = {
+          textDecoration: 'line-through',
+          color: '#d40766'
+        };
+
         return React.createElement(
           'div',
           { style: centered },
@@ -23837,9 +23842,18 @@ var Packages = (function (_React$Component) {
           ),
           React.createElement(
             'h3',
+            { style: restPrice },
+            'regular price: $',
+            pkg.regular_price
+          ),
+          React.createElement(
+            'h3',
             { style: packagePrice },
             '$',
-            pkg.price
+            pkg.price,
+            ' (',
+            pkg.discount,
+            '% OFF)'
           ),
           React.createElement(
             'button',
@@ -24726,16 +24740,19 @@ var Products = (function (_React$Component) {
               product.description
             ),
             React.createElement(
+              "h3",
+              { style: restPrice },
+              "Regular price: $",
+              product.regular_price
+            ),
+            React.createElement(
               "h2",
               null,
               "$",
-              product.price
-            ),
-            React.createElement(
-              "h3",
-              { style: restPrice },
-              "Steakhouse price: $",
-              product.r_price
+              product.price,
+              " (",
+              product.regular_price_discount,
+              "% OFF)"
             ),
             !_this.props.showButtons ? null : React.createElement(
               "div",
