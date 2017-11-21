@@ -153,7 +153,7 @@ class Products extends React.Component {
                { this.showDescription(product.uuid) ? <div style={descriptionStyle}>{product.description}</div> : null }
             </div>*/}
             <h3>{product.description}</h3>
-            <h3 style={restPrice}>Regular price: ${product.regular_price}</h3>
+            <h3 style={restPrice}>regular price: ${product.regular_price}</h3>
             <h2>${product.price} ({product.regular_price_discount}% OFF)</h2>
             { !this.props.showButtons ? null :
               <div>
