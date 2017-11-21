@@ -34,6 +34,10 @@ class Package < ActiveRecord::Base
   def price
     products.inject(0) { |sum, p| sum + Product.find_by_uuid(p[:uuid]).price*p[:amount] }
   end
+
+  def regular_price
+    products.inject(0) { |sum, p| sum + Product.find_by_uuid(p[:uuid]).regular_price*p[:amount] }
+  end
 end
 
 

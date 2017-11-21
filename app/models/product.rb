@@ -7,6 +7,6 @@ class Product < ActiveRecord::Base
 
   scope :active, -> { where(active: [nil, true]) }
 
-  monetize :price_cents, :r_price_cents
+  monetize :price_cents, :r_price_cents, :regular_price_cents
   # has_and_belongs_to_many :carts
 end

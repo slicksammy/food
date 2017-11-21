@@ -22,6 +22,8 @@ module StoreHelper
       data[:products] = products.map { |p| product_hash(Product.find_by_uuid(p[:uuid]), p[:amount]) }
       data[:name] = package.package_name
       data[:price] = package.price.to_s
+      data[:regular_price] = package.regular_price.to_s
+      data[:discount] = ((1- package.price / package.regular_price)*100).round(0)
       data[:description] = package.description
       data[:uuid] = package.uuid
       pkgs << data
@@ -38,7 +40,9 @@ module StoreHelper
       price: product.price.to_s,
       image_url: product.image_url,
       amount: amount,
-      r_price: product.r_price.to_s
+      r_price: product.r_price.to_s,
+      regular_price: product.regular_price.to_s,
+      regular_price_discount: ((1 - (product.price / product.regular_price))*100).round(0)
     }
   end
 end
