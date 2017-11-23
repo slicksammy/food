@@ -13,5 +13,5 @@
 HOLIDAYS = ["Thursday, November 23, 2017", "Monday, December 25, 2017", "January 1, 2017"]
 
 HOLIDAYS.each do |holiday|
-  BusinessTime::Config.holidays << holiday
+  BusinessTime::Config.holidays << Date.parse(holiday)
 end
