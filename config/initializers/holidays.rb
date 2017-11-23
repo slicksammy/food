@@ -10,7 +10,7 @@
 #   BusinessTime::Config.holidays << holiday[:date].next_week if !holiday[:date].weekday?
 # end
 
-HOLIDAYS = ["Thursday, November 23, 2017", "Monday, December 25, 2017", "January 1, 2017"]
+HOLIDAYS = ["Thursday, November 23, 2017", "Monday, December 25, 2017", "January 1, 2018"]
 
 HOLIDAYS.each do |holiday|
   BusinessTime::Config.holidays << Date.parse(holiday)
