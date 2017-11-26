@@ -1,0 +1,6 @@
+<div>
+  <p><%= @params[:name].present? ? @params[:name] : 'Hi there' %>,</p>
+  <p>We hope you had a good Thanksgiving and are slowly waking up from your food coma. Now that you probably ate lots and lots of turkey, it's time to have some steaks!</p>
+  <p>All of our steaks are cut fresh to order and delivered TOMORROW for only $4.99. We guarantee you will love them or your money back. You can find them here: <a href="https://www.iheartmeat.com/steaks">www.iheartmeat.com/steaks</a>.</p>
+  <%= render partial: 'user_mailer/support_signature' %>
+</div>
