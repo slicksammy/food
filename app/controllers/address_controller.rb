@@ -29,7 +29,7 @@ class AddressController < SessionsController
     @signed_in = logged_in?
   end
 
-  def check_availability    
+  def check_availability 
     render status: 200, json: { available: available? }   
   end
 
@@ -45,6 +45,8 @@ class AddressController < SessionsController
   end
 
   def available?
-    ::Delivery::Availability.new(coordinates: params["coordinates"]).available?
+    available = ::Delivery::Availability.new(coordinates: params["coordinates"]).available?
+    ::AvailabilityLog.create(available: available, session_id: session[:session_id], lat: params["coordinates"]["lat"], lng: params["coordinates"]["lat"])
+    available
   end
 end
