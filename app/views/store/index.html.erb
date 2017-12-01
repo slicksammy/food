@@ -7,9 +7,6 @@
 </script>  -->
 
 <div>
-  <% if @show_modal %>
-    <%= render partial: 'modal' %>
-  <% end %>
   <div id="content">
     <!-- <h1 class="centered">We will be accepting orders starting Oct 1st!</h1> -->
     <section class="minus-margin-top">
@@ -44,6 +41,7 @@
           <p>Cook and enjoy in under 20 minutes</p>
         </div>
         <p class="disclaimer">*Our suppliers are fully licensed and pass rigorous inspections by the local and federal government including the USDA, FDA and IDA.</h2>
+        <%= render partial: 'signup' %>
         <div id="steaks" class="centered">
           <%= react_component('Products', products: @steaks, showButtons: true, showCartTotals: true) %> 
           <a href="/steaks"><button id="steaks-button" class="btn shop-background text-white" ><p>View More Steaks</p></button></a>
