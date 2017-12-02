@@ -53,13 +53,14 @@
 }
 
 .image-style {
-  width: 500px;
+  width: 90%;
   display: block;
-  height: 135px;
-  margin-top: -10px;
+  height: 85%;
+  padding-top: 40px;
+  /*margin-top: -px;*/
   /*margin-right: 8px;*/
   margin: 0 auto;
-  margin-bottom: 50px;
+  /*margin-bottom: 50px;*/
 }
 
 p {

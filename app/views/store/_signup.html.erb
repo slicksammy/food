@@ -21,18 +21,19 @@
 
   .signup-block {
     text-align: center;
-    background: url('assets/skillet.jpg') no-repeat;
+    /*background: url('assets/skillet.jpg') no-repeat;*/
     background-size: cover;
-    padding: 20px 20px;
-    margin-top: 30px;
+    /*padding: 40px 40px;
+    margin-top: 30px;*/
   }
 
   .signup-h2 {
-    color: white;
+    color: black;
     font-weight: bold;
     text-transform: capitalize;
     max-width: 800px;
     margin: 0 auto;
+    font-size: 50px;
   }
 
   .margin-bottom-30 {
@@ -59,21 +60,28 @@
 </style>
 
 
-<div class="signup-block">
+<div class="signup-block" hidden="true">
   <div id="signup-form-block"/>
-    <h1 class="signup-h2 margin-bottom-30">Learn how to cook the best steaks at home with tutorials and recipes</h1>
+    <h1 class="signup-h2 margin-bottom-30">Get Free recipes and enter to win free steaks for a year</h1>
     <form id="signup-form">
       <input id="signup-email" placeholder="Your Email" class="margin-bottom-30" required="true"/>
-      <button type="submit" id="signup-submit" class="shop-background margin-bottom-30">Signup!</button>
+      <button type="submit" id="signup-submit" class="shop-background margin-bottom-30">Submit</button>
     </form>
   </div>
   <div id="signup-form-success">
-    <h1 class="signup-sucess-h1 margin-bottom-30">You have been signed up!</h1>
+    <!-- <h1 class="signup-sucess-h1 margin-bottom-30">You have been signed up!</h1> -->
     <span><img src="assets/greencheckmark.png"></span>
   </div>
 </div>
 
 <script>
+  $(document).ready( function() {
+    if (Cookies.get('signup-seen') != 'true') {
+      $('.signup-form-after').hide();
+      $('.signup-block').show(); 
+    }
+  });
+
   $('#signup-form').submit(function(e) {
     e.preventDefault();
     $.ajax({
@@ -81,9 +89,14 @@
       url: '/getpromotion',
       data: { email: $('#signup-email').val()}
     });
-    $('#signup-form-block').hide()
-    $('#signup-form-success').show()
+    $('#signup-form-block').hide();
+    $('#signup-form-success').show();
     Cookies.set('signup-seen', true , { expires: 21 });
+    setTimeout( function() {
+      $('#signup-form-success').hide()
+      $('.signup-form-after').show()
+    }, 1000)
+    
     // return false
   })
 </script>
