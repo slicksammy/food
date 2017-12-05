@@ -1,0 +1,61 @@
+<script>
+  var product_urls = ['assets/products/bone_in_ny_strip.jpg', 'assets/products/da_ny_strip.jpg', 'assets/products/da_ribeye.JPG', 'assets/products/filet.jpg']
+
+  var imageId = 0
+</script>
+
+<style>
+  #product_carousel {
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  #carousel_image {
+    width: 400px;
+    height: 300px;
+    border: 5px solid;
+    /*text-align: center;*/
+    /*margin: 0 auto;*/
+  }
+
+  #steaks-button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 5px;
+  }
+
+  @media(max-width: 600px) {
+    #carousel_image {
+      width: 300px;
+      height: 230px;
+      border: 5px solid;
+      /*text-align: center;*/
+      /*margin: 0 auto;*/
+    }
+  }
+</style>
+
+<section id="product_carousel">
+  <img id="carousel_image" class="layer-shadow4" />
+   <a href="/steaks"><button id="steaks-button" class="btn shop-background text-white" ><p>Shop Now</p></button></a>
+</section>
+
+<script>
+  $(document).ready( function() {
+    $('#carousel_image').attr("src", product_urls[imageId]);
+    setTimeout(function() {changeImage()}, 3000)
+  });
+
+  function changeImage() {
+    if (imageId == product_urls.length - 1) {
+      imageId = 0
+    } else {
+      imageId++
+    }
+
+    $('#carousel_image').attr("src", product_urls[imageId])
+    setTimeout(function() {changeImage()}, 3000)
+  }
+</script>
