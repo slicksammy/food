@@ -115,7 +115,7 @@ p {
   padding: 20px;
   /*padding-bottom: 40px;*/
   /*margin-top: 30px;*/
-  font-family: 'Fredoka One', cursive;
+  /*font-family: 'Fredoka One', cursive;*/
 }
 
 .learn-more {
@@ -151,7 +151,8 @@ p {
   /*text-align: left;*/
   line-height: 110%;
   padding: 0px 20px 0px 20px;
-  font-family: 'Fredoka One', cursive;
+  /*font-family: 'Fredoka One', cursive;*/
+  color: white;
 }
 
 .quote {
@@ -159,11 +160,12 @@ p {
   font-weight: bold;
   display: inline-block;
   font-family: 'Fredoka One', cursive;
+  color: white;
 }
 
 #reviews {
   padding-bottom: 20px;
-  background: url(steak_board_3_opaque.png) no-repeat center center;
+  background: url(skillet.jpg) no-repeat center center;
   background-size: cover;
   background-position: center;
   /*color: white;*/
@@ -338,7 +340,7 @@ tr:last-child {
     margin-top: 15px;
     display: block;
     text-align: left;
-    color: #3a3535;
+    color: white;
     /*display: 'inline-block';*/
   }
 
