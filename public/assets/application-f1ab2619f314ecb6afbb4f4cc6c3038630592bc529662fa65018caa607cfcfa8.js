@@ -24373,7 +24373,9 @@ var Order = (function (_React$Component) {
             React.createElement(
               'div',
               { style: { clear: 'both' } },
-              item.name
+              item.name,
+              ', ',
+              item.description
             )
           ),
           React.createElement(

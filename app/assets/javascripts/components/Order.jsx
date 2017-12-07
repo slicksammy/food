@@ -29,7 +29,7 @@ class Order extends React.Component {
       return(
         <tr>
           <td className="order-td">
-            <div style={{clear: 'both'}}>{item.name}</div>
+            <div style={{clear: 'both'}}>{item.name}, {item.description}</div>
             {/*<img style={imageStyle} src={item.image} />*/}
           </td>
           {/*<td style={tdStyle}>
