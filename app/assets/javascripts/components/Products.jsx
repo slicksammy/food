@@ -47,7 +47,8 @@ class Products extends React.Component {
     var products = this.props.products.map( (product) => {
       var imageStyle = {
         maxWidth: '95%',
-        maxHeight: '200px'
+        maxHeight: '200px',
+        minWidth: '280px'
       }
 
       var containerStyle = {
