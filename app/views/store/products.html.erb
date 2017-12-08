@@ -16,6 +16,9 @@
 
   p {
     font-size: 30px;
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 </style>
 <div>
@@ -27,10 +30,11 @@
     </div>
     <div class="centered" />
       <h1 class="why-us centered">You Won't Find A Better Steak, Guaranteed</h1>
+      <p>Why buy our steaks? All of our meat is aged, the highest quality and always delivered fresh, never frozen. Every steak you order is cut the day of your delivery, so you always get freshest steaks available.
       <!-- <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4> -->
       <%= react_component('Products', products: @products, showButtons: true, showCartTotals: true) %> 
-      <a href="/holidays"><p>View Our Curated Holiday Packages</p></a>
-      <a href="mailto:support@iheartmeat.com?subject=Special Request"><p class="smaller">Can't find what you are looking for? Email us</p></a>
+      <a href="/holidays"><p style="text-align: center">View Our Curated Holiday Packages</p></a>
+      <a href="mailto:support@iheartmeat.com?subject=Special Request"><p class="smaller" style="text-align: center">Can't find what you are looking for? Email us</p></a>
     </div>
   </div>
 </div>
