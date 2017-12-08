@@ -1,0 +1,16 @@
+<div>
+  <p><%= @params[:name].present? ? @params[:name].capitalize : 'Hi there' %>,</p>
+  <p>In the mood for steaks? Look no further than iheartmeat. Best steaks, best prices, and the convenience of not waiting in grocery store lines. Why wait? Order now!</p>
+  <div style="margin-left: 60px">
+    <a href="https://www.iheartmeat.com/steaks?campaign=emaildec8"><button style="width: 200px;
+      height: 70px;
+      background-image: linear-gradient(to bottom, #63c359 0%, #48ab3e 100%);
+      text-align: center;
+      font-size: 30px;
+      color: white;
+      margin-top: 10px;
+      margin-bottom: 10px;">View Steaks</button>
+    </a>
+  </div>
+  <%= render partial: 'user_mailer/support_signature' %>
+</div>
