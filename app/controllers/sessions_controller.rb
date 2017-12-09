@@ -35,7 +35,6 @@ class SessionsController < ActionController::Base
   end
 
   def login
-    byebug
     @redirect_url = request.referrer || '/'
   end
 
