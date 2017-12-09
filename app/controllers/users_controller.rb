@@ -9,7 +9,7 @@ class UsersController < SessionsController
   # before_action :redirect_from_login_if_necessary # don't create new user or view form if user already exists
 
   def signup
-    @redirect_url = session[:previous_url]
+    @redirect_url = session[:previous_url] || '/'
   end
 
   def create
