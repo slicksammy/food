@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127231221) do
+ActiveRecord::Schema.define(version: 20171209183551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20171127231221) do
     t.string "uuid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "session_id"
     t.index ["user_uuid"], name: "index_carts_on_user_uuid"
     t.index ["uuid"], name: "index_carts_on_uuid"
   end

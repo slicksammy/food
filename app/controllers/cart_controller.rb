@@ -61,7 +61,7 @@ class CartController < SessionsController
 
   def create_cart
     unless cart_uuid
-      c = Cart.create!(user: current_user)
+      c = Cart.create!(user: current_user, session_id: session[:session_id])
       session[:cart_uuid] = c.uuid
     end
   end
