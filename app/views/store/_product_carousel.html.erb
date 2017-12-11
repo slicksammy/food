@@ -1,5 +1,5 @@
 <script>
-  var product_urls = ['assets/products/ribeye_2.jpg', 'assets/products/bone_in_ny_strip2.jpg', 'assets/products/da_ny_strip2.jpg', 'assets/products/da_ribeye_2.jpg', 'assets/products/filet.jpg']
+  var product_urls = ['assets/products/bone_in_ny_strip2.jpg', 'assets/products/da_ny_strip2.jpg', 'assets/products/da_ribeye_2.jpg', 'assets/products/filet.jpg', 'assets/products/ribeye_2.jpg']
 
   var imageId = 0
 </script>
@@ -9,6 +9,10 @@
     margin: 0 auto;
     text-align: center;
     padding-bottom: 20px;
+    height: 600px;
+    background: url(assets/products/ribeye_2.jpg) no-repeat;
+    background-size: cover;
+    text-align: center;
   }
 
   #carousel_image {
@@ -19,11 +23,8 @@
     /*margin: 0 auto;*/
   }
 
-  #steaks-button {
-    display: block;
-    margin: 0 auto;
-    margin-top: 20px;
-    padding: 5px;
+  #steaks-button:hover {
+    /*pointer-events:none;*/
   }
 
   @media(max-width: 600px) {
@@ -38,8 +39,8 @@
 </style>
 
 <section id="product_carousel">
-  <img id="carousel_image" class="layer-shadow4" />
-   <button id="steaks-button" onclick="window.location = '/steaks'" class="btn shop-background text-white" ><p>Shop Now</p></button>
+  <!-- <img id="carousel_image" class="layer-shadow4" /> -->
+  <%= render partial: 'shop_now_button'%>
 </section>
 
 <script>
@@ -55,7 +56,11 @@
       imageId++
     }
 
-    $('#carousel_image').attr("src", product_urls[imageId])
+    var url = "url(" + product_urls[imageId] + ")"
+
+    $('#product_carousel').css('background', url)
+    $('#product_carousel').css('background-size', 'cover')
+    $('#product_carousel').css('background-position', 'center')
     setTimeout(function() {changeImage()}, 3000)
   }
 </script>

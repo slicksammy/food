@@ -25,6 +25,8 @@
     background-size: cover;
     /*padding: 40px 40px;
     margin-top: 30px;*/
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   .signup-h2 {
@@ -72,6 +74,9 @@
     <!-- <h1 class="signup-sucess-h1 margin-bottom-30">You have been signed up!</h1> -->
     <span><img src="assets/greencheckmark.png"></span>
   </div>
+  <div id="signup-form-after" style="display:none">
+    <%= render partial: 'shop_now_button' %>
+  </div>
 </div>
 
 <script>
@@ -94,7 +99,7 @@
     Cookies.set('signup-seen', true , { expires: 21 });
     setTimeout( function() {
       $('#signup-form-success').hide()
-      $('.signup-form-after').show()
+      $('#signup-form-after').show()
     }, 1000)
     
     // return false
