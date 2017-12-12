@@ -3,7 +3,7 @@ class Analytics extends React.Component {
     var views = Object.keys(this.props.pageVisits).map( (key, index) => {
 
       var pages = this.props.pageVisits[key].map( visit => {
-        return(<li>{visit.url}, {visit.time}</li>)
+        return(<li>{visit.url}, {visit.referrer}, {visit.time}</li>)
       })
 
       return(<ul>

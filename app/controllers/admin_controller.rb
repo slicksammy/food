@@ -32,7 +32,7 @@ class AdminController < SessionsController
     PageVisit.ordered.reverse.first(50).each do |a|
       next if a.session_id.nil? || a.admin?
       @page_visits[a.session_id] = [] unless @page_visits[a.session_id]
-      @page_visits[a.session_id] << { url: a.url, time: (a.time_spent.present? ? (a.time_spent / 1000.0).round(1) : nil) }
+      @page_visits[a.session_id] << { url: a.url, time: (a.time_spent.present? ? (a.time_spent / 1000.0).round(1) : nil), referrer: a.referrer }
     end
 
     @page_visits
