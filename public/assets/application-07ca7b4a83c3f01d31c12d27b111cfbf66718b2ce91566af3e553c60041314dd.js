@@ -22218,6 +22218,8 @@ var Analytics = (function (_React$Component) {
             null,
             visit.url,
             ", ",
+            visit.referrer,
+            ", ",
             visit.time
           );
         });
