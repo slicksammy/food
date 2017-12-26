@@ -1,0 +1,125 @@
+<script>
+  $(document).ready( function() {
+    if (Cookies.get('modalseen') != 'true') {
+      setTimeout(function() {$('#content').css("opacity", ".4"), $('#promo-modal').show()}, 1000);
+      Cookies.set('coldmodalseen', true , { expires: 1 });
+    }
+  });
+</script>
+
+
+<style>
+  #promo-modal {
+    z-index: 9999;
+    background: #232323;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 30%;
+    /*display: none;*/
+    opacity: 1;
+    /*border: 5px solid;*/
+    width: 600px;
+    /*height: 275px;*/
+    /*min-height: 300px;*/
+    text-align: center;
+    display: none;
+    border-radius: 3px;
+    color: white;
+
+  }
+
+  #modal-close {
+    float: right;
+    top: 0;
+    background: white;
+    display:block;
+    color: black;
+    border: 0;
+    box-shadow:none;
+    border-radius: 0px;
+    font-size: 20px;
+  }
+
+  #promo-modal-background {
+    background: grey;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    opacity: .4;
+    z-index: 9998;
+  }
+
+  #promo-email {
+    width: 95%;
+    height: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: black;
+  }
+
+  #div-modal-form {
+    /*margin-top: 40px;*/
+    padding: 10px;
+    font-size: 24px;
+    padding-bottom: 20px;
+  }
+
+  .modal-submit {
+    width: 75%;
+    font-size: 26px;
+    color: white;
+  }
+
+  #modal-success {
+    display: none;
+    padding: 20px 20px 20px 20px;
+  }
+
+  #modal-success img {
+    width: 30%;
+    height: 30%;
+  }
+
+  #side-offer{
+    /*float: right;*/
+    /*top: 30%;*/
+    height: 200px;
+    width: 30px;
+    background: green;
+    z-index: 999;
+    position: fixed;
+  }
+
+  @media (max-width: 800px) {
+    #promo-modal {
+      width: 300px;
+    }
+  }
+</style>
+
+<div id="promo-modal" class="layer-shadow5">
+  <!-- <div id="side-offer">
+    Side Offer
+  <div> -->
+  <!-- <button id="modal-close">X</button> -->
+  <p>Don't shop in the cold, get delivery!</p>
+  <div id="div-modal-form">
+    <img class="img img-responsive" src="assets/shopping_v_delivery.jpg" />
+  </div>
+  
+
+  <!-- <button type="submit" class="btn shop-background modal-submit">Delivery</button> -->
+</div>
+
+<script>
+  $('#promo-modal').click( function() {
+    window.location = '/steaks'
+  })
+
+  $(document).click( function() {
+    $('#promo-modal').hide()
+    $('#content').css("opacity", "1")
+  });
+</script>
