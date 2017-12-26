@@ -1,7 +1,7 @@
 <script>
   $(document).ready( function() {
     if (Cookies.get('modalseen') != 'true') {
-      setTimeout(function() {$('#content').css("opacity", ".4"), $('#promo-modal').show()}, 1000);
+      setTimeout(function() {$('#content').css("opacity", ".4"), $('#promo-modal').show()}, 7000);
       Cookies.set('coldmodalseen', true , { expires: 1 });
     }
   });
