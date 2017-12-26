@@ -1,7 +1,7 @@
 <script>
   $(document).ready( function() {
-    if (Cookies.get('modalseen') != 'true') {
-      setTimeout(function() {$('#content').css("opacity", ".4"), $('#promo-modal').show()}, 7000);
+    if (Cookies.get('coldmodalseen') != 'true') {
+      setTimeout(function() { $('#promo-modal').show(), $('.backdrop').show()}, 5000);
       Cookies.set('coldmodalseen', true , { expires: 1 });
     }
   });
@@ -118,13 +118,13 @@
     window.location = '/steaks'
   })
 
-  $(document).click( function() {
+  $('.backdrop').click( function() {
     $('#promo-modal').hide()
-    $('#content').css("opacity", "1")
+    $('.backdrop').hide()
   });
 
-  $(document).on("tap", function() {
-    $('#promo-modal').hide()
-    $('#content').css("opacity", "1")
-  });
+  // $('#content').on("tap", function() {
+  //   $('#promo-modal').hide()
+  //   $('#content').css("opacity", "1")
+  // });
 </script>

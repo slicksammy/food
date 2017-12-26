@@ -6,6 +6,8 @@
   });
 </script>  -->
 <div>
+  <div class="backdrop"></div>
+  <%= render partial: 'cold_modal' %>
   <div id="content">
     <!-- <h1 class="centered">We will be accepting orders starting Oct 1st!</h1> -->
     <section class="minus-margin-top">
@@ -34,3 +36,21 @@
     </div>
   </div>
 </div>
+
+
+<style type="text/css">
+  .backdrop {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    display: block;
+    background: black;
+    opacity: 0.5;
+    display: none;
+    z-index:999;
+  }
+</style>
