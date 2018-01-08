@@ -1,8 +1,12 @@
-<div class="container">
-  <div>
-    <a href="/checkout" class="shop-background checkout">
-      Checkout >>>
-    </a>
+<link rel="stylesheet" type="text/css" href="assets/store.css">
+
+<section class="padding-bottom-50 ">
+  <div class="container">
+    <div>
+      <a href="/checkout" class="shop-background checkout">
+        Checkout >>>
+      </a>
+    </div>
+    <%= react_component('Cart', products: @products, subtotal: @subtotal) %>
   </div>
-  <%= react_component('Cart', products: @products, subtotal: @subtotal) %>
-</div>
+</section>

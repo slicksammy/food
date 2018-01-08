@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="assets/index.css">
+<link rel="stylesheet" type="text/css" href="assets/store.css">
 
 <style>
   .store {
@@ -20,21 +21,29 @@
     padding-left: 30px;
     padding-right: 30px;
   }
+
+  .margin-0-auto {
+    margin: 0 auto;
+  }
 </style>
-<div>
+<section class="padding-top-100 border-bottom left-padded padded-bottom-50">
+   <%= render partial: 'main', locals: { header: 'Premier Steaks', description: 'Always Fresh. Never Frozen.', description_float: 'left', pic_float: 'right', image_url: 'assets/salting_steak.jpg', padding: '0', showlogo: true, showbutton: false} %>
+</section>
+<section class="padded-top-50">
+  <div>
+    <a href="/checkout" class="shop-background checkout">
+      Checkout >>>
+    </a>
+  </div>
   <div id="content" class="store" class="row centered">
-    <div>
-      <a href="/checkout" class="shop-background checkout">
-        Checkout >>>
-      </a>
-    </div>
+    <h2 class="margin-0-auto">Our Steaks</h2>
     <div class="centered" />
-      <h1 class="why-us centered">You Won't Find A Better Steak, Guaranteed</h1>
-      <p>Why buy our steaks? All of our meat is aged for <strong>4 weeks</strong>, the highest quality and always delivered fresh, never frozen. Every steak you order is cut the day of your delivery, so you always get the freshest steaks available.
+      <!-- <h1 class="why-us centered">You Won't Find A Better Steak, Guaranteed</h1> -->
+      <!-- <p>Why buy our steaks? All of our meat is aged for <strong>4 weeks</strong>, the highest quality and always delivered fresh, never frozen. Every steak you order is cut the day of your delivery, so you always get the freshest steaks available.</p> -->
       <!-- <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4> -->
       <%= react_component('Products', products: @products, showButtons: true, showCartTotals: true) %> 
-      <a href="/holidays"><p style="text-align: center">View Our Curated Holiday Packages</p></a>
-      <a href="mailto:support@iheartmeat.com?subject=Special Request"><p class="smaller" style="text-align: center">Can't find what you are looking for? Email us</p></a>
+      <!-- <a href="/holidays"><p style="text-align: center">View Our Curated Holiday Packages</p></a> -->
+      <a href="mailto:support@iheartmeat.com?subject=Special Request"><h4 style="text-align: center">Can't find what you are looking for? Email us</h4></a>
     </div>
   </div>
-</div>
+</section>

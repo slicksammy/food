@@ -7,6 +7,33 @@
     display: block;
     padding-left: 10px;
     padding-right: 10px;
+    background: url(assets/steak_delivered.jpg) no-repeat;
+    background-position: 40% 10%;
+    height: 600px;
+    color: white;
+  }
+
+  .styro-reason {
+    display: block;
+    /*background: red;*/
+    /*height: 40px;*/
+    /*width: 400px;*/
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-bottom: 50px;
+    color: black;
+    font-size: 45px;
+    width: 100%;
+    text-align: left;
+    color: white;
+  }
+
+  .styro-reason:last-child {
+    margin-bottom: 0px;
+  }
+
+  #styro-box-div h2 {
+    margin: 40px;
   }
 
   #styro-box-div img {
@@ -16,14 +43,34 @@
     padding: 10px;
   }
 
+  @media (max-width: 700px) {
+    #styro-box-div {
+      background-position: 60% 20%;
+      height: 600px;
+     }
+
+     .styro-reason {
+        text-align: center;
+        font-size: 30px;
+        margin: 20px;
+        color: white;
+        padding-left: 30px;
+        padding-right: 30px;
+     }
+  }
+
 
 
 </style>
 
 
 <div id="styro-box-div">
-  <h1 class="why-us centered">How Delivery Works</h1>
-  <h2>Steaks are delivered between 1pm and 3pm in climate controlled packages so you don't have to be there when your order arrives.</h2>
-  <img class="img" src="assets/styro_box_2.png" />
-  <h2>We recommend getting your steaks in the fridge or freezer by 10pm on your delivery date.</h2>
+  <h1 class="why-us centered">Delivery</h1>
+  <div class="styro-reason">Delivered To Your Door</div>
+  <div class="styro-reason">All Steaks Come in Styro Coolers, So You Don't Have To Be Home</div>
+  <div class="styro-reason">Package Arrives Between 1-3pm</div>
+  <div class="styro-reason">Put Steaks in the Fridge or Freezer by 10pm</div>
+  <!-- <h2>Steaks are delivered between 1pm and 3pm in climate controlled packages so you don't have to be there when your order arrives.</h2> -->
+  <!-- <img class="img" src="assets/styro_box_2.png" /> -->
+  <!-- <h2>We recommend getting your steaks in the fridge or freezer by 10pm on your delivery date.</h2> -->
 </div>

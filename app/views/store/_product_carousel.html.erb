@@ -10,7 +10,7 @@
     text-align: center;
     padding-bottom: 20px;
     height: 600px;
-    background: url(assets/products/ribeye_2.jpg) no-repeat;
+    background: url(assets/salting_steak.jpg) no-repeat;
     background-size: cover;
     text-align: center;
   }
@@ -44,23 +44,23 @@
 </section>
 
 <script>
-  $(document).ready( function() {
-    $('#carousel_image').attr("src", product_urls[imageId]);
-    setTimeout(function() {changeImage()}, 3000)
-  });
+  // $(document).ready( function() {
+  //   $('#carousel_image').attr("src", product_urls[imageId]);
+  //   setTimeout(function() {changeImage()}, 3000)
+  // });
 
-  function changeImage() {
-    if (imageId == product_urls.length - 1) {
-      imageId = 0
-    } else {
-      imageId++
-    }
+  // function changeImage() {
+  //   if (imageId == product_urls.length - 1) {
+  //     imageId = 0
+  //   } else {
+  //     imageId++
+  //   }
 
-    var url = "url(" + product_urls[imageId] + ")"
+  //   var url = "url(" + product_urls[imageId] + ")"
 
-    $('#product_carousel').css('background', url)
-    $('#product_carousel').css('background-size', 'cover')
-    $('#product_carousel').css('background-position', 'center')
-    setTimeout(function() {changeImage()}, 3000)
-  }
+  //   $('#product_carousel').css('background', url)
+  //   $('#product_carousel').css('background-size', 'cover')
+  //   $('#product_carousel').css('background-position', 'center')
+  //   setTimeout(function() {changeImage()}, 3000)
+  // }
 </script>

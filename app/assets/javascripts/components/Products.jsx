@@ -140,7 +140,7 @@ class Products extends React.Component {
 
       return(
         <div style={colCentered} className="col-lg-4 col-md-4 col-sm-6 col-xs-11">
-          <div className="base-title-product"><strong>{product.name}</strong></div>
+          <h3>{product.name}</h3>
           <div  className="base-container-product">
             { this.props.showPackageTotals ?
               <div style={packageStyle}>
@@ -155,7 +155,7 @@ class Products extends React.Component {
             </div>*/}
             <h3>{product.description}</h3>
             <h3 style={restPrice}>regular price: ${product.regular_price}</h3>
-            <h2>${product.price} ({product.regular_price_discount}% OFF)</h2>
+            <h3>${product.price} ({product.regular_price_discount}% OFF)</h3>
             { !this.props.showButtons ? null :
               <div>
                 <button style={buttonStyle} className="btn btn-success cart_update layer-shadow1 shop-background" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>

@@ -1,9 +1,13 @@
+<link rel="stylesheet" type="text/css" href="assets/store.css">
+
 <style>
   .centered {
     text-align: center;
   }
 </style>
 
-<div class='container centered'>
-  <%= react_component('Home', orders: @orders) %>
-</div>
+<section class="padded-top-50">
+  <div class='container centered'>
+    <%= react_component('Home', orders: @orders) %>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+<link rel="stylesheet" type="text/css" href="assets/index.css">
+<link rel="stylesheet" type="text/css" href="assets/store.css">
+
+<section class="padding-top-100 border-bottom left-padded padded-bottom-150">
+   <%= render partial: 'main', locals: { header: 'Steak Delivery', description: 'Premier Steaks. Delivered Next Day.', description_float: 'left', pic_float: 'right', image_url: 'assets/rawsteaks.jpg', padding: '0', showlogo: true, showbutton: true} %>
+</section>
+<!-- <section class="margin-top-minus"> -->
+  <%= render partial: 'signup_form' %>
+<!-- </section> -->
+<section class="padded-top-50 border-bottom left-padded right-padded padded-bottom-50">
+  <%= render partial: 'how_it_works_2' %>
+</section>
+<section class="padded-top-50 border-bottom padded-bottom-50">
+  <%= render partial: 'why_us_2', locals: {name: 'Sam'}%>
+</section>
+<section class="padded-top-50 border-bottom right-padded padded-bottom-50">
+  <%= render partial: 'main', locals: { header: 'Easy To Prepare', description: 'Just Season, Pan Sear, and Enjoy.', description_float: 'right', pic_float: 'left', image_url: 'assets/buttering_steak.jpg', padding: '20', showlogo: false, showbutton: true} %>
+</section>
+<section class="padded-top-50 border-bottom padded-bottom-50">
+  <%= render partial: 'reviews_2' %>
+</section>
+<section class="padded-top-50 border-bottom left-padded padded-bottom-50">
+  <%= render partial: 'main', locals: { header: 'Mmm Steak', description: 'The Best Steaks You Will Find.', description_float: 'left', pic_float: 'right', image_url: 'assets/juicy_steak.JPG', padding: '20', showlogo: false, showbutton: true} %>
+</section>

@@ -1,0 +1,112 @@
+<style>
+  .main-section {
+    /*height: 1000px;*/
+    display: inline-block;
+  }
+
+  .main-section-logo {
+    /*width: 25%;*/
+    /*margin-left: 50px;*/
+    display: block;
+    text-align: left;
+    width: 50%;
+  }
+
+  .main-section .language {
+    margin-top: 70px;
+    /*padding-left: 50px;*/
+  }
+
+  .language {
+    width: 35%;
+    display: inline-block;
+    /*background: gray;*/
+  }
+
+  .main-section-steaks {
+    width: 100%;
+    float: right;
+    /*margin-left: 50px;*/
+    max-height: 500px;
+    left: 20%;
+    overflow: hidden;
+  }
+
+  .main-section-description {
+    /*width: 40%;*/
+    /*padding-left: 100px;*/
+    /*background: gray;*/
+    margin-top: 50px;
+    vertical-align: middle;
+    padding-right: 20px;
+  }
+
+  .main-section-pic {
+    /*width: 50%;*/
+    /*margin-right: 10px;*/
+    /*padding-right: 0px;
+    padding-left: 0px;*/
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .margin-top-5 {
+    margin-top: 5px;
+  }
+
+  .margin-top-20 {
+    margin-top: 20px;
+  }
+
+  .main-section-description button {
+    font-size: 40px;
+  }
+
+  /*.no-right-padding {
+    padding-right: 0px;
+  }*/
+
+  @media (max-width: 1000px) {
+    .main-section-description {
+      margin: 0 auto;
+      padding-left: 0px;
+      text-align: center;
+      padding-right:0px;
+      /*display: none;*/
+    }
+
+    .main-section-logo {
+      margin: 0 auto;
+    }
+
+    .main-section-steaks {
+      width: 75%;
+      float: none;
+      margin: 0 auto;
+    }
+
+    .main-section-pic {
+      text-align: center;
+      margin-top: 40px;
+    }
+  }
+</style>
+
+<div class="main-section" style="padding-bottom: <%= padding + 'px' %>">
+  <div class="main-section-description col-lg-4 col-md-4 col-sm-12 col-xs-12 no-right-padding" style="float: <%= description_float %>">
+    <% if showlogo %>
+      <img class="main-section-logo" src="assets/logo_simple.png" />
+    <% end %>
+    <div>
+      <h2><%= header %></h2>
+      <h3 class="margin-top-5"><%= description %></h3>
+      <% if showbutton %>
+        <button class="btn btn-success margin-top-20" onclick="window.location='/steaks'">Shop Now</button>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-2 col-md-2" style="float:none"></div>
+  <div class="main-section-pic col-lg-6 col-md-6 col-sm-12 col-xs-12" style="float: <%= pic_float %>">
+    <img class="main-section-steaks layer-shadow2"  src=<%= image_url %> />
+  </div>
+</div>

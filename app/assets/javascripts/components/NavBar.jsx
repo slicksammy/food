@@ -119,8 +119,8 @@ class NavBar extends React.Component {
           <div style={noBorder} className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul style={ulStyle} className="nav navbar-nav navbar-right">
               {/*<li style={ilStyle}></li>*/}
-              <li style={ilStyle}><a style={bigFont} href="/about"><span className="">About</span></a></li>
-              <li style={ilStyle}><a style={bigFont} href="/holidays"><span className="">Holidays</span></a></li>
+              <li style={ilStyle}><a style={bigFont} href="/about"><span className="">FAQ</span></a></li>
+              {/*<li style={ilStyle}><a style={bigFont} href="/holidays"><span className="">Holidays</span></a></li>*/}
               <li style={ilStyle}><a style={bigFont} href="/availability"><span className="">Availability</span></a></li>
               { this.props.signedIn? <li style={ilStyle}><a style={bigFont} href="/orders">My Orders</a></li> : null }
               <li style={ilStyle}><a style={bigFont} href="/about#contact"><span className="">Contact</span></a></li>

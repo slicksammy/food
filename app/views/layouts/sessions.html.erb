@@ -61,8 +61,24 @@
     body {
       background: #ffffff;
     }
+
+    html {
+      margin: 0 auto;
+      max-width: 1200px;  
+      /*background: #e5e5e5;*/
+    }
+
+    body {
+      background: white;
+    }
+
+    .navbar {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 </style>
-<div class="margin-bottom">
+<div class="">
     <%= react_component('NavBar', signedIn: @logged_in) %> 
 </div>
 <%= yield %>

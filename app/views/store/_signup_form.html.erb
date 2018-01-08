@@ -1,0 +1,102 @@
+<style>
+  #signup-form {
+    width: 50%;
+    /*min-width: 300px;*/
+    min-width: 300px;
+    background: white;
+    /*height: 150px;*/
+    text-align: center;
+    margin: 0 auto;
+    min-height: 150px;
+    margin-top: -100px;
+    /*padding-top: 10px;*/
+    /*padding-bottom: 10px;*/
+    /*border: 1px solid;*/
+  }
+
+  #signup-form input {
+    width: 50%;
+    border: 1px solid gray;
+    font-size: 30px;
+  }
+
+  #signup-form button {
+    width: 30%;
+    margin-left: 10px;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  #signup-form form {
+    margin-top: 30px;
+  }
+
+  #signup-form h2 {
+    padding-top: 20px;
+  }
+
+  #signup-form-success {
+    font-size: 40px;
+    text-align: center;
+    vertical-align: center;
+    padding: 10px;
+  }
+
+  @media (max-width: 767px) {
+    #signup-form input {
+      display: block;
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    #signup-form button {
+      width: 60%;
+      margin-top: 20px;
+    }
+
+    #signup-form h2 {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    #signup-form-success {
+      font-size: 26px;
+    }
+  }
+</style>
+
+<div id="signup-form" style="display:none" class="layer-shadow2">
+  <div id="signup-form-block">
+    <h2>Get $20 Off Your First Order</h2>
+    <form id="signup-form-form">
+      <input id="signup-email" placeholder="Your Email" class="margin-bottom-30" required="true"/>
+      <button type="submit" id="signup-submit" class="shop-background margin-bottom-30">Submit</button>
+    </form>
+  </div>
+  <div id="signup-form-success" style="display:none">Thanks for signing up! Please check your email for further instructions.</div>
+</div>
+
+<script>
+  $(document).ready( function() {
+    if (Cookies.get('signed-up') != 'true') {
+      $('#signup-form').show(); 
+    }
+  });
+
+  $('#signup-form-form').submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: '/getpromotion',
+      data: { email: $('#signup-email').val()}
+    });
+    $('#signup-form-block').hide();
+    $('#signup-form-success').show();
+    Cookies.set('signed-up', true , { expires: 21 });
+    setTimeout( function() {
+      $('#signup-form').hide()
+    }, 2000)
+  });
+</script>

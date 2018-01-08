@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="assets/store.css">
+
 <style>
   .centered {
     margin-left: auto;
@@ -12,8 +14,10 @@
   }
 </style>
 
-<div class='container centered'>
-  <div class="col-centered col-xs-11 col-sm-6 col-lg-4 col-md-4">
-    <%= react_component('LoginSignup', show: 'login', redirect_url: @redirect_url) %>
+<section class="padding-top-100">
+  <div class='container centered'>
+    <div class="col-centered col-xs-11 col-sm-6 col-lg-4 col-md-4">
+      <%= react_component('LoginSignup', show: 'login', redirect_url: @redirect_url) %>
+    </div>
   </div>
-</div>
+</section>
