@@ -9,7 +9,7 @@ class PromotionSignup < ActiveRecord::Base
   end
 
   def self.default_promotion
-    @@promotion ||= Promotion.find_by_code('iheartmeat2017')
+    @@promotion ||= Promotion.find_by_code('iheartmeat2018')
   end
 
   def self.create_with_promotion_code!(email, promotion_code, session_id)
