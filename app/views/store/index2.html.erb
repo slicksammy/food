@@ -8,6 +8,9 @@
   <%= render partial: 'signup_form' %>
 <!-- </section> -->
 <section class="padded-top-50 border-bottom left-padded right-padded padded-bottom-50">
+  <%= render partial: 'product_snapshot', locals: {steaks: @product_snapshot } %>
+</section>
+<section class="padded-top-50 border-bottom left-padded right-padded padded-bottom-50">
   <%= render partial: 'how_it_works_2' %>
 </section>
 <section class="padded-top-50 border-bottom padded-bottom-50">

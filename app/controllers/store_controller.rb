@@ -13,6 +13,7 @@ class StoreController < SessionsController
   end
 
   def index2
+    @product_snapshot = product_information(Product.active.first(2), cart_uuid)
   end
 
   def products
