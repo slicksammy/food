@@ -1,6 +1,7 @@
 <script>
   $(document).ready( function() {
-    if (Cookies.get('freeseasoning') != 'true') {
+    // if (Cookies.get('freeseasoning') != 'true') {
+      if (true) {
       setTimeout(function() { 
         $('#promo-modal').show();
         $('.backdrop').show(); 
@@ -42,6 +43,10 @@
 
   #div-modal-form button {
     font-size: 40px;
+  }
+
+  #div-modal-form img {
+    margin: 0 auto;
   }
 
   @media (max-width: 800px) {
