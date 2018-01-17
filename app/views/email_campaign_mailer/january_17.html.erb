@@ -1,0 +1,9 @@
+<div>
+  <p><%= @params[:name].present? ? @params[:name] : 'Hi there' %>,</p>
+  <p>Happy new year from your friends at iheartmeat!</p>
+  <p>We wanted to let you know that, for a limited time, every order comes with <strong>FREE</strong> salt, pepper and olive oil. Check us out: <a href="https://www.iheartmeat.com/steaks?january17">www.iheartmeat.com/steaks</a>.</p>
+  <div style="margin: 0 auto; text-align: center">
+    <img src="https://www.iheartmeat.com/assets/juicy_steak.JPG" style="height: 200px; width: 200px; text-align: center"/>
+  </div>
+  <%= render partial: 'user_mailer/support_signature' %>
+</div>
