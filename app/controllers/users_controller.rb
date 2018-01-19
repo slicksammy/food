@@ -80,7 +80,8 @@ class UsersController < SessionsController
     params.permit(:email, :promotion_code)
 
     if p = PromotionSignup.create_with_promotion_code!(params["email"], params["promotion_code"], session[:session_id])
-      UserMailer.promotion_signup(p).deliver!
+      # Not Sending Email for Now
+      # UserMailer.promotion_signup(p).deliver!
       render body: nil, status: 200
     else
       render body: nil, status: 200
