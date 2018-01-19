@@ -24603,7 +24603,7 @@ var Products = (function (_React$Component) {
 
       var products = this.props.products.map(function (product) {
         var imageStyle = {
-          maxWidth: '95%',
+          maxWidth: '80%',
           maxHeight: '200px',
           minWidth: '280px'
         };
