@@ -26,6 +26,12 @@ class Cart < ActiveRecord::Base
     active_products.map { |p| !p.promotional }.any?
   end
 
+  def remove_promotional_products
+    active_products.select { |p| p.promotional }.each do |product|
+      add_product(product, 0)
+    end
+  end
+
   def self.ongoing
     select { |cart| cart.ongoing? }
   end

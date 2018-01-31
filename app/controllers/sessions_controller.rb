@@ -48,6 +48,7 @@ class SessionsController < ActionController::Base
     if BCrypt::Engine.hash_secret(params[:password], salt) == user.encrypted_password
       session[:user_uuid] = user.uuid
       set_cart
+      remove_promotional_item_if_necessary(user)
       render status: 202, body: nil, json: { redirectUrl: '/' }
     else
       render status: 401, json: { error: 'email and password do not match' }
@@ -65,6 +66,14 @@ class SessionsController < ActionController::Base
      else
       cart.update_attributes!(user: current_user)
     end
+  end
+
+  def remove_promotional_item_if_necessary(user)
+    if user.has_paid_orders? && cart
+      cart.remove_promotional_products
+    end
+  end
+
   end
 
   def cart_uuid
