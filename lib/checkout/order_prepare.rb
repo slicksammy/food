@@ -54,7 +54,5 @@ module Checkout
     def remove_promotional_products
       cart.remove_promotional_products if cart.user.has_paid_orders?
     end
-
-    end
   end
 end
