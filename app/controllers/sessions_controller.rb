@@ -74,8 +74,6 @@ class SessionsController < ActionController::Base
     end
   end
 
-  end
-
   def cart_uuid
     session[:cart_uuid]
   end
