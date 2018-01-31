@@ -11,6 +11,7 @@ class Checkout extends React.Component {
     this.showSuccess = this.showSuccess.bind(this);
     this.updatePromo = this.updatePromo.bind(this)
     this.canApplyPromo = this.canApplyPromo.bind(this);
+    this.positiveSubtotal = this.positiveSubtotal.bind(this);
   }
 
   confirmOrder(e) {
@@ -121,7 +122,11 @@ class Checkout extends React.Component {
   }
 
   canBuy() {
-    return(this.state.address && this.state.stripe_token && !this.state.error && this.props.accepting_orders)
+    return(this.state.address && this.state.stripe_token && !this.state.error && this.props.accepting_orders && this.positiveSubtotal())
+  }
+
+  positiveSubtotal() {
+    return this.state.subtotal > 0
   }
 
 
@@ -294,6 +299,7 @@ class Checkout extends React.Component {
     var form = ( 
       <div>
         {this.props.accepting_orders ? null : <h1 style={noOrdersStyle} >We apologize but we are currently not accepting orders. Please check back soon.</h1> }
+        {this.positiveSubtotal() ? null : <h1 style={noOrdersStyle} >Please add an item to your cart</h1> }
         {this.state.loader ? <div className="loader"></div> : null }
         {this.state.success ? <div className="success"><span className=" glyphicon glyphicon-ok"></span>Congrats! Purhcase Complete.</div> : null }
         <div style={centered}>
@@ -301,9 +307,9 @@ class Checkout extends React.Component {
             <Order items={this.props.items} order={this.state.order} />
           </div>
         </div>
-        <div style={centered}>
+        {/*<div style={centered}>
           {promo}
-        </div>
+        </div>*/}
         <div style={centered}>
           {address}
         </div>

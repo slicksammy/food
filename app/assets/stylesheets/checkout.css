@@ -96,6 +96,8 @@ html, body {
   width: 100%;
   /*padding: 20px;*/
   /*border: solid .5px;*/
+  /*min-height: 500px;*/
+  float: none;
 }
 
 .base-title {
@@ -245,6 +247,12 @@ html, body {
   .navbar-header {
     padding-right: 10px;
     padding-left: 10px;
+  }
+}
+
+@media(min-width: 769px) {
+  .min-height-500 {
+    min-height: 200px
   }
 }
 

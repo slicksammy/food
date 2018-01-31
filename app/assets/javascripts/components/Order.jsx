@@ -39,7 +39,7 @@ class Order extends React.Component {
             {item.amount}
           </td>
           <td className="order-td">
-            ${item.total}
+            { item.total > 0 ? "$"+item.total : "FREE" }
           </td>
         </tr>
       )

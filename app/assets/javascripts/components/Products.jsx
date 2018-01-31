@@ -121,8 +121,9 @@ class Products extends React.Component {
 
       var colCentered = {
         display: 'inline-block',
-        float: 'none',
+        // float: 'none',
         margin: '20px 0px 20px 0px',
+        textAlign: 'center'
       }
 
       var margin = {
@@ -154,14 +155,20 @@ class Products extends React.Component {
                { this.showDescription(product.uuid) ? <div style={descriptionStyle}>{product.description}</div> : null }
             </div>*/}
             <h3>{product.description}</h3>
-            <h3 style={restPrice}>regular price: ${product.regular_price}</h3>
-            <h3>${product.price} ({product.regular_price_discount}% OFF)</h3>
-            { !this.props.showButtons ? null :
-              <div>
-                <button style={buttonStyle} className="btn btn-success cart_update layer-shadow1 shop-background" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
-                <button style={buttonStyle} className="btn btn-danger cart_update layer-shadow1 red" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
-              </div>
-            }
+            <div className="min-height-500">
+              { product.promotional ? <h1>FREE with your first order</h1> : 
+                <div>
+                  <h3 style={restPrice}>regular price: ${product.regular_price}</h3>
+                  <h3>${product.price} ({product.regular_price_discount}% OFF)</h3>
+                  { !this.props.showButtons ? null :
+                    <div>
+                      <button style={buttonStyle} className="btn btn-success cart_update layer-shadow1 shop-background" onClick={()=> this.add(product.uuid, 1) } id="cart_add">+</button>
+                      <button style={buttonStyle} className="btn btn-danger cart_update layer-shadow1 red" onClick={()=> this.add(product.uuid, -1) } id="cart_subtract">-</button>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
           </div>
         </div>
       )
