@@ -126,7 +126,7 @@ class Checkout extends React.Component {
   }
 
   positiveSubtotal() {
-    return this.state.subtotal > 0
+    return this.state.order.subtotal > 0
   }
 
 
