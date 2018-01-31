@@ -42,7 +42,8 @@ module StoreHelper
       amount: amount,
       r_price: product.r_price.to_s,
       regular_price: product.regular_price.to_s,
-      regular_price_discount: ((1 - (product.price / product.regular_price))*100).round(0)
+      regular_price_discount: ((1 - (product.price / product.regular_price))*100).round(0),
+      promotional: product.promotional
     }
   end
 end

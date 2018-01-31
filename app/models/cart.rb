@@ -18,6 +18,14 @@ class Cart < ActiveRecord::Base
     active_carts_products.map(&:product)
   end
 
+  def has_promotional_product?
+    active_products.map { |p| p.promotional }.any?
+  end
+
+  def has_more_than_promotional_product?
+    active_products.map { |p| !p.promotional }.any?
+  end
+
   def self.ongoing
     select { |cart| cart.ongoing? }
   end
