@@ -21713,6 +21713,7 @@ var Checkout = (function (_React$Component) {
     this.showSuccess = this.showSuccess.bind(this);
     this.updatePromo = this.updatePromo.bind(this);
     this.canApplyPromo = this.canApplyPromo.bind(this);
+    this.positiveSubtotal = this.positiveSubtotal.bind(this);
   }
 
   _createClass(Checkout, [{
@@ -21841,7 +21842,12 @@ var Checkout = (function (_React$Component) {
   }, {
     key: 'canBuy',
     value: function canBuy() {
-      return this.state.address && this.state.stripe_token && !this.state.error && this.props.accepting_orders;
+      return this.state.address && this.state.stripe_token && !this.state.error && this.props.accepting_orders && this.positiveSubtotal();
+    }
+  }, {
+    key: 'positiveSubtotal',
+    value: function positiveSubtotal() {
+      return this.state.subtotal > 0;
     }
   }, {
     key: 'render',
@@ -22113,6 +22119,11 @@ var Checkout = (function (_React$Component) {
           { style: noOrdersStyle },
           'We apologize but we are currently not accepting orders. Please check back soon.'
         ),
+        this.positiveSubtotal() ? null : React.createElement(
+          'h1',
+          { style: noOrdersStyle },
+          'Please add an item to your cart'
+        ),
         this.state.loader ? React.createElement('div', { className: 'loader' }) : null,
         this.state.success ? React.createElement(
           'div',
@@ -22128,11 +22139,6 @@ var Checkout = (function (_React$Component) {
             null,
             React.createElement(Order, { items: this.props.items, order: this.state.order })
           )
-        ),
-        React.createElement(
-          'div',
-          { style: centered },
-          promo
         ),
         React.createElement(
           'div',
@@ -22195,7 +22201,9 @@ var OrderSuccess = function (props) {
     props.orderNumber
   );
 };
-/*disable button on submit so customer doesn't try buying twice*/;
+/*<div style={centered}>
+ {promo}
+</div>*/ /*disable button on submit so customer doesn't try buying twice*/;
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
@@ -23493,8 +23501,7 @@ var Order = (function (_React$Component) {
           React.createElement(
             'td',
             { className: 'order-td' },
-            '$',
-            item.total
+            item.total > 0 ? "$" + item.total : "FREE"
           )
         );
       });
@@ -24678,8 +24685,9 @@ var Products = (function (_React$Component) {
 
         var colCentered = {
           display: 'inline-block',
-          float: 'none',
-          margin: '20px 0px 20px 0px'
+          // float: 'none',
+          margin: '20px 0px 20px 0px',
+          textAlign: 'center'
         };
 
         var margin = {
@@ -24728,36 +24736,48 @@ var Products = (function (_React$Component) {
               product.description
             ),
             React.createElement(
-              "h3",
-              { style: restPrice },
-              "regular price: $",
-              product.regular_price
-            ),
-            React.createElement(
-              "h3",
-              null,
-              "$",
-              product.price,
-              " (",
-              product.regular_price_discount,
-              "% OFF)"
-            ),
-            !_this.props.showButtons ? null : React.createElement(
               "div",
-              null,
-              React.createElement(
-                "button",
-                { style: buttonStyle, className: "btn btn-success cart_update layer-shadow1 shop-background", onClick: function () {
-                    return _this.add(product.uuid, 1);
-                  }, id: "cart_add" },
-                "+"
-              ),
-              React.createElement(
-                "button",
-                { style: buttonStyle, className: "btn btn-danger cart_update layer-shadow1 red", onClick: function () {
-                    return _this.add(product.uuid, -1);
-                  }, id: "cart_subtract" },
-                "-"
+              { className: "min-height-500" },
+              product.promotional ? React.createElement(
+                "h1",
+                null,
+                "FREE with your first order"
+              ) : React.createElement(
+                "div",
+                null,
+                React.createElement(
+                  "h3",
+                  { style: restPrice },
+                  "regular price: $",
+                  product.regular_price
+                ),
+                React.createElement(
+                  "h3",
+                  null,
+                  "$",
+                  product.price,
+                  " (",
+                  product.regular_price_discount,
+                  "% OFF)"
+                ),
+                !_this.props.showButtons ? null : React.createElement(
+                  "div",
+                  null,
+                  React.createElement(
+                    "button",
+                    { style: buttonStyle, className: "btn btn-success cart_update layer-shadow1 shop-background", onClick: function () {
+                        return _this.add(product.uuid, 1);
+                      }, id: "cart_add" },
+                    "+"
+                  ),
+                  React.createElement(
+                    "button",
+                    { style: buttonStyle, className: "btn btn-danger cart_update layer-shadow1 red", onClick: function () {
+                        return _this.add(product.uuid, -1);
+                      }, id: "cart_subtract" },
+                    "-"
+                  )
+                )
               )
             )
           )
