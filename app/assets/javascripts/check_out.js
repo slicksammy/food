@@ -7,9 +7,9 @@ $(document).ready(function(){
 function tryCheckout() {
   $.ajax({
     method: 'GET',
-    url: '/cart/count',
+    url: '/cart/can_checkout',
     success: function(response) {
-      if (response.count > 0) {
+      if (response.can) {
         $('.checkout').show();
       } else {
         $('.checkout').hide();

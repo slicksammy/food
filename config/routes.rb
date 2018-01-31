@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get 'cart/subtotal' =>'cart#get_subtotal'
   get 'cart/count' =>'cart#count'
   post 'cart/package' => 'cart#add_package'
+  get 'cart/can_checkout' => 'cart#can_checkout'
 
   # START CHECKOUT
   get '/checkout' => 'checkout#view'

@@ -57,6 +57,12 @@ class CartController < SessionsController
     cart.add_package_products(package)
   end
 
+  def can_checkout
+    can = cart && cart.has_more_than_promotional_product? ? true : false
+    
+    render json: { can: can }, status: 202
+  end
+
   private
 
   def create_cart
