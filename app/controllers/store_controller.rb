@@ -26,6 +26,8 @@ class StoreController < SessionsController
         @main_pic = 'assets/home_images/' + params["pic"] + ".png"
       end
     end
+
+    add_promotional_product_to_cart
   end
 
   def products
@@ -36,5 +38,13 @@ class StoreController < SessionsController
 
   def packages
     @packages = package_info(Package.active)
+  end
+
+  def add_promotional_product_to_cart
+    unless cart_uuid
+      c = Cart.create!(user: current_user, session_id: session[:session_id])
+      c.add_product(Product.promotional_product, 1)
+      session[:cart_uuid] = c.uuid
+    end
   end
 end
