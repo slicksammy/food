@@ -13,6 +13,7 @@ module Checkout
 
     def prepare
       create_order
+      remove_promotional_products if cart.user
       set_totals
       set_options
 
@@ -48,6 +49,12 @@ module Checkout
       end
       
       order.save!
+    end
+
+    def remove_promotional_products
+      cart.remove_promotional_products if cart.user.has_paid_orders?
+    end
+
     end
   end
 end
