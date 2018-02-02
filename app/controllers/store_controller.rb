@@ -17,7 +17,7 @@ class StoreController < SessionsController
     @steaks << Product.active.first(4).last
     @product_snapshot = product_information(@steaks, cart_uuid)
 
-    @main_pic = "assets/home_images/rawsteaks.jpg"
+    @main_pic = "assets/home_images/rawsteaks2.jpg"
 
     if params["pic"]
       if File.file?(Rails.root + 'app/assets/images/home_images' + "#{params["pic"]}.jpg")
