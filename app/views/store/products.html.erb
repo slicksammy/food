@@ -36,14 +36,25 @@
     </a>
   </div>
   <div id="content" class="store" class="row centered">
-    <h2 class="margin-0-auto">Our Steaks</h2>
-    <div class="centered" />
-      <!-- <h1 class="why-us centered">You Won't Find A Better Steak, Guaranteed</h1> -->
-      <!-- <p>Why buy our steaks? All of our meat is aged for <strong>4 weeks</strong>, the highest quality and always delivered fresh, never frozen. Every steak you order is cut the day of your delivery, so you always get the freshest steaks available.</p> -->
-      <!-- <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4> -->
-      <%= react_component('Products', products: @products, showButtons: true, showCartTotals: true) %> 
-      <!-- <a href="/holidays"><p style="text-align: center">View Our Curated Holiday Packages</p></a> -->
-      <a href="mailto:support@iheartmeat.com?subject=Special Request"><h4 style="text-align: center">Can't find what you are looking for? Email us</h4></a>
+    <div>
+      <h2 class="margin-0-auto">Our Steaks</h2>
+      <div class="centered" />
+        <!-- <h1 class="why-us centered">You Won't Find A Better Steak, Guaranteed</h1> -->
+        <!-- <p>Why buy our steaks? All of our meat is aged for <strong>4 weeks</strong>, the highest quality and always delivered fresh, never frozen. Every steak you order is cut the day of your delivery, so you always get the freshest steaks available.</p> -->
+        <!-- <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4> -->
+        <%= react_component('Products', products: @steaks, showButtons: true, showCartTotals: true) %>
+      </div>
     </div>
+    <div>
+      <h2 class="margin-0-auto">Lamb, Veal and Pork</h2>
+      <div class="centered">
+        <!-- <h1 class="why-us centered">You Won't Find A Better Steak, Guaranteed</h1> -->
+        <!-- <p>Why buy our steaks? All of our meat is aged for <strong>4 weeks</strong>, the highest quality and always delivered fresh, never frozen. Every steak you order is cut the day of your delivery, so you always get the freshest steaks available.</p> -->
+        <!-- <h4 class="centered minus-margin-top">*All steaks come ready to cook</h4> -->
+        <%= react_component('Products', products: @other, showButtons: true, showCartTotals: true) %> 
+      </div>
+    </div>
+        <!-- <a href="/holidays"><p style="text-align: center">View Our Curated Holiday Packages</p></a> -->
+    <a class="centered" href="mailto:support@iheartmeat.com?subject=Special Request"><h4 style="text-align: center">Can't find what you are looking for? Email us</h4></a>
   </div>
 </section>
