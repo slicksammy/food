@@ -5,9 +5,13 @@ require 'uuid_helper'
 class Product < ActiveRecord::Base
   include UUIDHelper
 
+  STEAK_TYPE = 'steak'
+
   scope :active, -> { where(active: [nil, true]) }
   scope :promotional, -> { where(promotional: true) }
   scope :ordered, -> { order("created_at DESC") }
+  scope :steak, -> { where(product_type: STEAK_TYPE) }
+  scope :not_steak, -> { where("product_type is NULL or product_type != ?", self::STEAK_TYPE) }
 
   monetize :price_cents, :r_price_cents, :regular_price_cents
   # has_and_belongs_to_many :carts
