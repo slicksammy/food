@@ -31,7 +31,8 @@ class StoreController < SessionsController
   end
 
   def products
-    @products = product_information(Product.active, cart_uuid)
+    @steaks = product_information(Product.steak.active, cart_uuid)
+    @other = product_information(Product.not_steak.active, cart_uuid)
 
     @show_modal = !logged_in?
   end
