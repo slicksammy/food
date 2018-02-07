@@ -81,6 +81,10 @@ Rails.application.routes.draw do
   get '/about' => 'information#about'
   get '/ordersfortoday' => 'application#orders'
 
+  # STORE
+
+  post '/add_promotional_product_to_cart' => 'store#add_promotional_product_to_cart'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
