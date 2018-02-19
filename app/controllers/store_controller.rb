@@ -27,7 +27,7 @@ class StoreController < SessionsController
       end
     end
 
-    add_promotional_product_to_cart
+    # add_promotional_product_to_cart
   end
 
   def products
