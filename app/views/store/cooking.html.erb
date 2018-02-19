@@ -1,0 +1,116 @@
+<link rel="stylesheet" type="text/css" href="assets/index.css">
+<link rel="stylesheet" type="text/css" href="assets/store.css">
+
+<style>
+   iframe {
+      width: 560px;
+      height: 315px;
+   }
+
+   #cooking-list-div {
+      width: 80%;
+      margin: 0 auto;
+      font-size: 25px;
+   }
+
+   #cooking-list-div img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+   }
+
+   .small-font {
+    font-size: 16px
+   }
+
+   ul {
+    padding: 0px;
+    margin-top: 20px;
+   }
+
+   li {
+    margin-bottom: 10px;
+   }
+
+   #cooking-times {
+    /*border: 1px solid black;*/
+    width: 90%;
+    background: #f2f2f2;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 25px;
+    margin: 0 auto;
+    margin-top: 40px;
+   }
+
+   #cooking-times tr {
+    border-bottom: 3px solid white;
+   }
+
+   #cooking-times th {
+    font-weight: bold;
+   }
+
+   tr:nth-last-child(1) {
+    border-bottom: 5px solid;
+   }
+
+   @media (max-width: 600px) {
+    iframe {
+      width: 280px;
+      height: 158px;
+    }
+
+     #cooking-times {
+      font-size: 16px
+     }
+
+     #cooking-list-div {
+      font-size: 16px
+     }
+   }
+</style>
+
+<div>
+  <section class="padding-top-100 border-bottom left-padded padded-bottom-50">
+     <%= render partial: 'main', locals: { header: 'Cooking Made Easy', description: 'A Perfect Steak Every Time.', description_float: 'left', pic_float: 'right', image_url: 'assets/salting_steak.jpg', padding: '0', showlogo: true, showbutton: true} %>
+  </section>
+  <section class="padded-top-50 border-bottom padded-bottom-50">
+    <div class="centered">
+      <iframe class="centered" src="https://www.youtube.com/embed/0vdAZtpYPYA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div id="cooking-list-div">
+      <ul style="list-style: none;">
+        <li><img src="assets/cooking_images/saltpepper.png" />Season steak</li>
+        <li><img src="assets/cooking_images/hotpan.png" />Heat pan to very hot and sear both sides for 1 minute</li>
+        <li><img src="assets/cooking_images/steakpan.png" />Turn heat down to med-low and cook <span class="small-font">(see table below for cooking times)</span></li>
+        <li><img src="assets/cooking_images/tongs.png" />Flip steak</li>
+        <li><img src="assets/cooking_images/butter.png" />Baste with butter</li>
+        <li><img src="assets/cooking_images/restingsteak.png" />Let rest for a few minutes</li>
+        <li><img src="assets/cooking_images/forkknife.png" />Enjoy!</li>
+      </ul>
+    </div>
+    <table id="cooking-times">
+      <tbody>
+        <tr>
+          <th>Steak</th>
+          <th>Rare</th>
+          <th>Med/Rare</th>
+          <th>Med</th>
+        </tr>
+        <tr>
+          <td>Filet</td>
+          <td>3.5 Minutes</td>
+          <td>4 Minutes</td>
+          <td>4.5 Minutes</td>
+        </tr>
+        <tr>
+          <td>Ribeye/Strip</td>
+          <td>2.5 Minutes</td>
+          <td>3 Minutes</td>
+          <td>3.5 Minutes</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
