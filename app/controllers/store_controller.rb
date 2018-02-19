@@ -41,6 +41,9 @@ class StoreController < SessionsController
     @packages = package_info(Package.active)
   end
 
+  def cooking
+  end
+
   def add_promotional_product_to_cart
     unless cart_uuid && current_user.try(:has_paid_orders?)
       c = Cart.create!(user: current_user, session_id: session[:session_id])

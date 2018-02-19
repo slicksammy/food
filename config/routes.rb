@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'store#index2'
   get '/steaks' => 'store#products'
   get '/holidays' => 'store#packages'
+  get '/cooking' => 'store#cooking'
 
   get '/application/version' => 'application#version'
 
