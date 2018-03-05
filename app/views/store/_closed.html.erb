@@ -1,0 +1,74 @@
+<script>
+  $(document).ready( function() {
+    $('#promo-modal').show();
+    $('.backdrop').show(); 
+  });
+</script>
+
+
+<style>
+  #promo-modal {
+    z-index: 9999;
+    background: #232323;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 20%;
+    /*display: none;*/
+    opacity: 1;
+    /*border: 5px solid;*/
+    width: 600px;
+    /*height: 275px;*/
+    /*min-height: 300px;*/
+    text-align: center;
+    display: none;
+    border-radius: 3px;
+    color: white;
+
+  }
+
+  #div-modal-form {
+    /*margin-top: 40px;*/
+    padding: 10px;
+    font-size: 24px;
+    padding-bottom: 20px;
+  }
+
+  #div-modal-form button {
+    font-size: 40px;
+  }
+
+  #div-modal-form img {
+    margin: 0 auto;
+  }
+
+  @media (max-width: 800px) {
+    #promo-modal {
+      width: 350px;
+    }
+  }
+</style>
+
+<div id="promo-modal" class="layer-shadow5">
+  <!-- <div id="side-offer">
+    Side Offer
+  <div> -->
+  <!-- <button id="modal-close">X</button> -->
+  <!-- <h2>Get Yours</h2> -->
+  <div id="div-modal-form">
+    <!-- <img class="img img-responsive" src="assets/freefilet2.png" /> -->
+    <p>We are currently not accepting orders but feel free to leave your email and we will send you a notification if/when we start up again</p>
+    <button id="closed-button" class="btn btn-success margin-top-20" onclick="window.location='/#signup-form'">OK</button>
+  </div>
+  
+
+  <!-- <button type="submit" class="btn shop-background modal-submit">Delivery</button> -->
+</div>
+
+<script>
+  $('#closed-button').click( function() {
+    $('#promo-modal').hide();
+    $('.backdrop').hide();
+  });
+</script>
